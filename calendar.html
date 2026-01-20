@@ -1,0 +1,149 @@
+<html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Discovery Call — Brian Marshall</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&amp;family=Bricolage+Grotesque:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; font-weight: 300; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Bricolage Grotesque', sans-serif; letter-spacing: -0.02em; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        
+        /* Grain Overlay */
+        .bg-grain {
+            position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Animations */
+        @keyframes slideUpFade {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .animate-slide-up { animation: slideUpFade 0.8s ease-out forwards; }
+
+        /* Custom UI Elements */
+        .glass-panel {
+            background: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .tech-grid {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* Calendar container styling */
+        .calendar-container {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .calendar-container iframe {
+            min-height: 700px;
+        }
+    </style>
+</head>
+<body class="bg-neutral-950 text-neutral-300 w-full overflow-x-hidden selection:bg-emerald-500/30 selection:text-white relative min-h-screen">
+    
+    <div class="bg-grain"></div>
+
+    <!-- Navigation -->
+    <div class="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 animate-slide-up" style="animation-delay: 0.2s;">
+        <nav class="glass-panel rounded-full px-2 py-2 flex items-center justify-between gap-12 shadow-2xl">
+            <div class="flex items-center gap-3 pl-4">
+                <div class="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center text-black">
+                    <iconify-icon icon="solar:code-scan-linear" width="14"></iconify-icon>
+                </div>
+                <a href="index.html" class="font-bricolage text-sm font-medium text-white tracking-tight hover:text-emerald-400 transition-colors">Brian Marshall</a>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-6 text-xs font-medium text-white/50">
+                <a href="index.html#work" class="hover:text-white transition-colors">Work</a>
+                <a href="index.html#process" class="hover:text-white transition-colors">Process</a>
+                <a href="index.html#about" class="hover:text-white transition-colors">About</a>
+                <a href="index.html#pricing" class="hover:text-white transition-colors">Pricing</a>
+            </div>
+
+            <a href="index.html#contact" class="px-5 py-2 rounded-full bg-white text-black text-xs font-medium hover:bg-emerald-400 transition-colors">
+                Contact
+            </a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main class="pt-32 pb-24 px-6 md:px-12 tech-grid min-h-screen">
+        <!-- Abstract Background Glow -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-emerald-900/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto relative z-10">
+            
+            <!-- Header -->
+            <div class="text-center mb-12 animate-slide-up" style="animation-delay: 0.4s; opacity: 0;">
+                <a href="index.html" class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-neutral-500 hover:text-emerald-500 transition-colors mb-6">
+                    <iconify-icon icon="solar:arrow-left-linear"></iconify-icon>
+                    Back to Home
+                </a>
+                
+                <h1 class="text-4xl md:text-6xl text-white font-medium tracking-tight mb-6">
+                    Book a Discovery Call
+                </h1>
+                
+                <p class="text-lg text-neutral-400 max-w-xl mx-auto leading-relaxed">
+                    Let's talk about what's slowing your business down — and how we can fix it together.
+                </p>
+            </div>
+
+            <!-- Calendar Embed -->
+            <div class="animate-slide-up" style="animation-delay: 0.6s; opacity: 0;">
+                <div class="calendar-container">
+                    <iframe 
+                        src="https://api.leadconnectorhq.com/widget/booking/THMH1W3pKXF9bB3Cz5HW" 
+                        style="width: 100%; border: none; overflow: hidden;" 
+                        scrolling="no" 
+                        id="THMH1W3pKXF9bB3Cz5HW_1768930417580">
+                    </iframe>
+                </div>
+            </div>
+
+            <!-- Info Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 animate-slide-up" style="animation-delay: 0.8s; opacity: 0;">
+                <div class="glass-panel rounded-xl p-6 text-center">
+                    <iconify-icon icon="solar:clock-circle-linear" class="text-emerald-500 text-2xl mb-3"></iconify-icon>
+                    <h3 class="text-white font-medium mb-1">30 Minutes</h3>
+                    <p class="text-sm text-neutral-500">Quick, focused conversation</p>
+                </div>
+                <div class="glass-panel rounded-xl p-6 text-center">
+                    <iconify-icon icon="solar:video-frame-linear" class="text-emerald-500 text-2xl mb-3"></iconify-icon>
+                    <h3 class="text-white font-medium mb-1">Video Call</h3>
+                    <p class="text-sm text-neutral-500">Face-to-face via Zoom</p>
+                </div>
+                <div class="glass-panel rounded-xl p-6 text-center">
+                    <iconify-icon icon="solar:dollar-minimalistic-linear" class="text-emerald-500 text-2xl mb-3"></iconify-icon>
+                    <h3 class="text-white font-medium mb-1">Free</h3>
+                    <p class="text-sm text-neutral-500">No strings attached</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8 border-t border-white/10">
+        <div class="max-w-4xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-xs text-neutral-600 font-mono">
+            <span>© 2026 Brian Marshall. All Systems Go.</span>
+            <div class="flex gap-4 mt-4 md:mt-0">
+                <a href="https://www.linkedin.com/in/brian-marshall-80a513144" class="hover:text-white transition-colors">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
+</body></html>
