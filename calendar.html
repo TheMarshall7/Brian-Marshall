@@ -49,6 +49,25 @@
         .calendar-container iframe {
             min-height: 700px;
         }
+
+        /* Button Shimmer Effect */
+        .btn-shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-shimmer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        .btn-shimmer:hover::before {
+            left: 100%;
+        }
     </style>
 </head>
 <body class="bg-neutral-950 text-neutral-300 w-full overflow-x-hidden selection:bg-red-500/30 selection:text-white relative min-h-screen">
@@ -131,6 +150,77 @@
 
         </div>
     </main>
+
+    <!-- Conversion Section -->
+    <section class="py-24 border-t border-white/10 relative overflow-hidden bg-neutral-900/30">
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-red-500/5 rounded-full blur-[200px]"></div>
+        </div>
+        
+        <div class="max-w-6xl mx-auto px-6 md:px-12 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Left: Benefits -->
+                <div class="animate-slide-up" style="animation-delay: 1s; opacity: 0;">
+                    <h2 class="text-3xl md:text-5xl text-white font-medium mb-4 tracking-tight">
+                        Stop Losing Money to Inefficiency
+                    </h2>
+                    
+                    <p class="text-lg text-neutral-300 mb-8 leading-relaxed">
+                        Every day you wait is another day of lost leads, wasted time, and missed revenue. Let's fix it.
+                    </p>
+
+                    <!-- Key Benefits -->
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start gap-4">
+                            <iconify-icon icon="solar:clock-circle-linear" class="text-red-500 text-2xl shrink-0 mt-0.5"></iconify-icon>
+                            <div>
+                                <h4 class="text-white font-medium mb-1">Save 20+ Hours/Week</h4>
+                                <p class="text-sm text-neutral-400">Automation handles the busywork so you can focus on what matters</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <iconify-icon icon="solar:graph-up-linear" class="text-red-500 text-2xl shrink-0 mt-0.5"></iconify-icon>
+                            <div>
+                                <h4 class="text-white font-medium mb-1">Recover Lost Revenue</h4>
+                                <p class="text-sm text-neutral-400">Stop losing leads and turn every inquiry into a customer</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <iconify-icon icon="solar:shield-check-linear" class="text-red-500 text-2xl shrink-0 mt-0.5"></iconify-icon>
+                            <div>
+                                <h4 class="text-white font-medium mb-1">Scale Without Chaos</h4>
+                                <p class="text-sm text-neutral-400">Systems that grow with you, not against you</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Social Proof & CTA -->
+                <div class="animate-slide-up" style="animation-delay: 1.2s; opacity: 0;">
+                    <div class="glass-panel rounded-2xl p-8 text-center">
+                        <!-- Social Proof -->
+                        <div class="mb-8">
+                            <p class="text-neutral-400 text-sm mb-4">Trusted by businesses</p>
+                            <div class="flex justify-center items-center gap-4 mb-8">
+                                <div class="w-12 h-12 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center text-[11px] text-white">NS</div>
+                                <div class="w-12 h-12 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center text-[11px] text-white">BG</div>
+                                <div class="w-12 h-12 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center text-[11px] text-white">AC</div>
+                            </div>
+                        </div>
+
+                        <!-- CTA -->
+                        <div>
+                            <p class="text-white text-lg font-medium mb-6">Ready to fix what's broken?</p>
+                            <p class="text-xs text-neutral-500 mb-6">No credit card required • 30 minutes • No obligation</p>
+                            <div class="text-sm text-neutral-400">
+                                <p>Select a time above to book your free discovery call</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="bg-black py-8 border-t border-white/10">
