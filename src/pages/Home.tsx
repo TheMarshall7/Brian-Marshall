@@ -433,21 +433,21 @@ export default function Home() {
               <div className="space-y-8 relative">
                 <div className="absolute left-3 top-2 bottom-2 w-px bg-white/10"></div>
                 <div className="relative pl-10">
-                  <div className="timeline-dot absolute left-[-38px] top-0.5 w-6 h-6 rounded-full bg-neutral-900 border border-white/20 flex items-center justify-center z-10 translate-x-1/2">
+                  <div className="timeline-dot absolute left-[-40px] top-0.5 w-6 h-6 rounded-full bg-neutral-900 border border-white/20 flex items-center justify-center z-10 translate-x-1/2">
                     <iconify-icon icon="solar:music-note-linear" className="text-neutral-500" width="12"></iconify-icon>
                   </div>
                   <h4 className="text-white font-medium mb-1">The Musician</h4>
                   <p className="text-sm text-neutral-400 leading-relaxed">Sound taught me that bad signal in equals bad output out. No amount of polish fixes broken flow.</p>
                 </div>
                 <div className="relative pl-10">
-                  <div className="timeline-dot absolute left-[-38px] top-0.5 w-6 h-6 rounded-full bg-neutral-900 border border-white/20 flex items-center justify-center z-10 translate-x-1/2">
+                  <div className="timeline-dot absolute left-[-40px] top-0.5 w-6 h-6 rounded-full bg-neutral-900 border border-white/20 flex items-center justify-center z-10 translate-x-1/2">
                     <iconify-icon icon="solar:bricks-linear" className="text-neutral-500" width="12"></iconify-icon>
                   </div>
                   <h4 className="text-white font-medium mb-1">The Wall</h4>
                   <p className="text-sm text-neutral-400 leading-relaxed">I realized every creative business hits the same wall: Great ideas, terrible infrastructure.</p>
                 </div>
                 <div className="relative pl-10">
-                  <div className="timeline-dot timeline-dot-active absolute left-[-38px] top-0.5 w-6 h-6 rounded-full bg-neutral-900 border border-red-500/50 flex items-center justify-center z-10 translate-x-1/2">
+                  <div className="timeline-dot timeline-dot-active absolute left-[-40px] top-0.5 w-6 h-6 rounded-full bg-neutral-900 border border-red-500/50 flex items-center justify-center z-10 translate-x-1/2">
                     <iconify-icon icon="solar:code-circle-linear" className="text-red-400" width="12"></iconify-icon>
                   </div>
                   <h4 className="text-white font-medium mb-1">The Architect</h4>
