@@ -17,6 +17,21 @@ export default function Calendar() {
       <Helmet>
         <title>Book a Discovery Call — Brian Marshall</title>
         <meta name="description" content="Book a free 30-minute discovery call to discuss how we can fix what's broken in your business systems." />
+        
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://brianmarshall.dev/calendar" />
+        <meta property="og:title" content="Book a Discovery Call — Brian Marshall" />
+        <meta property="og:description" content="Book a free 30-minute discovery call to discuss how we can fix what's broken in your business systems." />
+        <meta property="og:image" content="https://storage.googleapis.com/msgsndr/F1J2yvd2AUT4owDs9EPl/media/6970477bd4fb90ebccb8a72c.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Book a Discovery Call — Brian Marshall" />
+        <meta name="twitter:description" content="Book a free 30-minute discovery call to discuss how we can fix what's broken in your business systems." />
+        <meta name="twitter:image" content="https://storage.googleapis.com/msgsndr/F1J2yvd2AUT4owDs9EPl/media/6970477bd4fb90ebccb8a72c.png" />
       </Helmet>
 
       <div className="bg-grain"></div>

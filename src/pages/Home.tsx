@@ -27,6 +27,9 @@ export default function Home() {
         <meta property="og:url" content="https://brianmarshall.dev/" />
         <meta property="og:title" content="Brian Marshall — Systems Designer" />
         <meta property="og:description" content="I design websites, web apps, and AI-powered workflows that turn chaos into structure and ideas into recurring revenue." />
+        <meta property="og:image" content="https://storage.googleapis.com/msgsndr/F1J2yvd2AUT4owDs9EPl/media/6970477bd4fb90ebccb8a72c.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta property="og:site_name" content="Brian Marshall" />
         <meta property="og:locale" content="en_US" />
         
@@ -34,6 +37,7 @@ export default function Home() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Brian Marshall — Systems Designer" />
         <meta name="twitter:description" content="I design websites, web apps, and AI-powered workflows that turn chaos into structure and ideas into recurring revenue." />
+        <meta name="twitter:image" content="https://storage.googleapis.com/msgsndr/F1J2yvd2AUT4owDs9EPl/media/6970477bd4fb90ebccb8a72c.png" />
         
         {/* Structured Data */}
         <script type="application/ld+json">
