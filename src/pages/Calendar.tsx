@@ -153,8 +153,8 @@ export default function Calendar() {
               {/* Footer Content Row */}
               <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-6">
                 <div className="flex flex-col items-center md:items-start gap-2">
-                  <span className="text-sm text-neutral-500 font-mono tracking-wider">© 2026 Brian Marshall</span>
-                  <span className="text-xs text-neutral-600 font-mono italic">Creative Systems Designer. And founder of AreoClient.</span>
+                  <span className="text-sm text-neutral-500 font-mono tracking-wider text-center md:text-left">© 2026 Brian Marshall</span>
+                  <span className="text-xs text-neutral-600 font-mono italic text-center md:text-left">Creative Systems Designer. And founder of AreoClient.</span>
                 </div>
                 
                 <div className="flex items-center gap-8">
