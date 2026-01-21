@@ -64,10 +64,16 @@ export default function Home() {
           <div className="md:col-span-8">
             <div className="mb-6 animate-slide-up" style={{ animationDelay: '0.4s', opacity: 0 }}>
               <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-red-500/10 border border-red-500/20 hero-badge">
-                <div className="flex -space-x-2">
-                  <div className="w-6 h-6 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center text-[9px] text-white">NS</div>
-                  <div className="w-6 h-6 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center text-[9px] text-white">BG</div>
-                  <div className="w-6 h-6 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center text-[9px] text-white">AC</div>
+                <div className="flex -space-x-2 group">
+                  <div className="w-6 h-6 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center overflow-hidden">
+                    <img src="https://storage.googleapis.com/msgsndr/F1J2yvd2AUT4owDs9EPl/media/6970702dd4fb90e27fbf24b6.png" alt="NS" className="w-4 h-4 object-contain opacity-40 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0" />
+                  </div>
+                  <div className="w-6 h-6 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center overflow-hidden">
+                    <img src="https://storage.googleapis.com/msgsndr/F1J2yvd2AUT4owDs9EPl/media/6970702dd4fb9026bbbf24b5.png" alt="BG" className="w-4 h-4 object-contain opacity-40 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0" />
+                  </div>
+                  <div className="w-6 h-6 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center overflow-hidden">
+                    <img src="https://storage.googleapis.com/msgsndr/F1J2yvd2AUT4owDs9EPl/media/6970702d15885e283f324bca.png" alt="AC" className="w-4 h-4 object-contain opacity-40 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0" />
+                  </div>
                 </div>
                 <span className="text-xs text-neutral-300 font-medium">Trusted by creative businesses</span>
               </div>
@@ -433,21 +439,21 @@ export default function Home() {
               <div className="space-y-8 relative">
                 <div className="absolute left-3 top-2 bottom-2 w-px bg-white/10"></div>
                 <div className="relative pl-10">
-                  <div className="timeline-dot absolute left-[-40px] top-0.5 w-6 h-6 rounded-full bg-neutral-900 border border-white/20 flex items-center justify-center z-10 translate-x-1/2">
+                  <div className="timeline-dot absolute left-[-51px] top-[2px] w-6 h-6 rounded-full bg-neutral-900 border border-white/20 flex items-center justify-center z-10 translate-x-1/2">
                     <iconify-icon icon="solar:music-note-linear" className="text-neutral-500" width="12"></iconify-icon>
                   </div>
                   <h4 className="text-white font-medium mb-1">The Musician</h4>
                   <p className="text-sm text-neutral-400 leading-relaxed">Sound taught me that bad signal in equals bad output out. No amount of polish fixes broken flow.</p>
                 </div>
                 <div className="relative pl-10">
-                  <div className="timeline-dot absolute left-[-40px] top-0.5 w-6 h-6 rounded-full bg-neutral-900 border border-white/20 flex items-center justify-center z-10 translate-x-1/2">
+                  <div className="timeline-dot absolute left-[-51px] top-[22px] w-6 h-6 rounded-full bg-neutral-900 border border-white/20 flex items-center justify-center z-10 translate-x-1/2">
                     <iconify-icon icon="solar:bricks-linear" className="text-neutral-500" width="12"></iconify-icon>
                   </div>
                   <h4 className="text-white font-medium mb-1">The Wall</h4>
                   <p className="text-sm text-neutral-400 leading-relaxed">I realized every creative business hits the same wall: Great ideas, terrible infrastructure.</p>
                 </div>
                 <div className="relative pl-10">
-                  <div className="timeline-dot timeline-dot-active absolute left-[-40px] top-0.5 w-6 h-6 rounded-full bg-neutral-900 border border-red-500/50 flex items-center justify-center z-10 translate-x-1/2">
+                  <div className="timeline-dot timeline-dot-active absolute left-[-51px] top-[22px] w-6 h-6 rounded-full bg-neutral-900 border border-red-500/50 flex items-center justify-center z-10 translate-x-1/2">
                     <iconify-icon icon="solar:code-circle-linear" className="text-red-400" width="12"></iconify-icon>
                   </div>
                   <h4 className="text-white font-medium mb-1">The Architect</h4>
