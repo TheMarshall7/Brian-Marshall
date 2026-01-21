@@ -197,27 +197,32 @@
     transform: scale(1.15) rotate(5deg);
   }
   
-  /* Button Shimmer Effect */
+  /* Button Shimmer Effect - Enhanced with Premium Depth */
   .btn-shimmer {
     position: relative;
     overflow: hidden;
     box-shadow: 
+      inset 0 1px 2px rgba(255, 255, 255, 0.1),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.3),
       0 4px 12px rgba(0, 0, 0, 0.3),
       0 2px 4px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
   
   .btn-shimmer:hover {
-    transform: translateY(-2px);
+    transform: translateY(-2px) scale(1.02);
     box-shadow: 
+      inset 0 2px 4px rgba(255, 255, 255, 0.15),
+      inset 0 -3px 6px rgba(0, 0, 0, 0.4),
       0 8px 20px rgba(0, 0, 0, 0.4),
       0 4px 8px rgba(0, 0, 0, 0.3),
       0 0 30px rgba(239, 68, 68, 0.4);
   }
   
-  /* Primary CTA Button - Tier 1 Maximum Depth */
+  /* Primary CTA Button - Tier 1 Maximum Depth with Cover Animation */
   .cta-primary {
     position: relative;
+    overflow: hidden;
     z-index: 30;
     box-shadow: 
       0 20px 64px rgba(0, 0, 0, 0.6),
@@ -229,6 +234,18 @@
       inset 0 2px 0 rgba(255, 255, 255, 0.15),
       inset 0 -1px 0 rgba(0, 0, 0, 0.2);
     transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  
+  .cta-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s ease;
+    z-index: 0;
   }
   
   .cta-primary:hover {
@@ -245,6 +262,15 @@
     z-index: 35;
   }
   
+  .cta-primary:hover::before {
+    left: 100%;
+  }
+  
+  .cta-primary > * {
+    position: relative;
+    z-index: 1;
+  }
+  
   .btn-shimmer::before {
     content: '';
     position: absolute;
@@ -254,10 +280,16 @@
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
     transition: left 0.5s ease;
+    z-index: 0;
   }
   
   .btn-shimmer:hover::before {
     left: 100%;
+  }
+  
+  .btn-shimmer > * {
+    position: relative;
+    z-index: 1;
   }
   
   /* Glow Border Effect */
@@ -324,7 +356,7 @@
     transform: translateY(0);
   }
   
-  /* Calendar container styling */
+  /* Calendar container styling - Enhanced Depth */
   .calendar-container {
     background: white;
     border-radius: 16px;
@@ -333,10 +365,24 @@
       0 32px 64px rgba(0, 0, 0, 0.6),
       0 16px 32px rgba(0, 0, 0, 0.4),
       0 8px 16px rgba(0, 0, 0, 0.3),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      0 4px 8px rgba(0, 0, 0, 0.2),
+      inset 0 2px 4px rgba(255, 255, 255, 0.15),
+      inset 0 -4px 8px rgba(0, 0, 0, 0.2);
     width: 100%;
     min-width: 0;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  
+  .calendar-container:hover {
+    box-shadow: 
+      0 40px 80px rgba(0, 0, 0, 0.7),
+      0 20px 40px rgba(0, 0, 0, 0.5),
+      0 10px 20px rgba(0, 0, 0, 0.4),
+      0 5px 10px rgba(0, 0, 0, 0.3),
+      inset 0 3px 6px rgba(255, 255, 255, 0.2),
+      inset 0 -5px 10px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
   }
   
   .calendar-container iframe {
@@ -440,13 +486,36 @@
   }
   
   .faq-card:hover {
-    transform: translateY(-4px);
     box-shadow: 
       0 12px 32px rgba(0, 0, 0, 0.45),
       0 6px 20px rgba(0, 0, 0, 0.35),
       0 2px 8px rgba(0, 0, 0, 0.25),
       inset 0 1px 0 rgba(255, 255, 255, 0.06);
     z-index: 8;
+  }
+  
+  /* FAQ Accordion Animation */
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+    opacity: 0;
+  }
+  
+  .faq-answer.faq-open {
+    max-height: 500px;
+    opacity: 1;
+  }
+  
+  .faq-card button {
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .faq-card button:focus-visible {
+    outline: 2px solid rgba(239, 68, 68, 0.5);
+    outline-offset: 2px;
+    border-radius: 8px;
   }
   
   /* Enhanced pricing cards - Tier 2 High Elevation */
@@ -543,12 +612,14 @@
     z-index: 12;
   }
   
-  /* Enhanced case study cards */
+  /* Enhanced case study cards with layered depth */
   .case-study-card {
     box-shadow: 
       0 8px 24px rgba(0, 0, 0, 0.4),
       0 4px 12px rgba(0, 0, 0, 0.3),
-      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      0 2px 4px rgba(0, 0, 0, 0.2),
+      inset 0 2px 4px rgba(255, 255, 255, 0.06),
+      inset 0 -4px 8px rgba(0, 0, 0, 0.4);
     transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
   
@@ -557,8 +628,160 @@
     box-shadow: 
       0 32px 64px rgba(0, 0, 0, 0.5),
       0 16px 32px rgba(0, 0, 0, 0.4),
+      0 8px 16px rgba(0, 0, 0, 0.3),
       0 0 40px rgba(239, 68, 68, 0.2),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      inset 0 3px 6px rgba(255, 255, 255, 0.1),
+      inset 0 -6px 12px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Case Study Category Badges - Premium Depth */
+  .case-badge {
+    position: relative;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.1));
+    box-shadow: 
+      inset 0 1px 2px rgba(255, 255, 255, 0.1),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.3),
+      0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  
+  .case-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+      inset 0 1px 3px rgba(255, 255, 255, 0.15),
+      inset 0 -2px 6px rgba(0, 0, 0, 0.4),
+      0 4px 8px rgba(0, 0, 0, 0.3),
+      0 0 12px rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Case Study Tags - Subtle Depth */
+  .case-tag {
+    position: relative;
+    background: rgba(255, 255, 255, 0.02);
+    box-shadow: 
+      inset 0 1px 1px rgba(255, 255, 255, 0.05),
+      inset 0 -1px 2px rgba(0, 0, 0, 0.2),
+      0 1px 2px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  
+  .case-tag:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: 
+      inset 0 1px 2px rgba(255, 255, 255, 0.08),
+      inset 0 -1px 3px rgba(0, 0, 0, 0.3),
+      0 2px 4px rgba(0, 0, 0, 0.2),
+      0 0 8px rgba(255, 255, 255, 0.05);
+  }
+  
+  /* Case Study Action Buttons - Premium Depth with Cover Animation */
+  .case-action-btn {
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+      inset 0 1px 2px rgba(255, 255, 255, 0.1),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.3),
+      0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  
+  .case-action-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+    z-index: 0;
+  }
+  
+  .case-action-btn:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 
+      inset 0 2px 4px rgba(255, 255, 255, 0.15),
+      inset 0 -3px 6px rgba(0, 0, 0, 0.4),
+      0 4px 8px rgba(0, 0, 0, 0.3),
+      0 0 16px rgba(255, 255, 255, 0.1);
+  }
+  
+  .case-action-btn:hover::before {
+    left: 100%;
+  }
+  
+  .case-action-btn > * {
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Case Study Icons - Subtle Depth */
+  .case-icon {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  
+  .case-icon:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 12px currentColor);
+  }
+  
+  /* Timeline Dots - Premium Depth */
+  .timeline-dot {
+    position: relative;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.2));
+    box-shadow: 
+      inset 0 1px 2px rgba(255, 255, 255, 0.1),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.4),
+      0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  
+  .timeline-dot:hover {
+    transform: scale(1.15);
+    box-shadow: 
+      inset 0 2px 4px rgba(255, 255, 255, 0.15),
+      inset 0 -3px 6px rgba(0, 0, 0, 0.5),
+      0 4px 8px rgba(0, 0, 0, 0.4),
+      0 0 12px rgba(255, 255, 255, 0.1);
+  }
+  
+  .timeline-dot.timeline-dot-active {
+    box-shadow: 
+      inset 0 1px 2px rgba(255, 255, 255, 0.15),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.4),
+      0 2px 4px rgba(0, 0, 0, 0.3),
+      0 0 10px rgba(239, 68, 68, 0.3);
+  }
+  
+  .timeline-dot.timeline-dot-active:hover {
+    box-shadow: 
+      inset 0 2px 4px rgba(255, 255, 255, 0.2),
+      inset 0 -3px 6px rgba(0, 0, 0, 0.5),
+      0 4px 8px rgba(0, 0, 0, 0.4),
+      0 0 16px rgba(239, 68, 68, 0.5);
+  }
+  
+  /* Footer Social Links - Premium Depth */
+  .footer-social-link {
+    position: relative;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.1));
+    box-shadow: 
+      inset 0 1px 2px rgba(255, 255, 255, 0.08),
+      inset 0 -1px 2px rgba(0, 0, 0, 0.3),
+      0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  
+  .footer-social-link:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.15));
+    box-shadow: 
+      inset 0 1px 3px rgba(255, 255, 255, 0.12),
+      inset 0 -1px 3px rgba(0, 0, 0, 0.4),
+      0 4px 8px rgba(0, 0, 0, 0.3),
+      0 0 12px rgba(255, 255, 255, 0.1);
   }
   
   /* Enhanced service cards - Tier 3 Medium-High Elevation */

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import Navigation from '../components/Navigation'
@@ -5,6 +6,11 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
 export default function Home() {
   useScrollAnimation() // Initialize scroll animations for all elements
+  const [openFaq, setOpenFaq] = useState<number | null>(null)
+
+  const toggleFaq = (index: number) => {
+    setOpenFaq(openFaq === index ? null : index)
+  }
 
   return (
     <div className="bg-neutral-950 text-neutral-300 w-full overflow-x-hidden selection:bg-red-500/30 selection:text-white relative min-h-screen">
@@ -141,7 +147,10 @@ export default function Home() {
               <p className="text-neutral-400 max-w-md">Real systems. Real outcomes. I don't ship pretty mockups and disappear. I build things people use every day.</p>
             </div>
             <div className="glass-panel px-4 py-2 rounded-full flex items-center gap-2 text-xs text-neutral-400">
-              <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-90"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.8)]"></span>
+              </span>
               System Status: Operational
             </div>
           </div>
@@ -150,20 +159,22 @@ export default function Home() {
             {/* Case Study 1: Music Studio */}
             <div className="group glass-panel rounded-2xl overflow-hidden border border-white/10 hover:border-red-500/30 transition-all duration-500 animate-on-scroll flex flex-col card-lift case-study-card">
               <div className="relative flex-1 p-8 md:p-10 flex flex-col min-h-[420px]">
-                <div className="absolute inset-0 bg-neutral-900/50 z-0">
-                  <div className="w-full h-full opacity-10" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
-                </div>
-                <div className="relative z-10 flex flex-col h-full">
+                {/* Layered depth backgrounds */}
+                <div className="absolute inset-0 bg-neutral-950 z-0"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-neutral-900/80 via-neutral-900/60 to-neutral-950 z-[1]"></div>
+                <div className="absolute inset-0 bg-neutral-900/40 z-[2]" style={{ boxShadow: 'inset 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 -4px 12px rgba(0, 0, 0, 0.5)' }}></div>
+                <div className="absolute inset-0 opacity-[0.15] z-[3]" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
+                <div className="relative z-10 flex flex-col h-full bg-neutral-900/20 rounded-lg" style={{ boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.2)' }}>
                   <div className="flex items-center justify-between mb-6">
-                    <span className="inline-block px-3 py-1 rounded-full bg-red-500/10 text-red-500 text-[10px] font-mono uppercase tracking-widest border border-red-500/20">Web App + CRM</span>
-                    <iconify-icon icon="solar:music-note-linear" className="text-red-500 text-2xl"></iconify-icon>
+                    <span className="case-badge inline-block px-3 py-1 rounded-full bg-red-500/10 text-red-500 text-[10px] font-mono uppercase tracking-widest border border-red-500/20">Web App + CRM</span>
+                    <iconify-icon icon="solar:music-note-linear" className="case-icon text-red-500 text-2xl"></iconify-icon>
                   </div>
                   <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest mb-2">Education · Creative Business</span>
                   <h3 className="text-2xl md:text-3xl text-white font-medium mb-4">Music Studio System</h3>
                   <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Problem:</strong> Leads were coming in, but scheduling, follow-ups, and student data were a mess.</p>
                   <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Solution:</strong> You get a custom website funnel, centralized CRM, automated booking, and a web app for staff and students.</p>
                   <div className="mt-auto">
-                    <div className="bg-white/5 rounded-lg p-4 border border-white/5 mb-4">
+                    <div className="bg-white/[0.08] rounded-lg p-4 border border-white/10 mb-4" style={{ boxShadow: 'inset 0 1px 2px rgba(255, 255, 255, 0.1), inset 0 -2px 4px rgba(0, 0, 0, 0.3)' }}>
                       <span className="block text-xs text-red-400 font-mono mb-2">&gt; RESULTS_</span>
                       <div className="grid grid-cols-2 gap-4">
                         <div><span className="text-2xl font-bricolage text-white font-medium">3×</span><span className="block text-xs text-neutral-500">Lead Conversion</span></div>
@@ -171,10 +182,10 @@ export default function Home() {
                       </div>
                     </div>
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Web App</span>
-                      <span className="px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">CRM</span>
-                      <span className="px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Automation</span>
-                      <a href="https://ear-training-platform.pages.dev/" target="_blank" rel="noopener noreferrer" className="ml-auto px-3 py-1 rounded bg-red-500/20 text-red-400 text-[10px] font-medium hover:bg-red-500/30 transition-colors flex items-center gap-1">See Project <iconify-icon icon="solar:arrow-right-up-linear" width="12"></iconify-icon></a>
+                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Web App</span>
+                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">CRM</span>
+                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Automation</span>
+                      <a href="https://ear-training-platform.pages.dev/" target="_blank" rel="noopener noreferrer" className="case-action-btn ml-auto px-3 py-1 rounded bg-red-500/20 text-red-400 text-[10px] font-medium hover:bg-red-500/30 flex items-center gap-1">See Project <iconify-icon icon="solar:arrow-right-up-linear" width="12"></iconify-icon></a>
                     </div>
                   </div>
                 </div>
@@ -184,12 +195,14 @@ export default function Home() {
             {/* Case Study 2: Insurance Agency */}
             <div className="group glass-panel rounded-2xl overflow-hidden border border-white/10 hover:border-red-500/30 transition-all duration-500 animate-on-scroll delay-100 flex flex-col card-lift case-study-card">
               <div className="relative flex-1 p-8 md:p-10 flex flex-col min-h-[420px]">
-                <div className="absolute inset-0 bg-neutral-900/50 z-0">
-                  <div className="w-full h-full opacity-10" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
-                </div>
-                <div className="relative z-10 flex flex-col h-full">
+                {/* Layered depth backgrounds */}
+                <div className="absolute inset-0 bg-neutral-950 z-0"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-neutral-900/80 via-neutral-900/60 to-neutral-950 z-[1]"></div>
+                <div className="absolute inset-0 bg-neutral-900/40 z-[2]" style={{ boxShadow: 'inset 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 -4px 12px rgba(0, 0, 0, 0.5)' }}></div>
+                <div className="absolute inset-0 opacity-[0.15] z-[3]" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
+                <div className="relative z-10 flex flex-col h-full bg-neutral-900/20 rounded-lg" style={{ boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.2)' }}>
                   <div className="flex items-center justify-between mb-6">
-                    <span className="inline-block px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-[10px] font-mono uppercase tracking-widest border border-blue-500/20">CRM + Automation</span>
+                    <span className="case-badge inline-block px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-[10px] font-mono uppercase tracking-widest border border-blue-500/20">CRM + Automation</span>
                     <iconify-icon icon="solar:shield-check-linear" className="text-blue-400 text-2xl"></iconify-icon>
                   </div>
                   <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest mb-2">Insurance · Local Service Business</span>
@@ -197,7 +210,7 @@ export default function Home() {
                   <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Problem:</strong> Slow lead response and inconsistent follow-ups were killing close rates.</p>
                   <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Solution:</strong> You get automated lead capture, instant SMS/email follow-up, and CRM pipelines by policy type.</p>
                   <div className="mt-auto">
-                    <div className="bg-white/5 rounded-lg p-4 border border-white/5 mb-4">
+                    <div className="bg-white/[0.08] rounded-lg p-4 border border-white/10 mb-4" style={{ boxShadow: 'inset 0 1px 2px rgba(255, 255, 255, 0.1), inset 0 -2px 4px rgba(0, 0, 0, 0.3)' }}>
                       <span className="block text-xs text-blue-400 font-mono mb-2">&gt; RESULTS_</span>
                       <div className="grid grid-cols-1 gap-2">
                         <span className="text-sm text-white">Faster response times</span>
@@ -206,10 +219,10 @@ export default function Home() {
                       </div>
                     </div>
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">CRM</span>
-                      <span className="px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Automation</span>
-                      <span className="px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">AI</span>
-                      <a href="https://virelia-7i9.pages.dev/" target="_blank" rel="noopener noreferrer" className="ml-auto px-3 py-1 rounded bg-blue-500/20 text-blue-400 text-[10px] font-medium hover:bg-blue-500/30 transition-colors flex items-center gap-1">See Project <iconify-icon icon="solar:arrow-right-up-linear" width="12"></iconify-icon></a>
+                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">CRM</span>
+                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Automation</span>
+                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">AI</span>
+                      <a href="https://virelia-7i9.pages.dev/" target="_blank" rel="noopener noreferrer" className="case-action-btn ml-auto px-3 py-1 rounded bg-blue-500/20 text-blue-400 text-[10px] font-medium hover:bg-blue-500/30 flex items-center gap-1">See Project <iconify-icon icon="solar:arrow-right-up-linear" width="12"></iconify-icon></a>
                     </div>
                   </div>
                 </div>
@@ -219,20 +232,22 @@ export default function Home() {
             {/* Case Study 3: Brand + Website */}
             <div className="group glass-panel rounded-2xl overflow-hidden border border-white/10 hover:border-red-500/30 transition-all duration-500 animate-on-scroll delay-200 flex flex-col card-lift case-study-card">
               <div className="relative flex-1 p-8 md:p-10 flex flex-col min-h-[420px]">
-                <div className="absolute inset-0 bg-neutral-900/50 z-0">
-                  <div className="w-full h-full opacity-10" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
-                </div>
-                <div className="relative z-10 flex flex-col h-full">
+                {/* Layered depth backgrounds */}
+                <div className="absolute inset-0 bg-neutral-950 z-0"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-neutral-900/80 via-neutral-900/60 to-neutral-950 z-[1]"></div>
+                <div className="absolute inset-0 bg-neutral-900/40 z-[2]" style={{ boxShadow: 'inset 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 -4px 12px rgba(0, 0, 0, 0.5)' }}></div>
+                <div className="absolute inset-0 opacity-[0.15] z-[3]" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
+                <div className="relative z-10 flex flex-col h-full bg-neutral-900/20 rounded-lg" style={{ boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.2)' }}>
                   <div className="flex items-center justify-between mb-6">
-                    <span className="inline-block px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 text-[10px] font-mono uppercase tracking-widest border border-purple-500/20">Branding + Web Design</span>
-                    <iconify-icon icon="solar:palette-linear" className="text-purple-400 text-2xl"></iconify-icon>
+                    <span className="case-badge inline-block px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 text-[10px] font-mono uppercase tracking-widest border border-purple-500/20">Branding + Web Design</span>
+                    <iconify-icon icon="solar:palette-linear" className="case-icon text-purple-400 text-2xl"></iconify-icon>
                   </div>
                   <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest mb-2">Creative Agency</span>
                   <h3 className="text-2xl md:text-3xl text-white font-medium mb-4">Brand + Website for Creative Studio</h3>
                   <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Problem:</strong> Generic brand. Low trust. Website wasn't converting.</p>
                   <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Solution:</strong> You get a full brand identity and conversion-focused website designed to communicate value clearly.</p>
                   <div className="mt-auto">
-                    <div className="bg-white/5 rounded-lg p-4 border border-white/5 mb-4">
+                    <div className="bg-white/[0.08] rounded-lg p-4 border border-white/10 mb-4" style={{ boxShadow: 'inset 0 1px 2px rgba(255, 255, 255, 0.1), inset 0 -2px 4px rgba(0, 0, 0, 0.3)' }}>
                       <span className="block text-xs text-purple-400 font-mono mb-2">&gt; RESULTS_</span>
                       <div className="grid grid-cols-1 gap-2">
                         <span className="text-sm text-white">Higher engagement & trust</span>
@@ -241,9 +256,9 @@ export default function Home() {
                       </div>
                     </div>
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Branding</span>
-                      <span className="px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Web Design</span>
-                      <span className="px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Conversion</span>
+                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Branding</span>
+                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Web Design</span>
+                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Conversion</span>
                       <a href="https://maria-amiouni.pages.dev/" target="_blank" rel="noopener noreferrer" className="ml-auto px-3 py-1 rounded bg-purple-500/20 text-purple-400 text-[10px] font-medium hover:bg-purple-500/30 transition-colors flex items-center gap-1">See Project <iconify-icon icon="solar:arrow-right-up-linear" width="12"></iconify-icon></a>
                     </div>
                   </div>
@@ -254,20 +269,22 @@ export default function Home() {
             {/* Case Study 4: Game Development */}
             <div className="group glass-panel rounded-2xl overflow-hidden border border-white/10 hover:border-red-500/30 transition-all duration-500 animate-on-scroll delay-300 flex flex-col card-lift case-study-card">
               <div className="relative flex-1 p-8 md:p-10 flex flex-col min-h-[420px]">
-                <div className="absolute inset-0 bg-neutral-900/50 z-0">
-                  <div className="w-full h-full opacity-10" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
-                </div>
-                <div className="relative z-10 flex flex-col h-full">
+                {/* Layered depth backgrounds */}
+                <div className="absolute inset-0 bg-neutral-950 z-0"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-neutral-900/80 via-neutral-900/60 to-neutral-950 z-[1]"></div>
+                <div className="absolute inset-0 bg-neutral-900/40 z-[2]" style={{ boxShadow: 'inset 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 -4px 12px rgba(0, 0, 0, 0.5)' }}></div>
+                <div className="absolute inset-0 opacity-[0.15] z-[3]" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
+                <div className="relative z-10 flex flex-col h-full bg-neutral-900/20 rounded-lg" style={{ boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.2)' }}>
                   <div className="flex items-center justify-between mb-6">
-                    <span className="inline-block px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 text-[10px] font-mono uppercase tracking-widest border border-indigo-500/20">AI + DevOps</span>
-                    <iconify-icon icon="solar:gamepad-linear" className="text-indigo-400 text-2xl"></iconify-icon>
+                    <span className="case-badge inline-block px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 text-[10px] font-mono uppercase tracking-widest border border-indigo-500/20">AI + DevOps</span>
+                    <iconify-icon icon="solar:gamepad-linear" className="case-icon text-indigo-400 text-2xl"></iconify-icon>
                   </div>
                   <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest mb-2">Game Dev · Indie Studio</span>
                   <h3 className="text-2xl md:text-3xl text-white font-medium mb-4">Game Development + Automation Systems</h3>
                   <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Problem:</strong> Manual builds, messy assets, no clear feedback loop.</p>
                   <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Solution:</strong> You get automated build workflows, analytics pipelines, and community/update automation.</p>
                   <div className="mt-auto">
-                    <div className="bg-white/5 rounded-lg p-4 border border-white/5 mb-4">
+                    <div className="bg-white/[0.08] rounded-lg p-4 border border-white/10 mb-4" style={{ boxShadow: 'inset 0 1px 2px rgba(255, 255, 255, 0.1), inset 0 -2px 4px rgba(0, 0, 0, 0.3)' }}>
                       <span className="block text-xs text-indigo-400 font-mono mb-2">&gt; RESULTS_</span>
                       <div className="grid grid-cols-1 gap-2">
                         <span className="text-sm text-white">Faster releases</span>
@@ -276,10 +293,10 @@ export default function Home() {
                       </div>
                     </div>
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Automation</span>
-                      <span className="px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Analytics</span>
-                      <span className="px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">DevOps</span>
-                      <a href="https://boundlessgames.net/" target="_blank" rel="noopener noreferrer" className="ml-auto px-3 py-1 rounded bg-indigo-500/20 text-indigo-400 text-[10px] font-medium hover:bg-indigo-500/30 transition-colors flex items-center gap-1">See Project <iconify-icon icon="solar:arrow-right-up-linear" width="12"></iconify-icon></a>
+                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Automation</span>
+                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Analytics</span>
+                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">DevOps</span>
+                      <a href="https://boundlessgames.net/" target="_blank" rel="noopener noreferrer" className="case-action-btn ml-auto px-3 py-1 rounded bg-indigo-500/20 text-indigo-400 text-[10px] font-medium hover:bg-indigo-500/30 flex items-center gap-1">See Project <iconify-icon icon="solar:arrow-right-up-linear" width="12"></iconify-icon></a>
                     </div>
                   </div>
                 </div>
@@ -423,14 +440,14 @@ export default function Home() {
                   <p className="text-sm text-neutral-400 leading-relaxed">Sound taught me that bad signal in equals bad output out. No amount of polish fixes broken flow.</p>
                 </div>
                 <div className="relative pl-10">
-                  <div className="absolute left-0 top-1 w-6 h-6 rounded-full bg-neutral-900 border border-white/20 flex items-center justify-center z-10">
+                  <div className="timeline-dot absolute left-0 top-1 w-6 h-6 rounded-full bg-neutral-900 border border-white/20 flex items-center justify-center z-10">
                     <iconify-icon icon="solar:bricks-linear" className="text-neutral-500" width="12"></iconify-icon>
                   </div>
                   <h4 className="text-white font-medium mb-1">The Wall</h4>
                   <p className="text-sm text-neutral-400 leading-relaxed">I realized every creative business hits the same wall: Great ideas, terrible infrastructure.</p>
                 </div>
                 <div className="relative pl-10">
-                  <div className="absolute left-0 top-1 w-6 h-6 rounded-full bg-neutral-900 border border-red-500/50 flex items-center justify-center z-10 shadow-[0_0_10px_rgba(239,68,68,0.2)]">
+                  <div className="timeline-dot timeline-dot-active absolute left-0 top-1 w-6 h-6 rounded-full bg-neutral-900 border border-red-500/50 flex items-center justify-center z-10">
                     <iconify-icon icon="solar:code-circle-linear" className="text-red-400" width="12"></iconify-icon>
                   </div>
                   <h4 className="text-white font-medium mb-1">The Architect</h4>
@@ -500,33 +517,124 @@ export default function Home() {
             <p className="text-neutral-400 max-w-xl mx-auto">Here are answers to the most common questions about working together.</p>
           </div>
           <div className="space-y-6 animate-on-scroll">
-            <div className="glass-panel rounded-xl p-6 border border-white/10 faq-card">
-              <h3 className="text-white font-medium mb-3 text-lg">Is this worth the investment?</h3>
-              <p className="text-neutral-400 text-sm leading-relaxed">If inefficiency is costing you more than $3K to $25K in lost revenue, missed leads, or wasted time, then yes. Most clients see ROI within the first 3 months through recovered revenue and time savings. We'll calculate the value before we start. If I can't show you clear ROI, I won't build it.</p>
+            <div className="glass-panel rounded-xl border border-white/10 faq-card overflow-hidden">
+              <button 
+                onClick={() => toggleFaq(0)}
+                className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
+              >
+                <h3 className="text-white font-medium text-lg pr-4">Is this worth the investment?</h3>
+                <iconify-icon 
+                  icon="solar:alt-arrow-down-linear" 
+                  className={`text-neutral-400 shrink-0 transition-transform duration-300 ${openFaq === 0 ? 'rotate-180 text-red-500' : ''}`}
+                ></iconify-icon>
+              </button>
+              <div className={`faq-answer ${openFaq === 0 ? 'faq-open' : ''}`}>
+                <div className="px-6 pb-6">
+                  <p className="text-neutral-400 text-sm leading-relaxed">If inefficiency is costing you more than $3K to $25K in lost revenue, missed leads, or wasted time, then yes. Most clients see ROI within the first 3 months through recovered revenue and time savings. We'll calculate the value before we start. If I can't show you clear ROI, I won't build it.</p>
+                </div>
+              </div>
             </div>
-            <div className="glass-panel rounded-xl p-6 border border-white/10 faq-card">
-              <h3 className="text-white font-medium mb-3 text-lg">How long does this take?</h3>
-              <p className="text-neutral-400 text-sm leading-relaxed">Most systems take 4 to 8 weeks to build and launch. Complex projects can take 12 to 16 weeks. During your free discovery call, we'll map out a timeline based on your specific needs. You'll know exactly what to expect before we start.</p>
+            <div className="glass-panel rounded-xl border border-white/10 faq-card overflow-hidden">
+              <button 
+                onClick={() => toggleFaq(1)}
+                className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
+              >
+                <h3 className="text-white font-medium text-lg pr-4">How long does this take?</h3>
+                <iconify-icon 
+                  icon="solar:alt-arrow-down-linear" 
+                  className={`text-neutral-400 shrink-0 transition-transform duration-300 ${openFaq === 1 ? 'rotate-180 text-red-500' : ''}`}
+                ></iconify-icon>
+              </button>
+              <div className={`faq-answer ${openFaq === 1 ? 'faq-open' : ''}`}>
+                <div className="px-6 pb-6">
+                  <p className="text-neutral-400 text-sm leading-relaxed">Most systems take 4 to 8 weeks to build and launch. Complex projects can take 12 to 16 weeks. During your free discovery call, we'll map out a timeline based on your specific needs. You'll know exactly what to expect before we start.</p>
+                </div>
+              </div>
             </div>
-            <div className="glass-panel rounded-xl p-6 border border-white/10 faq-card">
-              <h3 className="text-white font-medium mb-3 text-lg">Will this work for my business?</h3>
-              <p className="text-neutral-400 text-sm leading-relaxed">If you're losing leads, drowning in manual work, or can't scale because your systems are broken—whether you're a startup, tech company, creative business, or established company with existing automation—we can fix it. It's not about what industry you're in, it's about fixing what's broken. Book a free call and we'll determine if we're a fit.</p>
+            <div className="glass-panel rounded-xl border border-white/10 faq-card overflow-hidden">
+              <button 
+                onClick={() => toggleFaq(2)}
+                className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
+              >
+                <h3 className="text-white font-medium text-lg pr-4">Will this work for my business?</h3>
+                <iconify-icon 
+                  icon="solar:alt-arrow-down-linear" 
+                  className={`text-neutral-400 shrink-0 transition-transform duration-300 ${openFaq === 2 ? 'rotate-180 text-red-500' : ''}`}
+                ></iconify-icon>
+              </button>
+              <div className={`faq-answer ${openFaq === 2 ? 'faq-open' : ''}`}>
+                <div className="px-6 pb-6">
+                  <p className="text-neutral-400 text-sm leading-relaxed">If you're losing leads, drowning in manual work, or can't scale because your systems are broken—whether you're a startup, tech company, creative business, or established company with existing automation—we can fix it. It's not about what industry you're in, it's about fixing what's broken. Book a free call and we'll determine if we're a fit.</p>
+                </div>
+              </div>
             </div>
-            <div className="glass-panel rounded-xl p-6 border border-white/10 faq-card">
-              <h3 className="text-white font-medium mb-3 text-lg">What happens after I book a call?</h3>
-              <p className="text-neutral-400 text-sm leading-relaxed">We'll spend 30 minutes understanding your biggest bottleneck. You'll get a custom roadmap showing exactly how we'll fix it, with clear ROI calculations. No sales pitch, no pressure. If we're a fit, we'll discuss next steps. If not, you'll walk away with valuable insights.</p>
+            <div className="glass-panel rounded-xl border border-white/10 faq-card overflow-hidden">
+              <button 
+                onClick={() => toggleFaq(3)}
+                className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
+              >
+                <h3 className="text-white font-medium text-lg pr-4">What happens after I book a call?</h3>
+                <iconify-icon 
+                  icon="solar:alt-arrow-down-linear" 
+                  className={`text-neutral-400 shrink-0 transition-transform duration-300 ${openFaq === 3 ? 'rotate-180 text-red-500' : ''}`}
+                ></iconify-icon>
+              </button>
+              <div className={`faq-answer ${openFaq === 3 ? 'faq-open' : ''}`}>
+                <div className="px-6 pb-6">
+                  <p className="text-neutral-400 text-sm leading-relaxed">We'll spend 30 minutes understanding your biggest bottleneck. You'll get a custom roadmap showing exactly how we'll fix it, with clear ROI calculations. No sales pitch, no pressure. If we're a fit, we'll discuss next steps. If not, you'll walk away with valuable insights.</p>
+                </div>
+              </div>
             </div>
-            <div className="glass-panel rounded-xl p-6 border border-white/10 faq-card">
-              <h3 className="text-white font-medium mb-3 text-lg">Do I need to be tech-savvy?</h3>
-              <p className="text-neutral-400 text-sm leading-relaxed">Not at all. I build systems that work for you, not the other way around. You'll get training and documentation, but the goal is to make everything so simple that you don't have to think about it. The system should disappear so your work can shine.</p>
+            <div className="glass-panel rounded-xl border border-white/10 faq-card overflow-hidden">
+              <button 
+                onClick={() => toggleFaq(4)}
+                className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
+              >
+                <h3 className="text-white font-medium text-lg pr-4">Do I need to be tech-savvy?</h3>
+                <iconify-icon 
+                  icon="solar:alt-arrow-down-linear" 
+                  className={`text-neutral-400 shrink-0 transition-transform duration-300 ${openFaq === 4 ? 'rotate-180 text-red-500' : ''}`}
+                ></iconify-icon>
+              </button>
+              <div className={`faq-answer ${openFaq === 4 ? 'faq-open' : ''}`}>
+                <div className="px-6 pb-6">
+                  <p className="text-neutral-400 text-sm leading-relaxed">Not at all. I build systems that work for you, not the other way around. You'll get training and documentation, but the goal is to make everything so simple that you don't have to think about it. The system should disappear so your work can shine.</p>
+                </div>
+              </div>
             </div>
-            <div className="glass-panel rounded-xl p-6 border border-white/10 faq-card">
-              <h3 className="text-white font-medium mb-3 text-lg">What kind of results can I expect?</h3>
-              <p className="text-neutral-400 text-sm leading-relaxed">Results vary, but typical outcomes include: 3× lead conversion rates, 70% reduction in admin work, zero missed inquiries, faster response times, and recovered revenue from previously lost leads. We'll set specific, measurable goals during your discovery call.</p>
+            <div className="glass-panel rounded-xl border border-white/10 faq-card overflow-hidden">
+              <button 
+                onClick={() => toggleFaq(5)}
+                className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
+              >
+                <h3 className="text-white font-medium text-lg pr-4">What kind of results can I expect?</h3>
+                <iconify-icon 
+                  icon="solar:alt-arrow-down-linear" 
+                  className={`text-neutral-400 shrink-0 transition-transform duration-300 ${openFaq === 5 ? 'rotate-180 text-red-500' : ''}`}
+                ></iconify-icon>
+              </button>
+              <div className={`faq-answer ${openFaq === 5 ? 'faq-open' : ''}`}>
+                <div className="px-6 pb-6">
+                  <p className="text-neutral-400 text-sm leading-relaxed">Results vary, but typical outcomes include: 3× lead conversion rates, 70% reduction in admin work, zero missed inquiries, faster response times, and recovered revenue from previously lost leads. We'll set specific, measurable goals during your discovery call.</p>
+                </div>
+              </div>
             </div>
-            <div className="glass-panel rounded-xl p-6 border border-white/10 faq-card">
-              <h3 className="text-white font-medium mb-3 text-lg">What if I need changes after launch?</h3>
-              <p className="text-neutral-400 text-sm leading-relaxed">That's what ongoing support is for. Most clients start with a project build, then move to monthly support ($297 to $3K/month) for updates, maintenance, and new features. Systems evolve with your business. We're here for the long haul if you want us.</p>
+            <div className="glass-panel rounded-xl border border-white/10 faq-card overflow-hidden">
+              <button 
+                onClick={() => toggleFaq(6)}
+                className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
+              >
+                <h3 className="text-white font-medium text-lg pr-4">What if I need changes after launch?</h3>
+                <iconify-icon 
+                  icon="solar:alt-arrow-down-linear" 
+                  className={`text-neutral-400 shrink-0 transition-transform duration-300 ${openFaq === 6 ? 'rotate-180 text-red-500' : ''}`}
+                ></iconify-icon>
+              </button>
+              <div className={`faq-answer ${openFaq === 6 ? 'faq-open' : ''}`}>
+                <div className="px-6 pb-6">
+                  <p className="text-neutral-400 text-sm leading-relaxed">That's what ongoing support is for. Most clients start with a project build, then move to monthly support ($297 to $3K/month) for updates, maintenance, and new features. Systems evolve with your business. We're here for the long haul if you want us.</p>
+                </div>
+              </div>
             </div>
           </div>
           <div className="text-center mt-16 animate-on-scroll">
@@ -540,7 +648,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <footer id="contact" className="bg-black py-32 border-t border-white/10 relative overflow-hidden section-elevated">
+      <footer id="contact" className="bg-black py-32 border-t border-white/10 relative overflow-hidden section-elevated" style={{ background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.95), #000000)' }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-1/4 w-96 h-96 bg-red-500/10 rounded-full blur-[120px] float-animation"></div>
           <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-red-600/5 rounded-full blur-[100px] float-animation-delayed"></div>
@@ -550,15 +658,15 @@ export default function Home() {
           <div className="inline-block p-1 rounded-full bg-white/5 border border-red-500/20 mb-10 animate-on-scroll glow-border">
             <div className="px-5 py-2 rounded-full bg-black/80 backdrop-blur flex items-center gap-3">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-95"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500 shadow-[0_0_10px_rgba(239,68,68,1)]"></span>
               </span>
               <span className="text-[11px] text-white font-mono uppercase tracking-widest">Accepting New Projects</span>
             </div>
           </div>
 
           <h2 className="text-6xl md:text-8xl font-bricolage font-medium mb-6 tracking-tight animate-on-scroll delay-100">
-            <span className="text-white">Stop Losing Money.</span><br />
+            <span className="text-white">Ready to Scale?</span><br />
             <span className="gradient-text-animated">Let's Fix It Together.</span>
           </h2>
           
@@ -585,8 +693,8 @@ export default function Home() {
               <div className="flex items-start gap-3 p-4 rounded-lg bg-white/5 border border-white/10 benefit-card">
                 <iconify-icon icon="solar:check-circle-linear" className="text-red-500 text-xl shrink-0 mt-0.5"></iconify-icon>
                 <div>
-                  <h4 className="text-white font-medium mb-1">No credit card required</h4>
-                  <p className="text-sm text-neutral-400">Start with a free call, no payment needed</p>
+                  <h4 className="text-white font-medium mb-1">See available times instantly</h4>
+                  <p className="text-sm text-neutral-400">Pick a time that works for you, no back-and-forth</p>
                 </div>
               </div>
               <div className="flex items-start gap-3 p-4 rounded-lg bg-white/5 border border-white/10 benefit-card">
@@ -612,13 +720,36 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="mt-28 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-xs text-neutral-600 font-mono">
-            <span>© 2026 Brian Marshall. All Systems Go.</span>
-            <div className="flex items-center gap-6 mt-4 md:mt-0">
-              <a href="https://www.linkedin.com/in/brian-marshall-80a513144" className="nav-link hover:text-white transition-colors py-1 flex items-center gap-2">
-                <iconify-icon icon="mdi:linkedin" className="text-base"></iconify-icon>
-                LinkedIn
-              </a>
+          <div className="mt-28 pt-16 border-t border-white/10 relative">
+            {/* Decorative gradient line */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+            
+            <div className="flex flex-col gap-8">
+              {/* Large Footer Logo - Centered on mobile, left-aligned on desktop */}
+              <div className="flex justify-center md:justify-start">
+                <img 
+                  src="https://storage.googleapis.com/msgsndr/F1J2yvd2AUT4owDs9EPl/media/6970477bd4fb90ebccb8a72c.png" 
+                  alt="Brian Marshall" 
+                  className="h-16 md:h-20 w-auto opacity-70"
+                />
+              </div>
+              
+              {/* Footer Content Row */}
+              <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-6">
+                <div className="flex flex-col items-center md:items-start gap-2">
+                  <span className="text-sm text-neutral-500 font-mono tracking-wider">© 2026 Brian Marshall</span>
+                  <span className="text-xs text-neutral-600 font-mono italic">Creative Systems Designer. And founder of AreoClient.</span>
+                </div>
+                
+                <div className="flex items-center gap-8">
+                  <div className="h-px w-12 bg-gradient-to-r from-transparent to-white/10 hidden md:block"></div>
+                  <a href="https://www.linkedin.com/in/brian-marshall-80a513144" className="group relative flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-300 footer-social-link">
+                    <iconify-icon icon="mdi:linkedin" className="text-base text-neutral-400 group-hover:text-white transition-colors"></iconify-icon>
+                    <span className="text-xs text-neutral-400 font-mono uppercase tracking-wider group-hover:text-white transition-colors">LinkedIn</span>
+                  </a>
+                  <div className="h-px w-12 bg-gradient-to-l from-transparent to-white/10 hidden md:block"></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

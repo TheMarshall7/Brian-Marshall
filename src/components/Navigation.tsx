@@ -28,8 +28,12 @@ export default function Navigation() {
     <div className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 animate-slide-up" style={{ animationDelay: '0.2s' }}>
       <nav className="glass-panel nav-elevated rounded-full px-2 py-2 flex items-center justify-between gap-12 shadow-2xl">
         <div className="flex items-center pl-4 cursor-pointer">
-          <Link to="/" className="font-bricolage text-sm font-medium text-white tracking-tight hover:text-red-400 transition-colors">
-            Brian Marshall
+          <Link to="/" className="flex items-center group">
+            <img 
+              src="https://storage.googleapis.com/msgsndr/F1J2yvd2AUT4owDs9EPl/media/6970477b4a6464496bff26f4.png" 
+              alt="Brian Marshall" 
+              className="h-8 w-auto transition-all duration-300 ease-out group-hover:scale-110"
+            />
           </Link>
         </div>
         
