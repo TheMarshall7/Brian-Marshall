@@ -125,13 +125,13 @@ export default function Home() {
       {/* Hero: outer never scrolls (avoids huge scrollHeight from tall absolute blur). Only the inner column scrolls. */}
       <header className="relative flex h-[100svh] max-h-[100svh] min-h-0 flex-col overflow-hidden tech-grid hero-elevated px-6 md:px-12 pb-6 md:pb-8">
         <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden>
-          <div className="absolute top-0 left-1/2 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-red-900/10 blur-[120px]" />
+          <div className="absolute top-[8%] left-1/2 h-[min(88vh,920px)] w-[min(112vw,1200px)] max-w-none -translate-x-1/2 rounded-full bg-red-900/[0.14] blur-[140px]" />
         </div>
 
-        <div className="relative z-10 flex min-h-0 w-full flex-1 flex-col overflow-y-auto overscroll-y-contain pt-[7rem] md:pt-[7.5rem]">
-          <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-y-8 md:gap-y-0 gap-x-12 lg:gap-x-20 items-start pb-2">
+        <div className="relative z-10 flex min-h-0 w-full flex-1 flex-col overflow-y-auto overscroll-y-contain pt-[7rem] md:justify-center md:py-12 md:pt-[7.5rem]">
+          <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-y-10 md:gap-y-0 gap-x-12 lg:gap-x-24 items-start md:items-center pb-4 md:pb-8">
           <div className="md:col-span-8">
-            <div className="mb-5 md:mb-6 pt-[40px] animate-slide-up" style={{ animationDelay: '0.4s', opacity: 0 }}>
+            <div className="mb-6 md:mb-8 pt-[40px] md:pt-0 animate-slide-up" style={{ animationDelay: '0.4s', opacity: 0 }}>
               <div className="inline-flex items-center gap-3 px-4 py-2.5 rounded-full bg-red-500/10 border border-red-500/20 hero-badge">
                 <div className="flex -space-x-2 group">
                   <div className="w-6 h-6 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center overflow-hidden">
@@ -148,22 +148,22 @@ export default function Home() {
               </div>
             </div>
 
-            <h1 className="font-bricolage font-medium leading-[0.95] tracking-tight mb-6 md:mb-8">
-              <span className="block text-4xl md:text-7xl lg:text-8xl text-neutral-600 animate-slide-up" style={{ animationDelay: '0.6s', opacity: 0 }}>
+            <h1 className="font-bricolage font-medium leading-[0.92] tracking-[-0.02em] mb-7 md:mb-10">
+              <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[5.25rem] text-neutral-500 animate-slide-up" style={{ animationDelay: '0.6s', opacity: 0 }}>
                 Your business isn't broken.
               </span>
-              <span className="block text-5xl md:text-8xl lg:text-9xl text-white hero-text-gradient animate-slide-up mt-2 md:mt-4" style={{ animationDelay: '0.8s', opacity: 0 }}>
+              <span className="block text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[clamp(4.5rem,11vw,7.5rem)] text-white hero-text-gradient animate-slide-up mt-3 md:mt-5" style={{ animationDelay: '0.8s', opacity: 0 }}>
                 Your systems are.
               </span>
             </h1>
 
-            <div className="max-w-2xl mb-8 md:mb-10 animate-slide-up" style={{ animationDelay: '1s', opacity: 0 }}>
-              <p className="text-xl md:text-2xl font-normal text-neutral-100 tracking-tight leading-snug mb-5 md:mb-6">
+            <div className="max-w-2xl mb-9 md:mb-12 animate-slide-up" style={{ animationDelay: '1s', opacity: 0 }}>
+              <p className="text-2xl md:text-3xl lg:text-4xl font-normal text-neutral-100 tracking-tight leading-[1.15] mb-6 md:mb-7">
                 I build systems that turn attention into predictable revenue.
               </p>
-              <div className="h-px w-14 bg-gradient-to-r from-red-500/50 to-transparent mb-5 md:mb-6" aria-hidden />
-              <div className="text-base md:text-lg font-light leading-relaxed space-y-2.5">
-                <p className="text-neutral-400">
+              <div className="h-px w-20 bg-gradient-to-r from-red-500/60 to-transparent mb-6 md:mb-7" aria-hidden />
+              <div className="text-lg md:text-xl font-light leading-relaxed space-y-3 text-neutral-400">
+                <p>
                   Websites, web apps, audio, and AI powered workflows designed to convert.
                 </p>
                 <p className="text-neutral-500">
@@ -172,17 +172,17 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 mb-6 md:mb-8 animate-slide-up" style={{ animationDelay: '1.2s', opacity: 0 }}>
-              <a href="#contact" className="cta-primary px-8 py-4 bg-white text-neutral-950 rounded-lg text-sm font-medium hover:bg-red-400 transition-all flex items-center justify-center gap-2 group btn-shimmer hover:shadow-lg hover:shadow-red-500/30">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 mb-8 md:mb-10 animate-slide-up" style={{ animationDelay: '1.2s', opacity: 0 }}>
+              <a href="#contact" className="cta-primary px-9 py-4 md:px-10 md:py-[1.125rem] bg-white text-neutral-950 rounded-xl text-[0.9375rem] font-medium hover:bg-red-400 transition-all flex items-center justify-center gap-2 group btn-shimmer hover:shadow-lg hover:shadow-red-500/35">
                 Get Your Free Strategy Call
                 <iconify-icon icon="solar:arrow-right-up-linear" className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></iconify-icon>
               </a>
-              <a href="#work" className="px-8 py-4 glass-panel text-white rounded-lg text-sm font-medium hover:bg-white/10 transition-all flex items-center justify-center gap-2 glow-border">
+              <a href="#work" className="px-9 py-4 md:px-10 md:py-[1.125rem] glass-panel text-white rounded-xl text-[0.9375rem] font-medium hover:bg-white/10 transition-all flex items-center justify-center gap-2 glow-border">
                 See How It Works
               </a>
             </div>
 
-            <div className="flex flex-wrap gap-x-8 gap-y-3 md:gap-x-10 text-sm text-neutral-400 animate-slide-up" style={{ animationDelay: '1.4s', opacity: 0 }}>
+            <div className="flex flex-wrap gap-x-8 gap-y-3 md:gap-x-12 text-sm md:text-base text-neutral-400 animate-slide-up" style={{ animationDelay: '1.4s', opacity: 0 }}>
               <div className="flex items-center gap-2">
                 <iconify-icon icon="solar:check-circle-linear" className="text-red-500"></iconify-icon>
                 <span>Free 30 minute discovery call</span>
@@ -194,28 +194,28 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="md:col-span-4 flex flex-col items-start md:items-end gap-6 md:gap-8 animate-slide-up" style={{ animationDelay: '1.4s', opacity: 0 }}>
-            <div className="hidden md:flex items-center gap-3">
-              <span className="text-xs font-mono uppercase tracking-widest text-red-500">System Designer</span>
-              <span className="h-[1px] w-10 bg-red-500"></span>
+          <div className="md:col-span-4 flex w-full flex-col items-stretch md:items-end gap-6 md:gap-8 animate-slide-up" style={{ animationDelay: '1.4s', opacity: 0 }}>
+            <div className="hidden md:flex items-center gap-3 self-end">
+              <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-red-500/95">System Designer</span>
+              <span className="h-px w-12 bg-gradient-to-r from-red-500 to-transparent"></span>
             </div>
-            <div className="glass-panel hero-side-panel p-6 md:p-7 rounded-xl w-full max-w-xs border-l-2 border-l-red-500">
-              <p className="text-white text-sm mb-4 leading-relaxed font-medium">
+            <div className="glass-panel hero-side-panel flex min-h-[240px] w-full flex-col justify-center rounded-2xl border-l-[3px] border-l-red-500 p-7 md:min-h-[min(52vh,520px)] md:max-w-md md:p-9">
+              <p className="mb-5 text-base font-medium leading-relaxed text-white md:text-lg">
                 Most businesses leak time, leads, and money. You get the infrastructure that stops the bleeding.
               </p>
-              <div className="h-[1px] w-full bg-white/10 mb-4"></div>
-              <div className="space-y-3">
-                <div className="flex items-start gap-2">
-                  <iconify-icon icon="solar:check-circle-linear" className="text-red-500 mt-0.5 shrink-0"></iconify-icon>
-                  <span className="text-xs text-neutral-300">Save 20+ hours per week with automation</span>
+              <div className="mb-5 h-px w-full bg-gradient-to-r from-white/15 to-transparent"></div>
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <iconify-icon icon="solar:check-circle-linear" className="mt-0.5 shrink-0 text-red-500" width="20"></iconify-icon>
+                  <span className="text-sm text-neutral-300">Save 20+ hours per week with automation</span>
                 </div>
-                <div className="flex items-start gap-2">
-                  <iconify-icon icon="solar:check-circle-linear" className="text-red-500 mt-0.5 shrink-0"></iconify-icon>
-                  <span className="text-xs text-neutral-300">Recover lost revenue from missed leads</span>
+                <div className="flex items-start gap-3">
+                  <iconify-icon icon="solar:check-circle-linear" className="mt-0.5 shrink-0 text-red-500" width="20"></iconify-icon>
+                  <span className="text-sm text-neutral-300">Recover lost revenue from missed leads</span>
                 </div>
-                <div className="flex items-start gap-2">
-                  <iconify-icon icon="solar:check-circle-linear" className="text-red-500 mt-0.5 shrink-0"></iconify-icon>
-                  <span className="text-xs text-neutral-300">Turn chaos into predictable systems</span>
+                <div className="flex items-start gap-3">
+                  <iconify-icon icon="solar:check-circle-linear" className="mt-0.5 shrink-0 text-red-500" width="20"></iconify-icon>
+                  <span className="text-sm text-neutral-300">Turn chaos into predictable systems</span>
                 </div>
               </div>
             </div>
