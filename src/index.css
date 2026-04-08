@@ -612,8 +612,9 @@
     z-index: 12;
   }
   
-  /* Enhanced case study cards with layered depth */
+  /* Enhanced case study cards with layered depth (--case-study-glow: R, G, B per card) */
   .case-study-card {
+    --case-study-glow: 239, 68, 68;
     box-shadow: 
       0 8px 24px rgba(0, 0, 0, 0.4),
       0 4px 12px rgba(0, 0, 0, 0.3),
@@ -629,7 +630,7 @@
       0 32px 64px rgba(0, 0, 0, 0.5),
       0 16px 32px rgba(0, 0, 0, 0.4),
       0 8px 16px rgba(0, 0, 0, 0.3),
-      0 0 40px rgba(239, 68, 68, 0.2),
+      0 0 40px rgba(var(--case-study-glow), 0.22),
       inset 0 3px 6px rgba(255, 255, 255, 0.1),
       inset 0 -6px 12px rgba(0, 0, 0, 0.5);
   }
