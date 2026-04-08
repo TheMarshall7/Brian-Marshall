@@ -16,7 +16,7 @@ export default function Home() {
     <div className="bg-neutral-950 text-neutral-300 w-full overflow-x-hidden selection:bg-red-500/30 selection:text-white relative min-h-screen">
       <Helmet>
         <title>Brian Marshall — Systems Designer</title>
-        <meta name="description" content="Brian Marshall - Systems Designer specializing in websites, web apps, CRM systems, and AI-powered automation for creative businesses and studios. Turn chaos into structure." />
+        <meta name="description" content="I build systems that turn attention into predictable revenue. Websites, web apps, audio, and AI-powered workflows designed to convert. I help shape the offer that drives it." />
         <meta name="keywords" content="systems architect, web development, CRM, automation, AI integration, web apps, business systems, workflow automation, creative business" />
         <meta name="author" content="Brian Marshall" />
         <meta name="robots" content="index, follow" />
@@ -26,7 +26,7 @@ export default function Home() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://brianmarshall.dev/" />
         <meta property="og:title" content="Brian Marshall — Systems Designer" />
-        <meta property="og:description" content="I design websites, web apps, and AI-powered workflows that turn chaos into structure and ideas into recurring revenue." />
+        <meta property="og:description" content="I build systems that turn attention into predictable revenue. Websites, web apps, audio, and AI-powered workflows designed to convert." />
         <meta property="og:image" content="https://storage.googleapis.com/msgsndr/F1J2yvd2AUT4owDs9EPl/media/6970477bd4fb90ebccb8a72c.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -36,7 +36,7 @@ export default function Home() {
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Brian Marshall — Systems Designer" />
-        <meta name="twitter:description" content="I design websites, web apps, and AI-powered workflows that turn chaos into structure and ideas into recurring revenue." />
+        <meta name="twitter:description" content="I build systems that turn attention into predictable revenue. Websites, web apps, audio, and AI-powered workflows designed to convert." />
         <meta name="twitter:image" content="https://storage.googleapis.com/msgsndr/F1J2yvd2AUT4owDs9EPl/media/6970477bd4fb90ebccb8a72c.png" />
         
         {/* Structured Data */}
@@ -92,9 +92,20 @@ export default function Home() {
               </span>
             </h1>
 
-            <p className="text-lg md:text-xl font-light text-neutral-400 max-w-2xl leading-relaxed mb-10 animate-slide-up" style={{ animationDelay: '1s', opacity: 0 }}>
-              I design websites, web apps, and AI-powered workflows that turn chaos into structure and ideas into recurring revenue.
-            </p>
+            <div className="max-w-2xl mb-10 animate-slide-up" style={{ animationDelay: '1s', opacity: 0 }}>
+              <p className="text-xl md:text-2xl font-normal text-neutral-100 tracking-tight leading-snug mb-6">
+                I build systems that turn attention into predictable revenue.
+              </p>
+              <div className="h-px w-12 bg-gradient-to-r from-red-500/50 to-transparent mb-6" aria-hidden />
+              <div className="text-base md:text-lg font-light leading-relaxed space-y-2">
+                <p className="text-neutral-400">
+                  Websites, web apps, audio, and AI-powered workflows designed to convert.
+                </p>
+                <p className="text-neutral-500">
+                  I also help shape the offer that drives it.
+                </p>
+              </div>
+            </div>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-8 animate-slide-up" style={{ animationDelay: '1.2s', opacity: 0 }}>
               <a href="#contact" className="cta-primary px-8 py-4 bg-white text-neutral-950 rounded-lg text-sm font-medium hover:bg-red-400 transition-all flex items-center justify-center gap-2 group btn-shimmer hover:shadow-lg hover:shadow-red-500/30">
@@ -166,7 +177,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Case Study 1: Music Studio */}
+            {/* Case Study 1: Ear Training Platform */}
             <div className="group glass-panel rounded-2xl overflow-hidden border border-white/10 hover:border-red-500/30 transition-all duration-500 animate-on-scroll flex flex-col card-lift case-study-card">
               <div className="relative flex-1 p-8 md:p-10 flex flex-col min-h-[420px]">
                 {/* Layered depth backgrounds */}
@@ -176,25 +187,26 @@ export default function Home() {
                 <div className="absolute inset-0 opacity-[0.15] z-[3]" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
                 <div className="relative z-10 flex flex-col h-full bg-neutral-900/20 rounded-lg" style={{ boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.2)' }}>
                   <div className="flex items-center justify-between mb-6">
-                    <span className="case-badge inline-block px-3 py-1 rounded-full bg-red-500/10 text-red-500 text-[10px] font-mono uppercase tracking-widest border border-red-500/20">Web App + CRM</span>
+                    <span className="case-badge inline-block px-3 py-1 rounded-full bg-red-500/10 text-red-500 text-[10px] font-mono uppercase tracking-widest border border-red-500/20">Web App · EdTech</span>
                     <iconify-icon icon="solar:music-note-linear" className="case-icon text-red-500 text-2xl"></iconify-icon>
                   </div>
-                  <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest mb-2">Education · Creative Business</span>
-                  <h3 className="text-2xl md:text-3xl text-white font-medium mb-4">Music Studio System</h3>
-                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Problem:</strong> Leads were coming in, but scheduling, follow-ups, and student data were a mess.</p>
-                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Solution:</strong> You get a custom website funnel, centralized CRM, automated booking, and a web app for staff and students.</p>
+                  <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest mb-2">Music Education · EdTech</span>
+                  <h3 className="text-2xl md:text-3xl text-white font-medium mb-4">Ear Training Platform</h3>
+                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Problem:</strong> Learners were bouncing between random exercises and PDFs—no steady routine, weak feedback, and no sense of progress on intervals and chords.</p>
+                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Solution:</strong> A focused web app with structured drills, clear levels, and progress tracking so practice is repeatable and skills actually stick.</p>
                   <div className="mt-auto">
                     <div className="bg-white/[0.08] rounded-lg p-4 border border-white/10 mb-4" style={{ boxShadow: 'inset 0 1px 2px rgba(255, 255, 255, 0.1), inset 0 -2px 4px rgba(0, 0, 0, 0.3)' }}>
                       <span className="block text-xs text-red-400 font-mono mb-2">&gt; RESULTS_</span>
-                      <div className="grid grid-cols-2 gap-4">
-                        <div><span className="text-2xl font-bricolage text-white font-medium">3×</span><span className="block text-xs text-neutral-500">Lead Conversion</span></div>
-                        <div><span className="text-2xl font-bricolage text-white font-medium">70%</span><span className="block text-xs text-neutral-500">Less Admin Work</span></div>
+                      <div className="grid grid-cols-1 gap-2">
+                        <span className="text-sm text-white">Guided path from basic intervals to harder drills</span>
+                        <span className="text-sm text-white">Instant feedback on every answer</span>
+                        <span className="text-sm text-white">Progress and streaks that reward showing up</span>
                       </div>
                     </div>
                     <div className="flex flex-wrap items-center gap-2">
                       <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Web App</span>
-                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">CRM</span>
-                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Automation</span>
+                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Interactive Drills</span>
+                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Progress Tracking</span>
                       <a href="https://ear-training-platform.pages.dev/" target="_blank" rel="noopener noreferrer" className="case-action-btn ml-auto px-3 py-1 rounded bg-red-500/20 text-red-400 text-[10px] font-medium hover:bg-red-500/30 flex items-center gap-1">See Project <iconify-icon icon="solar:arrow-right-up-linear" width="12"></iconify-icon></a>
                     </div>
                   </div>
@@ -202,7 +214,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Case Study 2: Insurance Agency */}
+            {/* Case Study 2: Virelia Insurance */}
             <div className="group glass-panel rounded-2xl overflow-hidden border border-white/10 hover:border-red-500/30 transition-all duration-500 animate-on-scroll delay-100 flex flex-col card-lift case-study-card">
               <div className="relative flex-1 p-8 md:p-10 flex flex-col min-h-[420px]">
                 {/* Layered depth backgrounds */}
@@ -212,34 +224,34 @@ export default function Home() {
                 <div className="absolute inset-0 opacity-[0.15] z-[3]" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
                 <div className="relative z-10 flex flex-col h-full bg-neutral-900/20 rounded-lg" style={{ boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.2)' }}>
                   <div className="flex items-center justify-between mb-6">
-                    <span className="case-badge inline-block px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-[10px] font-mono uppercase tracking-widest border border-blue-500/20">CRM + Automation</span>
+                    <span className="case-badge inline-block px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-[10px] font-mono uppercase tracking-widest border border-blue-500/20">Marketing Site · Hub</span>
                     <iconify-icon icon="solar:shield-check-linear" className="text-blue-400 text-2xl"></iconify-icon>
                   </div>
-                  <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest mb-2">Insurance · Local Service Business</span>
-                  <h3 className="text-2xl md:text-3xl text-white font-medium mb-4">Insurance Agency Automation</h3>
-                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Problem:</strong> Slow lead response and inconsistent follow-ups were killing close rates.</p>
-                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Solution:</strong> You get automated lead capture, instant SMS/email follow-up, and CRM pipelines by policy type.</p>
+                  <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest mb-2">Insurance · Financial Services · Canada</span>
+                  <h3 className="text-2xl md:text-3xl text-white font-medium mb-4">Virelia Insurance</h3>
+                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Problem:</strong> Canadian insurance and account topics—life coverage, TFSAs, RRSPs, tax-advantaged savings—are spread across scattered sources. Prospects needed one credible, calm place to learn before they commit.</p>
+                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Solution:</strong> A central hub at <a href="https://vireliainsurance.com/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline underline-offset-2">vireliainsurance.com</a> that organizes that information in plain language, positions Virelia as a reputable educational source, and routes families and agents to the right next step.</p>
                   <div className="mt-auto">
                     <div className="bg-white/[0.08] rounded-lg p-4 border border-white/10 mb-4" style={{ boxShadow: 'inset 0 1px 2px rgba(255, 255, 255, 0.1), inset 0 -2px 4px rgba(0, 0, 0, 0.3)' }}>
                       <span className="block text-xs text-blue-400 font-mono mb-2">&gt; RESULTS_</span>
                       <div className="grid grid-cols-1 gap-2">
-                        <span className="text-sm text-white">Faster response times</span>
-                        <span className="text-sm text-white">Higher close rates</span>
-                        <span className="text-sm text-white">No leads falling through cracks</span>
+                        <span className="text-sm text-white">Single destination for core Canadian financial and insurance topics</span>
+                        <span className="text-sm text-white">Trust-first content: educate before you sell</span>
+                        <span className="text-sm text-white">Clear pathways for families and for career-minded agents</span>
                       </div>
                     </div>
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">CRM</span>
-                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Automation</span>
-                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">AI</span>
-                      <a href="https://virelia-7i9.pages.dev/" target="_blank" rel="noopener noreferrer" className="case-action-btn ml-auto px-3 py-1 rounded bg-blue-500/20 text-blue-400 text-[10px] font-medium hover:bg-blue-500/30 flex items-center gap-1">See Project <iconify-icon icon="solar:arrow-right-up-linear" width="12"></iconify-icon></a>
+                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Web Platform</span>
+                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Education</span>
+                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Canada</span>
+                      <a href="https://vireliainsurance.com/" target="_blank" rel="noopener noreferrer" className="case-action-btn ml-auto px-3 py-1 rounded bg-blue-500/20 text-blue-400 text-[10px] font-medium hover:bg-blue-500/30 flex items-center gap-1">See Project <iconify-icon icon="solar:arrow-right-up-linear" width="12"></iconify-icon></a>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Case Study 3: Brand + Website */}
+            {/* Case Study 3: Spiritual & Human Design coach site */}
             <div className="group glass-panel rounded-2xl overflow-hidden border border-white/10 hover:border-red-500/30 transition-all duration-500 animate-on-scroll delay-200 flex flex-col card-lift case-study-card">
               <div className="relative flex-1 p-8 md:p-10 flex flex-col min-h-[420px]">
                 {/* Layered depth backgrounds */}
@@ -249,34 +261,34 @@ export default function Home() {
                 <div className="absolute inset-0 opacity-[0.15] z-[3]" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
                 <div className="relative z-10 flex flex-col h-full bg-neutral-900/20 rounded-lg" style={{ boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.2)' }}>
                   <div className="flex items-center justify-between mb-6">
-                    <span className="case-badge inline-block px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 text-[10px] font-mono uppercase tracking-widest border border-purple-500/20">Branding + Web Design</span>
-                    <iconify-icon icon="solar:palette-linear" className="case-icon text-purple-400 text-2xl"></iconify-icon>
+                    <span className="case-badge inline-block px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 text-[10px] font-mono uppercase tracking-widest border border-purple-500/20">Site · Funnel · Automation</span>
+                    <iconify-icon icon="solar:stars-minimalistic-linear" className="case-icon text-purple-400 text-2xl"></iconify-icon>
                   </div>
-                  <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest mb-2">Creative Agency</span>
-                  <h3 className="text-2xl md:text-3xl text-white font-medium mb-4">Brand + Website for Creative Studio</h3>
-                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Problem:</strong> Generic brand. Low trust. Website wasn't converting.</p>
-                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Solution:</strong> You get a full brand identity and conversion-focused website designed to communicate value clearly.</p>
+                  <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest mb-2">Spirituality · Human Design · Coaching</span>
+                  <h3 className="text-2xl md:text-3xl text-white font-medium mb-4">Spiritual & Human Design Coach</h3>
+                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Problem:</strong> Her signature 21-day offer and coaching services lived in a messy mix of channels—hard to sell the full journey, and course delivery was disconnected from the front-end story.</p>
+                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Solution:</strong> A focused site built to sell the core 21-day program and coaching, with backend automations and a smooth handoff into Teachable so course content and lessons live on the platform students already use.</p>
                   <div className="mt-auto">
                     <div className="bg-white/[0.08] rounded-lg p-4 border border-white/10 mb-4" style={{ boxShadow: 'inset 0 1px 2px rgba(255, 255, 255, 0.1), inset 0 -2px 4px rgba(0, 0, 0, 0.3)' }}>
                       <span className="block text-xs text-purple-400 font-mono mb-2">&gt; RESULTS_</span>
                       <div className="grid grid-cols-1 gap-2">
-                        <span className="text-sm text-white">Higher engagement & trust</span>
-                        <span className="text-sm text-white">Increased client inquiries</span>
-                        <span className="text-sm text-white">Stronger brand positioning</span>
+                        <span className="text-sm text-white">One clear offer path: 21-day program and coaching packages</span>
+                        <span className="text-sm text-white">Automations that support follow-up without manual chaos</span>
+                        <span className="text-sm text-white">Teachable connected so lessons live where students actually learn</span>
                       </div>
                     </div>
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Branding</span>
-                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Web Design</span>
-                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Conversion</span>
-                      <a href="https://maria-amiouni.pages.dev/" target="_blank" rel="noopener noreferrer" className="ml-auto px-3 py-1 rounded bg-purple-500/20 text-purple-400 text-[10px] font-medium hover:bg-purple-500/30 transition-colors flex items-center gap-1">See Project <iconify-icon icon="solar:arrow-right-up-linear" width="12"></iconify-icon></a>
+                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Coaching</span>
+                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Automation</span>
+                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Teachable</span>
+                      <a href="https://www.mariaamiouni.com/" target="_blank" rel="noopener noreferrer" className="case-action-btn ml-auto px-3 py-1 rounded bg-purple-500/20 text-purple-400 text-[10px] font-medium hover:bg-purple-500/30 transition-colors flex items-center gap-1">See Project <iconify-icon icon="solar:arrow-right-up-linear" width="12"></iconify-icon></a>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Case Study 4: Game Development */}
+            {/* Case Study 4: Game studio brand site */}
             <div className="group glass-panel rounded-2xl overflow-hidden border border-white/10 hover:border-red-500/30 transition-all duration-500 animate-on-scroll delay-300 flex flex-col card-lift case-study-card">
               <div className="relative flex-1 p-8 md:p-10 flex flex-col min-h-[420px]">
                 {/* Layered depth backgrounds */}
@@ -286,27 +298,99 @@ export default function Home() {
                 <div className="absolute inset-0 opacity-[0.15] z-[3]" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
                 <div className="relative z-10 flex flex-col h-full bg-neutral-900/20 rounded-lg" style={{ boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.2)' }}>
                   <div className="flex items-center justify-between mb-6">
-                    <span className="case-badge inline-block px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 text-[10px] font-mono uppercase tracking-widest border border-indigo-500/20">AI + DevOps</span>
+                    <span className="case-badge inline-block px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 text-[10px] font-mono uppercase tracking-widest border border-indigo-500/20">Brand Site · Audio · Social</span>
                     <iconify-icon icon="solar:gamepad-linear" className="case-icon text-indigo-400 text-2xl"></iconify-icon>
                   </div>
-                  <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest mb-2">Game Dev · Indie Studio</span>
-                  <h3 className="text-2xl md:text-3xl text-white font-medium mb-4">Game Development + Automation Systems</h3>
-                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Problem:</strong> Manual builds, messy assets, no clear feedback loop.</p>
-                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Solution:</strong> You get automated build workflows, analytics pipelines, and community/update automation.</p>
+                  <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest mb-2">Game Studio · Indie</span>
+                  <h3 className="text-2xl md:text-3xl text-white font-medium mb-4">Game Studio Website</h3>
+                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Problem:</strong> The studio had games and ambition, but no web presence that felt like the brand—social was inconsistent and everything sounded generic next to competitors.</p>
+                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Solution:</strong> A compelling brand website built to showcase the studio, three custom audio soundtracks crafted for the experience, and automations that keep social posting on schedule without manual grind.</p>
                   <div className="mt-auto">
                     <div className="bg-white/[0.08] rounded-lg p-4 border border-white/10 mb-4" style={{ boxShadow: 'inset 0 1px 2px rgba(255, 255, 255, 0.1), inset 0 -2px 4px rgba(0, 0, 0, 0.3)' }}>
                       <span className="block text-xs text-indigo-400 font-mono mb-2">&gt; RESULTS_</span>
                       <div className="grid grid-cols-1 gap-2">
-                        <span className="text-sm text-white">Faster releases</span>
-                        <span className="text-sm text-white">Better player insights</span>
-                        <span className="text-sm text-white">Less busywork</span>
+                        <span className="text-sm text-white">Brand-forward site visitors actually want to explore</span>
+                        <span className="text-sm text-white">Three original soundtracks, not stock loops</span>
+                        <span className="text-sm text-white">Social cadence handled by automation, not panic posts</span>
                       </div>
                     </div>
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Automation</span>
-                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Analytics</span>
-                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">DevOps</span>
+                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Web</span>
+                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Sound Design</span>
+                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Social Automation</span>
                       <a href="https://boundlessgames.net/" target="_blank" rel="noopener noreferrer" className="case-action-btn ml-auto px-3 py-1 rounded bg-indigo-500/20 text-indigo-400 text-[10px] font-medium hover:bg-indigo-500/30 flex items-center gap-1">See Project <iconify-icon icon="solar:arrow-right-up-linear" width="12"></iconify-icon></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Case Study 5: Artist website — MOQEMÀE */}
+            <div className="group glass-panel rounded-2xl overflow-hidden border border-white/10 hover:border-red-500/30 transition-all duration-500 animate-on-scroll delay-400 flex flex-col card-lift case-study-card">
+              <div className="relative flex-1 p-8 md:p-10 flex flex-col min-h-[420px]">
+                <div className="absolute inset-0 bg-neutral-950 z-0"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-neutral-900/80 via-neutral-900/60 to-neutral-950 z-[1]"></div>
+                <div className="absolute inset-0 bg-neutral-900/40 z-[2]" style={{ boxShadow: 'inset 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 -4px 12px rgba(0, 0, 0, 0.5)' }}></div>
+                <div className="absolute inset-0 opacity-[0.15] z-[3]" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
+                <div className="relative z-10 flex flex-col h-full bg-neutral-900/20 rounded-lg" style={{ boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.2)' }}>
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="case-badge inline-block px-3 py-1 rounded-full bg-rose-500/10 text-rose-400 text-[10px] font-mono uppercase tracking-widest border border-rose-500/20">Artist Site · Music</span>
+                    <iconify-icon icon="solar:microphone-3-linear" className="case-icon text-rose-400 text-2xl"></iconify-icon>
+                  </div>
+                  <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest mb-2">Music · Artist · Toronto</span>
+                  <h3 className="text-2xl md:text-3xl text-white font-medium mb-4">Artist Website</h3>
+                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Problem:</strong> Streams and story were split across platforms—no single home that felt like his brand, and fans had to hunt for tracks, bio, and booking.</p>
+                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Solution:</strong> A dedicated artist site with a clear visual identity, space for his story and credits, and a layout built for music: discography, releases, and listen-everywhere links so tracks are easy to find and play.</p>
+                  <div className="mt-auto">
+                    <div className="bg-white/[0.08] rounded-lg p-4 border border-white/10 mb-4" style={{ boxShadow: 'inset 0 1px 2px rgba(255, 255, 255, 0.1), inset 0 -2px 4px rgba(0, 0, 0, 0.3)' }}>
+                      <span className="block text-xs text-rose-400 font-mono mb-2">&gt; RESULTS_</span>
+                      <div className="grid grid-cols-1 gap-2">
+                        <span className="text-sm text-white">One branded home—not a scattered link list</span>
+                        <span className="text-sm text-white">Bio, press, and milestones in a single narrative</span>
+                        <span className="text-sm text-white">Music-forward layout: releases and streaming in the flow</span>
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Web</span>
+                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Identity</span>
+                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Streaming</span>
+                      <a href="https://moqemae.pages.dev/" target="_blank" rel="noopener noreferrer" className="case-action-btn ml-auto px-3 py-1 rounded bg-rose-500/20 text-rose-400 text-[10px] font-medium hover:bg-rose-500/30 flex items-center gap-1">See Project <iconify-icon icon="solar:arrow-right-up-linear" width="12"></iconify-icon></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Case Study 6: All-in-one business system */}
+            <div className="group glass-panel rounded-2xl overflow-hidden border border-white/10 hover:border-red-500/30 transition-all duration-500 animate-on-scroll delay-500 flex flex-col card-lift case-study-card">
+              <div className="relative flex-1 p-8 md:p-10 flex flex-col min-h-[420px]">
+                <div className="absolute inset-0 bg-neutral-950 z-0"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-neutral-900/80 via-neutral-900/60 to-neutral-950 z-[1]"></div>
+                <div className="absolute inset-0 bg-neutral-900/40 z-[2]" style={{ boxShadow: 'inset 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 -4px 12px rgba(0, 0, 0, 0.5)' }}></div>
+                <div className="absolute inset-0 opacity-[0.15] z-[3]" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
+                <div className="relative z-10 flex flex-col h-full bg-neutral-900/20 rounded-lg" style={{ boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.2)' }}>
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="case-badge inline-block px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-mono uppercase tracking-widest border border-emerald-500/20">Platform · SaaS</span>
+                    <iconify-icon icon="solar:layers-minimalistic-linear" className="case-icon text-emerald-400 text-2xl"></iconify-icon>
+                  </div>
+                  <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest mb-2">Business · Growth · Revenue</span>
+                  <h3 className="text-2xl md:text-3xl text-white font-medium mb-4">All-in-One Business System</h3>
+                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Problem:</strong> Teams were earning attention but losing it in the handoff—too many tools, leaky follow-up, and no single view from interest to a booked call or sale.</p>
+                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Solution:</strong> A unified business system designed to turn attention into booked revenue—pipelines, messaging, and scheduling in one place—plus a couple of lightweight SaaS apps that plug into the same operating rhythm.</p>
+                  <div className="mt-auto">
+                    <div className="bg-white/[0.08] rounded-lg p-4 border border-white/10 mb-4" style={{ boxShadow: 'inset 0 1px 2px rgba(255, 255, 255, 0.1), inset 0 -2px 4px rgba(0, 0, 0, 0.3)' }}>
+                      <span className="block text-xs text-emerald-400 font-mono mb-2">&gt; RESULTS_</span>
+                      <div className="grid grid-cols-1 gap-2">
+                        <span className="text-sm text-white">One system instead of a patchwork of logins</span>
+                        <span className="text-sm text-white">Clear path from lead interest to revenue on the calendar</span>
+                        <span className="text-sm text-white">SaaS apps that extend the core workflow—not another silo</span>
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Platform</span>
+                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">SaaS</span>
+                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Automation</span>
+                      <a href="https://areoclient.com/" target="_blank" rel="noopener noreferrer" className="case-action-btn ml-auto px-3 py-1 rounded bg-emerald-500/20 text-emerald-400 text-[10px] font-medium hover:bg-emerald-500/30 flex items-center gap-1">See Project <iconify-icon icon="solar:arrow-right-up-linear" width="12"></iconify-icon></a>
                     </div>
                   </div>
                 </div>
