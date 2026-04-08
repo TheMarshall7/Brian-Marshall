@@ -474,6 +474,250 @@
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
   }
   
+  /* Section atmosphere (radial + fine grid) — pair with inner relative z-10 content */
+  .section-ambient {
+    position: relative;
+  }
+  
+  .section-ambient__glow {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: radial-gradient(ellipse 80% 55% at 90% 0%, rgba(239, 68, 68, 0.1), transparent 55%),
+      radial-gradient(ellipse 60% 40% at 10% 100%, rgba(239, 68, 68, 0.05), transparent 50%);
+  }
+  
+  .section-ambient__grid {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.45;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  
+  /* Faux browser / product frame for case study media bands */
+  .browser-chrome {
+    overflow: hidden;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(0, 0, 0, 0.35);
+  }
+  
+  .browser-chrome__bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 0.65rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(10, 10, 10, 0.85);
+  }
+  
+  .browser-chrome__dots {
+    display: flex;
+    gap: 4px;
+  }
+  
+  .browser-chrome__dots span {
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.18);
+  }
+  
+  .browser-chrome__url {
+    flex: 1;
+    min-width: 0;
+    border-radius: 4px;
+    padding: 0.2rem 0.45rem;
+    font-family: ui-monospace, monospace;
+    font-size: 9px;
+    letter-spacing: 0.02em;
+    color: rgba(163, 163, 163, 0.85);
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  .browser-chrome__screen {
+    position: relative;
+    min-height: 9rem;
+    overflow: hidden;
+    background: linear-gradient(
+      155deg,
+      rgba(var(--case-study-glow, 64, 64, 64), 0.22) 0%,
+      rgba(10, 10, 10, 0.97) 48%,
+      rgba(0, 0, 0, 0.98) 100%
+    );
+  }
+  
+  .browser-chrome__screen::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.2;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.35) 1px, transparent 1px);
+    background-size: 14px 14px;
+    pointer-events: none;
+  }
+  
+  .browser-chrome__fauxui {
+    position: relative;
+    z-index: 1;
+    padding: 0.85rem 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  
+  .browser-chrome__barline {
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.08);
+  }
+  
+  .browser-chrome__barline--short {
+    width: 42%;
+  }
+  
+  .browser-chrome__barline--med {
+    width: 68%;
+  }
+  
+  .case-study-shot {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    opacity: 0.55;
+    transition: opacity 0.4s ease;
+  }
+  
+  .group:hover .case-study-shot {
+    opacity: 0.68;
+  }
+  
+  /* Vertical story rail (pricing, step columns) */
+  .story-rail {
+    position: relative;
+    padding-left: 1.35rem;
+  }
+  
+  .story-rail::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 0.35rem;
+    bottom: 0.35rem;
+    width: 2px;
+    border-radius: 1px;
+    background: linear-gradient(
+      180deg,
+      rgba(239, 68, 68, 0.45) 0%,
+      rgba(255, 255, 255, 0.12) 45%,
+      rgba(239, 68, 68, 0.25) 100%
+    );
+  }
+  
+  .story-rail__node {
+    position: relative;
+  }
+  
+  .story-rail__node::before {
+    content: '';
+    position: absolute;
+    left: -1.15rem;
+    top: 0.55rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    background: rgba(10, 10, 10, 0.95);
+    border: 2px solid rgba(239, 68, 68, 0.55);
+    box-shadow: 0 0 12px rgba(239, 68, 68, 0.25);
+  }
+  
+  /* Process: horizontal connector above capability cards (md+) */
+  .process-spine {
+    display: none;
+    position: relative;
+    margin-bottom: 1.75rem;
+    height: 1.75rem;
+  }
+  
+  @media (min-width: 768px) {
+    .process-spine {
+      display: block;
+    }
+    
+    .process-spine__line {
+      position: absolute;
+      left: 6%;
+      right: 6%;
+      top: 50%;
+      height: 2px;
+      transform: translateY(-50%);
+      border-radius: 1px;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(239, 68, 68, 0.35) 15%,
+        rgba(255, 255, 255, 0.12) 50%,
+        rgba(239, 68, 68, 0.35) 85%,
+        transparent 100%
+      );
+    }
+    
+    .process-spine__dots {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 6%;
+      align-items: center;
+      height: 100%;
+    }
+    
+    .process-spine__dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 9999px;
+      background: rgba(10, 10, 10, 0.95);
+      border: 2px solid rgba(239, 68, 68, 0.55);
+      box-shadow: 0 0 14px rgba(239, 68, 68, 0.3);
+    }
+  }
+  
+  /* FAQ header band */
+  .faq-hero-band {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.08) 0%, rgba(10, 10, 10, 0.6) 50%, rgba(10, 10, 10, 0.85) 100%);
+    padding: 1.75rem 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  @media (min-width: 768px) {
+    .faq-hero-band {
+      padding: 2rem 2.5rem;
+    }
+  }
+  
+  .faq-hero-band__glow {
+    pointer-events: none;
+    position: absolute;
+    right: -20%;
+    top: -40%;
+    width: 55%;
+    height: 180%;
+    background: radial-gradient(circle, rgba(239, 68, 68, 0.15) 0%, transparent 65%);
+  }
+  
   /* Enhanced FAQ cards - Tier 4 Medium Elevation */
   .faq-card {
     box-shadow: 
@@ -826,6 +1070,17 @@
     transform: translateY(20px);
   }
   100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes offerFocusFade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
     opacity: 1;
     transform: translateY(0);
   }

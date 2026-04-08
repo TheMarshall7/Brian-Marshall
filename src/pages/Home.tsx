@@ -1,12 +1,51 @@
 import { useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
+import CaseStudyMediaBand from '../components/CaseStudyMediaBand'
 import Navigation from '../components/Navigation'
+import OfferFrameworkGateModal from '../components/OfferFrameworkGateModal'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
+
+const OFFER_FRAMEWORK_BULLETS: { line: string; focus: string }[] = [
+  {
+    line: 'How to make your offer clear in one sentence',
+    focus:
+      'Strip the fluff until a stranger gets it instantly. If it needs a paragraph, it is not an offer yet.',
+  },
+  {
+    line: 'How to increase perceived value without doing more work',
+    focus:
+      'Shape the promise, proof, and framing so the same deliverable feels like a step up, not a slog.',
+  },
+  {
+    line: 'How to position your offer so it feels like a no-brainer',
+    focus:
+      'Make the alternative feel riskier than saying yes. Clarity beats clever every time.',
+  },
+  {
+    line: 'The simple structure I use before building any system',
+    focus:
+      'Same prep I run before CRMs, sites, or automations so tech matches revenue, not the other way around.',
+  },
+]
+
+const WORK_DEPLOY_TILES: { key: string; icon: string; label: string; tileClass: string }[] = [
+  { key: 'et', icon: 'solar:music-note-linear', label: 'Ear Training Platform', tileClass: 'border-red-500/35 bg-red-500/10 text-red-400' },
+  { key: 'vi', icon: 'solar:shield-check-linear', label: 'Virelia Insurance', tileClass: 'border-blue-500/35 bg-blue-500/10 text-blue-400' },
+  { key: 'co', icon: 'solar:stars-minimalistic-linear', label: 'Spiritual & Human Design Coach', tileClass: 'border-purple-500/35 bg-purple-500/10 text-purple-400' },
+  { key: 'gs', icon: 'solar:gamepad-linear', label: 'Game Studio Website', tileClass: 'border-indigo-500/35 bg-indigo-500/10 text-indigo-400' },
+  { key: 'mq', icon: 'solar:music-notes-linear', label: 'MOQEMÀE', tileClass: 'border-rose-500/35 bg-rose-500/10 text-rose-400' },
+  { key: 'ar', icon: 'solar:widget-5-linear', label: 'AreoClient', tileClass: 'border-emerald-500/35 bg-emerald-500/10 text-emerald-400' },
+  { key: 'so', icon: 'solar:chat-round-dots-linear', label: 'Social Outreach app', tileClass: 'border-cyan-500/35 bg-cyan-500/10 text-cyan-400' },
+  { key: 'is', icon: 'solar:music-note-slider-linear', label: 'ISIATA', tileClass: 'border-amber-500/35 bg-amber-500/10 text-amber-400' },
+]
 
 export default function Home() {
   useScrollAnimation() // Initialize scroll animations for all elements
   const [openFaq, setOpenFaq] = useState<number | null>(null)
+  const [offerFocus, setOfferFocus] = useState(0)
+  const [offerFrameworkModalOpen, setOfferFrameworkModalOpen] = useState(false)
+  const ghlOfferWebhookUrl = import.meta.env.VITE_GHL_OFFER_WEBHOOK_URL
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index)
@@ -163,20 +202,44 @@ export default function Home() {
       </header>
 
       {/* Case Studies Section */}
-      <section id="work" className="py-24 md:py-32 relative border-t border-white/5 section-standard">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8 animate-on-scroll">
-            <div>
-              <span className="text-xs font-mono uppercase tracking-widest text-red-500 mb-4 block">Deployment Log</span>
-              <h2 className="text-4xl md:text-6xl text-white font-medium tracking-tight mb-4">What I Actually Build</h2>
-              <p className="text-neutral-400 max-w-md">Real systems. Real outcomes. I don't ship pretty mockups and disappear. I build things people use every day.</p>
+      <section id="work" className="section-ambient relative overflow-hidden border-t border-white/5 py-24 md:py-32 section-standard">
+        <div className="section-ambient__glow" aria-hidden />
+        <div className="section-ambient__grid" aria-hidden />
+        <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
+          <div className="mb-16 grid grid-cols-1 items-start gap-12 md:mb-20 lg:grid-cols-12 lg:gap-16 animate-on-scroll">
+            <div className="lg:col-span-7">
+              <span className="mb-4 block text-xs font-mono uppercase tracking-widest text-red-500">Deployment Log</span>
+              <h2 className="mb-4 text-4xl font-medium tracking-tight text-white md:text-6xl">What I Actually Build</h2>
+              <p className="max-w-xl text-neutral-400">
+                Real systems. Real outcomes. I don't ship pretty mockups and disappear. I build things people use every day.
+              </p>
             </div>
-            <div className="glass-panel px-4 py-2 rounded-full flex items-center gap-2 text-xs text-neutral-400">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-90"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.8)]"></span>
-              </span>
-              System Status: Operational
+            <div className="lg:col-span-5">
+              <div className="rounded-2xl border border-white/10 bg-neutral-900/35 p-4 shadow-[0_20px_60px_rgba(0,0,0,0.35)] backdrop-blur-md md:p-5">
+                <span className="mb-3 block text-[10px] font-mono uppercase tracking-widest text-neutral-500">Live deployments</span>
+                <div className="flex flex-wrap gap-2">
+                  {WORK_DEPLOY_TILES.map((t) => (
+                    <div
+                      key={t.key}
+                      className={`flex h-11 w-11 items-center justify-center rounded-xl border transition-transform duration-300 hover:scale-105 hover:shadow-lg md:h-12 md:w-12 ${t.tileClass}`}
+                      aria-label={t.label}
+                      title={t.label}
+                    >
+                      <iconify-icon icon={t.icon} width="22" className="md:w-[24px]" />
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-4 flex items-center justify-between border-t border-white/10 pt-4">
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-600">Signal</span>
+                  <div className="glass-panel flex items-center gap-2 rounded-full px-4 py-2 text-xs text-neutral-400">
+                    <span className="relative flex h-2 w-2">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-90"></span>
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.8)]"></span>
+                    </span>
+                    System Status: Operational
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -193,6 +256,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-neutral-900/40 z-[2]" style={{ boxShadow: 'inset 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 -4px 12px rgba(0, 0, 0, 0.5)' }}></div>
                 <div className="absolute inset-0 opacity-[0.15] z-[3]" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
                 <div className="relative z-10 flex flex-col h-full bg-neutral-900/20 rounded-lg" style={{ boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.2)' }}>
+                  <CaseStudyMediaBand urlLabel="ear-training-platform.pages.dev" slug="ear-training" />
                   <div className="flex items-center justify-between mb-6">
                     <span className="case-badge inline-block px-3 py-1 rounded-full bg-red-500/10 text-red-500 text-[10px] font-mono uppercase tracking-widest border border-red-500/20">Web App · EdTech</span>
                     <iconify-icon icon="solar:music-note-linear" className="case-icon text-red-500 text-2xl"></iconify-icon>
@@ -233,6 +297,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-neutral-900/40 z-[2]" style={{ boxShadow: 'inset 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 -4px 12px rgba(0, 0, 0, 0.5)' }}></div>
                 <div className="absolute inset-0 opacity-[0.15] z-[3]" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
                 <div className="relative z-10 flex flex-col h-full bg-neutral-900/20 rounded-lg" style={{ boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.2)' }}>
+                  <CaseStudyMediaBand urlLabel="vireliainsurance.com" slug="virelia" />
                   <div className="flex items-center justify-between mb-6">
                     <span className="case-badge inline-block px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-[10px] font-mono uppercase tracking-widest border border-blue-500/20">Marketing Site · Hub</span>
                     <iconify-icon icon="solar:shield-check-linear" className="text-blue-400 text-2xl"></iconify-icon>
@@ -273,6 +338,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-neutral-900/40 z-[2]" style={{ boxShadow: 'inset 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 -4px 12px rgba(0, 0, 0, 0.5)' }}></div>
                 <div className="absolute inset-0 opacity-[0.15] z-[3]" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
                 <div className="relative z-10 flex flex-col h-full bg-neutral-900/20 rounded-lg" style={{ boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.2)' }}>
+                  <CaseStudyMediaBand urlLabel="www.mariaamiouni.com" slug="maria-amiouni" />
                   <div className="flex items-center justify-between mb-6">
                     <span className="case-badge inline-block px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 text-[10px] font-mono uppercase tracking-widest border border-purple-500/20">Site · Funnel · Automation</span>
                     <iconify-icon icon="solar:stars-minimalistic-linear" className="case-icon text-purple-400 text-2xl"></iconify-icon>
@@ -313,6 +379,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-neutral-900/40 z-[2]" style={{ boxShadow: 'inset 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 -4px 12px rgba(0, 0, 0, 0.5)' }}></div>
                 <div className="absolute inset-0 opacity-[0.15] z-[3]" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
                 <div className="relative z-10 flex flex-col h-full bg-neutral-900/20 rounded-lg" style={{ boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.2)' }}>
+                  <CaseStudyMediaBand urlLabel="boundlessgames.net" slug="boundless-games" />
                   <div className="flex items-center justify-between mb-6">
                     <span className="case-badge inline-block px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 text-[10px] font-mono uppercase tracking-widest border border-indigo-500/20">Brand Site · Audio · Social</span>
                     <iconify-icon icon="solar:gamepad-linear" className="case-icon text-indigo-400 text-2xl"></iconify-icon>
@@ -352,6 +419,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-neutral-900/40 z-[2]" style={{ boxShadow: 'inset 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 -4px 12px rgba(0, 0, 0, 0.5)' }}></div>
                 <div className="absolute inset-0 opacity-[0.15] z-[3]" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
                 <div className="relative z-10 flex flex-col h-full bg-neutral-900/20 rounded-lg" style={{ boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.2)' }}>
+                  <CaseStudyMediaBand urlLabel="moqemae.pages.dev" slug="moqemae" />
                   <div className="flex items-center justify-between mb-6">
                     <span className="case-badge inline-block px-3 py-1 rounded-full bg-rose-500/10 text-rose-400 text-[10px] font-mono uppercase tracking-widest border border-rose-500/20">Artist Site · Music</span>
                     <iconify-icon icon="solar:microphone-3-linear" className="case-icon text-rose-400 text-2xl"></iconify-icon>
@@ -391,6 +459,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-neutral-900/40 z-[2]" style={{ boxShadow: 'inset 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 -4px 12px rgba(0, 0, 0, 0.5)' }}></div>
                 <div className="absolute inset-0 opacity-[0.15] z-[3]" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
                 <div className="relative z-10 flex flex-col h-full bg-neutral-900/20 rounded-lg" style={{ boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.2)' }}>
+                  <CaseStudyMediaBand urlLabel="areoclient.com" slug="areoclient" />
                   <div className="flex items-center justify-between mb-6">
                     <span className="case-badge inline-block px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-mono uppercase tracking-widest border border-emerald-500/20">Platform · SaaS</span>
                     <iconify-icon icon="solar:layers-minimalistic-linear" className="case-icon text-emerald-400 text-2xl"></iconify-icon>
@@ -430,6 +499,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-neutral-900/40 z-[2]" style={{ boxShadow: 'inset 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 -4px 12px rgba(0, 0, 0, 0.5)' }}></div>
                 <div className="absolute inset-0 opacity-[0.15] z-[3]" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
                 <div className="relative z-10 flex flex-col h-full bg-neutral-900/20 rounded-lg" style={{ boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.2)' }}>
+                  <CaseStudyMediaBand urlLabel="areosuitesocialoutreach.vercel.app" slug="social-outreach" />
                   <div className="flex items-center justify-between mb-6">
                     <span className="case-badge inline-block px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-[10px] font-mono uppercase tracking-widest border border-cyan-500/20">AI · Outreach · Social</span>
                     <iconify-icon icon="solar:chat-round-dots-linear" className="case-icon text-cyan-400 text-2xl"></iconify-icon>
@@ -469,6 +539,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-neutral-900/40 z-[2]" style={{ boxShadow: 'inset 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 -4px 12px rgba(0, 0, 0, 0.5)' }}></div>
                 <div className="absolute inset-0 opacity-[0.15] z-[3]" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
                 <div className="relative z-10 flex flex-col h-full bg-neutral-900/20 rounded-lg" style={{ boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.2)' }}>
+                  <CaseStudyMediaBand urlLabel="www.isiata.com" slug="isiata" />
                   <div className="flex items-center justify-between mb-6">
                     <span className="case-badge inline-block px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 text-[10px] font-mono uppercase tracking-widest border border-amber-500/20">Culture · Sound · Tools</span>
                     <iconify-icon icon="solar:music-note-slider-linear" className="case-icon text-amber-400 text-2xl"></iconify-icon>
@@ -512,24 +583,52 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="process" className="py-24 bg-neutral-900/30 relative border-t border-white/5 section-standard">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="mb-20 animate-on-scroll">
-            <span className="text-xs font-mono uppercase tracking-widest text-neutral-500 mb-4 block">Capabilities</span>
-            <h2 className="text-4xl md:text-6xl text-white font-medium tracking-tight mb-6 leading-[1.12]">
-              You're leaving money on the table.<br />
-              <span className="text-neutral-600">Here's how I fix it.</span>
-              <br />
-              <span className="text-neutral-600">Most businesses don't need more traffic.</span>
-              <br />
-              They need better systems.
-            </h2>
+      <section id="process" className="section-ambient relative overflow-hidden border-t border-white/5 bg-neutral-900/30 py-24 section-standard">
+        <div className="section-ambient__glow opacity-70" aria-hidden />
+        <div className="section-ambient__grid opacity-40" aria-hidden />
+        <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
+          <div className="mb-16 grid grid-cols-1 items-start gap-12 lg:mb-20 lg:grid-cols-12 lg:gap-16 animate-on-scroll">
+            <div className="lg:col-span-7">
+              <span className="mb-4 block text-xs font-mono uppercase tracking-widest text-neutral-500">Capabilities</span>
+              <h2 className="mb-6 text-4xl font-medium leading-[1.12] tracking-tight text-white md:text-6xl">
+                You're leaving money on the table.<br />
+                <span className="text-neutral-600">Here's how I fix it.</span>
+                <br />
+                <span className="text-neutral-600">Most businesses don't need more traffic.</span>
+                <br />
+                They need better systems.
+              </h2>
+            </div>
+            <div className="story-rail lg:col-span-5 lg:pt-4" aria-hidden>
+              <div className="story-rail__node mb-10 pl-1">
+                <span className="font-bricolage text-4xl font-medium text-red-500/90 md:text-5xl">01</span>
+              </div>
+              <div className="story-rail__node mb-10 pl-1">
+                <span className="font-bricolage text-4xl font-medium text-red-500/70 md:text-5xl">02</span>
+              </div>
+              <div className="story-rail__node mb-10 pl-1">
+                <span className="font-bricolage text-4xl font-medium text-red-500/50 md:text-5xl">03</span>
+              </div>
+              <div className="story-rail__node pl-1">
+                <span className="font-bricolage text-4xl font-medium text-red-500/35 md:text-5xl">04</span>
+              </div>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="group p-6 rounded-xl border border-white/5 hover:border-red-500/30 hover:bg-white/[0.02] transition-all duration-300 animate-on-scroll card-lift service-card">
-              <div className="w-12 h-12 rounded-lg bg-neutral-900 border border-white/10 flex items-center justify-center text-white mb-6 group-hover:text-red-400 group-hover:border-red-500/30 transition-all">
-                <iconify-icon icon="solar:laptop-minimalistic-linear" width="24" className="icon-hover"></iconify-icon>
+          <div className="process-spine" aria-hidden>
+            <div className="process-spine__line" />
+            <div className="process-spine__dots">
+              <span className="process-spine__dot" />
+              <span className="process-spine__dot" />
+              <span className="process-spine__dot" />
+              <span className="process-spine__dot" />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+            <div className="group rounded-xl border border-white/5 p-6 transition-all duration-300 animate-on-scroll card-lift service-card hover:border-red-500/30 hover:bg-white/[0.02]">
+              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.08] to-transparent text-white shadow-inner ring-1 ring-white/5 transition-all group-hover:border-red-500/30 group-hover:text-red-400 group-hover:ring-red-500/20">
+                <iconify-icon icon="solar:laptop-minimalistic-linear" width="28" className="icon-hover"></iconify-icon>
               </div>
               <h3 className="text-lg text-white font-medium mb-3">Websites & Web Apps</h3>
               <p className="text-sm text-neutral-400 mb-6 leading-relaxed">You get a site that actually turns visitors into customers, plus dashboards that show you exactly what's working.</p>
@@ -539,9 +638,9 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="group p-6 rounded-xl border border-white/5 hover:border-red-500/30 hover:bg-white/[0.02] transition-all duration-300 animate-on-scroll delay-100 card-lift service-card">
-              <div className="w-12 h-12 rounded-lg bg-neutral-900 border border-white/10 flex items-center justify-center text-white mb-6 group-hover:text-red-400 group-hover:border-red-500/30 transition-all">
-                <iconify-icon icon="solar:graph-new-linear" width="24" className="icon-hover"></iconify-icon>
+            <div className="group rounded-xl border border-white/5 p-6 transition-all duration-300 animate-on-scroll delay-100 card-lift service-card hover:border-red-500/30 hover:bg-white/[0.02]">
+              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.08] to-transparent text-white shadow-inner ring-1 ring-white/5 transition-all group-hover:border-red-500/30 group-hover:text-red-400 group-hover:ring-red-500/20">
+                <iconify-icon icon="solar:graph-new-linear" width="28" className="icon-hover"></iconify-icon>
               </div>
               <h3 className="text-lg text-white font-medium mb-3">Automation Systems</h3>
               <p className="text-sm text-neutral-400 mb-6 leading-relaxed">You get instant follow up, organized data, and 20+ hours back every week without hiring more people.</p>
@@ -551,9 +650,9 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="group p-6 rounded-xl border border-white/5 hover:border-red-500/30 hover:bg-white/[0.02] transition-all duration-300 animate-on-scroll delay-200 card-lift">
-              <div className="w-12 h-12 rounded-lg bg-neutral-900 border border-white/10 flex items-center justify-center text-white mb-6 group-hover:text-red-400 group-hover:border-red-500/30 transition-all">
-                <iconify-icon icon="solar:chat-round-dots-linear" width="24" className="icon-hover"></iconify-icon>
+            <div className="group rounded-xl border border-white/5 p-6 transition-all duration-300 animate-on-scroll delay-200 card-lift hover:border-red-500/30 hover:bg-white/[0.02]">
+              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.08] to-transparent text-white shadow-inner ring-1 ring-white/5 transition-all group-hover:border-red-500/30 group-hover:text-red-400 group-hover:ring-red-500/20">
+                <iconify-icon icon="solar:chat-round-dots-linear" width="28" className="icon-hover"></iconify-icon>
               </div>
               <h3 className="text-lg text-white font-medium mb-3">AI Integration</h3>
               <p className="text-sm text-neutral-400 mb-6 leading-relaxed">You get AI handling replies, bookings, and follow ups 24/7 so no lead gets ignored.</p>
@@ -563,9 +662,9 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="group p-6 rounded-xl border border-white/5 hover:border-red-500/30 hover:bg-white/[0.02] transition-all duration-300 animate-on-scroll delay-300 card-lift service-card">
-              <div className="w-12 h-12 rounded-lg bg-neutral-900 border border-white/10 flex items-center justify-center text-white mb-6 group-hover:text-red-400 group-hover:border-red-500/30 transition-all">
-                <iconify-icon icon="solar:compass-linear" width="24" className="icon-hover"></iconify-icon>
+            <div className="group rounded-xl border border-white/5 p-6 transition-all duration-300 animate-on-scroll delay-300 card-lift service-card hover:border-red-500/30 hover:bg-white/[0.02]">
+              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.08] to-transparent text-white shadow-inner ring-1 ring-white/5 transition-all group-hover:border-red-500/30 group-hover:text-red-400 group-hover:ring-red-500/20">
+                <iconify-icon icon="solar:compass-linear" width="28" className="icon-hover"></iconify-icon>
               </div>
               <h3 className="text-lg text-white font-medium mb-3">Strategy & Consulting</h3>
               <p className="text-sm text-neutral-400 mb-6 leading-relaxed">You get clarity on what's broken and a step by step plan to fix it so you're not guessing anymore.</p>
@@ -580,6 +679,11 @@ export default function Home() {
             <span className="text-xs font-mono uppercase tracking-widest text-neutral-500 mb-4 block">Close Section</span>
             <p className="text-neutral-300 text-lg mb-2">What's the biggest bottleneck in your business right now?</p>
             <p className="text-neutral-400 text-base mb-8">Let's fix that first.</p>
+            <div className="mb-6 flex items-center justify-center gap-6 text-neutral-600" aria-hidden>
+              <iconify-icon icon="solar:calendar-linear" width="26" className="opacity-50" />
+              <iconify-icon icon="solar:chat-round-line-linear" width="26" className="opacity-50" />
+              <iconify-icon icon="solar:letter-linear" width="26" className="opacity-50" />
+            </div>
             <a href="#contact" className="cta-primary inline-flex items-center gap-2 px-8 py-4 bg-white text-neutral-950 rounded-lg text-sm font-medium hover:bg-red-400 transition-all btn-shimmer hover:shadow-lg hover:shadow-red-500/30">
               👉 Book your strategy call
               <iconify-icon icon="solar:arrow-right-up-linear"></iconify-icon>
@@ -589,9 +693,10 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-24 border-t border-white/5 section-standard">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-20">
-          <div className="animate-on-scroll">
+      <section id="about" className="section-ambient relative overflow-hidden border-t border-white/5 py-24 section-standard">
+        <div className="section-ambient__grid opacity-30" aria-hidden />
+        <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 md:px-12 lg:grid-cols-12 lg:gap-10 xl:gap-14">
+          <div className="animate-on-scroll lg:col-span-5">
             <span className="text-xs font-mono uppercase tracking-widest text-red-500 mb-4 block">Philosophy</span>
             <h3 className="text-3xl md:text-5xl text-white font-medium mb-8 tracking-tight leading-tight">
               I'm not here to "optimize your vibes."<br />
@@ -628,8 +733,8 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="animate-on-scroll delay-200">
-            <div className="glass-panel p-8 rounded-2xl border border-white/10 relative about-card">
+          <div className="animate-on-scroll delay-200 lg:col-span-4">
+            <div className="glass-panel relative rounded-2xl border border-white/10 p-8 about-card">
               <div className="absolute -top-3 -right-3 px-4 py-1 bg-neutral-900 border border-white/10 text-xs font-mono text-white rounded-full">ORIGIN</div>
               <div className="space-y-8 relative">
                 <div className="absolute left-3 top-2 bottom-2 w-px bg-white/10"></div>
@@ -668,9 +773,61 @@ export default function Home() {
               </div>
             </div>
           </div>
+
+          <div className="flex flex-col gap-4 animate-on-scroll delay-100 lg:col-span-3">
+            <div className="relative overflow-hidden rounded-xl border border-white/10 bg-neutral-900/50 p-5 shadow-lg shadow-black/20">
+              <div
+                className="pointer-events-none absolute inset-0 opacity-[0.12]"
+                style={{
+                  backgroundImage:
+                    'repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(255,255,255,0.4) 3px, rgba(255,255,255,0.4) 4px)',
+                }}
+                aria-hidden
+              />
+              <div className="relative flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-neutral-400">
+                  <iconify-icon icon="solar:music-note-linear" width="20"></iconify-icon>
+                </div>
+                <h4 className="text-base font-medium text-white">The Musician</h4>
+              </div>
+            </div>
+            <div className="relative overflow-hidden rounded-xl border border-white/10 bg-neutral-900/50 p-5 shadow-lg shadow-black/20">
+              <div
+                className="pointer-events-none absolute inset-0 opacity-20"
+                style={{
+                  backgroundImage:
+                    'linear-gradient(135deg, rgba(255,255,255,0.06) 25%, transparent 25%), linear-gradient(225deg, rgba(255,255,255,0.06) 25%, transparent 25%)',
+                  backgroundSize: '12px 12px',
+                }}
+                aria-hidden
+              />
+              <div className="relative flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-neutral-400">
+                  <iconify-icon icon="solar:bricks-linear" width="20"></iconify-icon>
+                </div>
+                <h4 className="text-base font-medium text-white">The Wall</h4>
+              </div>
+            </div>
+            <div className="relative overflow-hidden rounded-xl border border-red-500/20 bg-neutral-900/50 p-5 shadow-lg shadow-black/20">
+              <div
+                className="pointer-events-none absolute inset-0 opacity-[0.15]"
+                style={{
+                  backgroundImage: 'radial-gradient(rgba(239,68,68,0.35) 1px, transparent 1px)',
+                  backgroundSize: '16px 16px',
+                }}
+                aria-hidden
+              />
+              <div className="relative flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-red-500/30 bg-red-500/10 text-red-400">
+                  <iconify-icon icon="solar:code-circle-linear" width="20"></iconify-icon>
+                </div>
+                <h4 className="text-base font-medium text-white">The Architect</h4>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div className="text-center mt-20 animate-on-scroll">
+        <div className="relative z-10 mt-20 text-center animate-on-scroll">
           <p className="text-neutral-300 text-lg mb-6">Ready to work together?</p>
           <a href="#contact" className="inline-flex items-center gap-2 px-8 py-4 bg-white text-neutral-950 rounded-lg text-sm font-medium hover:bg-red-400 transition-all btn-shimmer hover:shadow-lg hover:shadow-red-500/30">
             Start Here
@@ -679,32 +836,203 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Lead magnet: offer framework (add PDF at public/no-brainer-offer-framework.pdf) */}
+      <section
+        id="offer-framework"
+        className="relative overflow-hidden border-t border-white/5 bg-neutral-950 py-28 md:py-32"
+        aria-labelledby="offer-framework-heading"
+      >
+        <div
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_60%_at_100%_0%,rgba(239,68,68,0.14),transparent_55%)]"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.028)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.028)_1px,transparent_1px)] bg-[length:44px_44px] opacity-80"
+          aria-hidden
+        />
+        <div className="pointer-events-none absolute -left-32 top-1/2 h-[420px] w-[420px] -translate-y-1/2 rounded-full bg-red-600/5 blur-[100px]" aria-hidden />
+
+        <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
+          <div className="grid grid-cols-1 items-start gap-16 lg:grid-cols-2 lg:gap-24">
+            <div className="animate-on-scroll">
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-red-500/25 bg-red-500/10 px-4 py-2 text-xs font-mono uppercase tracking-widest text-red-400 shadow-[0_0_24px_rgba(239,68,68,0.12)] transition-[box-shadow,transform] duration-300 hover:border-red-500/40 hover:shadow-[0_0_32px_rgba(239,68,68,0.2)]">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-40"></span>
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500"></span>
+                </span>
+                Not ready to work together yet?
+              </div>
+              <h2
+                id="offer-framework-heading"
+                className="mb-6 font-bricolage text-3xl font-medium tracking-tight text-white md:text-5xl lg:text-[3.25rem] lg:leading-[1.08]"
+              >
+                Fix your offer{' '}
+                <span className="hero-text-gradient">first.</span>
+              </h2>
+              <p className="mb-10 max-w-xl text-lg leading-relaxed text-neutral-400">
+                Download the exact framework I use to turn ideas into offers that actually sell.
+              </p>
+              <div className="group/result relative mb-10 overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-transparent p-6 transition-all duration-500 hover:border-red-500/25 hover:shadow-[0_0_40px_rgba(239,68,68,0.08)] md:p-8">
+                <div className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-red-500/10 blur-2xl transition-opacity duration-500 group-hover/result:opacity-100" aria-hidden />
+                <span className="mb-3 block text-xs font-mono uppercase tracking-widest text-red-500/90">
+                  Result
+                </span>
+                <p className="relative text-base leading-relaxed text-neutral-200">
+                  You&apos;ll walk away with an offer you can actually sell, not something you have to explain 10
+                  times.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setOfferFrameworkModalOpen(true)}
+                className="cta-primary group/download glow-border relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-white px-9 py-4 text-sm font-medium text-neutral-950 transition-all duration-300 btn-shimmer hover:bg-red-400 hover:shadow-[0_0_40px_rgba(239,68,68,0.35)]"
+              >
+                <span className="relative z-10">Download the free offer builder</span>
+                <iconify-icon
+                  icon="solar:download-minimalistic-linear"
+                  className="relative z-10 text-lg transition-transform duration-300 group-hover/download:translate-y-0.5 group-hover/download:scale-110"
+                ></iconify-icon>
+              </button>
+              <p className="mt-4 text-xs text-neutral-600">PDF · sent to your email after you submit</p>
+            </div>
+
+            <div className="animate-on-scroll delay-100">
+              <div className="group/card relative rounded-2xl border border-white/10 bg-neutral-900/40 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.45)] backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:border-red-500/30 hover:shadow-[0_32px_96px_rgba(0,0,0,0.5),0_0_48px_rgba(239,68,68,0.12)] md:p-10">
+                <div className="relative mb-8 h-36 md:h-40">
+                  <div
+                    className="absolute left-1/2 top-3 h-[7.5rem] w-[11rem] -translate-x-1/2 rotate-[-4deg] rounded-md border border-white/10 bg-neutral-800/90 shadow-lg transition-all duration-500 ease-out group-hover/card:top-4 group-hover/card:translate-x-[calc(-50%+10px)] group-hover/card:rotate-[-2deg] md:w-[13rem]"
+                    aria-hidden
+                  />
+                  <div
+                    className="absolute left-1/2 top-0 h-[7.5rem] w-[11rem] -translate-x-1/2 rotate-[1deg] rounded-md border border-white/15 bg-gradient-to-br from-neutral-800 via-neutral-900 to-neutral-950 shadow-2xl transition-all duration-500 ease-out group-hover/card:-translate-y-1 group-hover/card:translate-x-[calc(-50%-8px)] group-hover/card:rotate-[2deg] md:w-[13rem]"
+                    aria-hidden
+                  >
+                    <div className="flex h-full flex-col p-4">
+                      <div className="mb-2 h-1.5 w-1/3 rounded-full bg-red-500/40" />
+                      <div className="space-y-1.5">
+                        <div className="h-1 rounded bg-white/10" />
+                        <div className="h-1 w-5/6 rounded bg-white/5" />
+                        <div className="h-1 w-4/6 rounded bg-white/5" />
+                      </div>
+                      <div className="mt-auto flex items-center justify-between border-t border-white/10 pt-3">
+                        <span className="text-[9px] font-mono uppercase tracking-wider text-red-400/90">Framework</span>
+                        <iconify-icon icon="solar:document-text-linear" className="text-red-500/80" width="18" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mb-6 flex items-start gap-3 border-b border-white/10 pb-6">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-white/[0.02] text-red-500 shadow-inner transition-transform duration-300 group-hover/card:scale-105">
+                    <iconify-icon icon="solar:document-text-linear" width="22"></iconify-icon>
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">Free PDF</span>
+                    <p className="text-lg font-medium text-white">The No-Brainer Offer Framework</p>
+                  </div>
+                </div>
+
+                <p id="offer-framework-list-label" className="mb-3 text-sm font-mono uppercase tracking-widest text-neutral-500">
+                  What&apos;s inside · tap a line
+                </p>
+                <ul className="space-y-1" role="group" aria-labelledby="offer-framework-list-label">
+                  {OFFER_FRAMEWORK_BULLETS.map((item, i) => (
+                    <li key={item.line}>
+                      <button
+                        type="button"
+                        aria-pressed={offerFocus === i}
+                        aria-controls="offer-focus-panel"
+                        onClick={() => setOfferFocus(i)}
+                        onMouseEnter={() => setOfferFocus(i)}
+                        className={`group/item flex w-full gap-4 rounded-xl px-3 py-3.5 text-left transition-all duration-300 md:py-3 ${
+                          offerFocus === i
+                            ? 'border border-red-500/35 bg-red-500/[0.08] shadow-[0_0_28px_rgba(239,68,68,0.12)]'
+                            : 'border border-transparent hover:border-white/10 hover:bg-white/[0.04]'
+                        }`}
+                      >
+                        <div
+                          className={`mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full transition-all duration-300 ${
+                            offerFocus === i
+                              ? 'scale-110 bg-red-500/25 text-red-400'
+                              : 'bg-red-500/10 text-red-500/80 group-hover/item:scale-105'
+                          }`}
+                        >
+                          <iconify-icon icon="solar:check-circle-bold" width="16"></iconify-icon>
+                        </div>
+                        <span
+                          className={`text-sm leading-relaxed transition-colors duration-300 ${
+                            offerFocus === i ? 'text-neutral-100' : 'text-neutral-400'
+                          }`}
+                        >
+                          {item.line}
+                        </span>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+
+                <div
+                  id="offer-focus-panel"
+                  role="region"
+                  aria-live="polite"
+                  aria-atomic="true"
+                  className="mt-6 min-h-[5.5rem] rounded-xl border border-white/10 bg-black/30 p-4 text-sm leading-relaxed text-neutral-400 transition-[border-color,box-shadow] duration-300 md:min-h-[5rem] md:p-5"
+                >
+                  <span className="mb-1 block text-[10px] font-mono uppercase tracking-widest text-red-500/80">
+                    Lens
+                  </span>
+                  <p key={offerFocus} className="animate-[offerFocusFade_0.35s_ease-out] text-neutral-300">
+                    {OFFER_FRAMEWORK_BULLETS[offerFocus].focus}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Pricing Section */}
-      <section id="pricing" className="py-24 bg-neutral-950 relative overflow-hidden section-standard">
-        <div className="absolute inset-0 z-0" style={{ backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px)', backgroundSize: '100px 100%' }}></div>
-        <div className="max-w-4xl mx-auto px-6 relative z-10 text-center animate-on-scroll">
-          <h2 className="text-3xl text-white font-medium mb-12">Straight talk on pricing</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-            <div className="pricing-card p-8 rounded-2xl bg-neutral-900 border border-white/10 hover:border-red-500/30 transition-all duration-300 card-lift">
-              <span className="text-neutral-500 text-xs font-mono uppercase tracking-widest block mb-4">Project Basis</span>
-              <div className="text-4xl font-bricolage text-white font-medium mb-2">$1K to $25K</div>
-              <p className="text-sm text-neutral-400">Typical range for systems & builds</p>
+      <section id="pricing" className="section-ambient relative overflow-hidden bg-neutral-950 py-24 section-standard">
+        <div className="section-ambient__glow opacity-50" aria-hidden />
+        <div
+          className="absolute inset-0 z-0"
+          style={{ backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px)', backgroundSize: '100px 100%' }}
+        />
+        <div className="relative z-10 mx-auto max-w-5xl px-6">
+          <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-14 animate-on-scroll">
+            <div className="text-center lg:col-span-5 lg:text-left">
+              <h2 className="text-3xl font-medium text-white md:text-4xl">Straight talk on pricing</h2>
+              <div className="mx-auto mt-10 flex max-w-md items-start justify-center gap-3 text-sm text-neutral-400 lg:mx-0">
+                <iconify-icon icon="solar:check-circle-linear" className="mt-0.5 shrink-0 text-green-500" width="20" />
+                <span>If inefficiency costs you, let's talk.</span>
+              </div>
             </div>
-            <div className="pricing-card p-8 rounded-2xl bg-neutral-900 border border-white/10 hover:border-red-500/30 transition-all duration-300 card-lift">
-              <span className="text-neutral-500 text-xs font-mono uppercase tracking-widest block mb-4">Ongoing Support</span>
-              <div className="text-4xl font-bricolage text-white font-medium mb-2">$297 to $3K</div>
-              <p className="text-sm text-neutral-400">Per month for systems management</p>
+            <div className="story-rail lg:col-span-7">
+              <div className="story-rail__node mb-2">
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                  <div className="pricing-card rounded-2xl border border-white/10 bg-neutral-900 p-8 transition-all duration-300 card-lift hover:border-red-500/30">
+                    <span className="mb-4 block text-xs font-mono uppercase tracking-widest text-neutral-500">Project Basis</span>
+                    <div className="mb-2 font-bricolage text-4xl font-medium text-white">$1K to $25K</div>
+                    <p className="text-sm text-neutral-400">Typical range for systems & builds</p>
+                  </div>
+                  <div className="pricing-card rounded-2xl border border-white/10 bg-neutral-900 p-8 transition-all duration-300 card-lift hover:border-red-500/30">
+                    <span className="mb-4 block text-xs font-mono uppercase tracking-widest text-neutral-500">Ongoing Support</span>
+                    <div className="mb-2 font-bricolage text-4xl font-medium text-white">$297 to $3K</div>
+                    <p className="text-sm text-neutral-400">Per month for systems management</p>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-8 text-neutral-600 md:justify-start md:pl-1" aria-hidden>
+                <iconify-icon icon="solar:widget-5-linear" width="24" />
+                <iconify-icon icon="solar:settings-linear" width="24" />
+                <iconify-icon icon="solar:calendar-linear" width="24" />
+                <iconify-icon icon="solar:wrench-linear" width="24" />
+              </div>
             </div>
           </div>
-          <div className="flex justify-center items-center text-sm text-neutral-400">
-            <div className="flex items-center gap-2">
-              <iconify-icon icon="solar:check-circle-linear" style={{ color: '#22c55e' }} className="text-green-500"></iconify-icon>
-              If inefficiency costs you, let's talk.
-            </div>
-          </div>
-          <div className="text-center mt-12">
-            <p className="text-neutral-300 text-lg mb-6">Not sure if this is right for you?</p>
-            <a href="#contact" className="cta-primary inline-flex items-center gap-2 px-8 py-4 bg-white text-neutral-950 rounded-lg text-sm font-medium hover:bg-red-400 transition-all btn-shimmer hover:shadow-lg hover:shadow-red-500/30">
+          <div className="mt-14 text-center">
+            <p className="mb-6 text-lg text-neutral-300">Not sure if this is right for you?</p>
+            <a href="#contact" className="cta-primary inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 text-sm font-medium text-neutral-950 transition-all btn-shimmer hover:bg-red-400 hover:shadow-lg hover:shadow-red-500/30">
               Book a Free Discovery Call
               <iconify-icon icon="solar:arrow-right-up-linear"></iconify-icon>
             </a>
@@ -713,15 +1041,25 @@ export default function Home() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 border-t border-white/5 bg-neutral-900/20 section-subtle">
-        <div className="max-w-4xl mx-auto px-6 md:px-12">
-          <div className="text-center mb-16 animate-on-scroll">
-            <span className="text-xs font-mono uppercase tracking-widest text-red-500 mb-4 block">Common Questions</span>
-            <h2 className="text-4xl md:text-5xl text-white font-medium tracking-tight mb-4">Still Have Questions?</h2>
-            <p className="text-neutral-400 max-w-xl mx-auto">Here are answers to the most common questions about working together.</p>
+      <section className="border-t border-white/5 bg-neutral-900/20 py-24 section-subtle">
+        <div className="mx-auto max-w-4xl px-6 md:px-12">
+          <div className="faq-hero-band animate-on-scroll">
+            <div className="faq-hero-band__glow" aria-hidden />
+            <div className="relative z-10 flex flex-col items-center gap-4 text-center md:flex-row md:text-left">
+              <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-red-500/25 bg-red-500/10 text-red-400 shadow-[0_0_24px_rgba(239,68,68,0.15)]">
+                <iconify-icon icon="solar:chat-round-dots-linear" width="32"></iconify-icon>
+              </div>
+              <div>
+                <span className="mb-2 block text-xs font-mono uppercase tracking-widest text-red-500">Common Questions</span>
+                <h2 className="text-3xl font-medium tracking-tight text-white md:text-5xl">Still Have Questions?</h2>
+                <p className="mx-auto mt-3 max-w-xl text-neutral-400 md:mx-0">
+                  Here are answers to the most common questions about working together.
+                </p>
+              </div>
+            </div>
           </div>
-          <div className="space-y-6 animate-on-scroll">
-            <div className="glass-panel rounded-xl border border-white/10 faq-card overflow-hidden">
+          <div className="space-y-6">
+            <div className="glass-panel faq-card animate-on-scroll overflow-hidden rounded-xl border border-white/10">
               <button 
                 onClick={() => toggleFaq(0)}
                 className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
@@ -738,7 +1076,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="glass-panel rounded-xl border border-white/10 faq-card overflow-hidden">
+            <div className="glass-panel faq-card animate-on-scroll delay-75 overflow-hidden rounded-xl border border-white/10">
               <button 
                 onClick={() => toggleFaq(1)}
                 className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
@@ -755,7 +1093,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="glass-panel rounded-xl border border-white/10 faq-card overflow-hidden">
+            <div className="glass-panel faq-card animate-on-scroll delay-100 overflow-hidden rounded-xl border border-white/10">
               <button 
                 onClick={() => toggleFaq(2)}
                 className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
@@ -772,7 +1110,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="glass-panel rounded-xl border border-white/10 faq-card overflow-hidden">
+            <div className="glass-panel faq-card animate-on-scroll delay-150 overflow-hidden rounded-xl border border-white/10">
               <button 
                 onClick={() => toggleFaq(3)}
                 className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
@@ -789,7 +1127,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="glass-panel rounded-xl border border-white/10 faq-card overflow-hidden">
+            <div className="glass-panel faq-card animate-on-scroll delay-200 overflow-hidden rounded-xl border border-white/10">
               <button 
                 onClick={() => toggleFaq(4)}
                 className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
@@ -806,7 +1144,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="glass-panel rounded-xl border border-white/10 faq-card overflow-hidden">
+            <div className="glass-panel faq-card animate-on-scroll delay-300 overflow-hidden rounded-xl border border-white/10">
               <button 
                 onClick={() => toggleFaq(5)}
                 className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
@@ -823,7 +1161,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="glass-panel rounded-xl border border-white/10 faq-card overflow-hidden">
+            <div className="glass-panel faq-card animate-on-scroll delay-500 overflow-hidden rounded-xl border border-white/10">
               <button 
                 onClick={() => toggleFaq(6)}
                 className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
@@ -961,6 +1299,12 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      <OfferFrameworkGateModal
+        open={offerFrameworkModalOpen}
+        onClose={() => setOfferFrameworkModalOpen(false)}
+        webhookUrl={ghlOfferWebhookUrl}
+      />
     </div>
   )
 }
