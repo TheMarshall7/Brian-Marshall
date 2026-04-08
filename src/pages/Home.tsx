@@ -29,15 +29,38 @@ const OFFER_FRAMEWORK_BULLETS: { line: string; focus: string }[] = [
   },
 ]
 
-const WORK_DEPLOY_TILES: { key: string; icon: string; label: string; tileClass: string }[] = [
-  { key: 'et', icon: 'solar:music-note-linear', label: 'Ear Training Platform', tileClass: 'border-red-500/35 bg-red-500/10 text-red-400' },
-  { key: 'vi', icon: 'solar:shield-check-linear', label: 'Virelia Insurance', tileClass: 'border-blue-500/35 bg-blue-500/10 text-blue-400' },
-  { key: 'co', icon: 'solar:stars-minimalistic-linear', label: 'Spiritual & Human Design Coach', tileClass: 'border-purple-500/35 bg-purple-500/10 text-purple-400' },
-  { key: 'gs', icon: 'solar:gamepad-linear', label: 'Game Studio Website', tileClass: 'border-indigo-500/35 bg-indigo-500/10 text-indigo-400' },
-  { key: 'mq', icon: 'solar:music-notes-linear', label: 'MOQEMÀE', tileClass: 'border-rose-500/35 bg-rose-500/10 text-rose-400' },
-  { key: 'ar', icon: 'solar:widget-5-linear', label: 'AreoClient', tileClass: 'border-emerald-500/35 bg-emerald-500/10 text-emerald-400' },
-  { key: 'so', icon: 'solar:chat-round-dots-linear', label: 'Social Outreach app', tileClass: 'border-cyan-500/35 bg-cyan-500/10 text-cyan-400' },
-  { key: 'is', icon: 'solar:music-note-slider-linear', label: 'ISIATA', tileClass: 'border-amber-500/35 bg-amber-500/10 text-amber-400' },
+const WORK_DEPLOY_TILES: { key: string; icon: string; label: string; tileClass: string; caseId: string }[] = [
+  { key: 'et', icon: 'solar:music-note-linear', label: 'Ear Training Platform', tileClass: 'border-red-500/35 bg-red-500/10 text-red-400', caseId: 'case-ear-training' },
+  { key: 'vi', icon: 'solar:shield-check-linear', label: 'Virelia Insurance', tileClass: 'border-blue-500/35 bg-blue-500/10 text-blue-400', caseId: 'case-virelia' },
+  { key: 'co', icon: 'solar:stars-minimalistic-linear', label: 'Spiritual & Human Design Coach', tileClass: 'border-purple-500/35 bg-purple-500/10 text-purple-400', caseId: 'case-spiritual-coach' },
+  { key: 'gs', icon: 'solar:gamepad-linear', label: 'Game Studio Website', tileClass: 'border-indigo-500/35 bg-indigo-500/10 text-indigo-400', caseId: 'case-game-studio' },
+  { key: 'mq', icon: 'solar:music-notes-linear', label: 'MOQEMÀE', tileClass: 'border-rose-500/35 bg-rose-500/10 text-rose-400', caseId: 'case-moqemae' },
+  { key: 'ar', icon: 'solar:widget-5-linear', label: 'AreoClient', tileClass: 'border-emerald-500/35 bg-emerald-500/10 text-emerald-400', caseId: 'case-areoclient' },
+  { key: 'so', icon: 'solar:chat-round-dots-linear', label: 'Social Outreach app', tileClass: 'border-cyan-500/35 bg-cyan-500/10 text-cyan-400', caseId: 'case-social-outreach' },
+  { key: 'is', icon: 'solar:music-note-slider-linear', label: 'ISIATA', tileClass: 'border-amber-500/35 bg-amber-500/10 text-amber-400', caseId: 'case-isiata' },
+]
+
+const PROCESS_FIX_STEPS: { step: string; title: string; fixQuote: string }[] = [
+  {
+    step: '01',
+    title: 'Websites & Web Apps',
+    fixQuote: '"My website looks good... but it doesn\'t make money."',
+  },
+  {
+    step: '02',
+    title: 'Automation Systems',
+    fixQuote: '"I\'m drowning in tabs, DMs, and spreadsheets."',
+  },
+  {
+    step: '03',
+    title: 'AI Integration',
+    fixQuote: '"I\'m doing work a machine should be doing."',
+  },
+  {
+    step: '04',
+    title: 'Strategy & Consulting',
+    fixQuote: '"I know something\'s off... I just can\'t see it."',
+  },
 ]
 
 export default function Home() {
@@ -108,7 +131,7 @@ export default function Home() {
         <div className="relative z-10 flex min-h-0 w-full flex-1 flex-col overflow-y-auto overscroll-y-contain pt-[7rem] md:pt-[7.5rem]">
           <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-y-8 md:gap-y-0 gap-x-12 lg:gap-x-20 items-start pb-2">
           <div className="md:col-span-8">
-            <div className="mb-5 md:mb-6 animate-slide-up" style={{ animationDelay: '0.4s', opacity: 0 }}>
+            <div className="mb-5 md:mb-6 pt-[40px] animate-slide-up" style={{ animationDelay: '0.4s', opacity: 0 }}>
               <div className="inline-flex items-center gap-3 px-4 py-2.5 rounded-full bg-red-500/10 border border-red-500/20 hero-badge">
                 <div className="flex -space-x-2 group">
                   <div className="w-6 h-6 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center overflow-hidden">
@@ -219,14 +242,15 @@ export default function Home() {
                 <span className="mb-3 block text-[10px] font-mono uppercase tracking-widest text-neutral-500">Live deployments</span>
                 <div className="flex flex-wrap gap-2">
                   {WORK_DEPLOY_TILES.map((t) => (
-                    <div
+                    <a
                       key={t.key}
-                      className={`flex h-11 w-11 items-center justify-center rounded-xl border transition-transform duration-300 hover:scale-105 hover:shadow-lg md:h-12 md:w-12 ${t.tileClass}`}
-                      aria-label={t.label}
-                      title={t.label}
+                      href={`#${t.caseId}`}
+                      className={`flex h-11 w-11 items-center justify-center rounded-xl border transition-transform duration-300 hover:scale-105 hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500/60 md:h-12 md:w-12 ${t.tileClass}`}
+                      aria-label={`${t.label}: jump to case study`}
+                      title={`View ${t.label}`}
                     >
                       <iconify-icon icon={t.icon} width="22" className="md:w-[24px]" />
-                    </div>
+                    </a>
                   ))}
                 </div>
               </div>
@@ -236,7 +260,8 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Case Study 1: Ear Training Platform */}
             <div
-              className="group glass-panel rounded-2xl overflow-hidden border border-white/10 hover:border-red-500/40 transition-all duration-500 animate-on-scroll flex flex-col card-lift case-study-card"
+              id="case-ear-training"
+              className="group glass-panel scroll-mt-24 rounded-2xl overflow-hidden border border-white/10 transition-all duration-500 animate-on-scroll flex flex-col card-lift case-study-card hover:border-red-500/40 md:scroll-mt-28"
               style={{ '--case-study-glow': '239, 68, 68' } as React.CSSProperties}
             >
               <div className="relative flex-1 p-8 md:p-10 flex flex-col min-h-[420px]">
@@ -277,7 +302,8 @@ export default function Home() {
 
             {/* Case Study 2: Virelia Insurance */}
             <div
-              className="group glass-panel rounded-2xl overflow-hidden border border-white/10 hover:border-blue-500/40 transition-all duration-500 animate-on-scroll delay-100 flex flex-col card-lift case-study-card"
+              id="case-virelia"
+              className="group glass-panel scroll-mt-24 rounded-2xl overflow-hidden border border-white/10 transition-all duration-500 animate-on-scroll flex flex-col delay-100 card-lift case-study-card hover:border-blue-500/40 md:scroll-mt-28"
               style={{ '--case-study-glow': '59, 130, 246' } as React.CSSProperties}
             >
               <div className="relative flex-1 p-8 md:p-10 flex flex-col min-h-[420px]">
@@ -318,7 +344,8 @@ export default function Home() {
 
             {/* Case Study 3: Spiritual & Human Design coach site */}
             <div
-              className="group glass-panel rounded-2xl overflow-hidden border border-white/10 hover:border-purple-500/40 transition-all duration-500 animate-on-scroll delay-200 flex flex-col card-lift case-study-card"
+              id="case-spiritual-coach"
+              className="group glass-panel scroll-mt-24 rounded-2xl overflow-hidden border border-white/10 transition-all duration-500 animate-on-scroll flex flex-col delay-200 card-lift case-study-card hover:border-purple-500/40 md:scroll-mt-28"
               style={{ '--case-study-glow': '168, 85, 247' } as React.CSSProperties}
             >
               <div className="relative flex-1 p-8 md:p-10 flex flex-col min-h-[420px]">
@@ -359,7 +386,8 @@ export default function Home() {
 
             {/* Case Study 4: Game studio brand site */}
             <div
-              className="group glass-panel rounded-2xl overflow-hidden border border-white/10 hover:border-indigo-500/40 transition-all duration-500 animate-on-scroll delay-300 flex flex-col card-lift case-study-card"
+              id="case-game-studio"
+              className="group glass-panel scroll-mt-24 rounded-2xl overflow-hidden border border-white/10 transition-all duration-500 animate-on-scroll flex flex-col delay-300 card-lift case-study-card hover:border-indigo-500/40 md:scroll-mt-28"
               style={{ '--case-study-glow': '99, 102, 241' } as React.CSSProperties}
             >
               <div className="relative flex-1 p-8 md:p-10 flex flex-col min-h-[420px]">
@@ -400,7 +428,8 @@ export default function Home() {
 
             {/* Case Study 5: Artist website, MOQEMÀE */}
             <div
-              className="group glass-panel rounded-2xl overflow-hidden border border-white/10 hover:border-rose-500/40 transition-all duration-500 animate-on-scroll delay-400 flex flex-col card-lift case-study-card"
+              id="case-moqemae"
+              className="group glass-panel scroll-mt-24 rounded-2xl overflow-hidden border border-white/10 transition-all duration-500 animate-on-scroll flex flex-col delay-400 card-lift case-study-card hover:border-rose-500/40 md:scroll-mt-28"
               style={{ '--case-study-glow': '244, 63, 94' } as React.CSSProperties}
             >
               <div className="relative flex-1 p-8 md:p-10 flex flex-col min-h-[420px]">
@@ -440,7 +469,8 @@ export default function Home() {
 
             {/* Case Study 6: All-in-one business system */}
             <div
-              className="group glass-panel rounded-2xl overflow-hidden border border-white/10 hover:border-emerald-500/40 transition-all duration-500 animate-on-scroll delay-500 flex flex-col card-lift case-study-card"
+              id="case-areoclient"
+              className="group glass-panel scroll-mt-24 rounded-2xl overflow-hidden border border-white/10 transition-all duration-500 animate-on-scroll flex flex-col delay-500 card-lift case-study-card hover:border-emerald-500/40 md:scroll-mt-28"
               style={{ '--case-study-glow': '16, 185, 129' } as React.CSSProperties}
             >
               <div className="relative flex-1 p-8 md:p-10 flex flex-col min-h-[420px]">
@@ -480,7 +510,8 @@ export default function Home() {
 
             {/* Case Study 7: Social outreach AI app */}
             <div
-              className="group glass-panel rounded-2xl overflow-hidden border border-white/10 hover:border-cyan-500/40 transition-all duration-500 animate-on-scroll delay-600 flex flex-col card-lift case-study-card"
+              id="case-social-outreach"
+              className="group glass-panel scroll-mt-24 rounded-2xl overflow-hidden border border-white/10 transition-all duration-500 animate-on-scroll flex flex-col delay-600 card-lift case-study-card hover:border-cyan-500/40 md:scroll-mt-28"
               style={{ '--case-study-glow': '6, 182, 212' } as React.CSSProperties}
             >
               <div className="relative flex-1 p-8 md:p-10 flex flex-col min-h-[420px]">
@@ -520,7 +551,8 @@ export default function Home() {
 
             {/* Case Study 8: ISIATA, culture, sound & tools */}
             <div
-              className="group glass-panel rounded-2xl overflow-hidden border border-white/10 hover:border-amber-500/40 transition-all duration-500 animate-on-scroll delay-700 flex flex-col card-lift case-study-card"
+              id="case-isiata"
+              className="group glass-panel scroll-mt-24 rounded-2xl overflow-hidden border border-white/10 transition-all duration-500 animate-on-scroll flex flex-col delay-700 card-lift case-study-card hover:border-amber-500/40 md:scroll-mt-28"
               style={{ '--case-study-glow': '245, 158, 11' } as React.CSSProperties}
             >
               <div className="relative flex-1 p-8 md:p-10 flex flex-col min-h-[420px]">
@@ -589,19 +621,29 @@ export default function Home() {
                 They need better systems.
               </h2>
             </div>
-            <div className="story-rail lg:col-span-5 lg:pt-4" aria-hidden>
-              <div className="story-rail__node mb-10 pl-1">
-                <span className="font-bricolage text-4xl font-medium text-red-500/90 md:text-5xl">01</span>
-              </div>
-              <div className="story-rail__node mb-10 pl-1">
-                <span className="font-bricolage text-4xl font-medium text-red-500/70 md:text-5xl">02</span>
-              </div>
-              <div className="story-rail__node mb-10 pl-1">
-                <span className="font-bricolage text-4xl font-medium text-red-500/50 md:text-5xl">03</span>
-              </div>
-              <div className="story-rail__node pl-1">
-                <span className="font-bricolage text-4xl font-medium text-red-500/35 md:text-5xl">04</span>
-              </div>
+            <div className="story-rail lg:col-span-5 lg:pt-2">
+              {PROCESS_FIX_STEPS.map((s, i) => (
+                <div
+                  key={s.step}
+                  className={`story-rail__node pl-1 ${i < PROCESS_FIX_STEPS.length - 1 ? 'mb-8' : ''}`}
+                >
+                  <span
+                    className={`font-bricolage text-4xl font-medium md:text-5xl ${
+                      i === 0
+                        ? 'text-red-500/90'
+                        : i === 1
+                          ? 'text-red-500/70'
+                          : i === 2
+                            ? 'text-red-500/50'
+                            : 'text-red-500/35'
+                    }`}
+                  >
+                    {s.step}
+                  </span>
+                  <p className="mt-2 text-sm font-medium text-white">{s.title}</p>
+                  <p className="mt-1 max-w-sm text-xs italic leading-relaxed text-neutral-500">{s.fixQuote}</p>
+                </div>
+              ))}
             </div>
           </div>
 
