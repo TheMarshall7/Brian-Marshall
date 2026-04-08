@@ -122,13 +122,13 @@ export default function Home() {
       <div className="bg-grain"></div>
       <Navigation />
 
-      {/* Hero: outer never scrolls (avoids huge scrollHeight from tall absolute blur). Only the inner column scrolls. */}
-      <header className="relative flex h-[100svh] max-h-[100svh] min-h-0 flex-col overflow-hidden tech-grid hero-elevated px-6 md:px-12 pb-6 md:pb-8">
+      {/* Mobile: document scrolls (no trap). md+: fixed viewport height; inner column scrolls if needed. */}
+      <header className="relative flex min-h-[100svh] flex-col overflow-x-hidden overflow-y-visible tech-grid hero-elevated px-6 pb-6 md:h-[100svh] md:max-h-[100svh] md:min-h-0 md:overflow-hidden md:px-12 md:pb-8">
         <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden>
           <div className="absolute top-[8%] left-1/2 h-[min(88vh,920px)] w-[min(112vw,1200px)] max-w-none -translate-x-1/2 rounded-full bg-red-900/[0.14] blur-[140px]" />
         </div>
 
-        <div className="relative z-10 flex min-h-0 w-full flex-1 flex-col overflow-y-auto overscroll-y-contain pt-[7rem] md:justify-center md:py-12 md:pt-[7.5rem]">
+        <div className="relative z-10 flex w-full flex-1 flex-col overflow-visible pt-[7rem] md:min-h-0 md:overflow-y-auto md:overscroll-y-contain md:justify-center md:py-12 md:pt-[7.5rem]">
           <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-y-10 md:gap-y-0 gap-x-12 lg:gap-x-24 items-start md:items-center pb-4 md:pb-8">
           <div className="md:col-span-8">
             <div className="mb-6 md:mb-8 pt-[40px] md:pt-0 animate-slide-up" style={{ animationDelay: '0.4s', opacity: 0 }}>
