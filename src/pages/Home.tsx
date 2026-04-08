@@ -229,16 +229,6 @@ export default function Home() {
                     </div>
                   ))}
                 </div>
-                <div className="mt-4 flex items-center justify-between border-t border-white/10 pt-4">
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-600">Signal</span>
-                  <div className="glass-panel flex items-center gap-2 rounded-full px-4 py-2 text-xs text-neutral-400">
-                    <span className="relative flex h-2 w-2">
-                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-90"></span>
-                      <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.8)]"></span>
-                    </span>
-                    System Status: Operational
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -695,8 +685,8 @@ export default function Home() {
       {/* About Section */}
       <section id="about" className="section-ambient relative overflow-hidden border-t border-white/5 py-24 section-standard">
         <div className="section-ambient__grid opacity-30" aria-hidden />
-        <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 md:px-12 lg:grid-cols-12 lg:gap-10 xl:gap-14">
-          <div className="animate-on-scroll lg:col-span-5">
+        <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 md:px-12 lg:grid-cols-2 lg:gap-20">
+          <div className="animate-on-scroll">
             <span className="text-xs font-mono uppercase tracking-widest text-red-500 mb-4 block">Philosophy</span>
             <h3 className="text-3xl md:text-5xl text-white font-medium mb-8 tracking-tight leading-tight">
               I'm not here to "optimize your vibes."<br />
@@ -733,7 +723,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="animate-on-scroll delay-200 lg:col-span-4">
+          <div className="animate-on-scroll delay-200">
             <div className="glass-panel relative rounded-2xl border border-white/10 p-8 about-card">
               <div className="absolute -top-3 -right-3 px-4 py-1 bg-neutral-900 border border-white/10 text-xs font-mono text-white rounded-full">ORIGIN</div>
               <div className="space-y-8 relative">
@@ -770,58 +760,6 @@ export default function Home() {
                     <span className="text-neutral-600 font-normal">(Former)</span>
                   </li>
                 </ul>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-4 animate-on-scroll delay-100 lg:col-span-3">
-            <div className="relative overflow-hidden rounded-xl border border-white/10 bg-neutral-900/50 p-5 shadow-lg shadow-black/20">
-              <div
-                className="pointer-events-none absolute inset-0 opacity-[0.12]"
-                style={{
-                  backgroundImage:
-                    'repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(255,255,255,0.4) 3px, rgba(255,255,255,0.4) 4px)',
-                }}
-                aria-hidden
-              />
-              <div className="relative flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-neutral-400">
-                  <iconify-icon icon="solar:music-note-linear" width="20"></iconify-icon>
-                </div>
-                <h4 className="text-base font-medium text-white">The Musician</h4>
-              </div>
-            </div>
-            <div className="relative overflow-hidden rounded-xl border border-white/10 bg-neutral-900/50 p-5 shadow-lg shadow-black/20">
-              <div
-                className="pointer-events-none absolute inset-0 opacity-20"
-                style={{
-                  backgroundImage:
-                    'linear-gradient(135deg, rgba(255,255,255,0.06) 25%, transparent 25%), linear-gradient(225deg, rgba(255,255,255,0.06) 25%, transparent 25%)',
-                  backgroundSize: '12px 12px',
-                }}
-                aria-hidden
-              />
-              <div className="relative flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-neutral-400">
-                  <iconify-icon icon="solar:bricks-linear" width="20"></iconify-icon>
-                </div>
-                <h4 className="text-base font-medium text-white">The Wall</h4>
-              </div>
-            </div>
-            <div className="relative overflow-hidden rounded-xl border border-red-500/20 bg-neutral-900/50 p-5 shadow-lg shadow-black/20">
-              <div
-                className="pointer-events-none absolute inset-0 opacity-[0.15]"
-                style={{
-                  backgroundImage: 'radial-gradient(rgba(239,68,68,0.35) 1px, transparent 1px)',
-                  backgroundSize: '16px 16px',
-                }}
-                aria-hidden
-              />
-              <div className="relative flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-red-500/30 bg-red-500/10 text-red-400">
-                  <iconify-icon icon="solar:code-circle-linear" width="20"></iconify-icon>
-                </div>
-                <h4 className="text-base font-medium text-white">The Architect</h4>
               </div>
             </div>
           </div>
@@ -1021,12 +959,6 @@ export default function Home() {
                     <p className="text-sm text-neutral-400">Per month for systems management</p>
                   </div>
                 </div>
-              </div>
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-8 text-neutral-600 md:justify-start md:pl-1" aria-hidden>
-                <iconify-icon icon="solar:widget-5-linear" width="24" />
-                <iconify-icon icon="solar:settings-linear" width="24" />
-                <iconify-icon icon="solar:calendar-linear" width="24" />
-                <iconify-icon icon="solar:wrench-linear" width="24" />
               </div>
             </div>
           </div>
