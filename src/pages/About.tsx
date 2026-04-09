@@ -338,23 +338,34 @@ export default function About() {
       <main className="pt-28 md:pt-32">
         <div className="about-section-nav">
           <div className="mx-auto max-w-7xl px-6 md:px-12">
-            <div className="glass-panel inline-flex w-full items-center justify-between gap-2 rounded-full border border-white/10 bg-neutral-950/40 p-2 backdrop-blur-md">
-              <div className="flex flex-1 items-center gap-1 overflow-x-auto hide-scrollbar">
-                {ABOUT_SECTIONS.map((s) => (
-                  <button
-                    key={s.id}
-                    type="button"
-                    onClick={() => {
-                      const el = document.getElementById(s.id)
-                      el?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                    }}
-                    className={`about-section-pill ${activeSection === s.id ? 'about-section-pill--active' : ''}`}
-                    aria-current={activeSection === s.id ? 'true' : undefined}
-                  >
-                    {s.label}
-                  </button>
-                ))}
-              </div>
+            <div className="flex justify-center">
+              <nav
+                className="about-section-nav-shell relative w-full max-w-full sm:mx-auto sm:w-max"
+                aria-label="About page sections"
+              >
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute -inset-px rounded-full bg-gradient-to-b from-white/[0.12] via-transparent to-transparent opacity-80"
+                />
+                <div className="glass-panel relative inline-flex w-full items-center justify-center rounded-full border border-white/[0.12] bg-gradient-to-b from-white/[0.06] to-neutral-950/70 p-1.5 shadow-[0_16px_50px_-18px_rgba(0,0,0,0.75)] ring-1 ring-white/[0.05] backdrop-blur-xl sm:w-auto">
+                  <div className="flex min-h-[2.25rem] w-full items-center justify-center gap-0.5 overflow-x-auto hide-scrollbar px-0.5 sm:min-h-0 sm:gap-1 sm:px-1">
+                    {ABOUT_SECTIONS.map((s) => (
+                      <button
+                        key={s.id}
+                        type="button"
+                        onClick={() => {
+                          const el = document.getElementById(s.id)
+                          el?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                        }}
+                        className={`about-section-pill ${activeSection === s.id ? 'about-section-pill--active' : ''}`}
+                        aria-current={activeSection === s.id ? 'true' : undefined}
+                      >
+                        {s.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </nav>
             </div>
           </div>
         </div>
