@@ -4,6 +4,7 @@ export default function Navigation() {
   const location = useLocation()
   const navigate = useNavigate()
   const isHome = location.pathname === '/'
+  const isAbout = location.pathname === '/about'
 
   const handleHashLink = (hash: string) => {
     if (isHome) {
@@ -40,7 +41,12 @@ export default function Navigation() {
         <div className="hidden md:flex items-center gap-6 text-xs font-medium text-white/50">
           <button onClick={() => handleHashLink('#work')} className="nav-link hover:text-white transition-colors py-1">Work</button>
           <button onClick={() => handleHashLink('#process')} className="nav-link hover:text-white transition-colors py-1">Process</button>
-          <button onClick={() => handleHashLink('#about')} className="nav-link hover:text-white transition-colors py-1">About</button>
+          <Link
+            to="/about"
+            className={`nav-link transition-colors py-1 ${isAbout ? 'text-white' : 'hover:text-white'}`}
+          >
+            About
+          </Link>
           <button onClick={() => handleHashLink('#pricing')} className="nav-link hover:text-white transition-colors py-1">Pricing</button>
         </div>
 
