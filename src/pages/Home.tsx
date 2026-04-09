@@ -43,23 +43,23 @@ const WORK_DEPLOY_TILES: { key: string; icon: string; label: string; tileClass: 
 const PROCESS_FIX_STEPS: { step: string; title: string; fixQuote: string }[] = [
   {
     step: '01',
-    title: 'Websites & Web Apps',
-    fixQuote: '"My website looks good... but it doesn\'t make money."',
+    title: 'Create an Offer They Feel Stupid Saying No To',
+    fixQuote: '"People are interested… but they don’t buy."',
   },
   {
     step: '02',
-    title: 'Automation Systems',
-    fixQuote: '"I\'m drowning in tabs, DMs, and spreadsheets."',
+    title: 'Extract More Revenue From Every Client',
+    fixQuote: '"I’m booked… but I’m capped."',
   },
   {
     step: '03',
-    title: 'AI Integration',
-    fixQuote: '"I\'m doing work a machine should be doing."',
+    title: 'Get Strangers To Want To Buy Your Stuff',
+    fixQuote: '"I need leads that don’t feel like a grind."',
   },
   {
     step: '04',
-    title: 'Strategy & Consulting',
-    fixQuote: '"I know something\'s off... I just can\'t see it."',
+    title: 'Build Systems That Make It Repeatable',
+    fixQuote: '"I can’t keep rebuilding the same thing every month."',
   },
 ]
 
@@ -128,7 +128,7 @@ export default function Home() {
           <div className="absolute top-[8%] left-1/2 h-[min(88vh,920px)] w-[min(112vw,1200px)] max-w-none -translate-x-1/2 rounded-full bg-red-900/[0.14] blur-[140px]" />
         </div>
 
-        <div className="relative z-10 flex w-full flex-1 flex-col overflow-visible pt-[7rem] md:min-h-0 md:overflow-y-auto md:overscroll-y-contain md:justify-center md:py-12 md:pt-[7.5rem]">
+        <div className="relative z-10 flex w-full flex-1 flex-col overflow-visible pt-[7rem] md:min-h-0 md:overflow-y-auto md:overscroll-y-auto md:justify-center md:py-12 md:pt-[7.5rem]">
           <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-y-10 md:gap-y-0 gap-x-12 lg:gap-x-24 items-start md:items-center pb-4 md:pb-8">
           <div className="md:col-span-8">
             <div className="mb-6 md:mb-8 pt-[40px] md:pt-0 animate-slide-up" style={{ animationDelay: '0.4s', opacity: 0 }}>
@@ -774,7 +774,7 @@ export default function Home() {
                   <div className="timeline-dot absolute left-[-51px] top-[2px] w-6 h-6 rounded-full bg-neutral-900 border border-white/20 flex items-center justify-center z-10 translate-x-1/2">
                     <iconify-icon icon="solar:music-note-linear" className="text-neutral-500" width="12"></iconify-icon>
                   </div>
-                  <h4 className="text-white font-medium mb-1">The Musician</h4>
+                  <h4 className="text-white font-medium mb-1">The Artist</h4>
                   <p className="text-sm text-neutral-400 leading-relaxed">I learned early: bad input = bad output. No amount of polish fixes a broken signal.</p>
                 </div>
                 <div className="relative pl-10">
@@ -799,7 +799,7 @@ export default function Home() {
                   <li>Fanshawe College</li>
                   <li>
                     Licensed Life Insurance Advisor (LLQP), Durham College{' '}
-                    <span className="text-neutral-600 font-normal">(Former)</span>
+                    <span className="text-white/30 font-normal">(Former)</span>
                   </li>
                 </ul>
               </div>
