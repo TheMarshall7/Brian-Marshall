@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import CaseStudyMediaBand from '../components/CaseStudyMediaBand'
 import Navigation from '../components/Navigation'
 import OfferFrameworkGateModal from '../components/OfferFrameworkGateModal'
+import { DEFAULT_GHL_OFFER_WEBHOOK_URL } from '../constants/ghl'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
 const OFFER_FRAMEWORK_BULLETS: { line: string; focus: string }[] = [
@@ -68,7 +69,8 @@ export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const [offerFocus, setOfferFocus] = useState(0)
   const [offerFrameworkModalOpen, setOfferFrameworkModalOpen] = useState(false)
-  const ghlOfferWebhookUrl = import.meta.env.VITE_GHL_OFFER_WEBHOOK_URL
+  const ghlOfferWebhookUrl =
+    import.meta.env.VITE_GHL_OFFER_WEBHOOK_URL?.trim() || DEFAULT_GHL_OFFER_WEBHOOK_URL
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index)

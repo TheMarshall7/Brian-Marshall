@@ -54,7 +54,7 @@ export default function OfferFrameworkGateModal({ open, onClose, webhookUrl }: P
     e.preventDefault()
     const url = webhookUrl?.trim()
     if (!url) {
-      setErrorMessage('Webhook URL is not configured. Add VITE_GHL_OFFER_WEBHOOK_URL to your environment.')
+      setErrorMessage('Webhook URL is not configured. Set VITE_GHL_OFFER_WEBHOOK_URL or pass a webhookUrl prop.')
       setStatus('error')
       return
     }
@@ -190,13 +190,6 @@ export default function OfferFrameworkGateModal({ open, onClose, webhookUrl }: P
               {errorMessage ? (
                 <p className="rounded-lg border border-red-500/25 bg-red-500/10 px-3 py-2 text-xs leading-relaxed text-red-200/90">
                   {errorMessage}
-                </p>
-              ) : null}
-
-              {!configured ? (
-                <p className="text-xs text-amber-200/80">
-                  Set <code className="rounded bg-white/10 px-1 py-0.5 text-[10px] text-neutral-300">VITE_GHL_OFFER_WEBHOOK_URL</code> in{' '}
-                  <code className="rounded bg-white/10 px-1 py-0.5 text-[10px] text-neutral-300">.env</code> to your GHL inbound webhook URL, then rebuild.
                 </p>
               ) : null}
 
