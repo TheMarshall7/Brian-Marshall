@@ -5,30 +5,8 @@ import CaseStudyMediaBand from '../components/CaseStudyMediaBand'
 import Navigation from '../components/Navigation'
 import OfferFrameworkGateModal from '../components/OfferFrameworkGateModal'
 import { DEFAULT_GHL_OFFER_WEBHOOK_URL } from '../constants/ghl'
+import { OFFER_FRAMEWORK_BULLETS } from '../constants/offerFramework'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
-
-const OFFER_FRAMEWORK_BULLETS: { line: string; focus: string }[] = [
-  {
-    line: 'How to make your offer clear in one sentence',
-    focus:
-      'Strip the fluff until a stranger gets it instantly. If it needs a paragraph, it is not an offer yet.',
-  },
-  {
-    line: 'How to increase perceived value without doing more work',
-    focus:
-      'Shape the promise, proof, and framing so the same deliverable feels like a step up, not a slog.',
-  },
-  {
-    line: 'How to position your offer so it feels like a no-brainer',
-    focus:
-      'Make the alternative feel riskier than saying yes. Clarity beats clever every time.',
-  },
-  {
-    line: 'The simple structure I use before building any system',
-    focus:
-      'Same prep I run before CRMs, sites, or automations so tech matches revenue, not the other way around.',
-  },
-]
 
 const WORK_DEPLOY_TILES: { key: string; icon: string; label: string; tileClass: string; caseId: string }[] = [
   { key: 'et', icon: 'solar:music-note-linear', label: 'Ear Training Platform', tileClass: 'border-red-500/35 bg-red-500/10 text-red-400', caseId: 'case-ear-training' },
@@ -49,7 +27,7 @@ const PROCESS_FIX_STEPS: { step: string; title: string; fixQuote: string }[] = [
   },
   {
     step: '02',
-    title: 'Extract More Revenue From Every Client',
+    title: 'Make More Revenue From Every Client',
     fixQuote: '"I’m booked… but I’m capped."',
   },
   {
@@ -799,10 +777,6 @@ export default function Home() {
                 <ul className="space-y-1 text-sm text-white font-medium">
                   <li>Western University</li>
                   <li>Fanshawe College</li>
-                  <li>
-                    Licensed Life Insurance Advisor (LLQP), Durham College{' '}
-                    <span className="text-white/30 font-normal">(Former)</span>
-                  </li>
                 </ul>
               </div>
             </div>
@@ -811,10 +785,22 @@ export default function Home() {
 
         <div className="relative z-10 mt-20 text-center animate-on-scroll">
           <p className="text-neutral-300 text-lg mb-6">Ready to work together?</p>
-          <a href="#contact" className="inline-flex items-center gap-2 px-8 py-4 bg-white text-neutral-950 rounded-lg text-sm font-medium hover:bg-red-400 transition-all btn-shimmer hover:shadow-lg hover:shadow-red-500/30">
-            Start Here
-            <iconify-icon icon="solar:arrow-right-up-linear"></iconify-icon>
-          </a>
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:flex-wrap">
+            <Link
+              to="/about"
+              className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.03] px-8 py-4 text-sm font-medium text-white transition-all hover:border-white/20 hover:bg-white/[0.06]"
+            >
+              Learn more about me
+              <iconify-icon icon="solar:arrow-right-linear" />
+            </Link>
+            <a
+              href="#contact"
+              className="cta-primary inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 text-sm font-medium text-neutral-950 transition-all hover:bg-red-400 btn-shimmer hover:shadow-lg hover:shadow-red-500/30"
+            >
+              Start Here
+              <iconify-icon icon="solar:arrow-right-up-linear" />
+            </a>
+          </div>
         </div>
       </section>
 
