@@ -47,7 +47,6 @@ export default function Navigation() {
           >
             About
           </Link>
-          <button onClick={() => handleHashLink('#pricing')} className="nav-link hover:text-white transition-colors py-1">Pricing</button>
         </div>
 
         <button 
