@@ -174,13 +174,6 @@ const ABOUT_AREOCLIENT = {
   ],
 }
 
-const ABOUT_OFFERS: { name: string; description: string }[] = [
-  { name: 'Basic', description: 'Lean launch system for startups (simple website + lead capture + automation).' },
-  { name: 'Essentials', description: 'Growth infrastructure (website + CRM + reviews + unified inbox + automations).' },
-  { name: 'Professional', description: 'Automation + AI layer (AI chatbots, SMS, voice assistant, full nurture systems).' },
-  { name: 'Elite', description: 'Full growth engine (paid ads + funnels + AI follow-up + optimization).' },
-]
-
 const ABOUT_TECH_STACK: { title: string; items: string[] }[] = [
   { title: 'Frontend / Apps', items: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'] },
   { title: 'Backend / Data', items: ['Node-based systems', 'Prisma (SQLite)'] },
@@ -767,7 +760,7 @@ export default function About() {
             </div>
 
             <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-10">
-              <div className="lg:col-span-7 animate-on-scroll">
+              <div className="lg:col-span-12 animate-on-scroll">
                 <div className="group glass-panel glass-panel--premium relative overflow-hidden rounded-2xl border border-white/10 p-7 transition-all duration-500 hover:border-red-500/25 md:p-8">
                   <div
                     className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-red-500/10 blur-3xl"
@@ -815,25 +808,6 @@ export default function About() {
                         ))}
                       </ul>
                     </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="lg:col-span-5 animate-on-scroll">
-                <div className="glass-panel glass-panel--quiet rounded-2xl border border-white/10 p-7 md:p-8">
-                  <span className="mb-4 block text-xs font-mono uppercase tracking-widest text-neutral-500">
-                    Offers / packages
-                  </span>
-                  <div className="space-y-4">
-                    {ABOUT_OFFERS.map((o) => (
-                      <div
-                        key={o.name}
-                        className="rounded-xl border border-white/10 bg-neutral-950/40 p-5 transition-all duration-300 hover:border-red-500/25"
-                      >
-                        <h4 className="text-white font-medium">{o.name}</h4>
-                        <p className="mt-2 text-sm leading-relaxed text-neutral-400">{o.description}</p>
-                      </div>
-                    ))}
                   </div>
                 </div>
               </div>
