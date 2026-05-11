@@ -57,9 +57,9 @@ export default function Home() {
   return (
     <div className="bg-neutral-950 text-neutral-300 w-full overflow-x-hidden selection:bg-red-500/30 selection:text-white relative min-h-screen">
       <Helmet>
-        <title>Brian Marshall · Systems Designer</title>
-        <meta name="description" content="I build systems that turn attention into predictable revenue. Websites, web apps, audio, and AI powered workflows designed to convert. I help shape the offer that drives it." />
-        <meta name="keywords" content="systems architect, web development, CRM, automation, AI integration, web apps, business systems, workflow automation, creative business" />
+        <title>Brian Marshall · Booked Calls &amp; Systems for Coaches</title>
+        <meta name="description" content="Funnels, websites, and AI follow up built specifically so qualified leads find you, trust you, and book without you lifting a finger." />
+        <meta name="keywords" content="coach funnels, coaching website, AI follow up, lead generation, booking systems, CRM, automation, web development, business systems" />
         <meta name="author" content="Brian Marshall" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://brianmarshall.dev/" />
@@ -67,8 +67,8 @@ export default function Home() {
         {/* Open Graph */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://brianmarshall.dev/" />
-        <meta property="og:title" content="Brian Marshall · Systems Designer" />
-        <meta property="og:description" content="I build systems that turn attention into predictable revenue. Websites, web apps, audio, and AI powered workflows designed to convert." />
+        <meta property="og:title" content="Brian Marshall · Booked Calls &amp; Systems for Coaches" />
+        <meta property="og:description" content="Funnels, websites, and AI follow up built specifically so qualified leads find you, trust you, and book without you lifting a finger." />
         <meta property="og:image" content="https://storage.googleapis.com/msgsndr/F1J2yvd2AUT4owDs9EPl/media/6970477bd4fb90ebccb8a72c.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -77,8 +77,8 @@ export default function Home() {
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Brian Marshall · Systems Designer" />
-        <meta name="twitter:description" content="I build systems that turn attention into predictable revenue. Websites, web apps, audio, and AI powered workflows designed to convert." />
+        <meta name="twitter:title" content="Brian Marshall · Booked Calls &amp; Systems for Coaches" />
+        <meta name="twitter:description" content="Funnels, websites, and AI follow up built specifically so qualified leads find you, trust you, and book without you lifting a finger." />
         <meta name="twitter:image" content="https://storage.googleapis.com/msgsndr/F1J2yvd2AUT4owDs9EPl/media/6970477bd4fb90ebccb8a72c.png" />
         
         {/* Structured Data */}
@@ -86,14 +86,14 @@ export default function Home() {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "ProfessionalService",
-            "name": "Brian Marshall · Systems Designer",
-            "description": "Systems design, web development, CRM, and AI automation services for creative businesses and studios",
+            "name": "Brian Marshall · Booked Calls & Systems for Coaches",
+            "description": "Funnels, websites, and AI follow up built specifically so qualified leads find you, trust you, and book without you lifting a finger.",
             "url": "https://brianmarshall.dev",
             "email": "brian@areoclient.com",
             "priceRange": "$1K to $25K",
             "areaServed": "Worldwide",
-            "serviceType": ["Web Development", "Web Applications", "CRM Systems", "AI Integration", "Business Automation", "Workflow Optimization"],
-            "knowsAbout": ["Web Development", "CRM", "Automation", "AI", "Business Systems"],
+            "serviceType": ["Marketing Funnels", "Websites", "AI Follow Up", "CRM Systems", "Lead Generation", "Booking Systems"],
+            "knowsAbout": ["Coaching Business", "Funnels", "Web Development", "CRM", "Automation", "AI"],
             "sameAs": ["https://www.linkedin.com/in/brian-marshall-80a513144"]
           })}
         </script>
@@ -124,32 +124,23 @@ export default function Home() {
                       <img src="https://storage.googleapis.com/msgsndr/F1J2yvd2AUT4owDs9EPl/media/6970702d15885e283f324bca.png" alt="AC" className="w-4 h-4 object-contain opacity-40 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0" />
                     </div>
                   </div>
-                  <span className="text-xs text-neutral-300 font-medium">Trusted by creative businesses</span>
+                  <span className="text-xs text-neutral-300 font-medium">Trusted by coaches and service businesses</span>
                 </div>
               </div>
 
-              <h1 className="font-bricolage font-medium leading-[0.92] tracking-[-0.02em] mb-5 md:mb-6 lg:mb-7">
-                <span className="block text-5xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-[4.75rem] text-neutral-500 animate-slide-up" style={{ animationDelay: '0.6s', opacity: 0 }}>
-                  Your business isn't broken.
+              <h1 className="font-bricolage font-medium leading-[1.05] tracking-[-0.02em] mb-5 md:mb-6 lg:mb-7">
+                <span className="block text-4xl sm:text-5xl md:text-[2.65rem] lg:text-6xl xl:text-[3.35rem] text-neutral-200 animate-slide-up" style={{ animationDelay: '0.6s', opacity: 0 }}>
+                  I Turn Your Expertise Into
                 </span>
-                <span className="block text-6xl sm:text-7xl md:text-7xl lg:text-8xl xl:text-[clamp(4rem,9.5vw,6.75rem)] text-white hero-text-gradient animate-slide-up mt-2 md:mt-4" style={{ animationDelay: '0.8s', opacity: 0 }}>
-                  Your systems are.
+                <span className="block text-4xl sm:text-5xl md:text-[2.65rem] lg:text-6xl xl:text-[3.35rem] text-white hero-text-gradient animate-slide-up mt-2 md:mt-3" style={{ animationDelay: '0.8s', opacity: 0 }}>
+                  Booked Calls and Paying Clients
                 </span>
               </h1>
 
               <div className="max-w-none animate-slide-up md:pr-0 lg:pr-2" style={{ animationDelay: '1s', opacity: 0 }}>
-                <p className="text-xl font-normal leading-snug text-neutral-100 sm:text-2xl md:text-2xl lg:text-3xl lg:leading-[1.2]">
-                  I build systems that turn attention into predictable revenue.
+                <p className="max-w-2xl text-base font-light leading-relaxed text-neutral-400 sm:text-lg md:text-xl md:leading-relaxed">
+                  Funnels, websites, and AI follow up built specifically so qualified leads find you, trust you, and book without you lifting a finger.
                 </p>
-                <div className="my-5 h-px w-20 bg-gradient-to-r from-red-500/60 to-transparent md:my-5" aria-hidden />
-                <div className="grid gap-4 text-base font-light leading-relaxed text-neutral-400 sm:grid-cols-2 sm:gap-6 md:text-lg">
-                  <p className="sm:pr-2">
-                    Websites, web apps, audio, and AI powered workflows designed to convert.
-                  </p>
-                  <p className="text-neutral-500 sm:border-l sm:border-white/10 sm:pl-6">
-                    I also help shape the offer that drives it.
-                  </p>
-                </div>
               </div>
             </div>
 
