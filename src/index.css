@@ -414,10 +414,16 @@
     top: 96px;
     z-index: 40;
     padding-top: 12px;
-    padding-bottom: 12px;
+    padding-bottom: 20px;
     border-bottom: none;
     box-shadow: none;
     background: transparent;
+  }
+
+  @media (min-width: 768px) {
+    .about-section-nav {
+      padding-bottom: 28px;
+    }
   }
 
   .about-section-nav-shell {

@@ -102,104 +102,92 @@ export default function Home() {
       <div className="bg-grain"></div>
       <Navigation />
 
-      {/* Mobile: document scrolls (no trap). md+: fixed viewport height; inner column scrolls if needed. */}
-      <header className="relative flex min-h-[100svh] flex-col overflow-x-hidden overflow-y-visible tech-grid hero-elevated px-6 pb-6 md:h-[100svh] md:max-h-[100svh] md:min-h-0 md:overflow-hidden md:px-12 md:pb-8">
+      {/* Single page scroll: hero grows with content (no nested md viewport trap). */}
+      <header className="relative flex min-h-[100svh] flex-col overflow-x-hidden overflow-y-visible tech-grid hero-elevated px-6 pb-6 md:min-h-[100svh] md:px-12 md:pb-8">
         <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden>
           <div className="absolute top-[8%] left-1/2 h-[min(88vh,920px)] w-[min(112vw,1200px)] max-w-none -translate-x-1/2 rounded-full bg-red-900/[0.14] blur-[140px]" />
         </div>
 
-        <div className="relative z-10 flex w-full flex-1 flex-col overflow-visible pt-[7rem] md:min-h-0 md:overflow-y-auto md:overscroll-y-auto md:justify-center md:py-12 md:pt-[7.5rem]">
-          <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-y-10 md:gap-y-0 gap-x-12 lg:gap-x-24 items-start md:items-center pb-4 md:pb-8">
-          <div className="md:col-span-8">
-            <div className="mb-6 md:mb-8 pt-[40px] md:pt-0 animate-slide-up" style={{ animationDelay: '0.4s', opacity: 0 }}>
-              <div className="inline-flex items-center gap-3 px-4 py-2.5 rounded-full bg-red-500/10 border border-red-500/20 hero-badge">
-                <div className="flex -space-x-2 group">
-                  <div className="w-6 h-6 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center overflow-hidden">
-                    <img src="https://storage.googleapis.com/msgsndr/F1J2yvd2AUT4owDs9EPl/media/6970702dd4fb90e27fbf24b6.png" alt="NS" className="w-4 h-4 object-contain opacity-40 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0" />
+        <div className="relative z-10 flex w-full flex-1 flex-col overflow-visible pt-[7rem] md:justify-center md:py-12 md:pt-[7.5rem]">
+          <div className="mx-auto grid w-full max-w-[min(100%,90rem)] grid-cols-1 items-start gap-x-10 gap-y-10 pb-4 md:grid-cols-12 md:items-stretch md:gap-y-8 md:gap-x-8 md:pb-8 lg:gap-x-10 lg:gap-y-10 xl:gap-x-12">
+            <div className="md:col-span-6 md:pl-6 lg:col-span-5 lg:pl-10 lg:pr-2 xl:pl-14 xl:pr-4 lg:flex lg:min-h-0 lg:flex-col lg:justify-center">
+              <div className="mb-5 pt-[40px] md:mb-6 md:pt-0 animate-slide-up" style={{ animationDelay: '0.4s', opacity: 0 }}>
+                <div className="inline-flex items-center gap-3 px-4 py-2.5 rounded-full bg-red-500/10 border border-red-500/20 hero-badge">
+                  <div className="flex -space-x-2 group">
+                    <div className="w-6 h-6 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center overflow-hidden">
+                      <img src="https://storage.googleapis.com/msgsndr/F1J2yvd2AUT4owDs9EPl/media/6970702dd4fb90e27fbf24b6.png" alt="NS" className="w-4 h-4 object-contain opacity-40 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0" />
+                    </div>
+                    <div className="w-6 h-6 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center overflow-hidden">
+                      <img src="https://storage.googleapis.com/msgsndr/F1J2yvd2AUT4owDs9EPl/media/6970702dd4fb9026bbbf24b5.png" alt="BG" className="w-4 h-4 object-contain opacity-40 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0" />
+                    </div>
+                    <div className="w-6 h-6 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center overflow-hidden">
+                      <img src="https://storage.googleapis.com/msgsndr/F1J2yvd2AUT4owDs9EPl/media/6970702d15885e283f324bca.png" alt="AC" className="w-4 h-4 object-contain opacity-40 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0" />
+                    </div>
                   </div>
-                  <div className="w-6 h-6 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center overflow-hidden">
-                    <img src="https://storage.googleapis.com/msgsndr/F1J2yvd2AUT4owDs9EPl/media/6970702dd4fb9026bbbf24b5.png" alt="BG" className="w-4 h-4 object-contain opacity-40 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0" />
-                  </div>
-                  <div className="w-6 h-6 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center overflow-hidden">
-                    <img src="https://storage.googleapis.com/msgsndr/F1J2yvd2AUT4owDs9EPl/media/6970702d15885e283f324bca.png" alt="AC" className="w-4 h-4 object-contain opacity-40 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0" />
-                  </div>
+                  <span className="text-xs text-neutral-300 font-medium">Trusted by creative businesses</span>
                 </div>
-                <span className="text-xs text-neutral-300 font-medium">Trusted by creative businesses</span>
               </div>
-            </div>
 
-            <h1 className="font-bricolage font-medium leading-[0.92] tracking-[-0.02em] mb-7 md:mb-10">
-              <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[5.25rem] text-neutral-500 animate-slide-up" style={{ animationDelay: '0.6s', opacity: 0 }}>
-                Your business isn't broken.
-              </span>
-              <span className="block text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[clamp(4.5rem,11vw,7.5rem)] text-white hero-text-gradient animate-slide-up mt-3 md:mt-5" style={{ animationDelay: '0.8s', opacity: 0 }}>
-                Your systems are.
-              </span>
-            </h1>
+              <h1 className="font-bricolage font-medium leading-[0.92] tracking-[-0.02em] mb-5 md:mb-6 lg:mb-7">
+                <span className="block text-5xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-[4.75rem] text-neutral-500 animate-slide-up" style={{ animationDelay: '0.6s', opacity: 0 }}>
+                  Your business isn't broken.
+                </span>
+                <span className="block text-6xl sm:text-7xl md:text-7xl lg:text-8xl xl:text-[clamp(4rem,9.5vw,6.75rem)] text-white hero-text-gradient animate-slide-up mt-2 md:mt-4" style={{ animationDelay: '0.8s', opacity: 0 }}>
+                  Your systems are.
+                </span>
+              </h1>
 
-            <div className="max-w-2xl mb-9 md:mb-12 animate-slide-up" style={{ animationDelay: '1s', opacity: 0 }}>
-              <p className="text-2xl md:text-3xl lg:text-4xl font-normal text-neutral-100 tracking-tight leading-[1.15] mb-6 md:mb-7">
-                I build systems that turn attention into predictable revenue.
-              </p>
-              <div className="h-px w-20 bg-gradient-to-r from-red-500/60 to-transparent mb-6 md:mb-7" aria-hidden />
-              <div className="text-lg md:text-xl font-light leading-relaxed space-y-3 text-neutral-400">
-                <p>
-                  Websites, web apps, audio, and AI powered workflows designed to convert.
+              <div className="max-w-none animate-slide-up md:pr-0 lg:pr-2" style={{ animationDelay: '1s', opacity: 0 }}>
+                <p className="text-xl font-normal leading-snug text-neutral-100 sm:text-2xl md:text-2xl lg:text-3xl lg:leading-[1.2]">
+                  I build systems that turn attention into predictable revenue.
                 </p>
-                <p className="text-neutral-500">
-                  I also help shape the offer that drives it.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 mb-8 md:mb-10 animate-slide-up" style={{ animationDelay: '1.2s', opacity: 0 }}>
-              <a href="#contact" className="cta-primary px-9 py-4 md:px-10 md:py-[1.125rem] bg-white text-neutral-950 rounded-xl text-[0.9375rem] font-medium hover:bg-red-400 transition-all flex items-center justify-center gap-2 group btn-shimmer hover:shadow-lg hover:shadow-red-500/35">
-                Get Your Free Strategy Call
-                <iconify-icon icon="solar:arrow-right-up-linear" className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></iconify-icon>
-              </a>
-              <a href="#work" className="px-9 py-4 md:px-10 md:py-[1.125rem] glass-panel text-white rounded-xl text-[0.9375rem] font-medium hover:bg-white/10 transition-all flex items-center justify-center gap-2 glow-border">
-                See How It Works
-              </a>
-            </div>
-
-            <div className="flex flex-wrap gap-x-8 gap-y-3 md:gap-x-12 text-sm md:text-base text-neutral-400 animate-slide-up" style={{ animationDelay: '1.4s', opacity: 0 }}>
-              <div className="flex items-center gap-2">
-                <iconify-icon icon="solar:check-circle-linear" className="text-red-500"></iconify-icon>
-                <span>Free 30 minute discovery call</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <iconify-icon icon="solar:check-circle-linear" className="text-red-500"></iconify-icon>
-                <span>See your custom roadmap</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="md:col-span-4 flex w-full flex-col items-stretch md:items-end gap-6 md:gap-8 animate-slide-up" style={{ animationDelay: '1.4s', opacity: 0 }}>
-            <div className="hidden md:flex items-center gap-3 self-end">
-              <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-red-500/95">System Designer</span>
-              <span className="h-px w-12 bg-gradient-to-r from-red-500 to-transparent"></span>
-            </div>
-            <div className="glass-panel hero-side-panel flex min-h-[240px] w-full flex-col justify-center rounded-2xl border-l-[3px] border-l-red-500 p-7 md:min-h-[min(52vh,520px)] md:max-w-md md:p-9">
-              <p className="mb-5 text-base font-medium leading-relaxed text-white md:text-lg">
-                Most businesses leak time, leads, and money. You get the infrastructure that stops the bleeding.
-              </p>
-              <div className="mb-5 h-px w-full bg-gradient-to-r from-white/15 to-transparent"></div>
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <iconify-icon icon="solar:check-circle-linear" className="mt-0.5 shrink-0 text-red-500" width="20"></iconify-icon>
-                  <span className="text-sm text-neutral-300">Save 20+ hours per week with automation</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <iconify-icon icon="solar:check-circle-linear" className="mt-0.5 shrink-0 text-red-500" width="20"></iconify-icon>
-                  <span className="text-sm text-neutral-300">Recover lost revenue from missed leads</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <iconify-icon icon="solar:check-circle-linear" className="mt-0.5 shrink-0 text-red-500" width="20"></iconify-icon>
-                  <span className="text-sm text-neutral-300">Turn chaos into predictable systems</span>
+                <div className="my-5 h-px w-20 bg-gradient-to-r from-red-500/60 to-transparent md:my-5" aria-hidden />
+                <div className="grid gap-4 text-base font-light leading-relaxed text-neutral-400 sm:grid-cols-2 sm:gap-6 md:text-lg">
+                  <p className="sm:pr-2">
+                    Websites, web apps, audio, and AI powered workflows designed to convert.
+                  </p>
+                  <p className="text-neutral-500 sm:border-l sm:border-white/10 sm:pl-6">
+                    I also help shape the offer that drives it.
+                  </p>
                 </div>
               </div>
             </div>
-          </div>
+
+            <div className="flex w-full flex-col items-center md:col-span-6 md:items-end md:justify-center lg:col-span-7">
+              <div className="w-full max-w-md animate-on-scroll sm:max-w-xl md:mx-0 md:ml-auto md:max-w-full">
+                <img
+                  src={encodeURI('/Brian Marshall Photo(transparent).png')}
+                  alt="Brian Marshall"
+                  width={1000}
+                  height={1000}
+                  decoding="async"
+                  fetchPriority="high"
+                  className="about-hero-image h-auto w-full object-contain object-center select-none"
+                />
+              </div>
+            </div>
+
+            <div className="flex w-full flex-col gap-6 border-t border-white/10 pt-8 md:col-span-12 md:flex-row md:items-center md:justify-between md:gap-10 md:border-white/10 md:pl-6 md:pt-8 lg:pl-10 lg:pt-10 xl:pl-14">
+              <div className="flex flex-col gap-4 animate-slide-up sm:flex-row sm:flex-wrap sm:gap-5" style={{ animationDelay: '1.2s', opacity: 0 }}>
+                <a href="#contact" className="cta-primary px-9 py-4 md:px-10 md:py-[1.125rem] bg-white text-neutral-950 rounded-xl text-[0.9375rem] font-medium hover:bg-red-400 transition-all flex items-center justify-center gap-2 group btn-shimmer hover:shadow-lg hover:shadow-red-500/35">
+                  Get Your Free Strategy Call
+                  <iconify-icon icon="solar:arrow-right-up-linear" className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></iconify-icon>
+                </a>
+                <a href="#work" className="px-9 py-4 md:px-10 md:py-[1.125rem] glass-panel text-white rounded-xl text-[0.9375rem] font-medium hover:bg-white/10 transition-all flex items-center justify-center gap-2 glow-border">
+                  See How It Works
+                </a>
+              </div>
+              <div className="flex flex-wrap gap-x-8 gap-y-3 text-sm text-neutral-400 animate-slide-up md:justify-end md:text-base" style={{ animationDelay: '1.4s', opacity: 0 }}>
+                <div className="flex items-center gap-2">
+                  <iconify-icon icon="solar:check-circle-linear" className="text-red-500"></iconify-icon>
+                  <span>Free 30 minute discovery call</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <iconify-icon icon="solar:check-circle-linear" className="text-red-500"></iconify-icon>
+                  <span>See your custom roadmap</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </header>
@@ -962,10 +950,6 @@ export default function Home() {
       {/* Pricing Section */}
       <section id="pricing" className="section-ambient relative overflow-hidden bg-neutral-950 py-24 section-standard">
         <div className="section-ambient__glow opacity-50" aria-hidden />
-        <div
-          className="absolute inset-0 z-0"
-          style={{ backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px)', backgroundSize: '100px 100%' }}
-        />
         <div className="relative z-10 mx-auto max-w-5xl px-6">
           <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-14 animate-on-scroll">
             <div className="text-center lg:col-span-5 lg:text-left">

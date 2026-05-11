@@ -70,7 +70,14 @@ export default function OfferFrameworkGateModal({ open, onClose, webhookUrl }: P
     }
     setStatus('loading')
     setErrorMessage('')
+    const nameParts = trimmedName.split(/\s+/).filter(Boolean)
+    const firstName = nameParts[0] ?? trimmedName
+    const lastName = nameParts.length > 1 ? nameParts.slice(1).join(' ') : ''
+
     try {
+      // GHL / LeadConnector inbound webhooks map top-level keys to contact fields.
+      // Use firstName, lastName, email (and full name) only—keep extra context under `meta`
+      // so workflow "sample / test" mappings are less likely to concatenate into name or email.
       const res = await fetch(url, {
         method: 'POST',
         headers: {
@@ -78,11 +85,16 @@ export default function OfferFrameworkGateModal({ open, onClose, webhookUrl }: P
           Accept: 'application/json',
         },
         body: JSON.stringify({
-          event: 'offer_framework_lead',
-          source: 'no-brainer-offer-framework',
-          name: trimmedName,
+          firstName,
+          lastName,
           email: trimmedEmail,
-          pageUrl: typeof window !== 'undefined' ? window.location.href : '',
+          name: trimmedName,
+          source: 'Website · No-Brainer Offer Framework',
+          tags: ['offer-framework-pdf'],
+          meta: {
+            event: 'offer_framework_lead',
+            pageUrl: typeof window !== 'undefined' ? window.location.href : '',
+          },
         }),
       })
       if (!res.ok) throw new Error(`HTTP ${res.status}`)

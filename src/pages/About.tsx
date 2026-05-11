@@ -410,20 +410,16 @@ export default function About() {
           <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
             <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-16">
               <div className="lg:col-span-5 animate-on-scroll">
-                <div className="relative">
-                  <div className="pointer-events-none absolute -left-20 -top-20 h-72 w-72 rounded-full bg-red-500/10 blur-3xl" />
-                  <div className="glass-panel glass-panel--premium overflow-hidden rounded-2xl border border-white/10">
-                    <div className="about-profile-frame relative aspect-[3/4] w-full bg-neutral-900/40">
-                      <img
-                        src="/brian%20profile.jpg"
-                        alt="Brian Marshall portrait"
-                        className="about-hero-image relative z-0 h-full w-full object-cover opacity-90 grayscale"
-                        loading="eager"
-                        fetchPriority="high"
-                      />
-                      <div className="pointer-events-none absolute inset-0 z-[4] bg-gradient-to-t from-black/55 via-black/25 to-transparent" />
-                    </div>
-                  </div>
+                <div className="flex w-full justify-center lg:justify-end lg:pr-2">
+                  <img
+                    src={encodeURI('/Brian Marshall Photo (CIRCLE N SHADOW).png')}
+                    alt="Brian Marshall portrait"
+                    width={320}
+                    height={320}
+                    loading="eager"
+                    fetchPriority="high"
+                    className="about-hero-image h-auto w-full max-w-[min(100%,520px)] object-contain object-center select-none sm:max-w-[min(100%,580px)] lg:max-w-[min(100%,640px)]"
+                  />
                 </div>
               </div>
 
