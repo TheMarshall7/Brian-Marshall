@@ -89,8 +89,8 @@ export default function OfferFrameworkGateModal({ open, onClose, webhookUrl }: P
           lastName,
           email: trimmedEmail,
           name: trimmedName,
-          source: 'Website · No-Brainer Offer Framework',
-          tags: ['offer-framework-pdf'],
+          source: 'Website · Knowledge-to-Cash Blueprint',
+          tags: ['knowledge-to-cash-blueprint', 'offer-framework-pdf'],
           meta: {
             event: 'offer_framework_lead',
             pageUrl: typeof window !== 'undefined' ? window.location.href : '',
@@ -143,7 +143,7 @@ export default function OfferFrameworkGateModal({ open, onClose, webhookUrl }: P
               You&apos;re in
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-neutral-400">
-              Check your email for <span className="text-neutral-300">The No-Brainer Offer Framework</span>. If you
+              Check your email for <span className="text-neutral-300">The Knowledge-to-Cash Blueprint</span>. If you
               don&apos;t see it in a few minutes, peek at spam or promotions.
             </p>
             <button
@@ -157,10 +157,10 @@ export default function OfferFrameworkGateModal({ open, onClose, webhookUrl }: P
         ) : (
           <>
             <h2 id={`${uid}-title`} className="pr-10 font-bricolage text-2xl font-medium text-white md:text-3xl">
-              Get the framework
+              Get the blueprint
             </h2>
             <p className="mt-2 text-sm text-neutral-500">
-              Drop your name and email. I&apos;ll send the PDF through my automation.
+              Drop your name and email. I&apos;ll send the PDF to your inbox.
             </p>
 
             <form onSubmit={handleSubmit} className="mt-8 space-y-5">
@@ -217,7 +217,7 @@ export default function OfferFrameworkGateModal({ open, onClose, webhookUrl }: P
                   </>
                 ) : (
                   <>
-                    Send me the PDF
+                    Send me the blueprint
                     <iconify-icon icon="solar:arrow-right-up-linear" className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </>
                 )}

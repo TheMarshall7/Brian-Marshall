@@ -570,16 +570,17 @@ export default function About() {
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-40" />
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500" />
                   </span>
-                  Not ready to work together yet?
+                  Your expertise is already worth money.
                 </div>
                 <h2
                   id="offer-framework-heading"
                   className="mb-6 font-bricolage text-3xl font-medium tracking-tight text-white md:text-5xl lg:text-[3.25rem] lg:leading-[1.08]"
                 >
-                  Fix your offer <span className="hero-text-gradient">first.</span>
+                  You just need <span className="hero-text-gradient">the framework to prove it.</span>
                 </h2>
                 <p className="mb-10 max-w-xl text-lg leading-relaxed text-neutral-400">
-                  Download the exact framework I use to turn ideas into offers that actually sell.
+                  Most people sitting on valuable knowledge have no idea how to package it into an offer people will
+                  actually pay for. This free guide changes that.
                 </p>
                 <div className="group/result relative mb-10 overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-transparent p-6 transition-all duration-500 hover:border-red-500/25 hover:shadow-[0_0_40px_rgba(239,68,68,0.08)] md:p-8">
                   <div
@@ -590,8 +591,22 @@ export default function About() {
                     Result
                   </span>
                   <p className="relative text-base leading-relaxed text-neutral-200">
-                    You&apos;ll walk away with an offer you can actually sell, not something you have to explain 10
-                    times.
+                    You&apos;ll walk away with a clear, sellable offer built around what you already know, ready to
+                    take to market.
+                  </p>
+                </div>
+                <div
+                  id="about-offer-focus-panel"
+                  role="region"
+                  aria-live="polite"
+                  aria-atomic="true"
+                  className="mb-8 min-h-[5.5rem] max-w-xl rounded-xl border border-white/10 bg-black/30 p-4 text-sm leading-relaxed text-neutral-400 transition-[border-color,box-shadow] duration-300 md:min-h-[5rem] md:p-5"
+                >
+                  <span className="mb-1 block text-[10px] font-mono uppercase tracking-widest text-red-500/80">
+                    Lens
+                  </span>
+                  <p key={offerFocus} className="animate-[offerFocusFade_0.35s_ease-out] text-neutral-300">
+                    {OFFER_FRAMEWORK_BULLETS[offerFocus].focus}
                   </p>
                 </div>
                 <button
@@ -599,13 +614,13 @@ export default function About() {
                   onClick={() => setOfferFrameworkModalOpen(true)}
                   className="cta-primary group/download glow-border relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-white px-9 py-4 text-sm font-medium text-neutral-950 transition-all duration-300 btn-shimmer hover:bg-red-400 hover:shadow-[0_0_40px_rgba(239,68,68,0.35)]"
                 >
-                  <span className="relative z-10">Download the free offer builder</span>
+                  <span className="relative z-10">Send me the blueprint</span>
                   <iconify-icon
-                    icon="solar:download-minimalistic-linear"
-                    className="relative z-10 text-lg transition-transform duration-300 group-hover/download:translate-y-0.5 group-hover/download:scale-110"
+                    icon="solar:arrow-right-linear"
+                    className="relative z-10 text-lg transition-transform duration-300 group-hover/download:translate-x-0.5 group-hover/download:scale-110"
                   />
                 </button>
-                <p className="mt-4 text-xs text-neutral-600">PDF · sent to your email after you submit</p>
+                <p className="mt-4 text-xs text-neutral-600">Free PDF · delivered to your inbox</p>
               </div>
 
               <div className="animate-on-scroll delay-100">
@@ -628,7 +643,7 @@ export default function About() {
                         </div>
                         <div className="mt-auto flex items-center justify-between border-t border-white/10 pt-3">
                           <span className="text-[9px] font-mono uppercase tracking-wider text-red-400/90">
-                            Framework
+                            Blueprint
                           </span>
                           <iconify-icon icon="solar:document-text-linear" className="text-red-500/80" width="18" />
                         </div>
@@ -642,7 +657,7 @@ export default function About() {
                     </div>
                     <div>
                       <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">Free PDF</span>
-                      <p className="text-lg font-medium text-white">The No-Brainer Offer Framework</p>
+                      <p className="text-lg font-medium text-white">The Knowledge-to-Cash Blueprint</p>
                     </div>
                   </div>
 
@@ -687,21 +702,6 @@ export default function About() {
                       </li>
                     ))}
                   </ul>
-
-                  <div
-                    id="about-offer-focus-panel"
-                    role="region"
-                    aria-live="polite"
-                    aria-atomic="true"
-                    className="mt-6 min-h-[5.5rem] rounded-xl border border-white/10 bg-black/30 p-4 text-sm leading-relaxed text-neutral-400 transition-[border-color,box-shadow] duration-300 md:min-h-[5rem] md:p-5"
-                  >
-                    <span className="mb-1 block text-[10px] font-mono uppercase tracking-widest text-red-500/80">
-                      Lens
-                    </span>
-                    <p key={offerFocus} className="animate-[offerFocusFade_0.35s_ease-out] text-neutral-300">
-                      {OFFER_FRAMEWORK_BULLETS[offerFocus].focus}
-                    </p>
-                  </div>
                 </div>
               </div>
             </div>
@@ -766,13 +766,26 @@ export default function About() {
                     className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-red-500/10 blur-3xl"
                     aria-hidden
                   />
-                  <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.02] px-4 py-2 text-[10px] font-mono uppercase tracking-widest text-neutral-500">
-                    Signature system
-                  </span>
-                  <h3 className="font-bricolage text-2xl font-medium text-white md:text-3xl">
-                    {ABOUT_AREOCLIENT.name}
-                  </h3>
-                  <p className="mt-3 max-w-xl text-sm leading-relaxed text-neutral-400">{ABOUT_AREOCLIENT.subtitle}</p>
+                  <div className="relative z-10 flex flex-wrap items-start justify-between gap-4">
+                    <div className="min-w-0 flex-1">
+                      <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.02] px-4 py-2 text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+                        Signature system
+                      </span>
+                      <h3 className="font-bricolage text-2xl font-medium text-white md:text-3xl">
+                        {ABOUT_AREOCLIENT.name}
+                      </h3>
+                      <p className="mt-3 max-w-xl text-sm leading-relaxed text-neutral-400">{ABOUT_AREOCLIENT.subtitle}</p>
+                    </div>
+                    <a
+                      href="https://areoclient.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex shrink-0 items-center gap-2 rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2.5 text-xs font-medium text-white transition-all hover:border-red-500/35 hover:bg-red-500/10 hover:text-white"
+                    >
+                      areoclient.com
+                      <iconify-icon icon="solar:arrow-right-up-linear" width="14" className="text-red-400/90" />
+                    </a>
+                  </div>
 
                   <div className="mt-8 about-before-after">
                     <div className="about-before-after__panel">

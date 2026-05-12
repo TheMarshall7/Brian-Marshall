@@ -19,26 +19,66 @@ const WORK_DEPLOY_TILES: { key: string; icon: string; label: string; tileClass: 
   { key: 'is', icon: 'solar:music-note-slider-linear', label: 'ISIATA', tileClass: 'border-amber-500/35 bg-amber-500/10 text-amber-400', caseId: 'case-isiata' },
 ]
 
-const PROCESS_FIX_STEPS: { step: string; title: string; fixQuote: string }[] = [
+const REVENUE_LADDER_RUNGS: { step: string; title: string; description: string }[] = [
   {
     step: '01',
-    title: 'Create an Offer They Feel Stupid Saying No To',
-    fixQuote: '"People are interested… but they don’t buy."',
+    title: "Your offer isn't converting.",
+    description:
+      "Great coaches lose clients before the conversation even starts. We build an offer so clear and compelling that the right person reads it and immediately thinks: that's exactly what I need.",
   },
   {
     step: '02',
-    title: 'Make More Revenue From Every Client',
-    fixQuote: '"I’m booked… but I’m capped."',
+    title: "Your funnel isn't doing its job.",
+    description:
+      'Traffic without a system is just noise. We build the landing pages, lead magnets, and sequences that take a cold stranger from curious to booked, without you lifting a finger.',
   },
   {
     step: '03',
-    title: 'Get Strangers To Want To Buy Your Stuff',
-    fixQuote: '"I need leads that don’t feel like a grind."',
+    title: 'Your follow-up is leaking revenue.',
+    description:
+      'Most coaches lose 60% of their leads simply because nobody followed up. We build AI-powered follow-up systems that respond instantly, nurture automatically, and book calls while you sleep.',
   },
   {
     step: '04',
-    title: 'Build Systems That Make It Repeatable',
-    fixQuote: '"I can’t keep rebuilding the same thing every month."',
+    title: "Your pipeline isn't predictable.",
+    description:
+      "Referrals aren't a strategy. We build the full traffic architecture: warm, cold, organic, and paid, so your calendar fills consistently every single month.",
+  },
+]
+
+const BUILD_STACK_ITEMS: {
+  icon: string
+  title: string
+  tagline: string
+  description: string
+}[] = [
+  {
+    icon: 'solar:window-frame-linear',
+    title: 'Conversion-Focused Websites',
+    tagline: 'Your site should book calls. Not just look good.',
+    description:
+      'We build websites that position your expertise, build trust fast, and turn visitors into booked calls.',
+  },
+  {
+    icon: 'solar:routing-2-linear',
+    title: 'Funnel Systems',
+    tagline: "One piece of content shouldn't do all the work.",
+    description:
+      'We build complete funnel ladders: lead magnets, low ticket, mid ticket, that warm up leads before they ever speak to you.',
+  },
+  {
+    icon: 'solar:cpu-bolt-linear',
+    title: 'AI Follow-Up Engine',
+    tagline: 'No lead goes cold. Ever.',
+    description:
+      'We integrate AI that handles enquiries, follow-ups, and booking 24/7, so your pipeline never sleeps.',
+  },
+  {
+    icon: 'solar:clipboard-list-linear',
+    title: 'Strategy & Revenue Coaching',
+    tagline: "You know something's off. We'll find it.",
+    description:
+      "We diagnose exactly where your pipeline is leaking, what it's costing you, and what to fix first.",
   },
 ]
 
@@ -183,7 +223,7 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Lead magnet: offer framework (add PDF at public/no-brainer-offer-framework.pdf) */}
+      {/* Lead magnet: Knowledge-to-Cash Blueprint (PDF path in public per your deploy) */}
       <section
         id="offer-framework"
         className="relative overflow-hidden border-t border-white/5 bg-neutral-950 py-28 md:py-32"
@@ -207,17 +247,18 @@ export default function Home() {
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-40"></span>
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500"></span>
                 </span>
-                Not ready to work together yet?
+                Your expertise is already worth money.
               </div>
               <h2
                 id="offer-framework-heading"
                 className="mb-6 font-bricolage text-3xl font-medium tracking-tight text-white md:text-5xl lg:text-[3.25rem] lg:leading-[1.08]"
               >
-                Fix your offer{' '}
-                <span className="hero-text-gradient">first.</span>
+                You just need{' '}
+                <span className="hero-text-gradient">the framework to prove it.</span>
               </h2>
               <p className="mb-10 max-w-xl text-lg leading-relaxed text-neutral-400">
-                Download the exact framework I use to turn ideas into offers that actually sell.
+                Most people sitting on valuable knowledge have no idea how to package it into an offer people will
+                actually pay for. This free guide changes that.
               </p>
               <div className="group/result relative mb-10 overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-transparent p-6 transition-all duration-500 hover:border-red-500/25 hover:shadow-[0_0_40px_rgba(239,68,68,0.08)] md:p-8">
                 <div className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-red-500/10 blur-2xl transition-opacity duration-500 group-hover/result:opacity-100" aria-hidden />
@@ -225,8 +266,22 @@ export default function Home() {
                   Result
                 </span>
                 <p className="relative text-base leading-relaxed text-neutral-200">
-                  You&apos;ll walk away with an offer you can actually sell, not something you have to explain 10
-                  times.
+                  You&apos;ll walk away with a clear, sellable offer built around what you already know, ready to take
+                  to market.
+                </p>
+              </div>
+              <div
+                id="offer-focus-panel"
+                role="region"
+                aria-live="polite"
+                aria-atomic="true"
+                className="mb-8 min-h-[5.5rem] max-w-xl rounded-xl border border-white/10 bg-black/30 p-4 text-sm leading-relaxed text-neutral-400 transition-[border-color,box-shadow] duration-300 md:min-h-[5rem] md:p-5"
+              >
+                <span className="mb-1 block text-[10px] font-mono uppercase tracking-widest text-red-500/80">
+                  Lens
+                </span>
+                <p key={offerFocus} className="animate-[offerFocusFade_0.35s_ease-out] text-neutral-300">
+                  {OFFER_FRAMEWORK_BULLETS[offerFocus].focus}
                 </p>
               </div>
               <button
@@ -234,13 +289,13 @@ export default function Home() {
                 onClick={() => setOfferFrameworkModalOpen(true)}
                 className="cta-primary group/download glow-border relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-white px-9 py-4 text-sm font-medium text-neutral-950 transition-all duration-300 btn-shimmer hover:bg-red-400 hover:shadow-[0_0_40px_rgba(239,68,68,0.35)]"
               >
-                <span className="relative z-10">Download the free offer builder</span>
+                <span className="relative z-10">Send me the blueprint</span>
                 <iconify-icon
-                  icon="solar:download-minimalistic-linear"
-                  className="relative z-10 text-lg transition-transform duration-300 group-hover/download:translate-y-0.5 group-hover/download:scale-110"
+                  icon="solar:arrow-right-linear"
+                  className="relative z-10 text-lg transition-transform duration-300 group-hover/download:translate-x-0.5 group-hover/download:scale-110"
                 ></iconify-icon>
               </button>
-              <p className="mt-4 text-xs text-neutral-600">PDF · sent to your email after you submit</p>
+              <p className="mt-4 text-xs text-neutral-600">Free PDF · delivered to your inbox</p>
             </div>
 
             <div className="animate-on-scroll delay-100">
@@ -262,7 +317,7 @@ export default function Home() {
                         <div className="h-1 w-4/6 rounded bg-white/5" />
                       </div>
                       <div className="mt-auto flex items-center justify-between border-t border-white/10 pt-3">
-                        <span className="text-[9px] font-mono uppercase tracking-wider text-red-400/90">Framework</span>
+                        <span className="text-[9px] font-mono uppercase tracking-wider text-red-400/90">Blueprint</span>
                         <iconify-icon icon="solar:document-text-linear" className="text-red-500/80" width="18" />
                       </div>
                     </div>
@@ -275,7 +330,7 @@ export default function Home() {
                   </div>
                   <div>
                     <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">Free PDF</span>
-                    <p className="text-lg font-medium text-white">The No-Brainer Offer Framework</p>
+                    <p className="text-lg font-medium text-white">The Knowledge-to-Cash Blueprint</p>
                   </div>
                 </div>
 
@@ -317,21 +372,6 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-
-                <div
-                  id="offer-focus-panel"
-                  role="region"
-                  aria-live="polite"
-                  aria-atomic="true"
-                  className="mt-6 min-h-[5.5rem] rounded-xl border border-white/10 bg-black/30 p-4 text-sm leading-relaxed text-neutral-400 transition-[border-color,box-shadow] duration-300 md:min-h-[5rem] md:p-5"
-                >
-                  <span className="mb-1 block text-[10px] font-mono uppercase tracking-widest text-red-500/80">
-                    Lens
-                  </span>
-                  <p key={offerFocus} className="animate-[offerFocusFade_0.35s_ease-out] text-neutral-300">
-                    {OFFER_FRAMEWORK_BULLETS[offerFocus].focus}
-                  </p>
-                </div>
               </div>
             </div>
           </div>
@@ -718,28 +758,31 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Revenue ladder / process */}
       <section id="process" className="section-ambient relative overflow-hidden border-t border-white/5 bg-neutral-900/30 py-24 section-standard">
         <div className="section-ambient__glow opacity-70" aria-hidden />
         <div className="section-ambient__grid opacity-40" aria-hidden />
         <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
           <div className="mb-16 grid grid-cols-1 items-start gap-12 lg:mb-20 lg:grid-cols-12 lg:gap-16 animate-on-scroll">
             <div className="lg:col-span-7">
-              <span className="mb-4 block text-xs font-mono uppercase tracking-widest text-neutral-500">Capabilities</span>
+              <span className="mb-4 block text-xs font-mono uppercase tracking-widest text-neutral-500">
+                The Revenue Ladder: How It Works
+              </span>
               <h2 className="mb-6 text-4xl font-medium leading-[1.12] tracking-tight text-white md:text-6xl">
-                You're leaving money on the table.<br />
-                <span className="text-neutral-600">Here's how I fix it.</span>
+                Every rung exists to do one thing.
                 <br />
-                <span className="text-neutral-600">Most businesses don't need more traffic.</span>
-                <br />
-                They need better systems.
+                <span className="hero-text-gradient">Turn more of the right people into paying clients.</span>
               </h2>
+              <p className="max-w-2xl text-base leading-relaxed text-neutral-400 md:text-lg">
+                Most coaches aren&apos;t losing clients because they&apos;re bad at what they do. They&apos;re losing
+                them in the gaps. Here&apos;s where I find them, and what I build to fix it.
+              </p>
             </div>
             <div className="story-rail lg:col-span-5 lg:pt-2">
-              {PROCESS_FIX_STEPS.map((s, i) => (
+              {REVENUE_LADDER_RUNGS.map((rung, i) => (
                 <div
-                  key={s.step}
-                  className={`story-rail__node pl-1 ${i < PROCESS_FIX_STEPS.length - 1 ? 'mb-8' : ''}`}
+                  key={rung.step}
+                  className={`story-rail__node pl-1 ${i < REVENUE_LADDER_RUNGS.length - 1 ? 'mb-8' : ''}`}
                 >
                   <span
                     className={`font-bricolage text-4xl font-medium md:text-5xl ${
@@ -752,10 +795,10 @@ export default function Home() {
                             : 'text-red-500/35'
                     }`}
                   >
-                    {s.step}
+                    {rung.step}
                   </span>
-                  <p className="mt-2 text-sm font-medium text-white">{s.title}</p>
-                  <p className="mt-1 max-w-sm text-xs italic leading-relaxed text-neutral-500">{s.fixQuote}</p>
+                  <p className="mt-2 text-sm font-medium text-white">{rung.title}</p>
+                  <p className="mt-2 max-w-md text-sm leading-relaxed text-neutral-400">{rung.description}</p>
                 </div>
               ))}
             </div>
@@ -771,68 +814,36 @@ export default function Home() {
             </div>
           </div>
 
+          <span className="mb-6 mt-4 block text-xs font-mono uppercase tracking-widest text-neutral-500 animate-on-scroll">
+            The Build Stack
+          </span>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-            <div className="group rounded-xl border border-white/5 p-6 transition-all duration-300 animate-on-scroll card-lift service-card hover:border-red-500/30 hover:bg-white/[0.02]">
-              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.08] to-transparent text-white shadow-inner ring-1 ring-white/5 transition-all group-hover:border-red-500/30 group-hover:text-red-400 group-hover:ring-red-500/20">
-                <iconify-icon icon="solar:laptop-minimalistic-linear" width="28" className="icon-hover"></iconify-icon>
+            {BUILD_STACK_ITEMS.map((item, i) => (
+              <div
+                key={item.title}
+                className={`group rounded-xl border border-white/5 p-6 transition-all duration-300 animate-on-scroll card-lift hover:border-red-500/30 hover:bg-white/[0.02] ${
+                  i === 1 ? 'delay-100' : i === 2 ? 'delay-200' : i === 3 ? 'delay-300' : ''
+                }`}
+              >
+                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.08] to-transparent text-white shadow-inner ring-1 ring-white/5 transition-all group-hover:border-red-500/30 group-hover:text-red-400 group-hover:ring-red-500/20">
+                  <iconify-icon icon={item.icon} width="28" className="icon-hover"></iconify-icon>
+                </div>
+                <h3 className="mb-2 text-lg font-medium text-white">{item.title}</h3>
+                <p className="mb-3 text-sm font-medium text-neutral-300">{item.tagline}</p>
+                <p className="text-sm leading-relaxed text-neutral-400">{item.description}</p>
               </div>
-              <h3 className="text-lg text-white font-medium mb-3">Websites & Web Apps</h3>
-              <p className="text-sm text-neutral-400 mb-6 leading-relaxed">You get a site that actually turns visitors into customers, plus dashboards that show you exactly what's working.</p>
-              <div className="pt-4 border-t border-white/5">
-                <span className="text-[10px] text-neutral-600 uppercase tracking-widest block mb-1">The Fix</span>
-                <p className="text-xs text-neutral-300 italic">"My website looks good... but it doesn't make money."</p>
-              </div>
-            </div>
-
-            <div className="group rounded-xl border border-white/5 p-6 transition-all duration-300 animate-on-scroll delay-100 card-lift service-card hover:border-red-500/30 hover:bg-white/[0.02]">
-              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.08] to-transparent text-white shadow-inner ring-1 ring-white/5 transition-all group-hover:border-red-500/30 group-hover:text-red-400 group-hover:ring-red-500/20">
-                <iconify-icon icon="solar:graph-new-linear" width="28" className="icon-hover"></iconify-icon>
-              </div>
-              <h3 className="text-lg text-white font-medium mb-3">Automation Systems</h3>
-              <p className="text-sm text-neutral-400 mb-6 leading-relaxed">You get instant follow up, organized data, and 20+ hours back every week without hiring more people.</p>
-              <div className="pt-4 border-t border-white/5">
-                <span className="text-[10px] text-neutral-600 uppercase tracking-widest block mb-1">The Fix</span>
-                <p className="text-xs text-neutral-300 italic">"I'm drowning in tabs, DMs, and spreadsheets."</p>
-              </div>
-            </div>
-
-            <div className="group rounded-xl border border-white/5 p-6 transition-all duration-300 animate-on-scroll delay-200 card-lift hover:border-red-500/30 hover:bg-white/[0.02]">
-              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.08] to-transparent text-white shadow-inner ring-1 ring-white/5 transition-all group-hover:border-red-500/30 group-hover:text-red-400 group-hover:ring-red-500/20">
-                <iconify-icon icon="solar:chat-round-dots-linear" width="28" className="icon-hover"></iconify-icon>
-              </div>
-              <h3 className="text-lg text-white font-medium mb-3">AI Integration</h3>
-              <p className="text-sm text-neutral-400 mb-6 leading-relaxed">You get AI handling replies, bookings, and follow ups 24/7 so no lead gets ignored.</p>
-              <div className="pt-4 border-t border-white/5">
-                <span className="text-[10px] text-neutral-600 uppercase tracking-widest block mb-1">The Fix</span>
-                <p className="text-xs text-neutral-300 italic">"I'm doing work a machine should be doing."</p>
-              </div>
-            </div>
-
-            <div className="group rounded-xl border border-white/5 p-6 transition-all duration-300 animate-on-scroll delay-300 card-lift service-card hover:border-red-500/30 hover:bg-white/[0.02]">
-              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.08] to-transparent text-white shadow-inner ring-1 ring-white/5 transition-all group-hover:border-red-500/30 group-hover:text-red-400 group-hover:ring-red-500/20">
-                <iconify-icon icon="solar:compass-linear" width="28" className="icon-hover"></iconify-icon>
-              </div>
-              <h3 className="text-lg text-white font-medium mb-3">Strategy & Consulting</h3>
-              <p className="text-sm text-neutral-400 mb-6 leading-relaxed">You get clarity on what's broken and a step by step plan to fix it so you're not guessing anymore.</p>
-              <div className="pt-4 border-t border-white/5">
-                <span className="text-[10px] text-neutral-600 uppercase tracking-widest block mb-1">The Fix</span>
-                <p className="text-xs text-neutral-300 italic">"I know something's off... I just can't see it."</p>
-              </div>
-            </div>
+            ))}
           </div>
 
           <div className="mt-16 text-center animate-on-scroll">
-            <span className="text-xs font-mono uppercase tracking-widest text-neutral-500 mb-4 block">Close Section</span>
-            <p className="text-neutral-300 text-lg mb-2">What's the biggest bottleneck in your business right now?</p>
-            <p className="text-neutral-400 text-base mb-8">Let's fix that first.</p>
-            <div className="mb-6 flex items-center justify-center gap-6 text-neutral-600" aria-hidden>
-              <iconify-icon icon="solar:calendar-linear" width="26" className="opacity-50" />
-              <iconify-icon icon="solar:chat-round-line-linear" width="26" className="opacity-50" />
-              <iconify-icon icon="solar:letter-linear" width="26" className="opacity-50" />
-            </div>
-            <a href="#contact" className="cta-primary inline-flex items-center gap-2 px-8 py-4 bg-white text-neutral-950 rounded-lg text-sm font-medium hover:bg-red-400 transition-all btn-shimmer hover:shadow-lg hover:shadow-red-500/30">
-              👉 Book your strategy call
-              <iconify-icon icon="solar:arrow-right-up-linear"></iconify-icon>
+            <p className="mb-2 text-lg text-neutral-300">Which rung of your ladder is broken right now?</p>
+            <p className="mb-8 text-base text-neutral-400">Let&apos;s find it and fix it.</p>
+            <a
+              href="#contact"
+              className="cta-primary inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 text-sm font-medium text-neutral-950 transition-all btn-shimmer hover:bg-red-400 hover:shadow-lg hover:shadow-red-500/30"
+            >
+              Book a Free Revenue Leak Coaching Call
+              <iconify-icon icon="solar:arrow-right-linear" width="18"></iconify-icon>
             </a>
           </div>
         </div>
@@ -843,38 +854,30 @@ export default function Home() {
         <div className="section-ambient__grid opacity-30" aria-hidden />
         <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 md:px-12 lg:grid-cols-2 lg:gap-20">
           <div className="animate-on-scroll">
-            <span className="text-xs font-mono uppercase tracking-widest text-red-500 mb-4 block">Philosophy</span>
-            <h3 className="text-3xl md:text-5xl text-white font-medium mb-8 tracking-tight leading-tight">
-              I'm not here to "optimize your vibes."<br />
-              <span className="text-neutral-400">I build systems that make you money.</span>
+            <span className="mb-4 block text-xs font-mono uppercase tracking-widest text-red-500">How I Think</span>
+            <h3 className="mb-10 text-3xl font-medium leading-tight tracking-tight text-white md:text-5xl">
+              I&apos;m not here to optimise your vibes.
+              <br />
+              <span className="text-neutral-200">I&apos;m here to build systems that make you money.</span>
             </h3>
-            <div className="space-y-6">
-              <div className="flex gap-4">
-                <div className="w-6 h-6 rounded-full bg-red-500/10 flex items-center justify-center text-red-500 shrink-0 mt-1">
-                  <iconify-icon icon="solar:check-circle-linear" width="14"></iconify-icon>
-                </div>
-                <div>
-                  <h4 className="text-white font-medium mb-1">Clear ROI before we start</h4>
-                  <p className="text-sm text-neutral-400">If we can't measure the value, we don't build it.</p>
-                </div>
+            <div className="max-w-xl space-y-10">
+              <div>
+                <h4 className="mb-3 text-base font-medium text-white md:text-lg">Clear ROI Before We Start</h4>
+                <p className="text-sm leading-relaxed text-neutral-400 md:text-base">
+                  I don&apos;t build things because they look good or sound smart. Every system has a measurable outcome
+                  before we touch anything. Booked calls. Revenue per lead. Conversion rate. If we can&apos;t track it,
+                  we don&apos;t build it.
+                </p>
               </div>
-              <div className="flex gap-4">
-                <div className="w-6 h-6 rounded-full bg-red-500/10 flex items-center justify-center text-red-500 shrink-0 mt-1">
-                  <iconify-icon icon="solar:check-circle-linear" width="14"></iconify-icon>
-                </div>
-                <div>
-                  <h4 className="text-white font-medium mb-1">Less tools. More output</h4>
-                  <p className="text-sm text-neutral-400">Complex systems don't scale. Simple ones do.</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="w-6 h-6 rounded-full bg-red-500/10 flex items-center justify-center text-red-500 shrink-0 mt-1">
-                  <iconify-icon icon="solar:check-circle-linear" width="14"></iconify-icon>
-                </div>
-                <div>
-                  <h4 className="text-white font-medium mb-1">Partner mindset</h4>
-                  <p className="text-sm text-neutral-400">I don't think like a freelancer. I think like the person responsible for your revenue.</p>
-                </div>
+              <div>
+                <h4 className="mb-3 text-base font-medium text-white md:text-lg">
+                  Partner Mindset. Not Vendor Mentality.
+                </h4>
+                <p className="text-sm leading-relaxed text-neutral-400 md:text-base">
+                  I don&apos;t clock out when the invoice is sent. I think like the person whose name is on your
+                  revenue. If the system isn&apos;t working, that&apos;s my problem to fix, not yours to figure out
+                  alone.
+                </p>
               </div>
             </div>
           </div>
@@ -951,7 +954,7 @@ export default function Home() {
                 <span className="mb-2 block text-xs font-mono uppercase tracking-widest text-red-500">Common Questions</span>
                 <h2 className="text-3xl font-medium tracking-tight text-white md:text-5xl">Still Have Questions?</h2>
                 <p className="mx-auto mt-3 max-w-xl text-neutral-400 md:mx-0">
-                  Here are answers to the most common questions about working together.
+                  Answers about the Revenue Ladder, done-for-you builds, and the free Knowledge-to-Cash Blueprint.
                 </p>
               </div>
             </div>
@@ -970,7 +973,12 @@ export default function Home() {
               </button>
               <div className={`faq-answer ${openFaq === 0 ? 'faq-open' : ''}`}>
                 <div className="px-6 pb-6">
-                  <p className="text-neutral-400 text-sm leading-relaxed">If inefficiency is costing you more than $1K to $25K in lost revenue, missed leads, or wasted time, then yes. Most clients see ROI within the first 3 months through recovered revenue and time savings. We'll calculate the value before we start. If I can't show you clear ROI, I won't build it.</p>
+                  <p className="text-neutral-400 text-sm leading-relaxed">
+                    If leaks in your funnel or follow-up are costing you real revenue or time, usually yes. I tie work to
+                    measurable outcomes first: booked calls, conversion, revenue per lead, response speed. On your
+                    call we quantify what fixing the bottleneck is worth. If I cannot show you a clear ROI path, I do
+                    not take the build.
+                  </p>
                 </div>
               </div>
             </div>
@@ -979,7 +987,7 @@ export default function Home() {
                 onClick={() => toggleFaq(1)}
                 className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
               >
-                <h3 className="text-white font-medium text-lg pr-4">How long does this take?</h3>
+                <h3 className="text-white font-medium text-lg pr-4">How long does a build take?</h3>
                 <iconify-icon 
                   icon="solar:alt-arrow-down-linear" 
                   className={`text-neutral-400 shrink-0 transition-transform duration-300 ${openFaq === 1 ? 'rotate-180 text-red-500' : ''}`}
@@ -987,7 +995,12 @@ export default function Home() {
               </button>
               <div className={`faq-answer ${openFaq === 1 ? 'faq-open' : ''}`}>
                 <div className="px-6 pb-6">
-                  <p className="text-neutral-400 text-sm leading-relaxed">Most systems take 4 to 8 weeks to build and launch. Complex projects can take 12 to 16 weeks. During your free discovery call, we'll map out a timeline based on your specific needs. You'll know exactly what to expect before we start.</p>
+                  <p className="text-neutral-400 text-sm leading-relaxed">
+                    Most launches land in about 4 to 8 weeks depending on what we ship first: conversion-focused site,
+                    funnel pieces, AI follow-up, and integrations. Larger stacks can run 12 to 16 weeks. On your free
+                    Revenue Leak Coaching Call we map which rung of your ladder is broken and sequence the work so you
+                    see momentum early.
+                  </p>
                 </div>
               </div>
             </div>
@@ -996,7 +1009,7 @@ export default function Home() {
                 onClick={() => toggleFaq(2)}
                 className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
               >
-                <h3 className="text-white font-medium text-lg pr-4">Will this work for my business?</h3>
+                <h3 className="text-white font-medium text-lg pr-4">Will this work for my coaching or service business?</h3>
                 <iconify-icon 
                   icon="solar:alt-arrow-down-linear" 
                   className={`text-neutral-400 shrink-0 transition-transform duration-300 ${openFaq === 2 ? 'rotate-180 text-red-500' : ''}`}
@@ -1004,7 +1017,12 @@ export default function Home() {
               </button>
               <div className={`faq-answer ${openFaq === 2 ? 'faq-open' : ''}`}>
                 <div className="px-6 pb-6">
-                  <p className="text-neutral-400 text-sm leading-relaxed">If you're losing leads, drowning in manual work, or can't scale because your systems are broken (whether you're a startup, tech company, creative business, or established company with existing automation), we can fix it. It's not about what industry you're in, it's about fixing what's broken. Book a free call and we'll determine if we're a fit.</p>
+                  <p className="text-neutral-400 text-sm leading-relaxed">
+                    I work mainly with coaches and expertise-led service businesses: you sell transformation, advice,
+                    or high-trust services, and you need strangers to trust you and book calls. If that is you and the
+                    pain is offer clarity, funnel flow, follow-up, or pipeline consistency, we are probably a fit. Book
+                    a Revenue Leak Coaching Call and we will know quickly.
+                  </p>
                 </div>
               </div>
             </div>
@@ -1013,7 +1031,7 @@ export default function Home() {
                 onClick={() => toggleFaq(3)}
                 className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
               >
-                <h3 className="text-white font-medium text-lg pr-4">What happens after I book a call?</h3>
+                <h3 className="text-white font-medium text-lg pr-4">What happens on the Revenue Leak Coaching Call?</h3>
                 <iconify-icon 
                   icon="solar:alt-arrow-down-linear" 
                   className={`text-neutral-400 shrink-0 transition-transform duration-300 ${openFaq === 3 ? 'rotate-180 text-red-500' : ''}`}
@@ -1021,7 +1039,12 @@ export default function Home() {
               </button>
               <div className={`faq-answer ${openFaq === 3 ? 'faq-open' : ''}`}>
                 <div className="px-6 pb-6">
-                  <p className="text-neutral-400 text-sm leading-relaxed">We'll spend 30 minutes understanding your biggest bottleneck. You'll get a custom roadmap showing exactly how we'll fix it, with clear ROI calculations. No sales pitch, no pressure. If we're a fit, we'll discuss next steps. If not, you'll walk away with valuable insights.</p>
+                  <p className="text-neutral-400 text-sm leading-relaxed">
+                    About 30 minutes on your biggest revenue leak: where leads drop, what follow-up looks like today,
+                    and what better would look like in plain numbers. You leave with a clear read on what to fix first and what
+                    a build could look like. No hard pitch. If we work together, that becomes a concrete plan across the
+                    Build Stack: site, funnel systems, AI follow-up, and strategy coaching where it helps.
+                  </p>
                 </div>
               </div>
             </div>
@@ -1038,7 +1061,11 @@ export default function Home() {
               </button>
               <div className={`faq-answer ${openFaq === 4 ? 'faq-open' : ''}`}>
                 <div className="px-6 pb-6">
-                  <p className="text-neutral-400 text-sm leading-relaxed">Not at all. I build systems that work for you, not the other way around. You'll get training and documentation, but the goal is to make everything so simple that you don't have to think about it. The system should disappear so your work can shine.</p>
+                  <p className="text-neutral-400 text-sm leading-relaxed">
+                    No. You should not have to live inside your CRM to make money. I design for operators: clear
+                    workflows, sensible automations, and documentation so your team can run it. The goal is for the
+                    system to fade into the background so your client experience stays front and center.
+                  </p>
                 </div>
               </div>
             </div>
@@ -1047,7 +1074,7 @@ export default function Home() {
                 onClick={() => toggleFaq(5)}
                 className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
               >
-                <h3 className="text-white font-medium text-lg pr-4">What kind of results can I expect?</h3>
+                <h3 className="text-white font-medium text-lg pr-4">What is the Knowledge-to-Cash Blueprint?</h3>
                 <iconify-icon 
                   icon="solar:alt-arrow-down-linear" 
                   className={`text-neutral-400 shrink-0 transition-transform duration-300 ${openFaq === 5 ? 'rotate-180 text-red-500' : ''}`}
@@ -1055,7 +1082,12 @@ export default function Home() {
               </button>
               <div className={`faq-answer ${openFaq === 5 ? 'faq-open' : ''}`}>
                 <div className="px-6 pb-6">
-                  <p className="text-neutral-400 text-sm leading-relaxed">Results vary, but typical outcomes include: 3× lead conversion rates, 70% reduction in admin work, zero missed inquiries, faster response times, and recovered revenue from previously lost leads. We'll set specific, measurable goals during your discovery call.</p>
+                  <p className="text-neutral-400 text-sm leading-relaxed">
+                    It is a free framework you can download from this page: how to clarify what people will pay for,
+                    package your knowledge, price it sensibly, and get early traction without a huge audience. It is
+                    self-serve education, separate from done-for-you builds. Use it for structure; book a call when you
+                    want the ladder and stack built for your business.
+                  </p>
                 </div>
               </div>
             </div>
@@ -1072,15 +1104,19 @@ export default function Home() {
               </button>
               <div className={`faq-answer ${openFaq === 6 ? 'faq-open' : ''}`}>
                 <div className="px-6 pb-6">
-                  <p className="text-neutral-400 text-sm leading-relaxed">That's what ongoing support is for. Most clients start with a project build, then move to monthly support ($297 to $3K/month) for updates, maintenance, and new features. Systems evolve with your business. We're here for the long haul if you want us.</p>
+                  <p className="text-neutral-400 text-sm leading-relaxed">
+                    Businesses change; systems should evolve. After launch we can move into maintenance or ongoing
+                    support scoped to what you need: updates, new sequences, optimizations, and new funnel pieces. We
+                    agree cadence and scope up front so expectations stay clear.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
           <div className="text-center mt-16 animate-on-scroll">
-            <p className="text-white text-xl mb-6">Ready to fix what's broken?</p>
+            <p className="mb-6 text-xl text-white">Which rung of your ladder needs fixing first?</p>
             <a href="#contact" className="cta-primary inline-flex items-center gap-2 px-10 py-4 bg-white text-neutral-950 rounded-lg text-sm font-medium hover:bg-red-400 transition-all btn-shimmer hover:shadow-lg hover:shadow-red-500/30">
-              Book Your Free Discovery Call
+              Book a Free Revenue Leak Coaching Call
               <iconify-icon icon="solar:arrow-right-up-linear"></iconify-icon>
             </a>
           </div>
