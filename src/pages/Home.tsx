@@ -134,7 +134,7 @@ export default function Home() {
             "areaServed": "Worldwide",
             "serviceType": ["Marketing Funnels", "Websites", "AI Follow Up", "CRM Systems", "Lead Generation", "Booking Systems"],
             "knowsAbout": ["Coaching Business", "Funnels", "Web Development", "CRM", "Automation", "AI"],
-            "sameAs": ["https://www.linkedin.com/in/brian-marshall-80a513144"]
+            "sameAs": ["https://www.linkedin.com/in/brianmarshallca/"]
           })}
         </script>
       </Helmet>
@@ -1222,7 +1222,7 @@ export default function Home() {
                 
                 <div className="flex items-center gap-8">
                   <div className="h-px w-12 bg-gradient-to-r from-transparent to-white/10 hidden md:block"></div>
-                  <a href="https://www.linkedin.com/in/brian-marshall-80a513144" className="group relative flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-300 footer-social-link">
+                  <a href="https://www.linkedin.com/in/brianmarshallca/" className="group relative flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-300 footer-social-link">
                     <iconify-icon icon="mdi:linkedin" className="text-base text-neutral-400 group-hover:text-white transition-colors"></iconify-icon>
                     <span className="text-xs text-neutral-400 font-mono uppercase tracking-wider group-hover:text-white transition-colors">LinkedIn</span>
                   </a>

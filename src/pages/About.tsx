@@ -995,7 +995,7 @@ export default function About() {
               <div className="flex items-center gap-8">
                 <div className="hidden h-px w-12 bg-gradient-to-r from-transparent to-white/10 md:block" />
                 <a
-                  href="https://www.linkedin.com/in/brian-marshall-80a513144"
+                  href="https://www.linkedin.com/in/brianmarshallca/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="footer-social-link group relative flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-2 transition-all duration-300 hover:border-white/20"
