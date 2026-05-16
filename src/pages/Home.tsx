@@ -764,16 +764,16 @@ export default function Home() {
         <div className="section-ambient__grid opacity-40" aria-hidden />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
           <div className="mb-10 grid grid-cols-1 items-start gap-8 animate-on-scroll md:mb-16 md:gap-12 lg:mb-20 lg:grid-cols-12 lg:gap-16">
-            <div className="lg:col-span-7">
+            <div className="w-full text-center md:text-left lg:col-span-7">
               <span className="mb-4 block text-xs font-mono uppercase tracking-widest text-neutral-500">
                 The Revenue Ladder: How It Works
               </span>
-              <h2 className="mb-6 text-3xl font-medium leading-[1.12] tracking-tight text-white sm:text-4xl md:text-6xl">
+              <h2 className="mb-6 w-full text-3xl font-medium leading-[1.12] tracking-tight text-white sm:text-4xl md:text-6xl">
                 Every rung exists to do one thing.
                 <br />
                 <span className="hero-text-gradient">Turn more of the right people into paying clients.</span>
               </h2>
-              <p className="max-w-2xl text-base leading-relaxed text-neutral-400 md:text-lg">
+              <p className="mx-auto max-w-2xl text-base leading-relaxed text-neutral-400 md:mx-0 md:text-lg">
                 Most coaches aren&apos;t losing clients because they&apos;re bad at what they do. They&apos;re losing
                 them in the gaps. Here&apos;s where I find them, and what I build to fix it.
               </p>
