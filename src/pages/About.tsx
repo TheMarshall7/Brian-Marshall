@@ -354,7 +354,7 @@ export default function About() {
       <div className="bg-grain" />
       <Navigation />
 
-      <main className="about-page pt-28 md:pt-32">
+      <main className="about-page pt-24 sm:pt-28 md:pt-32">
         <div className="relative -mt-28 md:-mt-32 pt-28 md:pt-32">
           <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
             <div className="absolute inset-0 tech-grid tech-grid--soft" />
@@ -363,7 +363,7 @@ export default function About() {
 
           <div className="relative z-10">
             <div className="about-section-nav">
-              <div className="mx-auto max-w-7xl px-6 md:px-12">
+              <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
                 <div className="flex justify-center">
                   <nav
                     className="about-section-nav-shell relative w-full max-w-full sm:mx-auto sm:w-max"
@@ -400,7 +400,7 @@ export default function About() {
               id="profile"
               className="relative overflow-hidden border-b border-white/5 py-16 md:py-20"
             >
-          <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
+          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
             <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-16">
               <div className="lg:col-span-5 animate-on-scroll">
                 <div className="flex w-full justify-center lg:justify-end lg:pr-2">
@@ -410,7 +410,7 @@ export default function About() {
                     width={320}
                     height={320}
                     loading="eager"
-                    fetchPriority="high"
+                    fetchpriority="high"
                     className="about-hero-image h-auto w-full max-w-[min(100%,520px)] object-contain object-center select-none sm:max-w-[min(100%,580px)] lg:max-w-[min(100%,640px)]"
                   />
                 </div>
@@ -420,7 +420,7 @@ export default function About() {
                 <span className="mb-4 block text-xs font-mono uppercase tracking-widest text-neutral-500">
                   About
                 </span>
-                <h1 className="font-bricolage text-4xl font-medium tracking-tight text-white md:text-6xl">
+                <h1 className="font-bricolage text-3xl font-medium tracking-tight text-white sm:text-4xl md:text-6xl">
                   {ABOUT_ROLE_TITLE}
                 </h1>
 
@@ -469,10 +469,10 @@ export default function About() {
           </div>
         </div>
 
-        <section id="credentials" className="section-ambient section-ambient--soft relative overflow-hidden py-24 section-standard">
+        <section id="credentials" className="section-ambient section-ambient--soft relative overflow-hidden py-16 section-standard md:py-24">
           <div className="section-ambient__glow" aria-hidden />
           <div className="section-ambient__grid" aria-hidden />
-          <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
+          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
             <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
               <div className="animate-on-scroll">
                 <span className="mb-4 block text-xs font-mono uppercase tracking-widest text-neutral-500">
@@ -546,7 +546,7 @@ export default function About() {
 
         <section
           id="offer-framework"
-          className="relative overflow-hidden border-t border-white/5 bg-neutral-950 py-28 md:py-32"
+          className="relative overflow-hidden border-t border-white/5 bg-neutral-950 py-16 md:py-28 lg:py-32"
           aria-labelledby="offer-framework-heading"
         >
           <div
@@ -562,7 +562,7 @@ export default function About() {
             aria-hidden
           />
 
-          <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
+          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
             <div className="grid grid-cols-1 items-start gap-16 lg:grid-cols-2 lg:gap-24">
               <div className="animate-on-scroll">
                 <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-red-500/25 bg-red-500/10 px-4 py-2 text-xs font-mono uppercase tracking-widest text-red-400 shadow-[0_0_24px_rgba(239,68,68,0.12)] transition-[box-shadow,transform] duration-300 hover:border-red-500/40 hover:shadow-[0_0_32px_rgba(239,68,68,0.2)]">
@@ -710,11 +710,11 @@ export default function About() {
 
         <section
           id="systems"
-          className="relative overflow-hidden border-t border-white/5 bg-neutral-950 py-24 section-standard"
+          className="relative overflow-hidden border-t border-white/5 bg-neutral-950 py-16 section-standard md:py-24"
         >
           <div className="about-systems-grid pointer-events-none absolute inset-0 section-ambient__grid" aria-hidden />
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_78%_58%_at_50%_0%,rgba(239,68,68,0.072),transparent_74%)]" />
-          <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
+          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12">
               <div className="lg:col-span-5 animate-on-scroll">
                 <span className="mb-4 block text-xs font-mono uppercase tracking-widest text-neutral-500">
@@ -780,7 +780,7 @@ export default function About() {
                       href="https://areoclient.com"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex shrink-0 items-center gap-2 rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2.5 text-xs font-medium text-white transition-all hover:border-red-500/35 hover:bg-red-500/10 hover:text-white"
+                      className="inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2.5 text-xs font-medium text-white transition-all hover:border-red-500/35 hover:bg-red-500/10 hover:text-white sm:w-auto sm:justify-start"
                     >
                       areoclient.com
                       <iconify-icon icon="solar:arrow-right-up-linear" width="14" className="text-red-400/90" />
@@ -936,9 +936,9 @@ export default function About() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden border-t border-white/5 bg-neutral-950 py-24 section-elevated">
+        <section className="relative overflow-hidden border-t border-white/5 bg-neutral-950 py-16 section-elevated md:py-24">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_50%_0%,rgba(239,68,68,0.14),transparent_65%)]" />
-          <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
+          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
             <div className="glass-panel glass-panel--premium rounded-2xl border border-white/10 p-10 text-center">
               <span className="mb-4 block text-xs font-mono uppercase tracking-widest text-neutral-500">
                 Ready to work together?
@@ -973,7 +973,7 @@ export default function About() {
         className="relative border-t border-white/10 bg-black py-12 md:py-14"
         style={{ background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.95), #000000)' }}
       >
-        <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
           <div className="pointer-events-none absolute left-1/2 top-0 h-px w-32 -translate-x-1/2 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
           <div className="flex flex-col gap-8 pt-6">
             <div className="flex justify-center md:justify-start">

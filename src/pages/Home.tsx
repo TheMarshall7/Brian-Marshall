@@ -143,16 +143,16 @@ export default function Home() {
       <Navigation />
 
       {/* Single page scroll: hero grows with content (no nested md viewport trap). */}
-      <header className="relative flex min-h-[100svh] flex-col overflow-x-hidden overflow-y-visible tech-grid hero-elevated px-6 pb-6 md:min-h-[100svh] md:px-12 md:pb-8">
+      <header className="relative flex min-h-0 flex-col overflow-x-hidden overflow-y-visible tech-grid hero-elevated px-4 pb-8 sm:px-6 sm:pb-6 md:min-h-[100svh] md:px-12 md:pb-8">
         <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden>
           <div className="absolute top-[8%] left-1/2 h-[min(88vh,920px)] w-[min(112vw,1200px)] max-w-none -translate-x-1/2 rounded-full bg-red-900/[0.14] blur-[140px]" />
         </div>
 
-        <div className="relative z-10 flex w-full flex-1 flex-col overflow-visible pt-[7rem] md:justify-center md:py-12 md:pt-[7.5rem]">
-          <div className="mx-auto grid w-full max-w-[min(100%,90rem)] grid-cols-1 items-start gap-x-10 gap-y-10 pb-4 md:grid-cols-12 md:items-stretch md:gap-y-8 md:gap-x-8 md:pb-8 lg:gap-x-10 lg:gap-y-10 xl:gap-x-12">
-            <div className="md:col-span-6 md:pl-6 lg:col-span-5 lg:pl-10 lg:pr-2 xl:pl-14 xl:pr-4 lg:flex lg:min-h-0 lg:flex-col lg:justify-center">
-              <div className="mb-5 pt-[40px] md:mb-6 md:pt-0 animate-slide-up" style={{ animationDelay: '0.4s', opacity: 0 }}>
-                <div className="inline-flex items-center gap-3 px-4 py-2.5 rounded-full bg-red-500/10 border border-red-500/20 hero-badge">
+        <div className="relative z-10 flex w-full flex-1 flex-col overflow-visible pt-[5.5rem] sm:pt-[6.5rem] md:justify-center md:py-12 md:pt-[7.5rem]">
+          <div className="mx-auto grid w-full max-w-[min(100%,90rem)] grid-cols-1 items-start gap-x-10 gap-y-6 pb-4 sm:gap-y-8 md:grid-cols-12 md:items-stretch md:gap-y-8 md:gap-x-8 md:pb-8 lg:gap-x-10 lg:gap-y-10 xl:gap-x-12">
+            <div className="flex w-full flex-col items-center text-center md:col-span-6 md:items-start md:pl-6 md:text-left lg:col-span-5 lg:pl-10 lg:pr-2 xl:pl-14 xl:pr-4 lg:flex lg:min-h-0 lg:flex-col lg:justify-center">
+              <div className="mb-4 flex w-full justify-center pt-0 animate-slide-up md:mb-6 md:justify-start" style={{ animationDelay: '0.4s', opacity: 0 }}>
+                <div className="inline-flex max-w-full flex-wrap items-center justify-center gap-2 rounded-full border border-red-500/20 bg-red-500/10 px-3 py-2.5 hero-badge sm:gap-3 sm:px-4">
                   <div className="flex -space-x-2 group">
                     <div className="w-6 h-6 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center overflow-hidden">
                       <img src="https://storage.googleapis.com/msgsndr/F1J2yvd2AUT4owDs9EPl/media/6970702dd4fb90e27fbf24b6.png" alt="NS" className="w-4 h-4 object-contain opacity-40 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0" />
@@ -164,11 +164,11 @@ export default function Home() {
                       <img src="https://storage.googleapis.com/msgsndr/F1J2yvd2AUT4owDs9EPl/media/6970702d15885e283f324bca.png" alt="AC" className="w-4 h-4 object-contain opacity-40 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0" />
                     </div>
                   </div>
-                  <span className="text-xs text-neutral-300 font-medium">Trusted by coaches and service businesses</span>
+                  <span className="text-[11px] font-medium leading-snug text-neutral-300 sm:text-xs">Trusted by coaches and service businesses</span>
                 </div>
               </div>
 
-              <h1 className="font-bricolage font-medium leading-[1.05] tracking-[-0.02em] mb-5 md:mb-6 lg:mb-7">
+              <h1 className="mb-5 w-full font-bricolage font-medium leading-[1.05] tracking-[-0.02em] md:mb-6 lg:mb-7">
                 <span className="block text-4xl sm:text-5xl md:text-[2.65rem] lg:text-6xl xl:text-[3.35rem] text-neutral-200 animate-slide-up" style={{ animationDelay: '0.6s', opacity: 0 }}>
                   I Turn Your Expertise Into
                 </span>
@@ -177,8 +177,8 @@ export default function Home() {
                 </span>
               </h1>
 
-              <div className="max-w-none animate-slide-up md:pr-0 lg:pr-2" style={{ animationDelay: '1s', opacity: 0 }}>
-                <p className="max-w-2xl text-base font-light leading-relaxed text-neutral-400 sm:text-lg md:text-xl md:leading-relaxed">
+              <div className="w-full max-w-none animate-slide-up md:pr-0 lg:pr-2" style={{ animationDelay: '1s', opacity: 0 }}>
+                <p className="mx-auto max-w-2xl text-base font-light leading-relaxed text-neutral-400 sm:text-lg md:mx-0 md:text-xl md:leading-relaxed">
                   Funnels, websites, and AI follow up built specifically so qualified leads find you, trust you, and book without you lifting a finger.
                 </p>
               </div>
@@ -192,23 +192,23 @@ export default function Home() {
                   width={1000}
                   height={1000}
                   decoding="async"
-                  fetchPriority="high"
+                  fetchpriority="high"
                   className="about-hero-image h-auto w-full object-contain object-center select-none"
                 />
               </div>
             </div>
 
-            <div className="flex w-full flex-col gap-6 border-t border-white/10 pt-8 md:col-span-12 md:flex-row md:items-center md:justify-between md:gap-10 md:border-white/10 md:pl-6 md:pt-8 lg:pl-10 lg:pt-10 xl:pl-14">
-              <div className="flex flex-col gap-4 animate-slide-up sm:flex-row sm:flex-wrap sm:gap-5" style={{ animationDelay: '1.2s', opacity: 0 }}>
-                <a href="#contact" className="cta-primary px-9 py-4 md:px-10 md:py-[1.125rem] bg-white text-neutral-950 rounded-xl text-[0.9375rem] font-medium hover:bg-red-400 transition-all flex items-center justify-center gap-2 group btn-shimmer hover:shadow-lg hover:shadow-red-500/35">
+            <div className="flex w-full flex-col items-center gap-6 border-t border-white/10 pt-8 md:col-span-12 md:flex-row md:items-center md:justify-between md:gap-10 md:border-white/10 md:pl-6 md:pt-8 lg:pl-10 lg:pt-10 xl:pl-14">
+              <div className="flex w-full max-w-md flex-col gap-3 animate-slide-up sm:max-w-none sm:flex-row sm:flex-wrap sm:gap-5 md:max-w-none" style={{ animationDelay: '1.2s', opacity: 0 }}>
+                <a href="#contact" className="cta-primary flex w-full items-center justify-center gap-2 rounded-xl bg-white px-9 py-4 text-[0.9375rem] font-medium text-neutral-950 transition-all btn-shimmer hover:bg-red-400 hover:shadow-lg hover:shadow-red-500/35 group sm:w-auto md:px-10 md:py-[1.125rem]">
                   Get Your Free Strategy Call
                   <iconify-icon icon="solar:arrow-right-up-linear" className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></iconify-icon>
                 </a>
-                <a href="#work" className="px-9 py-4 md:px-10 md:py-[1.125rem] glass-panel text-white rounded-xl text-[0.9375rem] font-medium hover:bg-white/10 transition-all flex items-center justify-center gap-2 glow-border">
+                <a href="#work" className="flex w-full items-center justify-center gap-2 rounded-xl glass-panel px-9 py-4 text-[0.9375rem] font-medium text-white transition-all glow-border hover:bg-white/10 sm:w-auto md:px-10 md:py-[1.125rem]">
                   See How It Works
                 </a>
               </div>
-              <div className="flex flex-wrap gap-x-8 gap-y-3 text-sm text-neutral-400 animate-slide-up md:justify-end md:text-base" style={{ animationDelay: '1.4s', opacity: 0 }}>
+              <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm text-neutral-400 animate-slide-up md:justify-end md:text-base" style={{ animationDelay: '1.4s', opacity: 0 }}>
                 <div className="flex items-center gap-2">
                   <iconify-icon icon="solar:check-circle-linear" className="text-red-500"></iconify-icon>
                   <span>Free 30 minute discovery call</span>
@@ -226,7 +226,7 @@ export default function Home() {
       {/* Lead magnet: Knowledge-to-Cash Blueprint (PDF path in public per your deploy) */}
       <section
         id="offer-framework"
-        className="relative overflow-hidden border-t border-white/5 bg-neutral-950 py-28 md:py-32"
+        className="relative overflow-hidden border-t border-white/5 bg-neutral-950 py-16 md:py-28 lg:py-32"
         aria-labelledby="offer-framework-heading"
       >
         <div
@@ -239,10 +239,10 @@ export default function Home() {
         />
         <div className="pointer-events-none absolute -left-32 top-1/2 h-[420px] w-[420px] -translate-y-1/2 rounded-full bg-red-600/5 blur-[100px]" aria-hidden />
 
-        <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
-          <div className="grid grid-cols-1 items-start gap-16 lg:grid-cols-2 lg:gap-24">
-            <div className="animate-on-scroll">
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-red-500/25 bg-red-500/10 px-4 py-2 text-xs font-mono uppercase tracking-widest text-red-400 shadow-[0_0_24px_rgba(239,68,68,0.12)] transition-[box-shadow,transform] duration-300 hover:border-red-500/40 hover:shadow-[0_0_32px_rgba(239,68,68,0.2)]">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
+          <div className="grid grid-cols-1 items-start gap-10 sm:gap-12 lg:grid-cols-2 lg:gap-24">
+            <div className="animate-on-scroll flex w-full flex-col items-center text-center md:items-start md:text-left">
+              <div className="mb-6 inline-flex items-center justify-center gap-2 rounded-full border border-red-500/25 bg-red-500/10 px-4 py-2 text-center text-xs font-mono uppercase tracking-widest text-red-400 shadow-[0_0_24px_rgba(239,68,68,0.12)] transition-[box-shadow,transform] duration-300 hover:border-red-500/40 hover:shadow-[0_0_32px_rgba(239,68,68,0.2)] md:justify-start md:text-left">
                 <span className="relative flex h-2 w-2">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-40"></span>
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500"></span>
@@ -251,16 +251,16 @@ export default function Home() {
               </div>
               <h2
                 id="offer-framework-heading"
-                className="mb-6 font-bricolage text-3xl font-medium tracking-tight text-white md:text-5xl lg:text-[3.25rem] lg:leading-[1.08]"
+                className="mb-6 w-full font-bricolage text-3xl font-medium tracking-tight text-white md:text-5xl lg:text-[3.25rem] lg:leading-[1.08]"
               >
                 You just need{' '}
                 <span className="hero-text-gradient">the framework to prove it.</span>
               </h2>
-              <p className="mb-10 max-w-xl text-lg leading-relaxed text-neutral-400">
+              <p className="mx-auto mb-10 max-w-xl text-lg leading-relaxed text-neutral-400 md:mx-0">
                 Most people sitting on valuable knowledge have no idea how to package it into an offer people will
                 actually pay for. This free guide changes that.
               </p>
-              <div className="group/result relative mb-10 overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-transparent p-6 transition-all duration-500 hover:border-red-500/25 hover:shadow-[0_0_40px_rgba(239,68,68,0.08)] md:p-8">
+              <div className="group/result relative mb-10 w-full max-w-xl overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-transparent p-6 text-left transition-all duration-500 hover:border-red-500/25 hover:shadow-[0_0_40px_rgba(239,68,68,0.08)] md:p-8">
                 <div className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-red-500/10 blur-2xl transition-opacity duration-500 group-hover/result:opacity-100" aria-hidden />
                 <span className="mb-3 block text-xs font-mono uppercase tracking-widest text-red-500/90">
                   Result
@@ -275,7 +275,7 @@ export default function Home() {
                 role="region"
                 aria-live="polite"
                 aria-atomic="true"
-                className="mb-8 min-h-[5.5rem] max-w-xl rounded-xl border border-white/10 bg-black/30 p-4 text-sm leading-relaxed text-neutral-400 transition-[border-color,box-shadow] duration-300 md:min-h-[5rem] md:p-5"
+                className="mb-8 min-h-[5.5rem] w-full max-w-xl rounded-xl border border-white/10 bg-black/30 p-4 text-left text-sm leading-relaxed text-neutral-400 transition-[border-color,box-shadow] duration-300 md:min-h-[5rem] md:p-5"
               >
                 <span className="mb-1 block text-[10px] font-mono uppercase tracking-widest text-red-500/80">
                   Lens
@@ -287,7 +287,7 @@ export default function Home() {
               <button
                 type="button"
                 onClick={() => setOfferFrameworkModalOpen(true)}
-                className="cta-primary group/download glow-border relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-white px-9 py-4 text-sm font-medium text-neutral-950 transition-all duration-300 btn-shimmer hover:bg-red-400 hover:shadow-[0_0_40px_rgba(239,68,68,0.35)]"
+                className="cta-primary group/download glow-border relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-white px-9 py-4 text-sm font-medium text-neutral-950 transition-all duration-300 btn-shimmer hover:bg-red-400 hover:shadow-[0_0_40px_rgba(239,68,68,0.35)]"
               >
                 <span className="relative z-10">Send me the blueprint</span>
                 <iconify-icon
@@ -298,8 +298,8 @@ export default function Home() {
               <p className="mt-4 text-xs text-neutral-600">Free PDF · delivered to your inbox</p>
             </div>
 
-            <div className="animate-on-scroll delay-100">
-              <div className="group/card relative rounded-2xl border border-white/10 bg-neutral-900/40 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.45)] backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:border-red-500/30 hover:shadow-[0_32px_96px_rgba(0,0,0,0.5),0_0_48px_rgba(239,68,68,0.12)] md:p-10">
+            <div className="w-full animate-on-scroll pt-10 delay-100 sm:pt-12 lg:pt-0">
+              <div className="group/card relative rounded-2xl border border-white/10 bg-neutral-900/40 px-6 pb-6 pt-8 shadow-[0_24px_80px_rgba(0,0,0,0.45)] backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:border-red-500/30 hover:shadow-[0_32px_96px_rgba(0,0,0,0.5),0_0_48px_rgba(239,68,68,0.12)] md:p-10">
                 <div className="relative mb-8 h-36 md:h-40">
                   <div
                     className="absolute left-1/2 top-3 h-[7.5rem] w-[11rem] -translate-x-1/2 rotate-[-4deg] rounded-md border border-white/10 bg-neutral-800/90 shadow-lg transition-all duration-500 ease-out group-hover/card:top-4 group-hover/card:translate-x-[calc(-50%+10px)] group-hover/card:rotate-[-2deg] md:w-[13rem]"
@@ -379,15 +379,15 @@ export default function Home() {
       </section>
 
       {/* Case Studies Section */}
-      <section id="work" className="section-ambient relative overflow-hidden border-t border-white/5 py-24 md:py-32 section-standard">
+      <section id="work" className="section-ambient relative overflow-hidden border-t border-white/5 py-16 section-standard md:py-24 lg:py-32">
         <div className="section-ambient__glow" aria-hidden />
         <div className="section-ambient__grid" aria-hidden />
-        <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
-          <div className="mb-16 grid grid-cols-1 items-start gap-12 md:mb-20 lg:grid-cols-12 lg:gap-16 animate-on-scroll">
-            <div className="lg:col-span-7">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
+          <div className="mb-10 grid grid-cols-1 items-start gap-8 animate-on-scroll md:mb-20 md:gap-12 lg:grid-cols-12 lg:gap-16">
+            <div className="w-full text-center md:text-left lg:col-span-7">
               <span className="mb-4 block text-xs font-mono uppercase tracking-widest text-red-500">Deployment Log</span>
-              <h2 className="mb-4 text-4xl font-medium tracking-tight text-white md:text-6xl">What I Actually Build</h2>
-              <p className="max-w-xl text-neutral-400">
+              <h2 className="mb-4 text-3xl font-medium tracking-tight text-white sm:text-4xl md:text-6xl">What I Actually Build</h2>
+              <p className="mx-auto max-w-xl text-neutral-400 md:mx-0">
                 Real systems. Real outcomes. I don't ship pretty mockups and disappear. I build things people use every day.
               </p>
             </div>
@@ -418,7 +418,7 @@ export default function Home() {
               className="group glass-panel scroll-mt-24 rounded-2xl overflow-hidden border border-white/10 transition-all duration-500 animate-on-scroll flex flex-col card-lift case-study-card hover:border-red-500/40 md:scroll-mt-28"
               style={{ '--case-study-glow': '239, 68, 68' } as React.CSSProperties}
             >
-              <div className="relative flex-1 p-8 md:p-10 flex flex-col min-h-[420px]">
+              <div className="relative flex-1 flex flex-col p-5 sm:p-6 md:p-10 min-h-0 md:min-h-[420px]">
                 {/* Layered depth backgrounds */}
                 <div className="absolute inset-0 bg-neutral-950 z-0"></div>
                 <div className="absolute inset-0 bg-gradient-to-b from-neutral-900/80 via-neutral-900/60 to-neutral-950 z-[1]"></div>
@@ -460,7 +460,7 @@ export default function Home() {
               className="group glass-panel scroll-mt-24 rounded-2xl overflow-hidden border border-white/10 transition-all duration-500 animate-on-scroll flex flex-col delay-100 card-lift case-study-card hover:border-blue-500/40 md:scroll-mt-28"
               style={{ '--case-study-glow': '59, 130, 246' } as React.CSSProperties}
             >
-              <div className="relative flex-1 p-8 md:p-10 flex flex-col min-h-[420px]">
+              <div className="relative flex-1 flex flex-col p-5 sm:p-6 md:p-10 min-h-0 md:min-h-[420px]">
                 {/* Layered depth backgrounds */}
                 <div className="absolute inset-0 bg-neutral-950 z-0"></div>
                 <div className="absolute inset-0 bg-gradient-to-b from-neutral-900/80 via-neutral-900/60 to-neutral-950 z-[1]"></div>
@@ -502,7 +502,7 @@ export default function Home() {
               className="group glass-panel scroll-mt-24 rounded-2xl overflow-hidden border border-white/10 transition-all duration-500 animate-on-scroll flex flex-col delay-200 card-lift case-study-card hover:border-purple-500/40 md:scroll-mt-28"
               style={{ '--case-study-glow': '168, 85, 247' } as React.CSSProperties}
             >
-              <div className="relative flex-1 p-8 md:p-10 flex flex-col min-h-[420px]">
+              <div className="relative flex-1 flex flex-col p-5 sm:p-6 md:p-10 min-h-0 md:min-h-[420px]">
                 {/* Layered depth backgrounds */}
                 <div className="absolute inset-0 bg-neutral-950 z-0"></div>
                 <div className="absolute inset-0 bg-gradient-to-b from-neutral-900/80 via-neutral-900/60 to-neutral-950 z-[1]"></div>
@@ -544,7 +544,7 @@ export default function Home() {
               className="group glass-panel scroll-mt-24 rounded-2xl overflow-hidden border border-white/10 transition-all duration-500 animate-on-scroll flex flex-col delay-300 card-lift case-study-card hover:border-indigo-500/40 md:scroll-mt-28"
               style={{ '--case-study-glow': '99, 102, 241' } as React.CSSProperties}
             >
-              <div className="relative flex-1 p-8 md:p-10 flex flex-col min-h-[420px]">
+              <div className="relative flex-1 flex flex-col p-5 sm:p-6 md:p-10 min-h-0 md:min-h-[420px]">
                 {/* Layered depth backgrounds */}
                 <div className="absolute inset-0 bg-neutral-950 z-0"></div>
                 <div className="absolute inset-0 bg-gradient-to-b from-neutral-900/80 via-neutral-900/60 to-neutral-950 z-[1]"></div>
@@ -586,7 +586,7 @@ export default function Home() {
               className="group glass-panel scroll-mt-24 rounded-2xl overflow-hidden border border-white/10 transition-all duration-500 animate-on-scroll flex flex-col delay-400 card-lift case-study-card hover:border-rose-500/40 md:scroll-mt-28"
               style={{ '--case-study-glow': '244, 63, 94' } as React.CSSProperties}
             >
-              <div className="relative flex-1 p-8 md:p-10 flex flex-col min-h-[420px]">
+              <div className="relative flex-1 flex flex-col p-5 sm:p-6 md:p-10 min-h-0 md:min-h-[420px]">
                 <div className="absolute inset-0 bg-neutral-950 z-0"></div>
                 <div className="absolute inset-0 bg-gradient-to-b from-neutral-900/80 via-neutral-900/60 to-neutral-950 z-[1]"></div>
                 <div className="absolute inset-0 bg-neutral-900/40 z-[2]" style={{ boxShadow: 'inset 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 -4px 12px rgba(0, 0, 0, 0.5)' }}></div>
@@ -627,7 +627,7 @@ export default function Home() {
               className="group glass-panel scroll-mt-24 rounded-2xl overflow-hidden border border-white/10 transition-all duration-500 animate-on-scroll flex flex-col delay-500 card-lift case-study-card hover:border-emerald-500/40 md:scroll-mt-28"
               style={{ '--case-study-glow': '16, 185, 129' } as React.CSSProperties}
             >
-              <div className="relative flex-1 p-8 md:p-10 flex flex-col min-h-[420px]">
+              <div className="relative flex-1 flex flex-col p-5 sm:p-6 md:p-10 min-h-0 md:min-h-[420px]">
                 <div className="absolute inset-0 bg-neutral-950 z-0"></div>
                 <div className="absolute inset-0 bg-gradient-to-b from-neutral-900/80 via-neutral-900/60 to-neutral-950 z-[1]"></div>
                 <div className="absolute inset-0 bg-neutral-900/40 z-[2]" style={{ boxShadow: 'inset 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 -4px 12px rgba(0, 0, 0, 0.5)' }}></div>
@@ -668,7 +668,7 @@ export default function Home() {
               className="group glass-panel scroll-mt-24 rounded-2xl overflow-hidden border border-white/10 transition-all duration-500 animate-on-scroll flex flex-col delay-600 card-lift case-study-card hover:border-cyan-500/40 md:scroll-mt-28"
               style={{ '--case-study-glow': '6, 182, 212' } as React.CSSProperties}
             >
-              <div className="relative flex-1 p-8 md:p-10 flex flex-col min-h-[420px]">
+              <div className="relative flex-1 flex flex-col p-5 sm:p-6 md:p-10 min-h-0 md:min-h-[420px]">
                 <div className="absolute inset-0 bg-neutral-950 z-0"></div>
                 <div className="absolute inset-0 bg-gradient-to-b from-neutral-900/80 via-neutral-900/60 to-neutral-950 z-[1]"></div>
                 <div className="absolute inset-0 bg-neutral-900/40 z-[2]" style={{ boxShadow: 'inset 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 -4px 12px rgba(0, 0, 0, 0.5)' }}></div>
@@ -709,7 +709,7 @@ export default function Home() {
               className="group glass-panel scroll-mt-24 rounded-2xl overflow-hidden border border-white/10 transition-all duration-500 animate-on-scroll flex flex-col delay-700 card-lift case-study-card hover:border-amber-500/40 md:scroll-mt-28"
               style={{ '--case-study-glow': '245, 158, 11' } as React.CSSProperties}
             >
-              <div className="relative flex-1 p-8 md:p-10 flex flex-col min-h-[420px]">
+              <div className="relative flex-1 flex flex-col p-5 sm:p-6 md:p-10 min-h-0 md:min-h-[420px]">
                 <div className="absolute inset-0 bg-neutral-950 z-0"></div>
                 <div className="absolute inset-0 bg-gradient-to-b from-neutral-900/80 via-neutral-900/60 to-neutral-950 z-[1]"></div>
                 <div className="absolute inset-0 bg-neutral-900/40 z-[2]" style={{ boxShadow: 'inset 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 -4px 12px rgba(0, 0, 0, 0.5)' }}></div>
@@ -759,16 +759,16 @@ export default function Home() {
       </section>
 
       {/* Revenue ladder / process */}
-      <section id="process" className="section-ambient relative overflow-hidden border-t border-white/5 bg-neutral-900/30 py-24 section-standard">
+      <section id="process" className="section-ambient relative overflow-hidden border-t border-white/5 bg-neutral-900/30 py-16 section-standard md:py-24">
         <div className="section-ambient__glow opacity-70" aria-hidden />
         <div className="section-ambient__grid opacity-40" aria-hidden />
-        <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
-          <div className="mb-16 grid grid-cols-1 items-start gap-12 lg:mb-20 lg:grid-cols-12 lg:gap-16 animate-on-scroll">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
+          <div className="mb-10 grid grid-cols-1 items-start gap-8 animate-on-scroll md:mb-16 md:gap-12 lg:mb-20 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-7">
               <span className="mb-4 block text-xs font-mono uppercase tracking-widest text-neutral-500">
                 The Revenue Ladder: How It Works
               </span>
-              <h2 className="mb-6 text-4xl font-medium leading-[1.12] tracking-tight text-white md:text-6xl">
+              <h2 className="mb-6 text-3xl font-medium leading-[1.12] tracking-tight text-white sm:text-4xl md:text-6xl">
                 Every rung exists to do one thing.
                 <br />
                 <span className="hero-text-gradient">Turn more of the right people into paying clients.</span>
@@ -840,7 +840,7 @@ export default function Home() {
             <p className="mb-8 text-base text-neutral-400">Let&apos;s find it and fix it.</p>
             <a
               href="#contact"
-              className="cta-primary inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 text-sm font-medium text-neutral-950 transition-all btn-shimmer hover:bg-red-400 hover:shadow-lg hover:shadow-red-500/30"
+              className="cta-primary inline-flex w-full max-w-md items-center justify-center gap-2 rounded-lg bg-white px-6 py-4 text-sm font-medium text-neutral-950 transition-all btn-shimmer hover:bg-red-400 hover:shadow-lg hover:shadow-red-500/30 sm:w-auto sm:px-8"
             >
               Book a Free Revenue Leak Coaching Call
               <iconify-icon icon="solar:arrow-right-linear" width="18"></iconify-icon>
@@ -850,17 +850,17 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="section-ambient relative overflow-hidden border-t border-white/5 py-24 section-standard">
+      <section id="about" className="section-ambient relative overflow-hidden border-t border-white/5 py-16 section-standard md:py-24">
         <div className="section-ambient__grid opacity-30" aria-hidden />
-        <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 md:px-12 lg:grid-cols-2 lg:gap-20">
-          <div className="animate-on-scroll">
+        <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 sm:gap-12 sm:px-6 md:px-12 lg:grid-cols-2 lg:gap-20">
+          <div className="w-full animate-on-scroll">
             <span className="mb-4 block text-xs font-mono uppercase tracking-widest text-red-500">How I Think</span>
-            <h3 className="mb-10 text-3xl font-medium leading-tight tracking-tight text-white md:text-5xl">
+            <h3 className="mb-8 text-2xl font-medium leading-tight tracking-tight text-white sm:mb-10 sm:text-3xl md:text-5xl">
               I&apos;m not here to optimise your vibes.
               <br />
               <span className="text-neutral-200">I&apos;m here to build systems that make you money.</span>
             </h3>
-            <div className="max-w-xl space-y-10">
+            <div className="max-w-xl space-y-8 sm:space-y-10">
               <div>
                 <h4 className="mb-3 text-base font-medium text-white md:text-lg">Clear ROI Before We Start</h4>
                 <p className="text-sm leading-relaxed text-neutral-400 md:text-base">
@@ -942,8 +942,8 @@ export default function Home() {
       </section>
 
       {/* FAQ Section */}
-      <section className="border-t border-white/5 bg-neutral-900/20 py-24 section-subtle">
-        <div className="mx-auto max-w-4xl px-6 md:px-12">
+      <section className="border-t border-white/5 bg-neutral-900/20 py-16 section-subtle md:py-24">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 md:px-12">
           <div className="faq-hero-band animate-on-scroll">
             <div className="faq-hero-band__glow" aria-hidden />
             <div className="relative z-10 flex flex-col items-center gap-4 text-center md:flex-row md:text-left">
@@ -952,7 +952,7 @@ export default function Home() {
               </div>
               <div>
                 <span className="mb-2 block text-xs font-mono uppercase tracking-widest text-red-500">Common Questions</span>
-                <h2 className="text-3xl font-medium tracking-tight text-white md:text-5xl">Still Have Questions?</h2>
+                <h2 className="text-2xl font-medium tracking-tight text-white sm:text-3xl md:text-5xl">Still Have Questions?</h2>
                 <p className="mx-auto mt-3 max-w-xl text-neutral-400 md:mx-0">
                   Answers about the Revenue Ladder, done-for-you builds, and the free Knowledge-to-Cash Blueprint.
                 </p>
@@ -1115,7 +1115,7 @@ export default function Home() {
           </div>
           <div className="text-center mt-16 animate-on-scroll">
             <p className="mb-6 text-xl text-white">Which rung of your ladder needs fixing first?</p>
-            <a href="#contact" className="cta-primary inline-flex items-center gap-2 px-10 py-4 bg-white text-neutral-950 rounded-lg text-sm font-medium hover:bg-red-400 transition-all btn-shimmer hover:shadow-lg hover:shadow-red-500/30">
+            <a href="#contact" className="cta-primary inline-flex w-full max-w-md items-center justify-center gap-2 rounded-lg bg-white px-6 py-4 text-sm font-medium text-neutral-950 transition-all btn-shimmer hover:bg-red-400 hover:shadow-lg hover:shadow-red-500/30 sm:w-auto sm:px-10">
               Book a Free Revenue Leak Coaching Call
               <iconify-icon icon="solar:arrow-right-up-linear"></iconify-icon>
             </a>
@@ -1124,7 +1124,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <footer id="contact" className="bg-black py-32 border-t border-white/10 relative overflow-hidden section-elevated" style={{ background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.95), #000000)' }}>
+      <footer id="contact" className="relative overflow-hidden border-t border-white/10 bg-black py-20 section-elevated md:py-32" style={{ background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.95), #000000)' }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-1/4 w-96 h-96 bg-red-500/10 rounded-full blur-[120px] float-animation"></div>
           <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-red-600/5 rounded-full blur-[100px] float-animation-delayed"></div>
@@ -1141,12 +1141,12 @@ export default function Home() {
             </div>
           </div>
 
-          <h2 className="text-6xl md:text-8xl font-bricolage font-medium mb-6 tracking-tight animate-on-scroll delay-100 leading-[1.05]">
+          <h2 className="mb-6 font-bricolage text-4xl font-medium leading-[1.08] tracking-tight animate-on-scroll delay-100 sm:text-5xl md:text-8xl">
             <span className="text-white">Ready to scale?</span><br />
             <span className="gradient-text-animated">Let's fix what's slowing you down.</span>
           </h2>
 
-          <div className="text-xl text-neutral-400 font-light mb-12 animate-on-scroll delay-200 space-y-4 max-w-2xl mx-auto">
+          <div className="mx-auto mb-10 max-w-2xl space-y-3 text-base font-light text-neutral-400 animate-on-scroll delay-200 sm:mb-12 sm:space-y-4 sm:text-xl md:mb-12">
             <p>If your business feels heavier than it should, something's broken.</p>
             <p>We'll find it and build the system that removes it.</p>
           </div>
@@ -1187,7 +1187,7 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col items-center gap-8 animate-on-scroll delay-400">
-            <Link to="/calendar" className="cta-primary group relative px-10 py-4 rounded-full bg-white text-black text-sm font-medium transition-all duration-300 flex items-center gap-3 btn-shimmer hover:bg-red-400 hover:shadow-[0_0_30px_rgba(239,68,68,0.5)]">
+            <Link to="/calendar" className="cta-primary group relative flex w-full max-w-sm items-center justify-center gap-3 rounded-full bg-white px-8 py-4 text-sm font-medium text-black transition-all duration-300 btn-shimmer hover:bg-red-400 hover:shadow-[0_0_30px_rgba(239,68,68,0.5)] sm:w-auto sm:max-w-none sm:px-10">
               <iconify-icon icon="solar:calendar-linear" className="text-lg group-hover:scale-110 transition-transform"></iconify-icon>
               Book your free strategy call
               <iconify-icon icon="solar:arrow-right-up-linear" className="opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all"></iconify-icon>

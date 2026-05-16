@@ -1461,15 +1461,77 @@
     z-index: 15;
   }
   
-  /* Mobile Optimization */
-  @media (max-width: 768px) {
+  /* Mobile optimization — desktop (md+) unchanged */
+  @media (max-width: 767px) {
     a[href*="#contact"],
-    a[href*="/calendar"] {
+    a[href*="/calendar"],
+    .cta-primary {
       min-height: 44px;
     }
-    
-    h1, h2, h3 {
-      line-height: 1.1;
+
+    h1,
+    h2,
+    h3 {
+      line-height: 1.12;
+    }
+
+    .nav-mobile-panel {
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .hero-elevated {
+      min-height: auto;
+    }
+
+    .about-hero-image {
+      max-height: min(50vh, 380px);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-badge {
+      max-width: 100%;
+      flex-wrap: wrap;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .case-study-card .relative.flex-1 {
+      min-height: 0 !important;
+    }
+
+    .faq-card button {
+      padding: 1rem 1.15rem;
+    }
+
+    .faq-card h3 {
+      font-size: 1rem;
+      line-height: 1.35;
+    }
+
+    .faq-hero-band {
+      padding: 1.25rem 1rem;
+    }
+
+    .about-before-after__panel {
+      padding: 1rem;
+    }
+
+    .about-card {
+      padding: 1.25rem !important;
+    }
+
+    .story-rail__node .font-bricolage {
+      font-size: 2rem;
+    }
+
+    .process-spine {
+      display: none;
+    }
+
+    .section-ambient__glow {
+      opacity: 0.45;
     }
   }
 }
