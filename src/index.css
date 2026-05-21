@@ -204,6 +204,16 @@
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+
+  .section-eyebrow {
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+    font-size: 1.5rem;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    line-height: 1.1;
+    color: rgb(248 113 113) !important;
+  }
   
   /* Nav Link Hover Underline */
   .nav-link {
@@ -1624,4 +1634,514 @@
 .float-animation-delayed {
   animation: float 8s ease-in-out infinite;
   animation-delay: -2s;
+}
+
+.shop-product-card {
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.shop-product:hover .shop-product-card {
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+.shop-product-cover img {
+  transition: transform 0.4s ease;
+}
+
+.shop-product:hover .shop-product-cover img {
+  transform: scale(1.02) translateY(-4px);
+}
+
+.blueprint-page .blueprint-section + .blueprint-section,
+.workbook-page .blueprint-section + .blueprint-section {
+  margin-top: 0;
+}
+
+.blueprint-hero-cover img {
+  transition: transform 0.5s ease;
+}
+
+.blueprint-hero-cover:hover img,
+.group\/cover:hover img {
+  transform: translateY(-6px);
+}
+
+.blueprint-stat-card {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.blueprint-stat-card:hover {
+  border-color: rgba(239, 68, 68, 0.25);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35), 0 0 28px rgba(239, 68, 68, 0.1);
+  transform: translateY(-2px);
+}
+
+.blueprint-icon-card {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.blueprint-icon-card:hover {
+  border-color: rgba(239, 68, 68, 0.28);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4), 0 0 24px rgba(239, 68, 68, 0.08);
+}
+
+.blueprint-timeline__item {
+  min-height: 0;
+}
+
+.blueprint-timeline__rail {
+  width: 2.5rem;
+  flex-shrink: 0;
+}
+
+.blueprint-timeline__node {
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.15);
+}
+
+.blueprint-timeline__line {
+  min-height: 1.5rem;
+}
+
+.blueprint-layer-grid {
+  width: 100%;
+}
+
+.blueprint-layer-card {
+  transition: border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.blueprint-layer-card:hover {
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+}
+
+.blueprint-layer-card--sub .font-mono {
+  color: rgba(248, 113, 113, 0.65);
+}
+
+.workbook-path-visual {
+  background: linear-gradient(
+    135deg,
+    rgba(239, 68, 68, 0.06) 0%,
+    rgba(255, 255, 255, 0.02) 50%,
+    rgba(239, 68, 68, 0.04) 100%
+  );
+}
+
+.workbook-outcome-timeline__item:last-child .blueprint-icon-card {
+  margin-bottom: 0;
+}
+
+/* Blueprint landing — premium visuals */
+.blueprint-page .blueprint-hero__cover-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1.5rem 2.5rem;
+}
+
+.blueprint-page .blueprint-hero__pedestal {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  width: min(88%, 380px);
+  height: 28%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(239, 68, 68, 0.22) 0%, transparent 70%);
+  filter: blur(28px);
+  pointer-events: none;
+}
+
+.blueprint-page .blueprint-hero__ring {
+  position: absolute;
+  inset: 12% 8% 6%;
+  border-radius: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.04) 0%, transparent 45%);
+  pointer-events: none;
+}
+
+.blueprint-prose-panel {
+  border-left: 2px solid rgba(239, 68, 68, 0.35);
+  padding-left: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .blueprint-prose-panel {
+    padding-left: 1.5rem;
+  }
+}
+
+.blueprint-path-visual {
+  position: relative;
+  border-color: rgba(239, 68, 68, 0.18);
+  background: linear-gradient(
+    135deg,
+    rgba(239, 68, 68, 0.05) 0%,
+    rgba(255, 255, 255, 0.02) 50%,
+    rgba(239, 68, 68, 0.04) 100%
+  );
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.45),
+    0 0 40px rgba(239, 68, 68, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.blueprint-path-visual__connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  background: rgba(239, 68, 68, 0.1);
+  box-shadow: 0 0 24px rgba(239, 68, 68, 0.15);
+}
+
+.blueprint-final-cta__panel {
+  max-width: 56rem;
+  border-color: rgba(239, 68, 68, 0.15);
+}
+
+.blueprint-final-cta__cover {
+  padding: 1rem 1.5rem 1.5rem;
+  min-height: 280px;
+}
+
+.blueprint-final-cta__pedestal {
+  position: absolute;
+  bottom: 6%;
+  left: 50%;
+  width: min(90%, 340px);
+  height: 32%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(239, 68, 68, 0.28) 0%, transparent 72%);
+  filter: blur(32px);
+  pointer-events: none;
+}
+
+.blueprint-final-cta__img {
+  max-height: min(320px, 52vw);
+  filter: drop-shadow(0 28px 56px rgba(0, 0, 0, 0.65));
+  transition: transform 0.45s ease;
+}
+
+.blueprint-final-cta__cover:hover .blueprint-final-cta__img {
+  transform: translateY(-6px);
+}
+
+@media (min-width: 640px) {
+  .blueprint-final-cta__cover {
+    min-height: 340px;
+  }
+
+  .blueprint-final-cta__img {
+    max-height: min(380px, 48vw);
+  }
+}
+
+@media (min-width: 1024px) {
+  .blueprint-final-cta__cover {
+    min-height: 400px;
+  }
+
+  .blueprint-final-cta__img {
+    max-height: min(440px, 42vh);
+  }
+}
+
+.blueprint-stat-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.08) 0%, transparent 55%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.blueprint-stat-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.blueprint-stat-card:hover::before {
+  opacity: 1;
+}
+
+/* Workbook landing — premium layer */
+.workbook-page .workbook-hero__cover-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1.5rem 2.5rem;
+}
+
+.workbook-page .workbook-hero__pedestal {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  width: min(88%, 380px);
+  height: 28%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(239, 68, 68, 0.22) 0%, transparent 70%);
+  filter: blur(28px);
+  pointer-events: none;
+}
+
+.workbook-page .workbook-hero__ring {
+  position: absolute;
+  inset: 12% 8% 6%;
+  border-radius: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.04) 0%, transparent 45%);
+  pointer-events: none;
+}
+
+.workbook-stat-card {
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
+}
+
+.workbook-stat-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.08) 0%, transparent 55%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.workbook-stat-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(239, 68, 68, 0.28);
+  box-shadow:
+    0 20px 56px rgba(0, 0, 0, 0.45),
+    0 0 36px rgba(239, 68, 68, 0.12);
+}
+
+.workbook-stat-card:hover::before {
+  opacity: 1;
+}
+
+.workbook-inside-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.workbook-inside-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(239, 68, 68, 0.55), transparent);
+  opacity: 0.85;
+}
+
+.workbook-inside-card__num {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  font-family: ui-monospace, monospace;
+  font-size: 2.5rem;
+  font-weight: 500;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.04);
+  pointer-events: none;
+  user-select: none;
+}
+
+.workbook-section-progress__track {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.workbook-section-progress__pill {
+  transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.workbook-section-progress__pill:hover {
+  transform: translateY(-2px);
+  border-color: rgba(239, 68, 68, 0.35);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), 0 0 20px rgba(239, 68, 68, 0.1);
+}
+
+.workbook-proof-highlight {
+  position: relative;
+  overflow: hidden;
+}
+
+.workbook-proof-highlight::after {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -20%;
+  width: 50%;
+  height: 80%;
+  background: radial-gradient(circle, rgba(239, 68, 68, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.workbook-path-visual {
+  position: relative;
+  border-color: rgba(239, 68, 68, 0.18);
+  box-shadow:
+    0 28px 72px rgba(0, 0, 0, 0.5),
+    0 0 48px rgba(239, 68, 68, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.workbook-path-visual__connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  background: rgba(239, 68, 68, 0.1);
+  box-shadow: 0 0 24px rgba(239, 68, 68, 0.15);
+}
+
+.workbook-final-cta__panel {
+  max-width: 56rem;
+  border-color: rgba(239, 68, 68, 0.15);
+  box-shadow:
+    0 32px 80px rgba(0, 0, 0, 0.55),
+    0 0 56px rgba(239, 68, 68, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.workbook-final-cta__cover {
+  padding: 1rem 1.5rem 1.5rem;
+  min-height: 280px;
+}
+
+.workbook-final-cta__pedestal {
+  position: absolute;
+  bottom: 6%;
+  left: 50%;
+  width: min(90%, 340px);
+  height: 32%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(239, 68, 68, 0.28) 0%, transparent 72%);
+  filter: blur(32px);
+  pointer-events: none;
+}
+
+.workbook-final-cta__img {
+  max-height: min(320px, 52vw);
+  filter: drop-shadow(0 28px 56px rgba(0, 0, 0, 0.65));
+  transition: transform 0.45s ease;
+}
+
+.workbook-final-cta__cover:hover .workbook-final-cta__img {
+  transform: translateY(-6px);
+}
+
+@media (min-width: 640px) {
+  .workbook-final-cta__cover {
+    min-height: 340px;
+  }
+
+  .workbook-final-cta__img {
+    max-height: min(380px, 48vw);
+  }
+}
+
+@media (min-width: 1024px) {
+  .workbook-final-cta__cover {
+    min-height: 400px;
+    padding: 1.5rem 2rem 2rem;
+  }
+
+  .workbook-final-cta__img {
+    max-height: min(440px, 42vh);
+  }
+}
+
+.workbook-prose-panel {
+  border-left: 2px solid rgba(239, 68, 68, 0.35);
+  padding-left: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .workbook-prose-panel {
+    padding-left: 1.5rem;
+  }
+}
+
+/* VSL landing page — matches main site; minimal overrides */
+.vsl-page {
+  background-color: #0a0a0a;
+}
+
+/* Grain behind content on VSL (global .bg-grain is z-9999 and washes the page out) */
+.vsl-grain {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background-color: transparent;
+}
+
+.vsl-about-grid {
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .vsl-about-grid {
+    grid-template-columns: minmax(10rem, 14rem) 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.vsl-video img {
+  object-position: center top;
+}
+
+.vsl-offer-card--featured {
+  box-shadow:
+    0 0 0 1px rgba(239, 68, 68, 0.12),
+    0 20px 56px rgba(0, 0, 0, 0.45);
+}
+
+.vsl-compare-table {
+  background: rgba(10, 10, 10, 0.85);
+}
+
+.vsl-compare-table table {
+  border-collapse: collapse;
+}
+
+.vsl-compare-table thead tr {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.vsl-compare-table tbody tr.vsl-compare-row-alt {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.vsl-testimonial-card blockquote {
+  margin: 0;
+}
+
+@media (min-width: 1024px) {
+  .vsl-offer-card--featured {
+    transform: translateY(-2px);
+  }
 }

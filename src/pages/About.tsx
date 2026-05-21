@@ -1,8 +1,10 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
+import { Link } from 'react-router-dom'
 import Navigation from '../components/Navigation'
 import OfferFrameworkGateModal from '../components/OfferFrameworkGateModal'
 import { DEFAULT_GHL_OFFER_WEBHOOK_URL } from '../constants/ghl'
+import { STRATEGY_CALL_PATH } from '../constants/site'
 import { OFFER_FRAMEWORK_BULLETS } from '../constants/offerFramework'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
@@ -59,21 +61,21 @@ const ABOUT_CREDENTIALS: {
     {
       title: 'Bachelor of Music (B.Mus)',
       org: 'Western University',
-      yearOrPeriod: '2015–2020',
+      yearOrPeriod: '2015-2020',
       lead: 'Classical discipline applied to modern creative work.',
-      description: 'Theory, composition, and performance—foundation for structured craft under pressure.',
+      description: 'Theory, composition, and performance. Foundation for structured craft under pressure.',
     },
     {
       title: 'Dual Degree: Music Recording Arts (MRA)',
       org: 'Fanshawe College',
-      yearOrPeriod: '2017–2020',
+      yearOrPeriod: '2017-2020',
       lead: 'Studio-grade audio workflow from day one.',
       description: 'Recording, engineering, and production pipelines you can run in professional rooms.',
     },
   ],
   certifications: [
     {
-      title: 'LLQP – Life License Qualification Program',
+      title: 'LLQP: Life License Qualification Program',
       org: 'FSRA Ontario',
       yearOrPeriod: 'May 2024',
       lead: 'Licensed to advise on life insurance in Ontario.',
@@ -87,8 +89,8 @@ const ABOUT_CREDENTIALS: {
       description: 'Routing, clocking, and deployment basics for scalable digital audio systems.',
     },
     {
-      title: 'safeTALK – Suicide Alertness Training',
-      org: '—',
+      title: 'safeTALK: Suicide Alertness Training',
+      org: '',
       yearOrPeriod: 'Apr 2019',
       lead: 'Trained to notice and respond to suicide risk.',
       description: 'Practical alertness for community and one-to-one contexts.',
@@ -230,11 +232,11 @@ const ABOUT_CURRENT_DIRECTION: string[] = [
 ]
 
 const ABOUT_LEADERSHIP_GROUPS: string[] = [
-  'Orientation Leader (Western University, 2016–2019)',
-  'Jazz & Symphony Orchestra Bassist (Western University, 2015–2017)',
+  'Orientation Leader (Western University, 2016-2019)',
+  'Jazz & Symphony Orchestra Bassist (Western University, 2015-2017)',
   'Theatre Western (2017)',
-  'Camp Leader & Live Musician (North Peel Community Church, 2013–2018)',
-  'Small Group Ensembles (2020–Present)',
+  'Camp Leader & Live Musician (North Peel Community Church, 2013-2018)',
+  'Small Group Ensembles (2020-Present)',
 ]
 
 function CredentialCardItem({
@@ -346,7 +348,7 @@ export default function About() {
         <title>About · Brian Marshall</title>
         <meta
           name="description"
-          content="Background, skills, systems positioning, credentials, and selected work—built like a premium interactive CV."
+          content="Background, skills, systems positioning, credentials, and selected work, built like a premium interactive CV."
         />
         <link rel="canonical" href="https://brianmarshall.dev/about" />
       </Helmet>
@@ -417,7 +419,7 @@ export default function About() {
               </div>
 
               <div className="lg:col-span-7 animate-on-scroll">
-                <span className="mb-4 block text-xs font-mono uppercase tracking-widest text-neutral-500">
+                <span className="section-eyebrow mb-4 block text-neutral-500">
                   About
                 </span>
                 <h1 className="font-bricolage text-3xl font-medium tracking-tight text-white sm:text-4xl md:text-6xl">
@@ -475,7 +477,7 @@ export default function About() {
           <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
             <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
               <div className="animate-on-scroll">
-                <span className="mb-4 block text-xs font-mono uppercase tracking-widest text-neutral-500">
+                <span className="section-eyebrow mb-4 block text-neutral-500">
                   Credentials
                 </span>
                 <h2 className="font-bricolage text-3xl font-medium tracking-tight text-white md:text-5xl">
@@ -565,7 +567,7 @@ export default function About() {
           <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
             <div className="grid grid-cols-1 items-start gap-16 lg:grid-cols-2 lg:gap-24">
               <div className="animate-on-scroll">
-                <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-red-500/25 bg-red-500/10 px-4 py-2 text-xs font-mono uppercase tracking-widest text-red-400 shadow-[0_0_24px_rgba(239,68,68,0.12)] transition-[box-shadow,transform] duration-300 hover:border-red-500/40 hover:shadow-[0_0_32px_rgba(239,68,68,0.2)]">
+                <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-red-500/25 bg-red-500/10 px-4 py-2 section-eyebrow text-red-400 shadow-[0_0_24px_rgba(239,68,68,0.12)] transition-[box-shadow,transform] duration-300 hover:border-red-500/40 hover:shadow-[0_0_32px_rgba(239,68,68,0.2)]">
                   <span className="relative flex h-2 w-2">
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-40" />
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500" />
@@ -576,7 +578,7 @@ export default function About() {
                   id="offer-framework-heading"
                   className="mb-6 font-bricolage text-3xl font-medium tracking-tight text-white md:text-5xl lg:text-[3.25rem] lg:leading-[1.08]"
                 >
-                  You just need <span className="hero-text-gradient">the framework to prove it.</span>
+                  You just need <span className="hero-text-gradient">the blueprint to prove it.</span>
                 </h2>
                 <p className="mb-10 max-w-xl text-lg leading-relaxed text-neutral-400">
                   Most people sitting on valuable knowledge have no idea how to package it into an offer people will
@@ -587,7 +589,7 @@ export default function About() {
                     className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-red-500/10 blur-2xl transition-opacity duration-500 group-hover/result:opacity-100"
                     aria-hidden
                   />
-                  <span className="mb-3 block text-xs font-mono uppercase tracking-widest text-red-500/90">
+                  <span className="section-eyebrow mb-3 block text-red-500/90">
                     Result
                   </span>
                   <p className="relative text-base leading-relaxed text-neutral-200">
@@ -602,7 +604,7 @@ export default function About() {
                   aria-atomic="true"
                   className="mb-8 min-h-[5.5rem] max-w-xl rounded-xl border border-white/10 bg-black/30 p-4 text-sm leading-relaxed text-neutral-400 transition-[border-color,box-shadow] duration-300 md:min-h-[5rem] md:p-5"
                 >
-                  <span className="mb-1 block text-[10px] font-mono uppercase tracking-widest text-red-500/80">
+                  <span className="section-eyebrow mb-1 block text-lg text-red-500/80">
                     Lens
                   </span>
                   <p key={offerFocus} className="animate-[offerFocusFade_0.35s_ease-out] text-neutral-300">
@@ -663,7 +665,7 @@ export default function About() {
 
                   <p
                     id="about-offer-framework-list-label"
-                    className="mb-3 text-sm font-mono uppercase tracking-widest text-neutral-500"
+                    className="section-eyebrow mb-3 text-neutral-500"
                   >
                     What&apos;s inside · tap a line
                   </p>
@@ -717,7 +719,7 @@ export default function About() {
           <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12">
               <div className="lg:col-span-5 animate-on-scroll">
-                <span className="mb-4 block text-xs font-mono uppercase tracking-widest text-neutral-500">
+                <span className="section-eyebrow mb-4 block text-neutral-500">
                   Core positioning
                 </span>
                 <h2 className="about-gradient-headline font-bricolage text-3xl font-medium tracking-tight md:text-5xl">
@@ -829,7 +831,7 @@ export default function About() {
             <div id="stack" className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-10">
               <div className="lg:col-span-7 animate-on-scroll">
                 <div className="glass-panel glass-panel--quiet rounded-2xl border border-white/10 p-7 md:p-8">
-                  <span className="mb-4 block text-xs font-mono uppercase tracking-widest text-neutral-500">
+                  <span className="section-eyebrow mb-4 block text-neutral-500">
                     Tech stack
                   </span>
 
@@ -853,7 +855,7 @@ export default function About() {
 
               <div className="lg:col-span-5 animate-on-scroll">
                 <div className="glass-panel glass-panel--quiet rounded-2xl border border-white/10 p-7 md:p-8">
-                  <span className="mb-4 block text-xs font-mono uppercase tracking-widest text-neutral-500">
+                  <span className="section-eyebrow mb-4 block text-neutral-500">
                     What makes me different
                   </span>
                   <div className="about-diff-row">
@@ -869,7 +871,7 @@ export default function About() {
                 </div>
 
                 <div className="mt-6 glass-panel glass-panel--quiet rounded-2xl border border-white/10 p-7 md:p-8">
-                  <span className="mb-4 block text-xs font-mono uppercase tracking-widest text-neutral-500">
+                  <span className="section-eyebrow mb-4 block text-neutral-500">
                     Philosophy
                   </span>
                   <div className="space-y-3">
@@ -886,13 +888,13 @@ export default function About() {
             <div id="industries" className="mt-10 animate-on-scroll">
               <div className="mx-auto max-w-2xl lg:mx-0">
                 <div className="glass-panel glass-panel--quiet rounded-2xl border border-white/10 p-7 md:p-8">
-                  <span className="mb-4 block text-xs font-mono uppercase tracking-widest text-neutral-500">
+                  <span className="section-eyebrow mb-4 block text-neutral-500">
                     Industries
                   </span>
                   <ul className="space-y-2 text-sm text-neutral-400">
                     {ABOUT_INDUSTRIES.map((x) => (
                       <li key={x} className="flex items-start gap-2">
-                        <span className="mt-1 text-neutral-600">—</span>
+                        <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-red-500/70" aria-hidden />
                         <span>{x}</span>
                       </li>
                     ))}
@@ -903,7 +905,7 @@ export default function About() {
 
             <div id="direction" className="mt-10 animate-on-scroll">
               <div className="glass-panel glass-panel--quiet rounded-2xl border border-white/10 p-7 md:p-8">
-                <span className="mb-4 block text-xs font-mono uppercase tracking-widest text-neutral-500">
+                <span className="section-eyebrow mb-4 block text-neutral-500">
                   Current direction
                 </span>
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
@@ -918,7 +920,7 @@ export default function About() {
 
             <div className="mt-6 animate-on-scroll">
               <div className="glass-panel glass-panel--quiet rounded-2xl border border-white/10 p-7 md:p-8">
-                <span className="mb-4 block text-xs font-mono uppercase tracking-widest text-neutral-500">
+                <span className="section-eyebrow mb-4 block text-neutral-500">
                   Leadership & groups
                 </span>
                 <div className="flex flex-wrap gap-2">
@@ -940,7 +942,7 @@ export default function About() {
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_50%_0%,rgba(239,68,68,0.14),transparent_65%)]" />
           <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
             <div className="glass-panel glass-panel--premium rounded-2xl border border-white/10 p-10 text-center">
-              <span className="mb-4 block text-xs font-mono uppercase tracking-widest text-neutral-500">
+              <span className="section-eyebrow mb-4 block text-neutral-500">
                 Ready to work together?
               </span>
               <h2 className="font-bricolage text-3xl font-medium tracking-tight text-white md:text-5xl">
@@ -950,13 +952,13 @@ export default function About() {
                 If you want something that looks good and converts, with automation behind it so it stays consistent, book a strategy call.
               </p>
               <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <a
-                  href="/#contact"
+                <Link
+                  to={STRATEGY_CALL_PATH}
                   className="cta-primary inline-flex items-center justify-center gap-2 rounded-full bg-white px-9 py-4 text-sm font-medium text-neutral-950 transition-all btn-shimmer hover:bg-red-400 hover:shadow-[0_0_40px_rgba(239,68,68,0.35)]"
                 >
                   Book a strategy call
                   <iconify-icon icon="solar:arrow-right-up-linear" />
-                </a>
+                </Link>
                 <a
                   href="/#work"
                   className="glow-border inline-flex items-center justify-center rounded-full border border-white/10 bg-white/[0.02] px-9 py-4 text-sm font-medium text-white transition-all hover:bg-white/[0.06]"

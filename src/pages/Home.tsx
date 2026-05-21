@@ -1,11 +1,15 @@
 import { useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
+import {
+  BLUEPRINT_LANDING_PATH,
+  STRATEGY_CALL_PATH,
+  WORKBOOK_LANDING_PATH,
+} from '../constants/site'
 import CaseStudyMediaBand from '../components/CaseStudyMediaBand'
 import Navigation from '../components/Navigation'
-import OfferFrameworkGateModal from '../components/OfferFrameworkGateModal'
-import { DEFAULT_GHL_OFFER_WEBHOOK_URL } from '../constants/ghl'
 import { OFFER_FRAMEWORK_BULLETS } from '../constants/offerFramework'
+import { SHOP_COVER } from '../constants/shop'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
 const WORK_DEPLOY_TILES: { key: string; icon: string; label: string; tileClass: string; caseId: string }[] = [
@@ -86,9 +90,6 @@ export default function Home() {
   useScrollAnimation() // Initialize scroll animations for all elements
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const [offerFocus, setOfferFocus] = useState(0)
-  const [offerFrameworkModalOpen, setOfferFrameworkModalOpen] = useState(false)
-  const ghlOfferWebhookUrl =
-    import.meta.env.VITE_GHL_OFFER_WEBHOOK_URL?.trim() || DEFAULT_GHL_OFFER_WEBHOOK_URL
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index)
@@ -200,10 +201,13 @@ export default function Home() {
 
             <div className="flex w-full flex-col items-center gap-6 border-t border-white/10 pt-8 md:col-span-12 md:flex-row md:items-center md:justify-between md:gap-10 md:border-white/10 md:pl-6 md:pt-8 lg:pl-10 lg:pt-10 xl:pl-14">
               <div className="flex w-full max-w-md flex-col gap-3 animate-slide-up sm:max-w-none sm:flex-row sm:flex-wrap sm:gap-5 md:max-w-none" style={{ animationDelay: '1.2s', opacity: 0 }}>
-                <a href="#contact" className="cta-primary flex w-full items-center justify-center gap-2 rounded-xl bg-white px-9 py-4 text-[0.9375rem] font-medium text-neutral-950 transition-all btn-shimmer hover:bg-red-400 hover:shadow-lg hover:shadow-red-500/35 group sm:w-auto md:px-10 md:py-[1.125rem]">
+                <Link
+                  to={STRATEGY_CALL_PATH}
+                  className="cta-primary flex w-full items-center justify-center gap-2 rounded-xl bg-white px-9 py-4 text-[0.9375rem] font-medium text-neutral-950 transition-all btn-shimmer hover:bg-red-400 hover:shadow-lg hover:shadow-red-500/35 group sm:w-auto md:px-10 md:py-[1.125rem]"
+                >
                   Get Your Free Strategy Call
                   <iconify-icon icon="solar:arrow-right-up-linear" className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></iconify-icon>
-                </a>
+                </Link>
                 <a href="#work" className="flex w-full items-center justify-center gap-2 rounded-xl glass-panel px-9 py-4 text-[0.9375rem] font-medium text-white transition-all glow-border hover:bg-white/10 sm:w-auto md:px-10 md:py-[1.125rem]">
                   See How It Works
                 </a>
@@ -223,7 +227,7 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Lead magnet: Knowledge-to-Cash Blueprint (PDF path in public per your deploy) */}
+      {/* Knowledge to Cash Blueprint → /blueprint */}
       <section
         id="offer-framework"
         className="relative overflow-hidden border-t border-white/5 bg-neutral-950 py-16 md:py-28 lg:py-32"
@@ -242,7 +246,7 @@ export default function Home() {
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
           <div className="grid grid-cols-1 items-start gap-10 sm:gap-12 lg:grid-cols-2 lg:gap-24">
             <div className="animate-on-scroll flex w-full flex-col items-center text-center md:items-start md:text-left">
-              <div className="mb-6 inline-flex items-center justify-center gap-2 rounded-full border border-red-500/25 bg-red-500/10 px-4 py-2 text-center text-xs font-mono uppercase tracking-widest text-red-400 shadow-[0_0_24px_rgba(239,68,68,0.12)] transition-[box-shadow,transform] duration-300 hover:border-red-500/40 hover:shadow-[0_0_32px_rgba(239,68,68,0.2)] md:justify-start md:text-left">
+              <div className="mb-6 inline-flex items-center justify-center gap-2 rounded-full border border-red-500/25 bg-red-500/10 px-4 py-2 text-center section-eyebrow text-red-400 shadow-[0_0_24px_rgba(239,68,68,0.12)] transition-[box-shadow,transform] duration-300 hover:border-red-500/40 hover:shadow-[0_0_32px_rgba(239,68,68,0.2)] md:justify-start md:text-left">
                 <span className="relative flex h-2 w-2">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-40"></span>
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500"></span>
@@ -254,17 +258,15 @@ export default function Home() {
                 className="mb-6 w-full font-bricolage text-3xl font-medium tracking-tight text-white md:text-5xl lg:text-[3.25rem] lg:leading-[1.08]"
               >
                 You just need{' '}
-                <span className="hero-text-gradient">the framework to prove it.</span>
+                <span className="hero-text-gradient">the blueprint to prove it.</span>
               </h2>
               <p className="mx-auto mb-10 max-w-xl text-lg leading-relaxed text-neutral-400 md:mx-0">
                 Most people sitting on valuable knowledge have no idea how to package it into an offer people will
-                actually pay for. This free guide changes that.
+                actually pay for. The Knowledge to Cash Blueprint maps the full system from stranger to retained client.
               </p>
               <div className="group/result relative mb-10 w-full max-w-xl overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-transparent p-6 text-left transition-all duration-500 hover:border-red-500/25 hover:shadow-[0_0_40px_rgba(239,68,68,0.08)] md:p-8">
                 <div className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-red-500/10 blur-2xl transition-opacity duration-500 group-hover/result:opacity-100" aria-hidden />
-                <span className="mb-3 block text-xs font-mono uppercase tracking-widest text-red-500/90">
-                  Result
-                </span>
+                <span className="section-eyebrow mb-3 block text-red-500/90">Result</span>
                 <p className="relative text-base leading-relaxed text-neutral-200">
                   You&apos;ll walk away with a clear, sellable offer built around what you already know, ready to take
                   to market.
@@ -277,64 +279,49 @@ export default function Home() {
                 aria-atomic="true"
                 className="mb-8 min-h-[5.5rem] w-full max-w-xl rounded-xl border border-white/10 bg-black/30 p-4 text-left text-sm leading-relaxed text-neutral-400 transition-[border-color,box-shadow] duration-300 md:min-h-[5rem] md:p-5"
               >
-                <span className="mb-1 block text-[10px] font-mono uppercase tracking-widest text-red-500/80">
-                  Lens
-                </span>
+                <span className="section-eyebrow mb-1 block text-lg text-red-500/80">Lens</span>
                 <p key={offerFocus} className="animate-[offerFocusFade_0.35s_ease-out] text-neutral-300">
                   {OFFER_FRAMEWORK_BULLETS[offerFocus].focus}
                 </p>
               </div>
-              <button
-                type="button"
-                onClick={() => setOfferFrameworkModalOpen(true)}
+              <Link
+                to={BLUEPRINT_LANDING_PATH}
                 className="cta-primary group/download glow-border relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-white px-9 py-4 text-sm font-medium text-neutral-950 transition-all duration-300 btn-shimmer hover:bg-red-400 hover:shadow-[0_0_40px_rgba(239,68,68,0.35)]"
               >
-                <span className="relative z-10">Send me the blueprint</span>
+                <span className="relative z-10">Get the Blueprint</span>
                 <iconify-icon
                   icon="solar:arrow-right-linear"
                   className="relative z-10 text-lg transition-transform duration-300 group-hover/download:translate-x-0.5 group-hover/download:scale-110"
-                ></iconify-icon>
-              </button>
-              <p className="mt-4 text-xs text-neutral-600">Free PDF · delivered to your inbox</p>
+                />
+              </Link>
+              <p className="mt-4 text-xs text-neutral-600">$29.97 · instant access · 48 pages, 14 layers</p>
             </div>
 
-            <div className="w-full animate-on-scroll pt-10 delay-100 sm:pt-12 lg:pt-0">
-              <div className="group/card relative rounded-2xl border border-white/10 bg-neutral-900/40 px-6 pb-6 pt-8 shadow-[0_24px_80px_rgba(0,0,0,0.45)] backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:border-red-500/30 hover:shadow-[0_32px_96px_rgba(0,0,0,0.5),0_0_48px_rgba(239,68,68,0.12)] md:p-10">
-                <div className="relative mb-8 h-36 md:h-40">
-                  <div
-                    className="absolute left-1/2 top-3 h-[7.5rem] w-[11rem] -translate-x-1/2 rotate-[-4deg] rounded-md border border-white/10 bg-neutral-800/90 shadow-lg transition-all duration-500 ease-out group-hover/card:top-4 group-hover/card:translate-x-[calc(-50%+10px)] group-hover/card:rotate-[-2deg] md:w-[13rem]"
-                    aria-hidden
-                  />
-                  <div
-                    className="absolute left-1/2 top-0 h-[7.5rem] w-[11rem] -translate-x-1/2 rotate-[1deg] rounded-md border border-white/15 bg-gradient-to-br from-neutral-800 via-neutral-900 to-neutral-950 shadow-2xl transition-all duration-500 ease-out group-hover/card:-translate-y-1 group-hover/card:translate-x-[calc(-50%-8px)] group-hover/card:rotate-[2deg] md:w-[13rem]"
-                    aria-hidden
-                  >
-                    <div className="flex h-full flex-col p-4">
-                      <div className="mb-2 h-1.5 w-1/3 rounded-full bg-red-500/40" />
-                      <div className="space-y-1.5">
-                        <div className="h-1 rounded bg-white/10" />
-                        <div className="h-1 w-5/6 rounded bg-white/5" />
-                        <div className="h-1 w-4/6 rounded bg-white/5" />
-                      </div>
-                      <div className="mt-auto flex items-center justify-between border-t border-white/10 pt-3">
-                        <span className="text-[9px] font-mono uppercase tracking-wider text-red-400/90">Blueprint</span>
-                        <iconify-icon icon="solar:document-text-linear" className="text-red-500/80" width="18" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
+            <div className="group/offer-framework w-full animate-on-scroll pt-10 delay-100 sm:pt-12 lg:pt-0">
+              <Link
+                to={BLUEPRINT_LANDING_PATH}
+                className="offer-framework-cover mb-8 flex justify-center lg:mb-10"
+              >
+                <img
+                  src={SHOP_COVER.knowledgeToCash}
+                  alt="Knowledge to Cash Blueprint book cover"
+                  className="h-auto max-h-[min(420px,50vw)] w-auto max-w-full object-contain drop-shadow-[0_28px_56px_rgba(0,0,0,0.6)] transition-transform duration-500 ease-out group-hover/offer-framework:-translate-y-1"
+                  loading="lazy"
+                />
+              </Link>
 
+              <div className="group/card relative rounded-2xl border border-white/10 bg-neutral-900/40 px-6 pb-6 pt-6 shadow-[0_24px_80px_rgba(0,0,0,0.45)] backdrop-blur-md transition-all duration-500 group-hover/offer-framework:-translate-y-1 hover:border-red-500/30 hover:shadow-[0_32px_96px_rgba(0,0,0,0.5),0_0_48px_rgba(239,68,68,0.12)] md:p-10 md:pt-8">
                 <div className="mb-6 flex items-start gap-3 border-b border-white/10 pb-6">
                   <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-white/[0.02] text-red-500 shadow-inner transition-transform duration-300 group-hover/card:scale-105">
                     <iconify-icon icon="solar:document-text-linear" width="22"></iconify-icon>
                   </div>
                   <div>
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">Free PDF</span>
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">Blueprint</span>
                     <p className="text-lg font-medium text-white">The Knowledge-to-Cash Blueprint</p>
                   </div>
                 </div>
 
-                <p id="offer-framework-list-label" className="mb-3 text-sm font-mono uppercase tracking-widest text-neutral-500">
+                <p id="offer-framework-list-label" className="section-eyebrow mb-3 text-neutral-500">
                   What&apos;s inside · tap a line
                 </p>
                 <ul className="space-y-1" role="group" aria-labelledby="offer-framework-list-label">
@@ -378,6 +365,68 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Offer Kickstart Workbook - free lead-in */}
+      <section
+        id="offer-workbook"
+        className="relative overflow-hidden border-t border-white/5 bg-neutral-950 py-16 md:py-28 lg:py-32"
+        aria-labelledby="offer-workbook-heading"
+      >
+        <div
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_60%_at_0%_0%,rgba(239,68,68,0.1),transparent_55%)]"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.028)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.028)_1px,transparent_1px)] bg-[length:44px_44px] opacity-80"
+          aria-hidden
+        />
+        <div className="pointer-events-none absolute -right-32 top-1/2 h-[380px] w-[380px] -translate-y-1/2 rounded-full bg-red-600/5 blur-[100px]" aria-hidden />
+
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
+          <div className="grid grid-cols-1 items-start gap-10 sm:gap-12 lg:grid-cols-2 lg:gap-24">
+            <div className="group/offer-workbook order-2 w-full animate-on-scroll lg:order-1 lg:pt-0">
+              <Link to={WORKBOOK_LANDING_PATH} className="offer-framework-cover mb-8 flex justify-center lg:mb-0">
+                <img
+                  src={SHOP_COVER.offerKickstart}
+                  alt="The Offer Kickstart Workbook cover"
+                  className="h-auto max-h-[min(420px,50vw)] w-auto max-w-full object-contain drop-shadow-[0_28px_56px_rgba(0,0,0,0.6)] transition-transform duration-500 ease-out group-hover/offer-workbook:-translate-y-1"
+                  loading="lazy"
+                />
+              </Link>
+            </div>
+
+            <div className="order-1 flex w-full flex-col items-center text-center md:items-start md:text-left lg:order-2">
+              <p className="section-eyebrow mb-4 text-red-400/90">Not ready to invest yet?</p>
+              <h2
+                id="offer-workbook-heading"
+                className="mb-6 w-full font-bricolage text-3xl font-medium tracking-tight text-white md:text-5xl lg:text-[3.25rem] lg:leading-[1.08]"
+              >
+                At least fix your offer,{' '}
+                <span className="hero-text-gradient">for free.</span>
+              </h2>
+              <p className="mx-auto mb-8 max-w-xl text-lg leading-relaxed text-neutral-400 md:mx-0">
+                If you&apos;re not ready for the Knowledge to Cash Blueprint, at least fix your offer for free. Grab the
+                workbook here.
+              </p>
+              <p className="mb-8 flex items-baseline justify-center gap-3 md:justify-start">
+                <span className="font-mono text-lg text-neutral-500 line-through">$9.97</span>
+                <span className="font-mono text-xl font-medium text-red-400">Free</span>
+              </p>
+              <Link
+                to={WORKBOOK_LANDING_PATH}
+                className="cta-primary group/workbook glow-border relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-white px-9 py-4 text-sm font-medium text-neutral-950 transition-all duration-300 btn-shimmer hover:bg-red-400 hover:shadow-[0_0_40px_rgba(239,68,68,0.35)]"
+              >
+                <span className="relative z-10">Grab the workbook</span>
+                <iconify-icon
+                  icon="solar:arrow-right-linear"
+                  className="relative z-10 text-lg transition-transform duration-300 group-hover/workbook:translate-x-0.5"
+                />
+              </Link>
+              <p className="mt-4 text-xs text-neutral-600">Instant download · no upsell</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Case Studies Section */}
       <section id="work" className="section-ambient relative overflow-hidden border-t border-white/5 py-16 section-standard md:py-24 lg:py-32">
         <div className="section-ambient__glow" aria-hidden />
@@ -385,15 +434,15 @@ export default function Home() {
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
           <div className="mb-10 grid grid-cols-1 items-start gap-8 animate-on-scroll md:mb-20 md:gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="w-full text-center md:text-left lg:col-span-7">
-              <span className="mb-4 block text-xs font-mono uppercase tracking-widest text-red-500">Deployment Log</span>
-              <h2 className="mb-4 text-3xl font-medium tracking-tight text-white sm:text-4xl md:text-6xl">What I Actually Build</h2>
+              <span className="section-eyebrow mb-4 block text-red-500">Deployment Log</span>
+              <h2 className="mb-4 text-3xl font-medium tracking-tight text-white sm:text-4xl md:text-6xl">Things I&apos;ve Built</h2>
               <p className="mx-auto max-w-xl text-neutral-400 md:mx-0">
                 Real systems. Real outcomes. I don't ship pretty mockups and disappear. I build things people use every day.
               </p>
             </div>
             <div className="lg:col-span-5">
               <div className="rounded-2xl border border-white/10 bg-neutral-900/35 p-4 shadow-[0_20px_60px_rgba(0,0,0,0.35)] backdrop-blur-md md:p-5">
-                <span className="mb-3 block text-[10px] font-mono uppercase tracking-widest text-neutral-500">Live deployments</span>
+                <span className="section-eyebrow mb-3 block text-neutral-500">Live deployments</span>
                 <div className="flex flex-wrap gap-2">
                   {WORK_DEPLOY_TILES.map((t) => (
                     <a
@@ -765,9 +814,7 @@ export default function Home() {
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
           <div className="mb-10 grid grid-cols-1 items-start gap-8 animate-on-scroll md:mb-16 md:gap-12 lg:mb-20 lg:grid-cols-12 lg:gap-16">
             <div className="w-full text-center md:text-left lg:col-span-7">
-              <span className="mb-4 block text-xs font-mono uppercase tracking-widest text-neutral-500">
-                The Revenue Ladder: How It Works
-              </span>
+              <span className="section-eyebrow mb-4 block text-neutral-500">The Revenue Ladder: How It Works</span>
               <h2 className="mb-6 w-full text-3xl font-medium leading-[1.12] tracking-tight text-white sm:text-4xl md:text-6xl">
                 Every rung exists to do one thing.
                 <br />
@@ -814,9 +861,7 @@ export default function Home() {
             </div>
           </div>
 
-          <span className="mb-6 mt-4 block text-xs font-mono uppercase tracking-widest text-neutral-500 animate-on-scroll">
-            The Build Stack
-          </span>
+          <span className="section-eyebrow mb-6 mt-4 block text-neutral-500 animate-on-scroll">The Build Stack</span>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
             {BUILD_STACK_ITEMS.map((item, i) => (
               <div
@@ -854,7 +899,7 @@ export default function Home() {
         <div className="section-ambient__grid opacity-30" aria-hidden />
         <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 sm:gap-12 sm:px-6 md:px-12 lg:grid-cols-2 lg:gap-20">
           <div className="w-full animate-on-scroll">
-            <span className="mb-4 block text-xs font-mono uppercase tracking-widest text-red-500">How I Think</span>
+            <span className="section-eyebrow mb-4 block text-red-500">How I Think</span>
             <h3 className="mb-8 text-2xl font-medium leading-tight tracking-tight text-white sm:mb-10 sm:text-3xl md:text-5xl">
               I&apos;m not here to optimise your vibes.
               <br />
@@ -951,10 +996,10 @@ export default function Home() {
                 <iconify-icon icon="solar:chat-round-dots-linear" width="32"></iconify-icon>
               </div>
               <div>
-                <span className="mb-2 block text-xs font-mono uppercase tracking-widest text-red-500">Common Questions</span>
+                <span className="section-eyebrow mb-2 block text-red-500">Common Questions</span>
                 <h2 className="text-2xl font-medium tracking-tight text-white sm:text-3xl md:text-5xl">Still Have Questions?</h2>
                 <p className="mx-auto mt-3 max-w-xl text-neutral-400 md:mx-0">
-                  Answers about the Revenue Ladder, done-for-you builds, and the free Knowledge-to-Cash Blueprint.
+                  Answers about the Revenue Ladder, done-for-you builds, the workbook, and the Knowledge to Cash Blueprint.
                 </p>
               </div>
             </div>
@@ -1083,10 +1128,16 @@ export default function Home() {
               <div className={`faq-answer ${openFaq === 5 ? 'faq-open' : ''}`}>
                 <div className="px-6 pb-6">
                   <p className="text-neutral-400 text-sm leading-relaxed">
-                    It is a free framework you can download from this page: how to clarify what people will pay for,
-                    package your knowledge, price it sensibly, and get early traction without a huge audience. It is
-                    self-serve education, separate from done-for-you builds. Use it for structure; book a call when you
-                    want the ladder and stack built for your business.
+                    It is the full front-to-back system for coaches and experts: offer, funnel, follow-up, and the path
+                    from stranger to high-ticket client. See everything on the{' '}
+                    <Link to={BLUEPRINT_LANDING_PATH} className="text-red-400/90 underline-offset-2 hover:text-red-300 hover:underline">
+                      Blueprint landing page
+                    </Link>
+                    . Start with the free{' '}
+                    <Link to={WORKBOOK_LANDING_PATH} className="text-red-400/90 underline-offset-2 hover:text-red-300 hover:underline">
+                      Offer Kickstart Workbook
+                    </Link>{' '}
+                    if you need to fix the offer first. Book a strategy call when you want the ladder built for you.
                   </p>
                 </div>
               </div>
@@ -1137,7 +1188,7 @@ export default function Home() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-95"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500 shadow-[0_0_10px_rgba(34,197,94,1)]"></span>
               </span>
-              <span className="text-[11px] text-white font-mono uppercase tracking-widest">Accepting New Projects</span>
+              <span className="section-eyebrow text-white">Accepting New Projects</span>
             </div>
           </div>
 
@@ -1151,7 +1202,7 @@ export default function Home() {
             <p>We'll find it and build the system that removes it.</p>
           </div>
 
-          <p className="text-xs font-mono uppercase tracking-widest text-neutral-500 mb-6 animate-on-scroll delay-200">What you get</p>
+          <p className="section-eyebrow mb-6 text-neutral-500 animate-on-scroll delay-200">What you get</p>
 
           <div className="max-w-2xl mx-auto mb-12 animate-on-scroll delay-250">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
@@ -1187,7 +1238,7 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col items-center gap-8 animate-on-scroll delay-400">
-            <Link to="/calendar" className="cta-primary group relative flex w-full max-w-sm items-center justify-center gap-3 rounded-full bg-white px-8 py-4 text-sm font-medium text-black transition-all duration-300 btn-shimmer hover:bg-red-400 hover:shadow-[0_0_30px_rgba(239,68,68,0.5)] sm:w-auto sm:max-w-none sm:px-10">
+            <Link to={STRATEGY_CALL_PATH} className="cta-primary group relative flex w-full max-w-sm items-center justify-center gap-3 rounded-full bg-white px-8 py-4 text-sm font-medium text-black transition-all duration-300 btn-shimmer hover:bg-red-400 hover:shadow-[0_0_30px_rgba(239,68,68,0.5)] sm:w-auto sm:max-w-none sm:px-10">
               <iconify-icon icon="solar:calendar-linear" className="text-lg group-hover:scale-110 transition-transform"></iconify-icon>
               Book your free strategy call
               <iconify-icon icon="solar:arrow-right-up-linear" className="opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all"></iconify-icon>
@@ -1234,11 +1285,6 @@ export default function Home() {
         </div>
       </footer>
 
-      <OfferFrameworkGateModal
-        open={offerFrameworkModalOpen}
-        onClose={() => setOfferFrameworkModalOpen(false)}
-        webhookUrl={ghlOfferWebhookUrl}
-      />
     </div>
   )
 }

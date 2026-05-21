@@ -10,6 +10,7 @@ export default {
         'sans': ['Inter', 'sans-serif'],
         'bricolage': ['Bricolage Grotesque', 'sans-serif'],
         'mono': ['JetBrains Mono', 'monospace'],
+        'script': ['Caveat', 'cursive'],
       },
       colors: {
         'neutral': {

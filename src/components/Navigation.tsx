@@ -6,6 +6,7 @@ export default function Navigation() {
   const navigate = useNavigate()
   const isHome = location.pathname === '/'
   const isAbout = location.pathname === '/about'
+  const isShop = location.pathname === '/shop'
   const [mobileOpen, setMobileOpen] = useState(false)
 
   const handleHashLink = (hash: string) => {
@@ -70,6 +71,12 @@ export default function Navigation() {
             >
               About
             </Link>
+            <Link
+              to="/shop"
+              className={`nav-link py-1 transition-colors ${isShop ? 'text-white' : 'hover:text-white'}`}
+            >
+              Shop
+            </Link>
           </div>
 
           <div className="flex items-center gap-1 sm:gap-2">
@@ -110,6 +117,9 @@ export default function Navigation() {
             </button>
             <Link to="/about" className={navLinkClass} onClick={() => setMobileOpen(false)}>
               About
+            </Link>
+            <Link to="/shop" className={navLinkClass} onClick={() => setMobileOpen(false)}>
+              Shop
             </Link>
             <button type="button" onClick={() => handleHashLink('#contact')} className={`${navLinkClass} text-white`}>
               Contact

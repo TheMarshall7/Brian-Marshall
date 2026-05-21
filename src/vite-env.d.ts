@@ -11,6 +11,7 @@ declare module 'react' {
 
 interface ImportMetaEnv {
   readonly VITE_GHL_OFFER_WEBHOOK_URL?: string
+  readonly VITE_K2C_CHECKOUT_URL?: string
 }
 
 interface ImportMeta {

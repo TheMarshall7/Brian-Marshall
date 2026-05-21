@@ -1,7 +1,12 @@
-import { Routes, Route } from 'react-router-dom'
+import { Navigate, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Calendar from './pages/Calendar'
 import About from './pages/About'
+import Vsl from './pages/Vsl'
+import Shop from './pages/Shop'
+import OfferKickstart from './pages/OfferKickstart'
+import Blueprint from './pages/Blueprint'
+import { STRATEGY_CALL_PATH, VSL_ENABLED } from './constants/site'
 
 function App() {
   return (
@@ -9,7 +14,14 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route
+          path="/vsl"
+          element={VSL_ENABLED ? <Vsl /> : <Navigate to={STRATEGY_CALL_PATH} replace />}
+        />
         <Route path="/calendar" element={<Calendar />} />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/workbook" element={<OfferKickstart />} />
+        <Route path="/blueprint" element={<Blueprint />} />
       </Routes>
     </div>
   )

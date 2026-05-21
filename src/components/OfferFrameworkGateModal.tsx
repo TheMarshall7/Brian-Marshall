@@ -76,7 +76,7 @@ export default function OfferFrameworkGateModal({ open, onClose, webhookUrl }: P
 
     try {
       // GHL / LeadConnector inbound webhooks map top-level keys to contact fields.
-      // Use firstName, lastName, email (and full name) only—keep extra context under `meta`
+      // Use firstName, lastName, email (and full name) only; keep extra context under `meta`
       // so workflow "sample / test" mappings are less likely to concatenate into name or email.
       const res = await fetch(url, {
         method: 'POST',
