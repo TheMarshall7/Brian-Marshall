@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import Navigation from '../components/Navigation'
 import BlueprintChangesGrid from '../components/blueprint/BlueprintChangesGrid'
+import BlueprintCheckoutEmbed from '../components/blueprint/BlueprintCheckoutEmbed'
 import BlueprintCta from '../components/blueprint/BlueprintCta'
 import BlueprintFaq from '../components/blueprint/BlueprintFaq'
 import BlueprintLayerGrid from '../components/blueprint/BlueprintLayerGrid'
@@ -85,7 +86,13 @@ export default function Blueprint() {
                 <iconify-icon icon="solar:tag-price-linear" className="text-red-400" width="22" aria-hidden />
                 <span className="font-mono text-sm font-medium text-white">{copy.hero.priceAnchor}</span>
               </div>
-              <BlueprintCta label={copy.hero.cta} micro={copy.hero.micro} showPrice={false} size="large" />
+              <BlueprintCta
+                label={copy.hero.cta}
+                micro={copy.hero.micro}
+                showPrice={false}
+                size="large"
+                checkoutMode="embed"
+              />
               <ul className="mt-8 flex flex-wrap gap-3">
                 {copy.hero.trust.map((item) => (
                   <li
@@ -215,9 +222,9 @@ export default function Blueprint() {
           <BlueprintFaq />
         </BlueprintSection>
 
-        {/* Final CTA */}
+        {/* Checkout */}
         <section
-          id="get-blueprint"
+          id="checkout"
           className="section-ambient relative scroll-mt-28 overflow-hidden border-t border-white/10 py-20 md:scroll-mt-32 md:py-28"
         >
           <div className="section-ambient__glow" aria-hidden />
@@ -227,35 +234,31 @@ export default function Blueprint() {
             <h2 className="mb-4 text-center font-bricolage text-2xl font-medium tracking-tight text-white md:text-4xl lg:text-[2.75rem]">
               {copy.finalCta.headline}
             </h2>
-            <p className="mx-auto mb-12 max-w-xl text-center text-base leading-relaxed text-neutral-400 md:text-lg">
+            <p className="mx-auto mb-10 max-w-xl text-center text-base leading-relaxed text-neutral-400 md:text-lg">
               {copy.finalCta.subheadline}
             </p>
-            <div className="blueprint-final-cta__panel glass-panel--premium animate-on-scroll mx-auto rounded-2xl border p-8 md:p-12 lg:p-14">
-              <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-16">
-                <div className="blueprint-final-cta__cover relative flex justify-center lg:justify-start">
-                  <div className="blueprint-final-cta__pedestal" aria-hidden />
+
+            <div className="blueprint-final-cta__panel glass-panel--premium animate-on-scroll mx-auto mb-10 max-w-4xl rounded-2xl border p-6 md:p-8">
+              <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-center sm:justify-between">
+                <div className="blueprint-final-cta__cover relative flex shrink-0 justify-center">
                   <img
                     src={SHOP_COVER.knowledgeToCash}
-                    alt="Knowledge to Cash Blueprint cover"
-                    className="blueprint-final-cta__img relative z-10 h-auto w-auto max-w-full object-contain"
+                    alt=""
+                    className="h-auto max-h-28 w-auto object-contain drop-shadow-[0_16px_32px_rgba(0,0,0,0.5)]"
                     loading="lazy"
                   />
                 </div>
-                <div className="w-full min-w-0 lg:max-w-md lg:justify-self-end xl:max-w-lg">
-                  <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-red-500/25 bg-red-500/10 px-4 py-1.5 font-mono text-sm text-white">
+                <div className="text-center sm:text-left">
+                  <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-red-500/25 bg-red-500/10 px-4 py-1.5 font-mono text-sm text-white">
                     <iconify-icon icon="solar:tag-price-linear" className="text-red-400" width="16" aria-hidden />
                     {copy.finalCta.price}
                   </div>
-                  <BlueprintCta
-                    label={copy.finalCta.cta}
-                    micro={copy.finalCta.micro}
-                    showPrice={false}
-                    size="large"
-                    className="w-full"
-                  />
+                  <p className="text-sm text-neutral-400">{copy.finalCta.micro}</p>
                 </div>
               </div>
             </div>
+
+            <BlueprintCheckoutEmbed className="animate-on-scroll mx-auto max-w-3xl" />
           </div>
         </section>
 

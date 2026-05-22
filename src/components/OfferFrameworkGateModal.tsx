@@ -1,4 +1,6 @@
-import { useEffect, useId, useRef, useState } from 'react'
+import { useEffect, useId, useState } from 'react'
+import { BLUEPRINT_PDF_GHL_LEAD } from '../constants/ghlLeads'
+import GhlNameEmailForm from './shared/GhlNameEmailForm'
 
 type Props = {
   open: boolean
@@ -7,16 +9,8 @@ type Props = {
 }
 
 export default function OfferFrameworkGateModal({ open, onClose, webhookUrl }: Props) {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
-  const [errorMessage, setErrorMessage] = useState('')
-  const firstInputRef = useRef<HTMLInputElement>(null)
+  const [status, setStatus] = useState<'idle' | 'success'>('idle')
   const uid = useId()
-  const nameId = `${uid}-name`
-  const emailId = `${uid}-email`
-
-  const configured = Boolean(webhookUrl?.trim())
 
   useEffect(() => {
     if (!open) return
@@ -27,19 +21,8 @@ export default function OfferFrameworkGateModal({ open, onClose, webhookUrl }: P
   }, [open])
 
   useEffect(() => {
-    if (!open) {
-      setName('')
-      setEmail('')
-      setStatus('idle')
-      setErrorMessage('')
-    }
+    if (!open) setStatus('idle')
   }, [open])
-
-  useEffect(() => {
-    if (!open || status !== 'idle') return
-    const id = requestAnimationFrame(() => firstInputRef.current?.focus())
-    return () => cancelAnimationFrame(id)
-  }, [open, status])
 
   useEffect(() => {
     if (!open) return
@@ -50,66 +33,27 @@ export default function OfferFrameworkGateModal({ open, onClose, webhookUrl }: P
     return () => window.removeEventListener('keydown', onKey)
   }, [open, onClose])
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    const url = webhookUrl?.trim()
-    if (!url) {
-      setErrorMessage('Webhook URL is not configured. Set VITE_GHL_OFFER_WEBHOOK_URL or pass a webhookUrl prop.')
-      setStatus('error')
-      return
-    }
-    const trimmedName = name.trim()
-    const trimmedEmail = email.trim()
-    if (!trimmedName || !trimmedEmail) {
-      setErrorMessage('Please enter your name and email.')
-      return
-    }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail)) {
-      setErrorMessage('Please enter a valid email address.')
-      return
-    }
-    setStatus('loading')
-    setErrorMessage('')
-    const nameParts = trimmedName.split(/\s+/).filter(Boolean)
-    const firstName = nameParts[0] ?? trimmedName
-    const lastName = nameParts.length > 1 ? nameParts.slice(1).join(' ') : ''
-
-    try {
-      // GHL / LeadConnector inbound webhooks map top-level keys to contact fields.
-      // Use firstName, lastName, email (and full name) only; keep extra context under `meta`
-      // so workflow "sample / test" mappings are less likely to concatenate into name or email.
-      const res = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify({
-          firstName,
-          lastName,
-          email: trimmedEmail,
-          name: trimmedName,
-          source: 'Website · Knowledge-to-Cash Blueprint',
-          tags: ['knowledge-to-cash-blueprint', 'offer-framework-pdf'],
-          meta: {
-            event: 'offer_framework_lead',
-            pageUrl: typeof window !== 'undefined' ? window.location.href : '',
-          },
-        }),
-      })
-      if (!res.ok) throw new Error(`HTTP ${res.status}`)
-      setStatus('success')
-      setName('')
-      setEmail('')
-    } catch {
-      setStatus('error')
-      setErrorMessage(
-        'Could not send your details. Check your connection and try again. If it keeps failing, the webhook may need a server-side proxy (browser CORS) or use GHL’s native form action URL instead of fetch.',
-      )
-    }
-  }
-
   if (!open) return null
+
+  if (!webhookUrl?.trim()) {
+    return (
+      <div
+        className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6"
+        role="dialog"
+        aria-modal="true"
+      >
+        <button
+          type="button"
+          className="absolute inset-0 bg-black/75 backdrop-blur-sm"
+          aria-label="Close dialog"
+          onClick={onClose}
+        />
+        <div className="relative z-10 max-w-md rounded-2xl border border-white/15 bg-neutral-950/95 p-6 text-sm text-neutral-400">
+          Webhook URL is not configured. Set VITE_GHL_OFFER_WEBHOOK_URL or pass a webhookUrl prop.
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div
@@ -163,66 +107,13 @@ export default function OfferFrameworkGateModal({ open, onClose, webhookUrl }: P
               Drop your name and email. I&apos;ll send the PDF to your inbox.
             </p>
 
-            <form onSubmit={handleSubmit} className="mt-8 space-y-5">
-              <div>
-                <label htmlFor={nameId} className="mb-2 block text-xs font-mono uppercase tracking-widest text-neutral-500">
-                  Name
-                </label>
-                <input
-                  ref={firstInputRef}
-                  id={nameId}
-                  name="name"
-                  type="text"
-                  autoComplete="name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  disabled={status === 'loading'}
-                  className="w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white outline-none ring-red-500/40 transition-[border-color,box-shadow] placeholder:text-neutral-600 focus:border-red-500/40 focus:ring-2 disabled:opacity-50"
-                  placeholder="Your name"
-                />
-              </div>
-              <div>
-                <label htmlFor={emailId} className="mb-2 block text-xs font-mono uppercase tracking-widest text-neutral-500">
-                  Email
-                </label>
-                <input
-                  id={emailId}
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  inputMode="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  disabled={status === 'loading'}
-                  className="w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white outline-none ring-red-500/40 transition-[border-color,box-shadow] placeholder:text-neutral-600 focus:border-red-500/40 focus:ring-2 disabled:opacity-50"
-                  placeholder="you@company.com"
-                />
-              </div>
-
-              {errorMessage ? (
-                <p className="rounded-lg border border-red-500/25 bg-red-500/10 px-3 py-2 text-xs leading-relaxed text-red-200/90">
-                  {errorMessage}
-                </p>
-              ) : null}
-
-              <button
-                type="submit"
-                disabled={status === 'loading' || !configured}
-                className="cta-primary group flex w-full items-center justify-center gap-2 rounded-full bg-white py-4 text-sm font-medium text-neutral-950 transition-all hover:bg-red-400 disabled:cursor-not-allowed disabled:opacity-50"
-              >
-                {status === 'loading' ? (
-                  <>
-                    <span className="h-4 w-4 animate-spin rounded-full border-2 border-neutral-950/30 border-t-neutral-950" />
-                    Sending…
-                  </>
-                ) : (
-                  <>
-                    Send me the blueprint
-                    <iconify-icon icon="solar:arrow-right-up-linear" className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </>
-                )}
-              </button>
-            </form>
+            <div className="mt-8">
+              <GhlNameEmailForm
+                submitLabel="Send me the blueprint"
+                leadConfig={BLUEPRINT_PDF_GHL_LEAD}
+                onSuccess={() => setStatus('success')}
+              />
+            </div>
           </>
         )}
       </div>

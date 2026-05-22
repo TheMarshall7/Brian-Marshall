@@ -29,7 +29,10 @@ export const SHOP_PDF = {
   knowledgeToCash: '/Offer-Creation-Beyond-the-Standard-Framework(Gamma).pdf',
 } as const
 
-export const K2C_CHECKOUT_URL = import.meta.env.VITE_K2C_CHECKOUT_URL?.trim() || ''
+/** FastPayDirect payment link for Knowledge to Cash Blueprint ($29.97). Override with VITE_K2C_CHECKOUT_URL. */
+export const K2C_CHECKOUT_URL =
+  import.meta.env.VITE_K2C_CHECKOUT_URL?.trim() ||
+  'https://link.fastpaydirect.com/payment-link/6a0fa08bc58f48c13d66730f'
 
 /** Full-page opt-in copy for /workbook */
 export const OFFER_KICKSTART_OPTIN = {

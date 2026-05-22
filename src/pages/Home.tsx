@@ -412,7 +412,7 @@ export default function Home() {
                 <span className="font-mono text-xl font-medium text-red-400">Free</span>
               </p>
               <Link
-                to={WORKBOOK_LANDING_PATH}
+                to={`${WORKBOOK_LANDING_PATH}#get-workbook`}
                 className="cta-primary group/workbook glow-border relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-white px-9 py-4 text-sm font-medium text-neutral-950 transition-all duration-300 btn-shimmer hover:bg-red-400 hover:shadow-[0_0_40px_rgba(239,68,68,0.35)]"
               >
                 <span className="relative z-10">Grab the workbook</span>

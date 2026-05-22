@@ -1872,6 +1872,12 @@
   opacity: 1;
 }
 
+.blueprint-checkout-embed__frame {
+  display: block;
+  min-height: min(720px, 85vh);
+  background: #fff;
+}
+
 /* Workbook landing — premium layer */
 .workbook-page .workbook-hero__cover-wrap {
   position: relative;

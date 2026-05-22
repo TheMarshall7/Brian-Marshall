@@ -69,7 +69,7 @@ export default function ShopProductCard({ product }: Props) {
         <div className="mt-auto flex flex-col gap-3 sm:flex-row">
           {product.optInPath ? (
             <Link
-              to={product.optInPath}
+              to={`${product.optInPath}#get-workbook`}
               className="btn-shimmer inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-black transition-all hover:bg-red-400 hover:shadow-lg hover:shadow-red-500/20"
             >
               <iconify-icon icon="solar:download-linear" width="18" />

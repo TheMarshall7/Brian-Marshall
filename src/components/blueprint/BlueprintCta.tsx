@@ -7,6 +7,8 @@ type Props = {
   className?: string
   showPrice?: boolean
   size?: 'default' | 'large'
+  /** Scroll to embedded checkout on /blueprint instead of opening a new tab */
+  checkoutMode?: 'embed' | 'external'
 }
 
 const checkoutReady = Boolean(K2C_CHECKOUT_URL)
@@ -17,24 +19,27 @@ export default function BlueprintCta({
   className = '',
   showPrice = true,
   size = 'default',
+  checkoutMode = 'external',
 }: Props) {
   const btnClass =
     size === 'large'
       ? 'cta-primary glow-border btn-shimmer inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-10 py-4 text-sm font-medium text-neutral-950 transition-all hover:bg-red-400 hover:shadow-[0_0_40px_rgba(239,68,68,0.35)] sm:w-auto'
       : 'cta-primary glow-border btn-shimmer inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-10 py-4 text-sm font-medium text-neutral-950 transition-all hover:bg-red-400 hover:shadow-lg hover:shadow-red-500/20 sm:w-auto'
 
+  const useEmbed = checkoutMode === 'embed' && checkoutReady
+
   return (
     <div className={className}>
       {showPrice ? (
         <p className="mb-4 font-mono text-sm text-neutral-400">{BLUEPRINT_LANDING.priceLabel}</p>
       ) : null}
-      {checkoutReady ? (
-        <a
-          href={K2C_CHECKOUT_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={btnClass}
-        >
+      {useEmbed ? (
+        <a href="#checkout" className={btnClass}>
+          <iconify-icon icon="solar:cart-check-linear" width="18" />
+          {label}
+        </a>
+      ) : checkoutReady ? (
+        <a href={K2C_CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className={btnClass}>
           <iconify-icon icon="solar:cart-check-linear" width="18" />
           {label}
         </a>
