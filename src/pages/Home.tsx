@@ -1,11 +1,7 @@
 import { useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
-import {
-  BLUEPRINT_LANDING_PATH,
-  STRATEGY_CALL_PATH,
-  WORKBOOK_LANDING_PATH,
-} from '../constants/site'
+import { STRATEGY_CALL_PATH } from '../constants/site'
 import CaseStudyMediaBand from '../components/CaseStudyMediaBand'
 import BlueprintPromoSection from '../components/marketing/BlueprintPromoSection'
 import WorkbookPromoSection from '../components/marketing/WorkbookPromoSection'
@@ -23,77 +19,14 @@ const WORK_DEPLOY_TILES: { key: string; icon: string; label: string; tileClass: 
   { key: 'is', icon: 'solar:music-note-slider-linear', label: 'ISIATA', tileClass: 'border-amber-500/35 bg-amber-500/10 text-amber-400', caseId: 'case-isiata' },
 ]
 
-const REVENUE_LADDER_RUNGS: { step: string; title: string; description: string }[] = [
-  {
-    step: '01',
-    title: "Your offer isn't converting.",
-    description:
-      "Great coaches lose clients before the conversation even starts. We build an offer so clear and compelling that the right person reads it and immediately thinks: that's exactly what I need.",
-  },
-  {
-    step: '02',
-    title: "Your funnel isn't doing its job.",
-    description:
-      'Traffic without a system is just noise. We build the landing pages, lead magnets, and sequences that take a cold stranger from curious to booked, without you lifting a finger.',
-  },
-  {
-    step: '03',
-    title: 'Your follow-up is leaking revenue.',
-    description:
-      'Most coaches lose 60% of their leads simply because nobody followed up. We build AI-powered follow-up systems that respond instantly, nurture automatically, and book calls while you sleep.',
-  },
-  {
-    step: '04',
-    title: "Your pipeline isn't predictable.",
-    description:
-      "Referrals aren't a strategy. We build the full traffic architecture: warm, cold, organic, and paid, so your calendar fills consistently every single month.",
-  },
-]
+import HomeFaqSection from '../components/home/HomeFaqSection'
+import { HOME_PROCESS } from '../constants/homeProcess'
 
-const BUILD_STACK_ITEMS: {
-  icon: string
-  title: string
-  tagline: string
-  description: string
-}[] = [
-  {
-    icon: 'solar:window-frame-linear',
-    title: 'Conversion-Focused Websites',
-    tagline: 'Your site should book calls. Not just look good.',
-    description:
-      'We build websites that position your expertise, build trust fast, and turn visitors into booked calls.',
-  },
-  {
-    icon: 'solar:routing-2-linear',
-    title: 'Funnel Systems',
-    tagline: "One piece of content shouldn't do all the work.",
-    description:
-      'We build complete funnel ladders: lead magnets, low ticket, mid ticket, that warm up leads before they ever speak to you.',
-  },
-  {
-    icon: 'solar:cpu-bolt-linear',
-    title: 'AI Follow-Up Engine',
-    tagline: 'No lead goes cold. Ever.',
-    description:
-      'We integrate AI that handles enquiries, follow-ups, and booking 24/7, so your pipeline never sleeps.',
-  },
-  {
-    icon: 'solar:clipboard-list-linear',
-    title: 'Strategy & Revenue Coaching',
-    tagline: "You know something's off. We'll find it.",
-    description:
-      "We diagnose exactly where your pipeline is leaking, what it's costing you, and what to fix first.",
-  },
-]
+const processCopy = HOME_PROCESS
 
 export default function Home() {
   useScrollAnimation() // Initialize scroll animations for all elements
-  const [openFaq, setOpenFaq] = useState<number | null>(null)
   const [offerFocus, setOfferFocus] = useState(0)
-
-  const toggleFaq = (index: number) => {
-    setOpenFaq(openFaq === index ? null : index)
-  }
 
   return (
     <div className="bg-neutral-950 text-neutral-300 w-full overflow-x-hidden selection:bg-red-500/30 selection:text-white relative min-h-screen">
@@ -610,29 +543,28 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Revenue ladder / process */}
+      {/* Knowledge to Cash path / process */}
       <section id="process" className="section-ambient relative overflow-hidden border-t border-white/5 bg-neutral-900/30 py-16 section-standard md:py-24">
         <div className="section-ambient__glow opacity-70" aria-hidden />
         <div className="section-ambient__grid opacity-40" aria-hidden />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
           <div className="mb-10 grid grid-cols-1 items-start gap-8 animate-on-scroll md:mb-16 md:gap-12 lg:mb-20 lg:grid-cols-12 lg:gap-16">
             <div className="w-full text-center md:text-left lg:col-span-7">
-              <span className="section-eyebrow mb-4 block text-neutral-500">The Revenue Ladder: How It Works</span>
+              <span className="section-eyebrow mb-4 block text-neutral-500">{processCopy.eyebrow}</span>
               <h2 className="mb-6 w-full text-3xl font-medium leading-[1.12] tracking-tight text-white sm:text-4xl md:text-6xl">
-                Every rung exists to do one thing.
+                {processCopy.headlineLead}
                 <br />
-                <span className="hero-text-gradient">Turn more of the right people into paying clients.</span>
+                <span className="hero-text-gradient">{processCopy.headlineAccent}</span>
               </h2>
               <p className="mx-auto max-w-2xl text-base leading-relaxed text-neutral-400 md:mx-0 md:text-lg">
-                Most coaches aren&apos;t losing clients because they&apos;re bad at what they do. They&apos;re losing
-                them in the gaps. Here&apos;s where I find them, and what I build to fix it.
+                {processCopy.subheadline}
               </p>
             </div>
             <div className="story-rail lg:col-span-5 lg:pt-2">
-              {REVENUE_LADDER_RUNGS.map((rung, i) => (
+              {processCopy.rungs.map((rung, i) => (
                 <div
                   key={rung.step}
-                  className={`story-rail__node pl-1 ${i < REVENUE_LADDER_RUNGS.length - 1 ? 'mb-8' : ''}`}
+                  className={`story-rail__node pl-1 ${i < processCopy.rungs.length - 1 ? 'mb-8' : ''}`}
                 >
                   <span
                     className={`font-bricolage text-4xl font-medium md:text-5xl ${
@@ -649,6 +581,15 @@ export default function Home() {
                   </span>
                   <p className="mt-2 text-sm font-medium text-white">{rung.title}</p>
                   <p className="mt-2 max-w-md text-sm leading-relaxed text-neutral-400">{rung.description}</p>
+                  {rung.productLabel && rung.productPath ? (
+                    <Link
+                      to={rung.productPath}
+                      className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-red-400/90 transition-colors hover:text-red-300"
+                    >
+                      {rung.productLabel}
+                      <iconify-icon icon="solar:arrow-right-linear" width="14" />
+                    </Link>
+                  ) : null}
                 </div>
               ))}
             </div>
@@ -664,9 +605,11 @@ export default function Home() {
             </div>
           </div>
 
-          <span className="section-eyebrow mb-6 mt-4 block text-neutral-500 animate-on-scroll">The Build Stack</span>
+          <span className="section-eyebrow mb-6 mt-4 block text-neutral-500 animate-on-scroll">
+            {processCopy.buildStackEyebrow}
+          </span>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {BUILD_STACK_ITEMS.map((item, i) => (
+            {processCopy.buildStackItems.map((item, i) => (
               <div
                 key={item.title}
                 className={`group rounded-xl border border-white/5 p-6 transition-all duration-300 animate-on-scroll card-lift hover:border-red-500/30 hover:bg-white/[0.02] ${
@@ -684,15 +627,15 @@ export default function Home() {
           </div>
 
           <div className="mt-16 text-center animate-on-scroll">
-            <p className="mb-2 text-lg text-neutral-300">Which rung of your ladder is broken right now?</p>
-            <p className="mb-8 text-base text-neutral-400">Let&apos;s find it and fix it.</p>
-            <a
-              href="#contact"
+            <p className="mb-2 text-lg text-neutral-300">{processCopy.cta.question}</p>
+            <p className="mb-8 text-base text-neutral-400">{processCopy.cta.sub}</p>
+            <Link
+              to={processCopy.cta.path}
               className="cta-primary inline-flex w-full max-w-md items-center justify-center gap-2 rounded-lg bg-white px-6 py-4 text-sm font-medium text-neutral-950 transition-all btn-shimmer hover:bg-red-400 hover:shadow-lg hover:shadow-red-500/30 sm:w-auto sm:px-8"
             >
-              Book a Free Revenue Leak Coaching Call
-              <iconify-icon icon="solar:arrow-right-linear" width="18"></iconify-icon>
-            </a>
+              {processCopy.cta.label}
+              <iconify-icon icon="solar:arrow-right-linear" width="18" />
+            </Link>
           </div>
         </div>
       </section>
@@ -789,193 +732,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="border-t border-white/5 bg-neutral-900/20 py-16 section-subtle md:py-24">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 md:px-12">
-          <div className="faq-hero-band animate-on-scroll">
-            <div className="faq-hero-band__glow" aria-hidden />
-            <div className="relative z-10 flex flex-col items-center gap-4 text-center md:flex-row md:text-left">
-              <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-red-500/25 bg-red-500/10 text-red-400 shadow-[0_0_24px_rgba(239,68,68,0.15)]">
-                <iconify-icon icon="solar:chat-round-dots-linear" width="32"></iconify-icon>
-              </div>
-              <div>
-                <span className="section-eyebrow mb-2 block text-red-500">Common Questions</span>
-                <h2 className="text-2xl font-medium tracking-tight text-white sm:text-3xl md:text-5xl">Still Have Questions?</h2>
-                <p className="mx-auto mt-3 max-w-xl text-neutral-400 md:mx-0">
-                  Answers about the Revenue Ladder, done-for-you builds, the workbook, and the Knowledge to Cash Blueprint.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="space-y-6">
-            <div className="glass-panel faq-card animate-on-scroll overflow-hidden rounded-xl border border-white/10">
-              <button 
-                onClick={() => toggleFaq(0)}
-                className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
-              >
-                <h3 className="text-white font-medium text-lg pr-4">Is this worth the investment?</h3>
-                <iconify-icon 
-                  icon="solar:alt-arrow-down-linear" 
-                  className={`text-neutral-400 shrink-0 transition-transform duration-300 ${openFaq === 0 ? 'rotate-180 text-red-500' : ''}`}
-                ></iconify-icon>
-              </button>
-              <div className={`faq-answer ${openFaq === 0 ? 'faq-open' : ''}`}>
-                <div className="px-6 pb-6">
-                  <p className="text-neutral-400 text-sm leading-relaxed">
-                    If leaks in your funnel or follow-up are costing you real revenue or time, usually yes. I tie work to
-                    measurable outcomes first: booked calls, conversion, revenue per lead, response speed. On your
-                    call we quantify what fixing the bottleneck is worth. If I cannot show you a clear ROI path, I do
-                    not take the build.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="glass-panel faq-card animate-on-scroll delay-75 overflow-hidden rounded-xl border border-white/10">
-              <button 
-                onClick={() => toggleFaq(1)}
-                className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
-              >
-                <h3 className="text-white font-medium text-lg pr-4">How long does a build take?</h3>
-                <iconify-icon 
-                  icon="solar:alt-arrow-down-linear" 
-                  className={`text-neutral-400 shrink-0 transition-transform duration-300 ${openFaq === 1 ? 'rotate-180 text-red-500' : ''}`}
-                ></iconify-icon>
-              </button>
-              <div className={`faq-answer ${openFaq === 1 ? 'faq-open' : ''}`}>
-                <div className="px-6 pb-6">
-                  <p className="text-neutral-400 text-sm leading-relaxed">
-                    Most launches land in about 4 to 8 weeks depending on what we ship first: conversion-focused site,
-                    funnel pieces, AI follow-up, and integrations. Larger stacks can run 12 to 16 weeks. On your free
-                    Revenue Leak Coaching Call we map which rung of your ladder is broken and sequence the work so you
-                    see momentum early.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="glass-panel faq-card animate-on-scroll delay-100 overflow-hidden rounded-xl border border-white/10">
-              <button 
-                onClick={() => toggleFaq(2)}
-                className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
-              >
-                <h3 className="text-white font-medium text-lg pr-4">Will this work for my coaching or service business?</h3>
-                <iconify-icon 
-                  icon="solar:alt-arrow-down-linear" 
-                  className={`text-neutral-400 shrink-0 transition-transform duration-300 ${openFaq === 2 ? 'rotate-180 text-red-500' : ''}`}
-                ></iconify-icon>
-              </button>
-              <div className={`faq-answer ${openFaq === 2 ? 'faq-open' : ''}`}>
-                <div className="px-6 pb-6">
-                  <p className="text-neutral-400 text-sm leading-relaxed">
-                    I work mainly with coaches and expertise-led service businesses: you sell transformation, advice,
-                    or high-trust services, and you need strangers to trust you and book calls. If that is you and the
-                    pain is offer clarity, funnel flow, follow-up, or pipeline consistency, we are probably a fit. Book
-                    a Revenue Leak Coaching Call and we will know quickly.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="glass-panel faq-card animate-on-scroll delay-150 overflow-hidden rounded-xl border border-white/10">
-              <button 
-                onClick={() => toggleFaq(3)}
-                className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
-              >
-                <h3 className="text-white font-medium text-lg pr-4">What happens on the Revenue Leak Coaching Call?</h3>
-                <iconify-icon 
-                  icon="solar:alt-arrow-down-linear" 
-                  className={`text-neutral-400 shrink-0 transition-transform duration-300 ${openFaq === 3 ? 'rotate-180 text-red-500' : ''}`}
-                ></iconify-icon>
-              </button>
-              <div className={`faq-answer ${openFaq === 3 ? 'faq-open' : ''}`}>
-                <div className="px-6 pb-6">
-                  <p className="text-neutral-400 text-sm leading-relaxed">
-                    About 30 minutes on your biggest revenue leak: where leads drop, what follow-up looks like today,
-                    and what better would look like in plain numbers. You leave with a clear read on what to fix first and what
-                    a build could look like. No hard pitch. If we work together, that becomes a concrete plan across the
-                    Build Stack: site, funnel systems, AI follow-up, and strategy coaching where it helps.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="glass-panel faq-card animate-on-scroll delay-200 overflow-hidden rounded-xl border border-white/10">
-              <button 
-                onClick={() => toggleFaq(4)}
-                className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
-              >
-                <h3 className="text-white font-medium text-lg pr-4">Do I need to be tech-savvy?</h3>
-                <iconify-icon 
-                  icon="solar:alt-arrow-down-linear" 
-                  className={`text-neutral-400 shrink-0 transition-transform duration-300 ${openFaq === 4 ? 'rotate-180 text-red-500' : ''}`}
-                ></iconify-icon>
-              </button>
-              <div className={`faq-answer ${openFaq === 4 ? 'faq-open' : ''}`}>
-                <div className="px-6 pb-6">
-                  <p className="text-neutral-400 text-sm leading-relaxed">
-                    No. You should not have to live inside your CRM to make money. I design for operators: clear
-                    workflows, sensible automations, and documentation so your team can run it. The goal is for the
-                    system to fade into the background so your client experience stays front and center.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="glass-panel faq-card animate-on-scroll delay-300 overflow-hidden rounded-xl border border-white/10">
-              <button 
-                onClick={() => toggleFaq(5)}
-                className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
-              >
-                <h3 className="text-white font-medium text-lg pr-4">What is the Knowledge-to-Cash Blueprint?</h3>
-                <iconify-icon 
-                  icon="solar:alt-arrow-down-linear" 
-                  className={`text-neutral-400 shrink-0 transition-transform duration-300 ${openFaq === 5 ? 'rotate-180 text-red-500' : ''}`}
-                ></iconify-icon>
-              </button>
-              <div className={`faq-answer ${openFaq === 5 ? 'faq-open' : ''}`}>
-                <div className="px-6 pb-6">
-                  <p className="text-neutral-400 text-sm leading-relaxed">
-                    It is the full front-to-back system for coaches and experts: offer, funnel, follow-up, and the path
-                    from stranger to high-ticket client. See everything on the{' '}
-                    <Link to={BLUEPRINT_LANDING_PATH} className="text-red-400/90 underline-offset-2 hover:text-red-300 hover:underline">
-                      Blueprint landing page
-                    </Link>
-                    . Start with the free{' '}
-                    <Link to={WORKBOOK_LANDING_PATH} className="text-red-400/90 underline-offset-2 hover:text-red-300 hover:underline">
-                      Offer Kickstart Workbook
-                    </Link>{' '}
-                    if you need to fix the offer first. Book a strategy call when you want the ladder built for you.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="glass-panel faq-card animate-on-scroll delay-500 overflow-hidden rounded-xl border border-white/10">
-              <button 
-                onClick={() => toggleFaq(6)}
-                className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
-              >
-                <h3 className="text-white font-medium text-lg pr-4">What if I need changes after launch?</h3>
-                <iconify-icon 
-                  icon="solar:alt-arrow-down-linear" 
-                  className={`text-neutral-400 shrink-0 transition-transform duration-300 ${openFaq === 6 ? 'rotate-180 text-red-500' : ''}`}
-                ></iconify-icon>
-              </button>
-              <div className={`faq-answer ${openFaq === 6 ? 'faq-open' : ''}`}>
-                <div className="px-6 pb-6">
-                  <p className="text-neutral-400 text-sm leading-relaxed">
-                    Businesses change; systems should evolve. After launch we can move into maintenance or ongoing
-                    support scoped to what you need: updates, new sequences, optimizations, and new funnel pieces. We
-                    agree cadence and scope up front so expectations stay clear.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="text-center mt-16 animate-on-scroll">
-            <p className="mb-6 text-xl text-white">Which rung of your ladder needs fixing first?</p>
-            <a href="#contact" className="cta-primary inline-flex w-full max-w-md items-center justify-center gap-2 rounded-lg bg-white px-6 py-4 text-sm font-medium text-neutral-950 transition-all btn-shimmer hover:bg-red-400 hover:shadow-lg hover:shadow-red-500/30 sm:w-auto sm:px-10">
-              Book a Free Revenue Leak Coaching Call
-              <iconify-icon icon="solar:arrow-right-up-linear"></iconify-icon>
-            </a>
-          </div>
-        </div>
-      </section>
+      <HomeFaqSection />
 
       {/* Contact Section */}
       <footer id="contact" className="relative overflow-hidden border-t border-white/10 bg-black py-20 section-elevated md:py-32" style={{ background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.95), #000000)' }}>
