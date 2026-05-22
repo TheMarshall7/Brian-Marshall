@@ -735,13 +735,18 @@ export default function Home() {
       <HomeFaqSection />
 
       {/* Contact Section */}
-      <footer id="contact" className="relative overflow-hidden border-t border-white/10 bg-black py-20 section-elevated md:py-32" style={{ background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.95), #000000)' }}>
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-1/4 w-96 h-96 bg-red-500/10 rounded-full blur-[120px] float-animation"></div>
-          <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-red-600/5 rounded-full blur-[100px] float-animation-delayed"></div>
+      <footer
+        id="contact"
+        className="section-ambient relative overflow-hidden border-t border-white/10 bg-neutral-950 py-20 section-elevated md:py-32"
+      >
+        <div className="section-ambient__glow" aria-hidden />
+        <div className="section-ambient__grid opacity-40" aria-hidden />
+        <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden>
+          <div className="absolute left-1/4 top-20 h-96 w-96 rounded-full bg-red-500/10 blur-[120px] float-animation" />
+          <div className="absolute bottom-20 right-1/4 h-80 w-80 rounded-full bg-red-600/5 blur-[100px] float-animation-delayed" />
         </div>
 
-        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
+        <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
           <div className="inline-block p-1 rounded-full bg-white/5 border border-green-500/25 mb-10 animate-on-scroll glow-border">
             <div className="px-5 py-2 rounded-full bg-black/80 backdrop-blur flex items-center gap-3">
               <span className="relative flex h-2 w-2">
