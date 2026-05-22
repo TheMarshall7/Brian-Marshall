@@ -2,10 +2,9 @@ import { useEffect, useMemo, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import Navigation from '../components/Navigation'
-import OfferFrameworkGateModal from '../components/OfferFrameworkGateModal'
-import { DEFAULT_GHL_OFFER_WEBHOOK_URL } from '../constants/ghl'
+import BlueprintPromoSection from '../components/marketing/BlueprintPromoSection'
+import WorkbookPromoSection from '../components/marketing/WorkbookPromoSection'
 import { STRATEGY_CALL_PATH } from '../constants/site'
-import { OFFER_FRAMEWORK_BULLETS } from '../constants/offerFramework'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
 type Skill = { label: string; percent: number }
@@ -45,11 +44,10 @@ const ABOUT_SKILLS: Skill[] = [
 const ABOUT_SECTIONS = [
   { id: 'profile', label: 'Profile' },
   { id: 'credentials', label: 'Credentials' },
-  { id: 'offer-framework', label: 'Offer' },
+  { id: 'offer-framework', label: 'Blueprint' },
+  { id: 'offer-workbook', label: 'Workbook' },
   { id: 'systems', label: 'Systems' },
   { id: 'stack', label: 'Stack' },
-  { id: 'industries', label: 'Industries' },
-  { id: 'direction', label: 'Direction' },
 ] as const
 
 const ABOUT_CREDENTIALS: {
@@ -202,43 +200,6 @@ const ABOUT_TECH_ICONS: Record<string, string> = {
   Stripe: 'simple-icons:stripe',
 }
 
-const ABOUT_DIFFERENTIATORS: { line: string; icon: string }[] = [
-  { line: 'Builder + operator mindset (not “just design”)', icon: 'solar:sledgehammer-linear' },
-  { line: 'ROI before aesthetics', icon: 'solar:target-linear' },
-  { line: 'Reduce complexity instead of adding tools', icon: 'solar:layers-linear' },
-  { line: 'Tech + psychology + offer design', icon: 'mdi:brain' },
-  { line: 'Systems people actually use daily', icon: 'solar:widget-5-linear' },
-]
-
-const ABOUT_PHILOSOPHY: string[] = [
-  'If the ROI isn’t clear, don’t build it',
-  'More tools = more problems',
-  'Systems > traffic',
-  'Execution > ideas',
-  'Automation should replace effort, not add to it',
-]
-
-const ABOUT_INDUSTRIES: string[] = [
-  'Service businesses (contractors, med spas, local services)',
-  'Creators (musicians, artists, educators)',
-  'Consultants (coaches, agencies, experts)',
-  'Financial services (insurance, wealth, tax)',
-]
-
-const ABOUT_CURRENT_DIRECTION: string[] = [
-  'Building a Jarvis-style multi-agent automation system',
-  'Designing a simplified all-in-one business platform (GHL power, easier UX)',
-  'Scaling AreoClient into a full operating system for businesses',
-]
-
-const ABOUT_LEADERSHIP_GROUPS: string[] = [
-  'Orientation Leader (Western University, 2016-2019)',
-  'Jazz & Symphony Orchestra Bassist (Western University, 2015-2017)',
-  'Theatre Western (2017)',
-  'Camp Leader & Live Musician (North Peel Community Church, 2013-2018)',
-  'Small Group Ensembles (2020-Present)',
-]
-
 function CredentialCardItem({
   card,
   accentClass,
@@ -311,10 +272,6 @@ export default function About() {
   const [activeSection, setActiveSection] = useState<(typeof ABOUT_SECTIONS)[number]['id']>('profile')
   const [activeCredentialTab, setActiveCredentialTab] = useState<CredentialTab>('experience')
   const [offerFocus, setOfferFocus] = useState(0)
-  const [offerFrameworkModalOpen, setOfferFrameworkModalOpen] = useState(false)
-  const ghlOfferWebhookUrl =
-    import.meta.env.VITE_GHL_OFFER_WEBHOOK_URL?.trim() || DEFAULT_GHL_OFFER_WEBHOOK_URL
-
   const sectionIds = useMemo(() => ABOUT_SECTIONS.map((s) => s.id), [])
 
   useEffect(() => {
@@ -546,169 +503,14 @@ export default function About() {
           </div>
         </section>
 
-        <section
-          id="offer-framework"
-          className="relative overflow-hidden border-t border-white/5 bg-neutral-950 py-16 md:py-28 lg:py-32"
-          aria-labelledby="offer-framework-heading"
-        >
-          <div
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_60%_at_100%_0%,rgba(239,68,68,0.14),transparent_55%)]"
-            aria-hidden
-          />
-          <div
-            className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.028)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.028)_1px,transparent_1px)] bg-[length:44px_44px] opacity-80"
-            aria-hidden
-          />
-          <div
-            className="pointer-events-none absolute -left-32 top-1/2 h-[420px] w-[420px] -translate-y-1/2 rounded-full bg-red-600/5 blur-[100px]"
-            aria-hidden
-          />
-
-          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
-            <div className="grid grid-cols-1 items-start gap-16 lg:grid-cols-2 lg:gap-24">
-              <div className="animate-on-scroll">
-                <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-red-500/25 bg-red-500/10 px-4 py-2 section-eyebrow text-red-400 shadow-[0_0_24px_rgba(239,68,68,0.12)] transition-[box-shadow,transform] duration-300 hover:border-red-500/40 hover:shadow-[0_0_32px_rgba(239,68,68,0.2)]">
-                  <span className="relative flex h-2 w-2">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-40" />
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500" />
-                  </span>
-                  Your expertise is already worth money.
-                </div>
-                <h2
-                  id="offer-framework-heading"
-                  className="mb-6 font-bricolage text-3xl font-medium tracking-tight text-white md:text-5xl lg:text-[3.25rem] lg:leading-[1.08]"
-                >
-                  You just need <span className="hero-text-gradient">the blueprint to prove it.</span>
-                </h2>
-                <p className="mb-10 max-w-xl text-lg leading-relaxed text-neutral-400">
-                  Most people sitting on valuable knowledge have no idea how to package it into an offer people will
-                  actually pay for. This free guide changes that.
-                </p>
-                <div className="group/result relative mb-10 overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-transparent p-6 transition-all duration-500 hover:border-red-500/25 hover:shadow-[0_0_40px_rgba(239,68,68,0.08)] md:p-8">
-                  <div
-                    className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-red-500/10 blur-2xl transition-opacity duration-500 group-hover/result:opacity-100"
-                    aria-hidden
-                  />
-                  <span className="section-eyebrow mb-3 block text-red-500/90">
-                    Result
-                  </span>
-                  <p className="relative text-base leading-relaxed text-neutral-200">
-                    You&apos;ll walk away with a clear, sellable offer built around what you already know, ready to
-                    take to market.
-                  </p>
-                </div>
-                <div
-                  id="about-offer-focus-panel"
-                  role="region"
-                  aria-live="polite"
-                  aria-atomic="true"
-                  className="mb-8 min-h-[5.5rem] max-w-xl rounded-xl border border-white/10 bg-black/30 p-4 text-sm leading-relaxed text-neutral-400 transition-[border-color,box-shadow] duration-300 md:min-h-[5rem] md:p-5"
-                >
-                  <span className="section-eyebrow mb-1 block text-lg text-red-500/80">
-                    Lens
-                  </span>
-                  <p key={offerFocus} className="animate-[offerFocusFade_0.35s_ease-out] text-neutral-300">
-                    {OFFER_FRAMEWORK_BULLETS[offerFocus].focus}
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setOfferFrameworkModalOpen(true)}
-                  className="cta-primary group/download glow-border relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-white px-9 py-4 text-sm font-medium text-neutral-950 transition-all duration-300 btn-shimmer hover:bg-red-400 hover:shadow-[0_0_40px_rgba(239,68,68,0.35)]"
-                >
-                  <span className="relative z-10">Send me the blueprint</span>
-                  <iconify-icon
-                    icon="solar:arrow-right-linear"
-                    className="relative z-10 text-lg transition-transform duration-300 group-hover/download:translate-x-0.5 group-hover/download:scale-110"
-                  />
-                </button>
-                <p className="mt-4 text-xs text-neutral-600">Free PDF · delivered to your inbox</p>
-              </div>
-
-              <div className="animate-on-scroll delay-100">
-                <div className="group/card relative rounded-2xl border border-white/10 bg-neutral-900/40 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.45)] backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:border-red-500/30 hover:shadow-[0_32px_96px_rgba(0,0,0,0.5),0_0_48px_rgba(239,68,68,0.12)] md:p-10">
-                  <div className="relative mb-8 h-36 md:h-40">
-                    <div
-                      className="absolute left-1/2 top-3 h-[7.5rem] w-[11rem] -translate-x-1/2 rotate-[-4deg] rounded-md border border-white/10 bg-neutral-800/90 shadow-lg transition-all duration-500 ease-out group-hover/card:top-4 group-hover/card:translate-x-[calc(-50%+10px)] group-hover/card:rotate-[-2deg] md:w-[13rem]"
-                      aria-hidden
-                    />
-                    <div
-                      className="absolute left-1/2 top-0 h-[7.5rem] w-[11rem] -translate-x-1/2 rotate-[1deg] rounded-md border border-white/15 bg-gradient-to-br from-neutral-800 via-neutral-900 to-neutral-950 shadow-2xl transition-all duration-500 ease-out group-hover/card:-translate-y-1 group-hover/card:translate-x-[calc(-50%-8px)] group-hover/card:rotate-[2deg] md:w-[13rem]"
-                      aria-hidden
-                    >
-                      <div className="flex h-full flex-col p-4">
-                        <div className="mb-2 h-1.5 w-1/3 rounded-full bg-red-500/40" />
-                        <div className="space-y-1.5">
-                          <div className="h-1 rounded bg-white/10" />
-                          <div className="h-1 w-5/6 rounded bg-white/5" />
-                          <div className="h-1 w-4/6 rounded bg-white/5" />
-                        </div>
-                        <div className="mt-auto flex items-center justify-between border-t border-white/10 pt-3">
-                          <span className="text-[9px] font-mono uppercase tracking-wider text-red-400/90">
-                            Blueprint
-                          </span>
-                          <iconify-icon icon="solar:document-text-linear" className="text-red-500/80" width="18" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="mb-6 flex items-start gap-3 border-b border-white/10 pb-6">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-white/[0.02] text-red-500 shadow-inner transition-transform duration-300 group-hover/card:scale-105">
-                      <iconify-icon icon="solar:document-text-linear" width="22" />
-                    </div>
-                    <div>
-                      <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">Free PDF</span>
-                      <p className="text-lg font-medium text-white">The Knowledge-to-Cash Blueprint</p>
-                    </div>
-                  </div>
-
-                  <p
-                    id="about-offer-framework-list-label"
-                    className="section-eyebrow mb-3 text-neutral-500"
-                  >
-                    What&apos;s inside · tap a line
-                  </p>
-                  <ul className="space-y-1" role="group" aria-labelledby="about-offer-framework-list-label">
-                    {OFFER_FRAMEWORK_BULLETS.map((item, i) => (
-                      <li key={item.line}>
-                        <button
-                          type="button"
-                          aria-pressed={offerFocus === i}
-                          aria-controls="about-offer-focus-panel"
-                          onClick={() => setOfferFocus(i)}
-                          onMouseEnter={() => setOfferFocus(i)}
-                          className={`group/item flex w-full gap-4 rounded-xl px-3 py-3.5 text-left transition-all duration-300 md:py-3 ${
-                            offerFocus === i
-                              ? 'border border-red-500/35 bg-red-500/[0.08] shadow-[0_0_28px_rgba(239,68,68,0.12)]'
-                              : 'border border-transparent hover:border-white/10 hover:bg-white/[0.04]'
-                          }`}
-                        >
-                          <div
-                            className={`mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full transition-all duration-300 ${
-                              offerFocus === i
-                                ? 'scale-110 bg-red-500/25 text-red-400'
-                                : 'bg-red-500/10 text-red-500/80 group-hover/item:scale-105'
-                            }`}
-                          >
-                            <iconify-icon icon="solar:check-circle-bold" width="16" />
-                          </div>
-                          <span
-                            className={`text-sm leading-relaxed transition-colors duration-300 ${
-                              offerFocus === i ? 'text-neutral-100' : 'text-neutral-400'
-                            }`}
-                          >
-                            {item.line}
-                          </span>
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <BlueprintPromoSection
+          offerFocus={offerFocus}
+          setOfferFocus={setOfferFocus}
+          focusPanelId="about-offer-focus-panel"
+          headingId="about-offer-framework-heading"
+          listLabelId="about-offer-framework-list-label"
+        />
+        <WorkbookPromoSection headingId="about-offer-workbook-heading" />
 
         <section
           id="systems"
@@ -828,109 +630,22 @@ export default function About() {
               </div>
             </div>
 
-            <div id="stack" className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-10">
-              <div className="lg:col-span-7 animate-on-scroll">
-                <div className="glass-panel glass-panel--quiet rounded-2xl border border-white/10 p-7 md:p-8">
-                  <span className="section-eyebrow mb-4 block text-neutral-500">
-                    Tech stack
-                  </span>
-
-                  <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                    {ABOUT_TECH_STACK.map((group) => (
-                      <div key={group.title} className="rounded-xl border border-white/10 bg-neutral-950/40 p-5">
-                        <h4 className="text-white font-medium">{group.title}</h4>
-                        <div className="mt-4 flex flex-wrap gap-2">
-                          {group.items.map((x) => (
-                            <span key={x} className="about-chip">
-                              <iconify-icon icon={ABOUT_TECH_ICONS[x] ?? 'solar:widget-5-linear'} width="14" />
-                              <span className="truncate">{x}</span>
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <div className="lg:col-span-5 animate-on-scroll">
-                <div className="glass-panel glass-panel--quiet rounded-2xl border border-white/10 p-7 md:p-8">
-                  <span className="section-eyebrow mb-4 block text-neutral-500">
-                    What makes me different
-                  </span>
-                  <div className="about-diff-row">
-                    {ABOUT_DIFFERENTIATORS.map(({ line, icon }) => (
-                      <div key={line} className="about-diff-card">
-                        <span className="about-diff-icon">
-                          <iconify-icon className="block shrink-0" icon={icon} width="18" height="18" />
-                        </span>
-                        <span className="text-sm leading-relaxed text-neutral-200">{line}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="mt-6 glass-panel glass-panel--quiet rounded-2xl border border-white/10 p-7 md:p-8">
-                  <span className="section-eyebrow mb-4 block text-neutral-500">
-                    Philosophy
-                  </span>
-                  <div className="space-y-3">
-                    {ABOUT_PHILOSOPHY.map((x) => (
-                      <p key={x} className="about-quote">
-                        {x}
-                      </p>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div id="industries" className="mt-10 animate-on-scroll">
-              <div className="mx-auto max-w-2xl lg:mx-0">
-                <div className="glass-panel glass-panel--quiet rounded-2xl border border-white/10 p-7 md:p-8">
-                  <span className="section-eyebrow mb-4 block text-neutral-500">
-                    Industries
-                  </span>
-                  <ul className="space-y-2 text-sm text-neutral-400">
-                    {ABOUT_INDUSTRIES.map((x) => (
-                      <li key={x} className="flex items-start gap-2">
-                        <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-red-500/70" aria-hidden />
-                        <span>{x}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div id="direction" className="mt-10 animate-on-scroll">
+            <div id="stack" className="mt-10 animate-on-scroll">
               <div className="glass-panel glass-panel--quiet rounded-2xl border border-white/10 p-7 md:p-8">
-                <span className="section-eyebrow mb-4 block text-neutral-500">
-                  Current direction
-                </span>
-                <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-                  {ABOUT_CURRENT_DIRECTION.map((x) => (
-                    <div key={x} className="rounded-xl border border-white/10 bg-neutral-950/40 p-5">
-                      <p className="text-sm leading-relaxed text-neutral-300">{x}</p>
+                <span className="section-eyebrow mb-4 block text-neutral-500">Tech stack</span>
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+                  {ABOUT_TECH_STACK.map((group) => (
+                    <div key={group.title} className="rounded-xl border border-white/10 bg-neutral-950/40 p-5">
+                      <h4 className="font-medium text-white">{group.title}</h4>
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {group.items.map((x) => (
+                          <span key={x} className="about-chip">
+                            <iconify-icon icon={ABOUT_TECH_ICONS[x] ?? 'solar:widget-5-linear'} width="14" />
+                            <span className="truncate">{x}</span>
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-6 animate-on-scroll">
-              <div className="glass-panel glass-panel--quiet rounded-2xl border border-white/10 p-7 md:p-8">
-                <span className="section-eyebrow mb-4 block text-neutral-500">
-                  Leadership & groups
-                </span>
-                <div className="flex flex-wrap gap-2">
-                  {ABOUT_LEADERSHIP_GROUPS.map((x) => (
-                    <span
-                      key={x}
-                      className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-xs text-neutral-300"
-                    >
-                      {x}
-                    </span>
                   ))}
                 </div>
               </div>
@@ -1017,11 +732,6 @@ export default function About() {
         </div>
       </footer>
 
-      <OfferFrameworkGateModal
-        open={offerFrameworkModalOpen}
-        onClose={() => setOfferFrameworkModalOpen(false)}
-        webhookUrl={ghlOfferWebhookUrl}
-      />
     </div>
   )
 }

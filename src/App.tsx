@@ -6,6 +6,7 @@ import Vsl from './pages/Vsl'
 import Shop from './pages/Shop'
 import OfferKickstart from './pages/OfferKickstart'
 import Blueprint from './pages/Blueprint'
+import BlueprintCheckout from './pages/BlueprintCheckout'
 import { STRATEGY_CALL_PATH, VSL_ENABLED } from './constants/site'
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path="/shop" element={<Shop />} />
         <Route path="/workbook" element={<OfferKickstart />} />
         <Route path="/blueprint" element={<Blueprint />} />
+        <Route path="/blueprint/checkout" element={<BlueprintCheckout />} />
       </Routes>
     </div>
   )

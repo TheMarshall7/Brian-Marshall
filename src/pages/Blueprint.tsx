@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import Navigation from '../components/Navigation'
 import BlueprintChangesGrid from '../components/blueprint/BlueprintChangesGrid'
-import BlueprintCheckoutEmbed from '../components/blueprint/BlueprintCheckoutEmbed'
 import BlueprintCta from '../components/blueprint/BlueprintCta'
 import BlueprintFaq from '../components/blueprint/BlueprintFaq'
 import BlueprintLayerGrid from '../components/blueprint/BlueprintLayerGrid'
@@ -91,7 +90,6 @@ export default function Blueprint() {
                 micro={copy.hero.micro}
                 showPrice={false}
                 size="large"
-                checkoutMode="embed"
               />
               <ul className="mt-8 flex flex-wrap gap-3">
                 {copy.hero.trust.map((item) => (
@@ -222,11 +220,7 @@ export default function Blueprint() {
           <BlueprintFaq />
         </BlueprintSection>
 
-        {/* Checkout */}
-        <section
-          id="checkout"
-          className="section-ambient relative scroll-mt-28 overflow-hidden border-t border-white/10 py-20 md:scroll-mt-32 md:py-28"
-        >
+        <section className="section-ambient relative overflow-hidden border-t border-white/10 py-20 md:py-28">
           <div className="section-ambient__glow" aria-hidden />
           <div className="section-ambient__grid" aria-hidden />
           <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
@@ -238,27 +232,25 @@ export default function Blueprint() {
               {copy.finalCta.subheadline}
             </p>
 
-            <div className="blueprint-final-cta__panel glass-panel--premium animate-on-scroll mx-auto mb-10 max-w-4xl rounded-2xl border p-6 md:p-8">
-              <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-center sm:justify-between">
-                <div className="blueprint-final-cta__cover relative flex shrink-0 justify-center">
+            <div className="blueprint-final-cta__panel glass-panel--premium animate-on-scroll mx-auto max-w-4xl rounded-2xl border p-6 md:p-8">
+              <div className="flex flex-col items-center gap-8 text-center">
+                <div className="blueprint-final-cta__cover blueprint-final-cta__cover--compact relative flex w-full items-center justify-center">
+                  <div className="blueprint-final-cta__pedestal" aria-hidden />
                   <img
                     src={SHOP_COVER.knowledgeToCash}
-                    alt=""
-                    className="h-auto max-h-28 w-auto object-contain drop-shadow-[0_16px_32px_rgba(0,0,0,0.5)]"
+                    alt="Knowledge to Cash Blueprint cover"
+                    className="blueprint-final-cta__img relative z-10 mx-auto h-auto w-auto max-w-full object-contain"
                     loading="lazy"
                   />
                 </div>
-                <div className="text-center sm:text-left">
-                  <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-red-500/25 bg-red-500/10 px-4 py-1.5 font-mono text-sm text-white">
-                    <iconify-icon icon="solar:tag-price-linear" className="text-red-400" width="16" aria-hidden />
-                    {copy.finalCta.price}
-                  </div>
-                  <p className="text-sm text-neutral-400">{copy.finalCta.micro}</p>
-                </div>
+                <BlueprintCta
+                  label={copy.finalCta.cta}
+                  micro={copy.finalCta.micro}
+                  showPrice={false}
+                  className="flex w-full flex-col items-center text-center"
+                />
               </div>
             </div>
-
-            <BlueprintCheckoutEmbed className="animate-on-scroll mx-auto max-w-3xl" />
           </div>
         </section>
 

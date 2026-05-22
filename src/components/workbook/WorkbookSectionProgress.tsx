@@ -4,7 +4,7 @@ export default function WorkbookSectionProgress() {
   return (
     <div
       className="workbook-section-progress animate-on-scroll mb-10 glass-panel--quiet rounded-2xl border border-white/10 p-4 md:p-5"
-      aria-label="Six workbook sections"
+      aria-label="Six Offer Kickstart Workbook sections"
     >
       <p className="section-eyebrow mb-3 text-base">Your path through the workbook</p>
       <div className="workbook-section-progress__track">

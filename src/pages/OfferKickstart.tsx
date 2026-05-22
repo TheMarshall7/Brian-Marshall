@@ -13,7 +13,7 @@ import WorkbookProofVisual from '../components/workbook/WorkbookProofVisual'
 import WorkbookSectionProgress from '../components/workbook/WorkbookSectionProgress'
 import WorkbookStatStrip from '../components/workbook/WorkbookStatStrip'
 import { WORKBOOK_LANDING } from '../constants/workbookLanding'
-import { SHOP_COVER } from '../constants/shop'
+import { OFFER_KICKSTART_OPTIN, SHOP_COVER } from '../constants/shop'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
 const copy = WORKBOOK_LANDING
@@ -231,6 +231,10 @@ export default function OfferKickstart() {
                   />
                 </div>
                 <div className="w-full min-w-0 lg:max-w-md lg:justify-self-end xl:max-w-lg">
+                <h3 className="mb-2 font-bricolage text-xl font-medium text-white md:text-2xl">
+                  {OFFER_KICKSTART_OPTIN.formTitle}
+                </h3>
+                <p className="mb-6 text-sm leading-relaxed text-neutral-500">{OFFER_KICKSTART_OPTIN.formSubtitle}</p>
                 <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-red-500/25 bg-red-500/10 px-4 py-1.5 font-mono text-sm text-white">
                   <iconify-icon icon="solar:gift-linear" className="text-red-400" width="16" aria-hidden />
                   {copy.finalCta.price}

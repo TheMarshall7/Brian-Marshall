@@ -7,7 +7,9 @@ export default function BlueprintStarterPath() {
 
   return (
     <div className="blueprint-path-visual animate-on-scroll glass-panel--premium mt-8 overflow-hidden rounded-2xl border p-6 md:p-8">
-      <p className="section-eyebrow mb-6 text-center md:text-left">No offer yet? Start with the free workbook first.</p>
+      <p className="section-eyebrow mb-6 text-center md:text-left">
+        No offer yet? Start with the free Offer Kickstart Workbook first.
+      </p>
       <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-[1fr_auto_1fr] md:gap-6">
         <Link
           to={path.workbookPath}

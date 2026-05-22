@@ -32,18 +32,18 @@ export type WorkbookLever = {
 }
 
 export const WORKBOOK_LANDING = {
-  title: 'Offer Kickstart Workbook',
+  title: 'The Offer Kickstart Workbook',
   metaDescription:
-    'Free 23-page workbook: apply the offer framework section by section and walk away with a completed offer draft. Instant download, no credit card.',
+    'Free Offer Kickstart Workbook: apply the offer framework section by section and walk away with a completed offer draft. Instant download, no credit card.',
 
   hero: {
-    badge: 'Free Workbook · 23 Pages · Offer Creation Series',
+    badge: 'Free · Offer Kickstart Workbook · 23 Pages',
     headlineLead: 'Everybody Knows the Framework.',
     headlineAccent: 'Almost Nobody Applies It Correctly.',
     subheadline:
-      "Everybody and their mom knows Alex Hormozi's offer framework. What most people miss are the details that turn a good offer into an irresistible one. This workbook closes that gap.",
+      "Everybody and their mom knows Alex Hormozi's offer framework. What most people miss are the details that turn a good offer into an irresistible one. The Offer Kickstart Workbook closes that gap.",
     priceAnchor: 'Free',
-    cta: 'Get the Workbook',
+    cta: 'Get the Offer Kickstart Workbook',
     micro: 'Instant download. No credit card. No fluff.',
     trust: [
       { icon: 'solar:download-linear', label: 'Instant PDF' },
@@ -62,7 +62,7 @@ export const WORKBOOK_LANDING = {
     headline: 'Knowing the Framework Is Not the Same as Having a Good Offer.',
     body: [
       "Most people read the theory and think they've got it. Then they write an offer that doesn't convert, drop the price, and blame the market. The problem isn't the framework. It's that nobody walked you through how to actually apply it to your specific offer, your specific client, and your specific situation.",
-      'This workbook does that. Section by section. Question by question.',
+      'The Offer Kickstart Workbook does that. Section by section. Question by question.',
     ],
     pains: [
       {
@@ -84,7 +84,7 @@ export const WORKBOOK_LANDING = {
   },
 
   inside: {
-    label: 'Inside the Workbook',
+    label: 'Inside the Offer Kickstart Workbook',
     headline: '6 Sections. Every Variable Worked Through. A Completed Offer by the Last Page.',
     intro:
       'This is not a PDF to read and shelve. It pairs the core framework with exercises that force you to apply every concept to your offer in real time. By the last page you will have a completed offer draft, not just notes.',
@@ -202,7 +202,7 @@ export const WORKBOOK_LANDING = {
     ctaPath: '/blueprint',
     path: {
       offerLabel: 'Your offer',
-      offerCaption: 'The message (workbook)',
+      offerCaption: 'Offer Kickstart Workbook',
       machineLabel: 'The machine',
       machineCaption: 'Knowledge to Cash Blueprint',
     },
@@ -230,7 +230,7 @@ export const WORKBOOK_LANDING = {
       {
         question: 'How long does it take to complete?',
         answer:
-          'The workbook is 23 pages. If you actually answer every question instead of skimming, expect 60 to 90 minutes. You will come out the other side with something usable.',
+          'The Offer Kickstart Workbook is 23 pages. If you actually answer every question instead of skimming, expect 60 to 90 minutes. You will come out the other side with something usable.',
       },
       {
         question: 'Do I need to have an offer already?',
@@ -240,18 +240,18 @@ export const WORKBOOK_LANDING = {
       {
         question: 'What is the Knowledge to Cash Blueprint mentioned at the end?',
         answer:
-          'It is the full system that comes after the offer. CRM pipeline, AI follow-up, automated booking and onboarding, outreach infrastructure. The workbook builds the offer. The blueprint builds the machine around it.',
+          'It is the full system that comes after the offer. CRM pipeline, AI follow-up, automated booking and onboarding, outreach infrastructure. The Offer Kickstart Workbook builds the offer. The blueprint builds the machine around it.',
       },
     ] satisfies WorkbookFaqItem[],
   },
 
   finalCta: {
     label: 'Start Here',
-    headline: 'Get the Workbook. Build the Offer.',
+    headline: 'Get the Offer Kickstart Workbook. Build the Offer.',
     subheadline:
-      "The framework alone won't close deals. Applying it to your specific situation will. Download the Offer Kickstart Workbook and walk away with a completed offer draft by the last page.",
+      "The framework alone won't close deals. Applying it to your specific situation will. Download the workbook and walk away with a completed offer draft by the last page.",
     price: 'Free',
-    cta: 'Download the Workbook Now',
+    cta: 'Get the Offer Kickstart Workbook',
     micro: 'Instant download. No credit card. Takes 60 to 90 minutes to complete properly.',
   },
 } as const

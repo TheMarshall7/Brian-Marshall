@@ -25,9 +25,12 @@ export const SHOP_COVER = {
 } as const
 
 export const SHOP_PDF = {
+  /** Offer Kickstart Workbook PDF (file name in public/ is legacy) */
   offerKickstart: '/No Brainer Offer Creation.pdf',
   knowledgeToCash: '/Offer-Creation-Beyond-the-Standard-Framework(Gamma).pdf',
 } as const
+
+export const OFFER_KICKSTART_WORKBOOK_TITLE = 'The Offer Kickstart Workbook' as const
 
 /** FastPayDirect payment link for Knowledge to Cash Blueprint ($29.97). Override with VITE_K2C_CHECKOUT_URL. */
 export const K2C_CHECKOUT_URL =
@@ -36,29 +39,29 @@ export const K2C_CHECKOUT_URL =
 
 /** Full-page opt-in copy for /workbook */
 export const OFFER_KICKSTART_OPTIN = {
-  title: 'The Offer Kickstart Workbook',
+  title: OFFER_KICKSTART_WORKBOOK_TITLE,
   headline: 'Most experts know what they do.',
   headlineAccent: 'They just can\'t explain it in a way that makes people want to pay for it.',
   body: [
-    'This workbook fixes that. In under an hour, you\'ll have a clear, compelling offer you can actually sell, built around what your clients want, not just what you know how to do.',
-    'Download it free. No fluff, no filler. Just the framework.',
+    'The Offer Kickstart Workbook fixes that. In under an hour, you\'ll have a clear, compelling offer you can actually sell, built around what your clients want, not just what you know how to do.',
+    'Download it free. No fluff, no filler. Just the framework applied to your offer.',
   ],
   coverSrc: SHOP_COVER.offerKickstart,
   pdfPath: SHOP_PDF.offerKickstart,
-  formTitle: 'Download the workbook',
-  formSubtitle: 'Enter your name and email. I\'ll send the PDF to your inbox.',
-  submitLabel: 'Send me the workbook',
+  formTitle: 'Get the Offer Kickstart Workbook',
+  formSubtitle: 'Enter your name and email. I\'ll send the workbook PDF to your inbox.',
+  submitLabel: 'Send me the Offer Kickstart Workbook',
   successTitle: 'You\'re in',
   successBody:
     'Check your email for The Offer Kickstart Workbook. If you don\'t see it in a few minutes, peek at spam or promotions.',
   source: 'Website · Offer Kickstart Workbook',
-  tags: ['offer-kickstart-workbook', 'offer-framework-pdf'],
+  tags: ['offer-kickstart-workbook'],
 } as const
 
 export const SHOP_PRODUCTS: ShopProduct[] = [
   {
     id: 'offer-kickstart',
-    title: 'The Offer Kickstart Workbook',
+    title: OFFER_KICKSTART_WORKBOOK_TITLE,
     price: 0,
     priceLabel: 'Free',
     priceOriginalLabel: '$9.97',
@@ -74,8 +77,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     footnote:
       'Step one is the offer. When you are ready for pipeline, follow-up, and the full path from stranger to high-ticket client, the Knowledge to Cash Blueprint is the machine that delivers it.',
     optInPath: '/workbook',
-    ctaLabel: 'Get it free',
-    badge: 'Workbook',
+    ctaLabel: 'Get the Offer Kickstart Workbook',
+    badge: 'Offer Kickstart',
   },
   {
     id: 'knowledge-to-cash',

@@ -1810,6 +1810,11 @@
   min-height: 280px;
 }
 
+.blueprint-final-cta__cover--compact {
+  min-height: auto;
+  padding: 0.5rem 0 0.25rem;
+}
+
 .blueprint-final-cta__pedestal {
   position: absolute;
   bottom: 6%;
@@ -1834,23 +1839,27 @@
 }
 
 @media (min-width: 640px) {
-  .blueprint-final-cta__cover {
+  .blueprint-final-cta__cover:not(.blueprint-final-cta__cover--compact) {
     min-height: 340px;
   }
 
-  .blueprint-final-cta__img {
+  .blueprint-final-cta__cover:not(.blueprint-final-cta__cover--compact) .blueprint-final-cta__img {
     max-height: min(380px, 48vw);
   }
 }
 
 @media (min-width: 1024px) {
-  .blueprint-final-cta__cover {
+  .blueprint-final-cta__cover:not(.blueprint-final-cta__cover--compact) {
     min-height: 400px;
   }
 
-  .blueprint-final-cta__img {
+  .blueprint-final-cta__cover:not(.blueprint-final-cta__cover--compact) .blueprint-final-cta__img {
     max-height: min(440px, 42vh);
   }
+}
+
+.blueprint-final-cta__cover--compact .blueprint-final-cta__img {
+  max-height: min(200px, 40vw);
 }
 
 .blueprint-stat-card::before {
@@ -1870,12 +1879,6 @@
 
 .blueprint-stat-card:hover::before {
   opacity: 1;
-}
-
-.blueprint-checkout-embed__frame {
-  display: block;
-  min-height: min(720px, 85vh);
-  background: #fff;
 }
 
 /* Workbook landing — premium layer */

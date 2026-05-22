@@ -1,5 +1,7 @@
-import { K2C_CHECKOUT_URL } from '../../constants/shop'
+import { Link } from 'react-router-dom'
 import { BLUEPRINT_LANDING } from '../../constants/blueprintLanding'
+import { BLUEPRINT_CHECKOUT_PATH } from '../../constants/site'
+import { K2C_CHECKOUT_URL } from '../../constants/shop'
 
 type Props = {
   label: string
@@ -7,11 +9,9 @@ type Props = {
   className?: string
   showPrice?: boolean
   size?: 'default' | 'large'
-  /** Scroll to embedded checkout on /blueprint instead of opening a new tab */
-  checkoutMode?: 'embed' | 'external'
 }
 
-const checkoutReady = Boolean(K2C_CHECKOUT_URL)
+const checkoutReady = Boolean(K2C_CHECKOUT_URL?.trim())
 
 export default function BlueprintCta({
   label,
@@ -19,30 +19,22 @@ export default function BlueprintCta({
   className = '',
   showPrice = true,
   size = 'default',
-  checkoutMode = 'external',
 }: Props) {
   const btnClass =
     size === 'large'
       ? 'cta-primary glow-border btn-shimmer inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-10 py-4 text-sm font-medium text-neutral-950 transition-all hover:bg-red-400 hover:shadow-[0_0_40px_rgba(239,68,68,0.35)] sm:w-auto'
       : 'cta-primary glow-border btn-shimmer inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-10 py-4 text-sm font-medium text-neutral-950 transition-all hover:bg-red-400 hover:shadow-lg hover:shadow-red-500/20 sm:w-auto'
 
-  const useEmbed = checkoutMode === 'embed' && checkoutReady
-
   return (
     <div className={className}>
       {showPrice ? (
         <p className="mb-4 font-mono text-sm text-neutral-400">{BLUEPRINT_LANDING.priceLabel}</p>
       ) : null}
-      {useEmbed ? (
-        <a href="#checkout" className={btnClass}>
+      {checkoutReady ? (
+        <Link to={BLUEPRINT_CHECKOUT_PATH} className={btnClass}>
           <iconify-icon icon="solar:cart-check-linear" width="18" />
           {label}
-        </a>
-      ) : checkoutReady ? (
-        <a href={K2C_CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className={btnClass}>
-          <iconify-icon icon="solar:cart-check-linear" width="18" />
-          {label}
-        </a>
+        </Link>
       ) : (
         <div className="flex flex-col items-start gap-2">
           <button

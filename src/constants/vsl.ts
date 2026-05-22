@@ -144,8 +144,8 @@ export const VSL_OFFERS: VslOfferTier[] = [
 
 export const VSL_FREEBIE = {
   lead:
-    'Not ready to apply? Grab the free Knowledge to Cash Blueprint. The same system, built for you to follow at your own pace.',
-  cta: 'Get the free blueprint',
+    'Not ready to apply? Start with the free Offer Kickstart Workbook and nail your offer before you invest in the full system.',
+  cta: 'Get the free workbook',
 }
 
 export type VslCompareCell = boolean | 'partial' | string

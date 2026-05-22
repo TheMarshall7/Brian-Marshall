@@ -44,7 +44,7 @@ export default function WorkbookPathVisual() {
       </div>
 
       <Link
-        to={`${nextStep.ctaPath}#checkout`}
+        to="/blueprint/checkout"
         className="cta-primary glow-border btn-shimmer mt-10 flex w-full items-center justify-center gap-2 rounded-full bg-white px-10 py-4 text-sm font-medium text-neutral-950 transition-all hover:bg-red-400 hover:shadow-[0_0_40px_rgba(239,68,68,0.35)] md:mx-auto md:w-auto"
       >
         <iconify-icon icon="solar:document-text-linear" width="18" />

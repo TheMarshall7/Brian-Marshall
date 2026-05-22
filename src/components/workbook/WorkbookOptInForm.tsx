@@ -31,10 +31,10 @@ export default function WorkbookOptInForm({
           className="btn-shimmer glow-border mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-10 py-4 text-sm font-medium text-neutral-950 transition-all hover:bg-red-400 hover:shadow-[0_0_40px_rgba(239,68,68,0.35)] sm:w-auto"
         >
           <iconify-icon icon="solar:download-linear" width="18" />
-          Download PDF now
+          Download Offer Kickstart Workbook
         </a>
         <Link
-          to="/blueprint#checkout"
+          to="/blueprint/checkout"
           className="mt-4 block text-center text-sm text-neutral-500 transition-colors hover:text-white sm:text-left"
         >
           Explore the Knowledge to Cash Blueprint

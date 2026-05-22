@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
-import OfferFrameworkGateModal from '../components/OfferFrameworkGateModal'
+import { Link } from 'react-router-dom'
 import VslCloser from '../components/vsl/VslCloser'
 import VslComparisonTable from '../components/vsl/VslComparisonTable'
 import VslFaq from '../components/vsl/VslFaq'
@@ -10,7 +10,7 @@ import VslSocialProofRow from '../components/vsl/VslSocialProofRow'
 import VslStatsBar from '../components/vsl/VslStatsBar'
 import VslTestimonialCard from '../components/vsl/VslTestimonialCard'
 import VslVideoPlayer from '../components/vsl/VslVideoPlayer'
-import { DEFAULT_GHL_OFFER_WEBHOOK_URL } from '../constants/ghl'
+import { WORKBOOK_LANDING_PATH } from '../constants/site'
 import {
   VSL_ABOUT_BIO,
   VSL_ABOUT_HEADLINE,
@@ -31,9 +31,6 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
 export default function Vsl() {
   useScrollAnimation()
-  const [freebieOpen, setFreebieOpen] = useState(false)
-  const ghlOfferWebhookUrl =
-    import.meta.env.VITE_GHL_OFFER_WEBHOOK_URL?.trim() || DEFAULT_GHL_OFFER_WEBHOOK_URL
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -136,13 +133,12 @@ export default function Vsl() {
 
             <p className="mx-auto mt-12 max-w-xl text-center text-sm leading-relaxed text-neutral-500 md:mt-14">
               {VSL_FREEBIE.lead}{' '}
-              <button
-                type="button"
-                onClick={() => setFreebieOpen(true)}
+              <Link
+                to={`${WORKBOOK_LANDING_PATH}#get-workbook`}
                 className="font-medium text-red-400 underline-offset-2 transition-colors hover:text-red-300 hover:underline"
               >
                 {VSL_FREEBIE.cta}
-              </button>
+              </Link>
             </p>
 
             <div className="mt-10 flex justify-center">
@@ -244,11 +240,6 @@ export default function Vsl() {
         </div>
       </main>
 
-      <OfferFrameworkGateModal
-        open={freebieOpen}
-        onClose={() => setFreebieOpen(false)}
-        webhookUrl={ghlOfferWebhookUrl}
-      />
     </div>
   )
 }
