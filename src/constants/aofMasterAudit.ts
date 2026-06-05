@@ -282,6 +282,30 @@ export const WHAT_BREAKS_SCENARIOS: WhatBreaksScenario[] = [
     aofHandles:
       'Speed-to-lead infrastructure and sequenced follow-up capture the extra volume. Economics are mapped before spend scales.',
   },
+  {
+    id: 'busy-season',
+    label: 'Busy season / 30% more jobs',
+    manualBreaks:
+      'Scheduling and comms collapse under the load. Confirmations slip, crews double-booked, customers chase updates. The owner becomes dispatch and customer service at once.',
+    aofHandles:
+      'Automated routing and sequenced comms keep jobs moving without you in every thread. Capacity is visible before you say yes to the next booking.',
+  },
+  {
+    id: 'key-hire',
+    label: 'Key employee quits',
+    manualBreaks:
+      'Tribal knowledge walks out the door. Nobody knows the handoffs, the exceptions, or who owns what. Quality and speed drop until you rebuild from memory.',
+    aofHandles:
+      'Documented workflows live in the blueprint, not in one person\'s head. New hires onboard into a system with clear stages, owners, and triggers.',
+  },
+  {
+    id: 'price-increase',
+    label: 'You raise prices',
+    manualBreaks:
+      'Leads need more nurture but conversion drops. Longer sales cycles expose weak follow-up. Margin looks better on paper while pipeline velocity stalls.',
+    aofHandles:
+      'Economics and follow-up are mapped to margin before the price change ships. Sequences match buyer hesitation so higher prices do not kill close rate.',
+  },
 ]
 
 export const AOF_TEASER_BULLETS = AOF_MASTER_BLOCKS.slice(0, 6).map((b) => ({

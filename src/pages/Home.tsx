@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { HOME_CONTACT, HOME_HERO, HOME_META } from '../constants/homeContent'
 import { STRATEGY_CALL_PATH } from '../constants/site'
 import CaseStudyMediaBand from '../components/CaseStudyMediaBand'
+import AofDocumentCover from '../components/aof/AofDocumentCover'
 import AofRiskReversal from '../components/aof/AofRiskReversal'
 import WhatBreaksInteractive from '../components/aof/WhatBreaksInteractive'
 import AofOfferSection from '../components/home/AofOfferSection'
@@ -204,6 +205,12 @@ export default function Home() {
                   {processCopy.subheadline}
                 </p>
               ) : null}
+              <AofDocumentCover
+                variant="flat"
+                size="md"
+                className="mt-8 md:justify-start"
+                alt="AOF Master Audit deliverable preview"
+              />
             </div>
             <div className="story-rail lg:col-span-5 lg:pt-2">
               {processCopy.rungs.map((rung, i) => (
