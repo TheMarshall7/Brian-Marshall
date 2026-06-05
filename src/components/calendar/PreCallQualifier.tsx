@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { CALENDAR_PAGE } from '../../constants/calendar'
 import { ANALYTICS_EVENTS } from '../../constants/analytics'
-import { submitGhlLead, splitFullName } from '../../lib/ghlLead'
-import { getGhlOfferWebhookUrl } from '../../lib/ghlLead'
+import { PRE_CALL_QUALIFIER_GHL_LEAD } from '../../constants/ghlLeads'
+import { getGhlPrecallWebhookUrl, isGhlWebhookConfigured, splitFullName, submitGhlLead } from '../../lib/ghlLead'
 import { track } from '../../lib/track'
 
 type Props = {
@@ -23,17 +23,18 @@ export default function PreCallQualifier({ onComplete, onSkip }: Props) {
 
   const handleContinue = async () => {
     setSubmitting(true)
-    if (name.trim() && email.trim()) {
+    const precallWebhook = getGhlPrecallWebhookUrl()
+    if (name.trim() && email.trim() && isGhlWebhookConfigured(precallWebhook)) {
       const { firstName, lastName } = splitFullName(name)
-      await submitGhlLead(getGhlOfferWebhookUrl(), {
+      await submitGhlLead(precallWebhook, {
         firstName,
         lastName,
         email: email.trim(),
         name: name.trim(),
-        source: 'brianmarshall.dev/calendar-qualifier',
-        tags: ['pre-call-qualifier'],
+        source: PRE_CALL_QUALIFIER_GHL_LEAD.source,
+        tags: [...PRE_CALL_QUALIFIER_GHL_LEAD.tags],
         meta: {
-          event: 'pre_call_qualifier',
+          event: PRE_CALL_QUALIFIER_GHL_LEAD.event,
           pageUrl: typeof window !== 'undefined' ? window.location.href : '',
           revenue: answers.revenue,
           constraint: answers.constraint,

@@ -1,13 +1,28 @@
-/** GHL inbound webhook for Offer Kickstart Workbook opt-in on /workbook only. Override with VITE_GHL_OFFER_WEBHOOK_URL. */
-export const DEFAULT_GHL_OFFER_WEBHOOK_URL =
-  'https://services.leadconnectorhq.com/hooks/F1J2yvd2AUT4owDs9EPl/webhook-trigger/274a0441-ac4f-4cc2-bc9f-32d14929e4a7'
+/** GHL location prefix — shared across inbound webhooks in this sub-account */
+const GHL_HOOKS_BASE =
+  'https://services.leadconnectorhq.com/hooks/F1J2yvd2AUT4owDs9EPl/webhook-trigger'
 
 /**
- * GHL inbound webhook for AOF Self-Audit lead magnet. Falls back to offer webhook if unset.
- * Workflow should email: resultsSummary, band, score, gaps, priorityFixes, whereToStart,
- * and link or attach pdfUrl (https://brianmarshall.dev/AOF-Where-To-Start.pdf).
+ * Offer Kickstart Workbook opt-in (/workbook only).
+ * Override with VITE_GHL_WORKBOOK_WEBHOOK_URL or legacy VITE_GHL_OFFER_WEBHOOK_URL.
  */
-export const DEFAULT_GHL_SELF_AUDIT_WEBHOOK_URL = DEFAULT_GHL_OFFER_WEBHOOK_URL
+export const DEFAULT_GHL_WORKBOOK_WEBHOOK_URL = `${GHL_HOOKS_BASE}/274a0441-ac4f-4cc2-bc9f-32d14929e4a7`
+
+/** @deprecated Use DEFAULT_GHL_WORKBOOK_WEBHOOK_URL */
+export const DEFAULT_GHL_OFFER_WEBHOOK_URL = DEFAULT_GHL_WORKBOOK_WEBHOOK_URL
+
+/**
+ * Pre-call qualifier on /calendar (optional warm-up before booking widget).
+ * Create a dedicated GHL workflow → Inbound Webhook → set VITE_GHL_PRECALL_WEBHOOK_URL.
+ */
+export const DEFAULT_GHL_PRECALL_WEBHOOK_URL = ''
+
+/**
+ * AOF Self-Audit quiz on /aof.
+ * Create a dedicated GHL workflow → Inbound Webhook → set VITE_GHL_SELF_AUDIT_WEBHOOK_URL.
+ * Email should use meta: score, band, gaps, priorityFixes, whereToStart, pdfUrl, resultsSummary.
+ */
+export const DEFAULT_GHL_SELF_AUDIT_WEBHOOK_URL = ''
 
 /** Paid AOF Master Audit booking ($1,500) — not the free 15-min qualifying call on /calendar. */
 export const AOF_PURCHASE_BOOKING_WIDGET_ID = 'TgyppDdBCvkCzQMwZ2F2'

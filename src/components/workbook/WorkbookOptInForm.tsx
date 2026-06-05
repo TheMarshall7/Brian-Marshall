@@ -47,6 +47,7 @@ export default function WorkbookOptInForm({
     <div className={className}>
       <GhlNameEmailForm
         submitLabel={submitLabel}
+        webhook="workbook"
         leadConfig={WORKBOOK_GHL_LEAD}
         onSuccess={() => setCaptured(true)}
         extraMeta={{ product: 'offer-kickstart-workbook' }}

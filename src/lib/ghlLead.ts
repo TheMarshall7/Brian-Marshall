@@ -1,4 +1,8 @@
-import { DEFAULT_GHL_OFFER_WEBHOOK_URL, DEFAULT_GHL_SELF_AUDIT_WEBHOOK_URL } from '../constants/ghl'
+import {
+  DEFAULT_GHL_PRECALL_WEBHOOK_URL,
+  DEFAULT_GHL_SELF_AUDIT_WEBHOOK_URL,
+  DEFAULT_GHL_WORKBOOK_WEBHOOK_URL,
+} from '../constants/ghl'
 
 export type GhlLeadPayload = {
   firstName: string
@@ -14,12 +18,42 @@ export type GhlLeadPayload = {
   }
 }
 
+export type GhlLeadWebhook = 'workbook' | 'self-audit' | 'pre-call'
+
+export function getGhlWorkbookWebhookUrl(): string {
+  return (
+    import.meta.env.VITE_GHL_WORKBOOK_WEBHOOK_URL?.trim() ||
+    import.meta.env.VITE_GHL_OFFER_WEBHOOK_URL?.trim() ||
+    DEFAULT_GHL_WORKBOOK_WEBHOOK_URL
+  )
+}
+
+/** @deprecated Use getGhlWorkbookWebhookUrl — workbook-only */
 export function getGhlOfferWebhookUrl(): string {
-  return import.meta.env.VITE_GHL_OFFER_WEBHOOK_URL?.trim() || DEFAULT_GHL_OFFER_WEBHOOK_URL
+  return getGhlWorkbookWebhookUrl()
+}
+
+export function getGhlPrecallWebhookUrl(): string {
+  return import.meta.env.VITE_GHL_PRECALL_WEBHOOK_URL?.trim() || DEFAULT_GHL_PRECALL_WEBHOOK_URL
 }
 
 export function getGhlSelfAuditWebhookUrl(): string {
   return import.meta.env.VITE_GHL_SELF_AUDIT_WEBHOOK_URL?.trim() || DEFAULT_GHL_SELF_AUDIT_WEBHOOK_URL
+}
+
+export function getGhlWebhookUrl(kind: GhlLeadWebhook): string {
+  switch (kind) {
+    case 'workbook':
+      return getGhlWorkbookWebhookUrl()
+    case 'self-audit':
+      return getGhlSelfAuditWebhookUrl()
+    case 'pre-call':
+      return getGhlPrecallWebhookUrl()
+  }
+}
+
+export function isGhlWebhookConfigured(url: string): boolean {
+  return Boolean(url.trim())
 }
 
 export function splitFullName(fullName: string): { firstName: string; lastName: string } {
