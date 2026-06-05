@@ -2,11 +2,26 @@ import { useEffect, useMemo, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import Navigation from '../components/Navigation'
+import {
+  ABOUT_AREOCLIENT,
+  ABOUT_BIO_LINES,
+  ABOUT_FOOTER_TAGLINE,
+  ABOUT_META,
+  ABOUT_PATHS,
+  ABOUT_POSITIONING_LINE,
+  ABOUT_ROLE_PILLS,
+  ABOUT_ROLE_TITLE,
+  ABOUT_SECTIONS,
+  ABOUT_SKILL_ICONS,
+  ABOUT_SKILLS,
+  ABOUT_SYSTEMS_INTRO,
+  ABOUT_WHAT_I_DO,
+  ABOUT_WHAT_I_DO_ICONS,
+} from '../constants/aboutContent'
 import { HOME_HERO } from '../constants/homeContent'
-import { STRATEGY_CALL_PATH } from '../constants/site'
+import { AOF_LANDING_PATH, STRATEGY_CALL_PATH } from '../constants/site'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
-type Skill = { label: string; percent: number }
 type CredentialCard = {
   title: string
   org: string
@@ -16,38 +31,6 @@ type CredentialCard = {
   featured?: boolean
 }
 type CredentialTab = 'education' | 'certifications' | 'experience'
-
-const ABOUT_ROLE_TITLE = 'Brian Marshall'
-const ABOUT_ROLE_PILLS = ['Creative Systems Designer', 'Music Educator', 'Audio Producer'] as const
-const ABOUT_BIO_LINES = [
-  'At the intersection of art and technology,',
-  'I design systems that bridge creativity with purpose.',
-  'From sound to visuals, from code to coaching,',
-  'I craft holistic solutions that empower and inspire.',
-]
-
-const ABOUT_SKILL_ICONS: Record<string, string> = {
-  'Creative Design & Systems': 'solar:pallete-2-linear',
-  'Sound & Visual Production': 'solar:music-note-linear',
-  'Web Development': 'solar:code-circle-linear',
-  'Coaching & Financial Services': 'solar:chat-round-dots-linear',
-}
-
-const ABOUT_SKILLS: Skill[] = [
-  { label: 'Creative Design & Systems', percent: 95 },
-  { label: 'Web Development', percent: 88 },
-  { label: 'Sound & Visual Production', percent: 90 },
-  { label: 'Coaching & Financial Services', percent: 88 },
-]
-
-const ABOUT_SECTIONS = [
-  { id: 'profile', label: 'Profile' },
-  { id: 'credentials', label: 'Credentials' },
-  { id: 'offer-framework', label: 'Blueprint' },
-  { id: 'offer-workbook', label: 'Workbook' },
-  { id: 'systems', label: 'Systems' },
-  { id: 'stack', label: 'Stack' },
-] as const
 
 const ABOUT_CREDENTIALS: {
   education: CredentialCard[]
@@ -95,10 +78,18 @@ const ABOUT_CREDENTIALS: {
   ],
   experience: [
     {
+      title: 'Business Systems Architect',
+      org: 'Freelance · AreoClient',
+      yearOrPeriod: '2020-present',
+      featured: true,
+      lead: 'Map broken operations, then build the infrastructure that fixes them.',
+      description:
+        'AOF Master Audits, CRM and pipeline architecture, workflow automation, AI implementation, and full-stack builds for owner-operated businesses with real revenue.',
+    },
+    {
       title: 'Licensed Insurance Agent',
       org: 'Transamerica',
       yearOrPeriod: '',
-      featured: true,
       lead: 'Turns complex policies into clear, confident next steps for clients.',
       description:
         'Financial education and planning conversations; referral and digital growth with repeatable follow-up.',
@@ -134,42 +125,6 @@ const ABOUT_CREDENTIALS: {
       lead: 'Scaled welcome experiences for 100+ new students.',
       description: 'Event programming, mentorship, conflict resolution, and inclusive onboarding.',
     },
-  ],
-}
-
-const ABOUT_POSITIONING_LINE = 'I build systems that turn attention into predictable revenue.'
-
-const ABOUT_WHAT_I_DO: string[] = [
-  'Design conversion-focused websites and funnels',
-  'Build custom web apps (React, full-stack systems)',
-  'Set up CRM systems and automation (GoHighLevel, n8n)',
-  'Create AI-driven workflows (chatbots, SMS, voice agents)',
-  'Engineer client acquisition systems (capture → nurture → booking → close)',
-  'Produce and design sound (music, audio branding, production systems)',
-  'Help businesses craft offers that actually sell',
-]
-
-const ABOUT_WHAT_I_DO_ICONS: Record<string, string> = {
-  'Design conversion-focused websites and funnels': 'solar:window-frame-linear',
-  'Build custom web apps (React, full-stack systems)': 'solar:code-linear',
-  'Set up CRM systems and automation (GoHighLevel, n8n)': 'solar:settings-minimalistic-linear',
-  'Create AI-driven workflows (chatbots, SMS, voice agents)': 'solar:cpu-bolt-linear',
-  'Engineer client acquisition systems (capture → nurture → booking → close)': 'solar:graph-up-linear',
-  'Produce and design sound (music, audio branding, production systems)': 'solar:music-note-linear',
-  'Help businesses craft offers that actually sell': 'solar:tag-price-linear',
-}
-
-const ABOUT_AREOCLIENT = {
-  name: 'AreoClient',
-  subtitle: 'AI-powered client acquisition + business operating system for service businesses.',
-  replaces: ['Manual follow-up', 'Missed leads', 'Disconnected tools', 'Inconsistent revenue'],
-  installs: [
-    'Automated lead capture',
-    'Smart follow-up systems',
-    'AI chat + SMS + voice',
-    'CRM pipelines + tracking',
-    'Conversion-focused websites',
-    'Review + reputation systems',
   ],
 }
 
@@ -300,11 +255,8 @@ export default function About() {
   return (
     <div className="bg-neutral-950 text-neutral-300 w-full overflow-x-hidden selection:bg-red-500/30 selection:text-white relative min-h-screen">
       <Helmet>
-        <title>About · Brian Marshall</title>
-        <meta
-          name="description"
-          content="Background, skills, systems positioning, credentials, and selected work, built like a premium interactive CV."
-        />
+        <title>{ABOUT_META.title}</title>
+        <meta name="description" content={ABOUT_META.description} />
         <link rel="canonical" href="https://brianmarshall.dev/about" />
       </Helmet>
 
@@ -375,7 +327,7 @@ export default function About() {
 
               <div className="lg:col-span-7 animate-on-scroll">
                 <span className="section-eyebrow mb-4 block text-neutral-500">
-                  About
+                  Business Systems Architect
                 </span>
                 <h1 className="font-bricolage text-3xl font-medium tracking-tight text-white sm:text-4xl md:text-6xl">
                   {ABOUT_ROLE_TITLE}
@@ -439,7 +391,8 @@ export default function About() {
                   Proof, training, and real work.
                 </h2>
                 <p className="mt-4 max-w-prose text-sm leading-relaxed text-neutral-400">
-                  Skim by category. The details are there when you want them.
+                  Systems architecture, automation, and operations work alongside a background in music, audio, and
+                  client-facing advisory.
                 </p>
               </div>
 
@@ -503,20 +456,33 @@ export default function About() {
 
         <section className="relative overflow-hidden border-t border-white/5 bg-neutral-950 py-12 md:py-16">
           <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
-            <div className="glass-panel flex flex-col items-start justify-between gap-6 rounded-2xl border border-white/10 p-6 md:flex-row md:items-center md:p-8">
-              <div>
-                <p className="section-eyebrow mb-2">Coaches & experts</p>
-                <p className="text-neutral-300">
-                  Packaging your knowledge into a sellable offer? Browse the Workbook and Blueprint on Resources.
-                </p>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+              <div className="glass-panel flex flex-col items-start justify-between gap-6 rounded-2xl border border-red-500/20 bg-red-500/5 p-6 md:p-8">
+                <div>
+                  <p className="section-eyebrow mb-2">{ABOUT_PATHS.aof.eyebrow}</p>
+                  <p className="text-sm leading-relaxed text-neutral-300 md:text-base">{ABOUT_PATHS.aof.text}</p>
+                </div>
+                <Link
+                  to={ABOUT_PATHS.aof.path}
+                  className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-neutral-950 transition-all hover:bg-red-400"
+                >
+                  {ABOUT_PATHS.aof.cta}
+                  <iconify-icon icon="solar:arrow-right-linear" />
+                </Link>
               </div>
-              <Link
-                to="/shop"
-                className="inline-flex items-center gap-2 rounded-full border border-white/10 px-6 py-3 text-sm font-medium text-white hover:border-red-500/30 hover:bg-white/5"
-              >
-                View Resources
-                <iconify-icon icon="solar:arrow-right-linear" />
-              </Link>
+              <div className="glass-panel flex flex-col items-start justify-between gap-6 rounded-2xl border border-white/10 p-6 md:p-8">
+                <div>
+                  <p className="section-eyebrow mb-2">{ABOUT_PATHS.resources.eyebrow}</p>
+                  <p className="text-sm leading-relaxed text-neutral-300 md:text-base">{ABOUT_PATHS.resources.text}</p>
+                </div>
+                <Link
+                  to={ABOUT_PATHS.resources.path}
+                  className="inline-flex items-center gap-2 rounded-full border border-white/10 px-6 py-3 text-sm font-medium text-white hover:border-red-500/30 hover:bg-white/5"
+                >
+                  {ABOUT_PATHS.resources.cta}
+                  <iconify-icon icon="solar:arrow-right-linear" />
+                </Link>
+              </div>
             </div>
           </div>
         </section>
@@ -537,11 +503,10 @@ export default function About() {
                   {ABOUT_POSITIONING_LINE}
                 </h2>
                 <p className="mt-5 max-w-prose text-base leading-relaxed text-neutral-400">
-                  Websites. Web apps. AI-powered workflows. Audio. Everything is designed to convert, automate, and
-                  scale.
+                  {ABOUT_SYSTEMS_INTRO.lead}
                 </p>
                 <p className="mt-4 max-w-prose text-sm leading-relaxed text-neutral-500">
-                  I don’t sell tools. I build infrastructure that businesses run on.
+                  {ABOUT_SYSTEMS_INTRO.support}
                 </p>
               </div>
 
@@ -582,7 +547,7 @@ export default function About() {
                   <div className="relative z-10 flex flex-wrap items-start justify-between gap-4">
                     <div className="min-w-0 flex-1">
                       <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.02] px-4 py-2 text-[10px] font-mono uppercase tracking-widest text-neutral-500">
-                        Signature system
+                        Built in production
                       </span>
                       <h3 className="font-bricolage text-2xl font-medium text-white md:text-3xl">
                         {ABOUT_AREOCLIENT.name}
@@ -670,12 +635,12 @@ export default function About() {
                 Ready to work together?
               </span>
               <h2 className="font-bricolage text-3xl font-medium tracking-tight text-white md:text-5xl">
-                Let’s build the system.
+                Let&apos;s map what&apos;s broken.
               </h2>
               <p className="mt-5 mx-auto max-w-2xl text-base leading-relaxed text-neutral-400">
                 Owner-operated with real revenue but broken operations? Book a qualifying call. No pitch, just clarity.
               </p>
-              <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:flex-wrap">
                 <Link
                   to={STRATEGY_CALL_PATH}
                   className="cta-primary inline-flex items-center justify-center gap-2 rounded-full bg-white px-9 py-4 text-sm font-medium text-neutral-950 transition-all btn-shimmer hover:bg-red-400 hover:shadow-[0_0_40px_rgba(239,68,68,0.35)]"
@@ -683,9 +648,16 @@ export default function About() {
                   {HOME_HERO.primaryCta}
                   <iconify-icon icon="solar:arrow-right-up-linear" />
                 </Link>
+                <Link
+                  to={AOF_LANDING_PATH}
+                  className="glow-border inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.02] px-9 py-4 text-sm font-medium text-white transition-all hover:bg-white/[0.06]"
+                >
+                  {ABOUT_PATHS.aof.cta}
+                  <iconify-icon icon="solar:document-text-linear" width="18" />
+                </Link>
                 <a
                   href="/#work"
-                  className="glow-border inline-flex items-center justify-center rounded-full border border-white/10 bg-white/[0.02] px-9 py-4 text-sm font-medium text-white transition-all hover:bg-white/[0.06]"
+                  className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/[0.02] px-9 py-4 text-sm font-medium text-neutral-400 transition-all hover:border-white/20 hover:text-white"
                 >
                   See case studies
                 </a>
@@ -715,7 +687,7 @@ export default function About() {
                   © 2026 Brian Marshall
                 </span>
                 <span className="text-center font-mono text-xs italic text-neutral-600 md:text-left">
-                  Creative Systems Designer. And founder of AreoClient.
+                  {ABOUT_FOOTER_TAGLINE}
                 </span>
               </div>
               <div className="flex items-center gap-8">
