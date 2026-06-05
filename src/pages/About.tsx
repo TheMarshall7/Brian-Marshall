@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
+import AofDocumentCover from '../components/aof/AofDocumentCover'
 import Navigation from '../components/Navigation'
 import {
   ABOUT_AREOCLIENT,
@@ -253,7 +254,7 @@ export default function About() {
   }, [sectionIds])
 
   return (
-    <div className="bg-neutral-950 text-neutral-300 w-full overflow-x-hidden selection:bg-red-500/30 selection:text-white relative min-h-screen">
+    <div className="relative min-h-screen w-full overflow-x-hidden bg-neutral-950 text-neutral-300 selection:bg-red-500/30 selection:text-white">
       <Helmet>
         <title>{ABOUT_META.title}</title>
         <meta name="description" content={ABOUT_META.description} />
@@ -311,7 +312,7 @@ export default function About() {
             >
           <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
             <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-16">
-              <div className="lg:col-span-5 animate-on-scroll">
+              <div className="order-2 animate-on-scroll lg:order-none lg:col-span-5">
                 <div className="flex w-full justify-center lg:justify-end lg:pr-2">
                   <img
                     src={encodeURI('/Brian Marshall Photo (CIRCLE N SHADOW).png')}
@@ -325,7 +326,7 @@ export default function About() {
                 </div>
               </div>
 
-              <div className="lg:col-span-7 animate-on-scroll">
+              <div className="order-1 animate-on-scroll lg:order-none lg:col-span-7">
                 <span className="section-eyebrow mb-4 block text-neutral-500">
                   Business Systems Architect
                 </span>
@@ -458,6 +459,7 @@ export default function About() {
           <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               <div className="glass-panel flex flex-col items-start justify-between gap-6 rounded-2xl border border-red-500/20 bg-red-500/5 p-6 md:p-8">
+                <AofDocumentCover variant="flat" size="sm" className="w-full" />
                 <div>
                   <p className="section-eyebrow mb-2">{ABOUT_PATHS.aof.eyebrow}</p>
                   <p className="text-sm leading-relaxed text-neutral-300 md:text-base">{ABOUT_PATHS.aof.text}</p>

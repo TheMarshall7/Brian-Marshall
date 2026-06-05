@@ -4,6 +4,9 @@ export const STRATEGY_CALL_PATH = '/calendar'
 /** AOF Master Audit landing and purchase */
 export const AOF_LANDING_PATH = '/aof'
 export const AOF_PURCHASE_HASH = '#purchase'
+export const AOF_DOCUMENT_COVER = '/AOF-Document-Cover.png'
+/** Laying-down variant for sub-sections (deliverables, sample, purchase, etc.) */
+export const AOF_DOCUMENT_COVER_FLAT = '/AOF-Document-Cover-Flat.png'
 
 /** Days after deliverable presentation to credit Master Audit toward implementation */
 export const AOF_BUILD_CREDIT_DAYS = 30

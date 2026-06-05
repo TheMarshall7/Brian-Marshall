@@ -38,13 +38,14 @@ export default function StickyCallBar({ hideWhenVisibleSelector = '#contact, #pu
   if (!visible || hiddenBySection) return null
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-white/10 bg-neutral-950/95 p-3 backdrop-blur-md md:hidden">
+    <div className="sticky-cta-bar fixed bottom-0 left-0 right-0 z-40 border-t border-white/10 bg-neutral-950/95 px-3 pt-3 backdrop-blur-md md:hidden">
       <Link
         to={STRATEGY_CALL_PATH}
         onClick={() => track(ANALYTICS_EVENTS.QUALIFYING_CALL_CLICK, { source: 'sticky_bar' })}
         className="cta-primary flex w-full items-center justify-center gap-2 rounded-xl bg-white py-3.5 text-sm font-medium text-neutral-950 btn-shimmer"
       >
-        {HOME_HERO.primaryCta}
+        <span className="sm:hidden">Book free call</span>
+        <span className="hidden sm:inline">{HOME_HERO.primaryCta}</span>
         <iconify-icon icon="solar:arrow-right-up-linear" />
       </Link>
     </div>

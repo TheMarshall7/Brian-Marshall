@@ -100,9 +100,10 @@ export default function Navigation() {
             </button>
             <button
               onClick={() => handleHashLink('#contact')}
-              className="mr-1 shrink-0 rounded-full bg-white px-4 py-2.5 text-xs font-medium text-black transition-all btn-shimmer hover:bg-red-400 hover:shadow-lg hover:shadow-red-500/20 sm:px-5 sm:py-2.5 md:mr-0 md:px-6"
+              className="mr-1 shrink-0 rounded-full bg-white px-3.5 py-2.5 text-xs font-medium text-black transition-all btn-shimmer hover:bg-red-400 hover:shadow-lg hover:shadow-red-500/20 sm:px-5 md:mr-0 md:px-6"
             >
-              Contact
+              <span className="hidden sm:inline">Contact</span>
+              <span className="sm:hidden">Call</span>
             </button>
           </div>
         </nav>

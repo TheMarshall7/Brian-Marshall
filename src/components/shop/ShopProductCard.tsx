@@ -5,44 +5,6 @@ type Props = {
   product: ShopProduct
 }
 
-function DocumentPreview() {
-  return (
-    <div className="relative w-full max-w-xs">
-      <div className="absolute -inset-4 rounded-3xl bg-red-500/10 blur-2xl" aria-hidden />
-      <div className="glass-panel relative overflow-hidden rounded-2xl border border-white/10 bg-neutral-900/60 p-5 shadow-[0_24px_48px_rgba(0,0,0,0.55)]">
-        <div className="mb-3 flex items-center justify-between border-b border-white/10 pb-3">
-          <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">AOF Master Audit</span>
-          <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-mono text-emerald-400">
-            13 BLOCKS
-          </span>
-        </div>
-        <div className="space-y-2 font-mono text-[10px] text-neutral-500">
-          <div className="flex items-center gap-2">
-            <span className="text-red-400">&gt;</span>
-            <span className="text-neutral-300">BLOCK_01_FOUNDATION</span>
-          </div>
-          <div className="flex items-center gap-2 pl-3">
-            <span className="text-red-400/70">&gt;</span>
-            <span>BLOCK_03_PIPELINE</span>
-          </div>
-          <div className="flex items-center gap-2 pl-3">
-            <span className="text-red-400/70">&gt;</span>
-            <span>BLOCK_07_AI</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-red-400">&gt;</span>
-            <span className="text-neutral-300">BLOCK_12_PRICING</span>
-          </div>
-        </div>
-        <div className="mt-4 rounded-lg border border-white/10 bg-white/[0.04] p-2.5">
-          <span className="block text-[9px] font-mono uppercase tracking-widest text-red-400/80">Status</span>
-          <p className="mt-1 text-xs text-white">Mapped. Sequenced. Priced.</p>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 export default function ShopProductCard({ product }: Props) {
   const isFree = product.price === 0
   const ctaLabel = product.ctaLabel ?? (product.optInPath ? 'Get it free' : 'Learn more')
@@ -50,13 +12,11 @@ export default function ShopProductCard({ product }: Props) {
   return (
     <article className="shop-product flex h-full flex-col">
       <div className="shop-product-cover relative mb-6 flex justify-center px-2 sm:mb-8">
-        {product.documentPreview ? (
-          <DocumentPreview />
-        ) : product.coverSrc ? (
+        {product.coverSrc ? (
           <img
             src={product.coverSrc}
             alt={`${product.title} cover`}
-            className="h-auto max-h-[min(440px,52vw)] w-auto max-w-full object-contain drop-shadow-[0_24px_48px_rgba(0,0,0,0.55)]"
+            className="h-auto max-h-[min(280px,42vw)] w-auto max-w-full object-contain drop-shadow-[0_24px_48px_rgba(0,0,0,0.55)] sm:max-h-[min(440px,52vw)]"
             loading="lazy"
           />
         ) : null}
@@ -67,7 +27,7 @@ export default function ShopProductCard({ product }: Props) {
         ) : null}
       </div>
 
-      <div className="glass-panel shop-product-card flex flex-grow flex-col rounded-2xl p-6 md:p-8">
+      <div className="glass-panel shop-product-card flex flex-grow flex-col rounded-2xl p-5 sm:p-6 md:p-8">
         <div className="mb-3 flex items-baseline justify-between gap-3">
           <h2 className="text-xl font-medium leading-snug text-white md:text-2xl">{product.title}</h2>
           <span className="flex shrink-0 items-baseline gap-2">

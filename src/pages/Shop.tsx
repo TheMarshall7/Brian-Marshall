@@ -34,7 +34,7 @@ export default function Shop() {
       <div className="bg-grain" aria-hidden />
       <Navigation />
 
-      <main className="section-elevated tech-grid relative min-h-screen px-6 pb-24 pt-32 md:px-12">
+      <main className="section-elevated tech-grid relative min-h-screen px-4 pb-24 pt-28 sm:px-6 sm:pt-32 md:px-12">
         <div
           className="pointer-events-none absolute left-1/2 top-0 h-[min(50vh,480px)] w-[min(100vw,800px)] -translate-x-1/2 rounded-full bg-red-900/10 blur-[120px]"
           aria-hidden
@@ -49,11 +49,11 @@ export default function Shop() {
               <iconify-icon icon="solar:arrow-left-linear" />
               Back to Home
             </Link>
-            <h1 className="mb-4 text-4xl font-medium tracking-tight text-white md:text-6xl">{SHOP_HEADLINE}</h1>
+            <h1 className="mb-4 text-3xl font-medium tracking-tight text-white sm:text-4xl md:text-6xl">{SHOP_HEADLINE}</h1>
             <p className="mx-auto max-w-xl text-lg leading-relaxed text-neutral-400">{SHOP_SUBHEADLINE}</p>
           </div>
 
-          <ul className="grid list-none gap-8 lg:grid-cols-2">
+          <ul className="grid list-none gap-6 sm:gap-8 lg:grid-cols-2">
             {SHOP_PRODUCTS.map((product, i) => (
               <li
                 key={product.id}

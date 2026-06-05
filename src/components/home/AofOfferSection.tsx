@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { AOF_MASTER_BLOCKS, AOF_PHASE_GROUPS } from '../../constants/aofMasterAudit'
+import AofDocumentCover from '../aof/AofDocumentCover'
+import { AOF_PHASE_GROUPS } from '../../constants/aofMasterAudit'
 import { HOME_AOF_OFFER } from '../../constants/homeContent'
 import { ANALYTICS_EVENTS } from '../../constants/analytics'
 import { track } from '../../lib/track'
@@ -18,7 +19,7 @@ export default function AofOfferSection() {
   return (
     <section
       id="aof-offer"
-      className="relative overflow-hidden border-t border-white/5 bg-neutral-950 py-16 md:py-28 lg:py-32"
+      className="mobile-section-tight relative overflow-hidden border-t border-white/5 bg-neutral-950 py-16 md:py-28 lg:py-32"
       aria-labelledby={headingId}
     >
       <div
@@ -98,34 +99,10 @@ export default function AofOfferSection() {
             <p className="mt-2 max-w-xl text-xs leading-relaxed text-neutral-500">{HOME_AOF_OFFER.buildCreditNote}</p>
           </div>
 
-          <div className="group/aof-framework w-full animate-on-scroll pt-10 delay-100 sm:pt-12 lg:pt-0">
-            <div className="aof-doc-preview mb-8 flex justify-center lg:mb-10">
-              <div className="relative w-full max-w-sm">
-                <div className="absolute -inset-4 rounded-3xl bg-red-500/10 blur-2xl" aria-hidden />
-                <div className="glass-panel relative overflow-hidden rounded-2xl border border-white/10 bg-neutral-900/60 p-6 shadow-[0_28px_56px_rgba(0,0,0,0.6)] transition-transform duration-500 ease-out group-hover/aof-framework:-translate-y-1">
-                  <div className="mb-4 flex items-center justify-between border-b border-white/10 pb-4">
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">AOF Master Audit</span>
-                    <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-mono text-emerald-400">
-                      13 BLOCKS
-                    </span>
-                  </div>
-                  <div className="max-h-48 space-y-2 overflow-hidden font-mono text-[10px] text-neutral-500">
-                    {AOF_MASTER_BLOCKS.map((block) => (
-                      <div key={block.id} className="flex items-center gap-2">
-                        <span className="text-red-400/70">&gt;</span>
-                        <span className={block.number <= 3 ? 'text-neutral-300' : ''}>{block.monoLabel}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="mt-5 rounded-lg border border-white/10 bg-white/[0.04] p-3">
-                    <span className="block text-[10px] font-mono uppercase tracking-widest text-red-400/80">Status</span>
-                    <p className="mt-1 text-sm text-white">Mapped. Sequenced. Priced. Ready to build.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="group/aof-framework w-full animate-on-scroll pt-2 delay-100 sm:pt-12 lg:pt-0">
+            <AofDocumentCover className="aof-doc-preview mb-6 hidden sm:flex lg:mb-10" size="md" />
 
-            <div className="group/card relative rounded-2xl border border-white/10 bg-neutral-900/40 px-6 pb-6 pt-6 shadow-[0_24px_80px_rgba(0,0,0,0.45)] backdrop-blur-md transition-all duration-500 group-hover/aof-framework:-translate-y-1 hover:border-red-500/30 hover:shadow-[0_32px_96px_rgba(0,0,0,0.5),0_0_48px_rgba(239,68,68,0.12)] md:p-10 md:pt-8">
+            <div className="group/card relative rounded-2xl border border-white/10 bg-neutral-900/40 px-4 pb-5 pt-5 shadow-[0_24px_80px_rgba(0,0,0,0.45)] backdrop-blur-md transition-all duration-500 group-hover/aof-framework:-translate-y-1 hover:border-red-500/30 hover:shadow-[0_32px_96px_rgba(0,0,0,0.5),0_0_48px_rgba(239,68,68,0.12)] sm:px-6 sm:pb-6 sm:pt-6 md:p-10 md:pt-8">
               <div className="mb-6 flex items-start gap-3 border-b border-white/10 pb-6">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-white/[0.02] text-red-500 shadow-inner transition-transform duration-300 group-hover/card:scale-105">
                   <iconify-icon icon="solar:document-text-linear" width="22" />

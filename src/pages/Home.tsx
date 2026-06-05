@@ -34,7 +34,7 @@ export default function Home() {
   useScrollAnimation() // Initialize scroll animations for all elements
 
   return (
-    <div className="bg-neutral-950 text-neutral-300 w-full overflow-x-hidden selection:bg-red-500/30 selection:text-white relative min-h-screen">
+    <div className="mobile-safe-bottom bg-neutral-950 text-neutral-300 relative min-h-screen w-full overflow-x-hidden selection:bg-red-500/30 selection:text-white">
       <Helmet>
         <title>{HOME_META.title}</title>
         <meta name="description" content={HOME_META.description} />
@@ -89,7 +89,7 @@ export default function Home() {
 
         <div className="relative z-10 flex w-full flex-1 flex-col overflow-visible pt-[5.5rem] sm:pt-[6.5rem] md:justify-center md:py-12 md:pt-[7.5rem]">
           <div className="mx-auto grid w-full max-w-[min(100%,90rem)] grid-cols-1 items-start gap-x-10 gap-y-6 pb-4 sm:gap-y-8 md:grid-cols-12 md:items-stretch md:gap-y-8 md:gap-x-8 md:pb-8 lg:gap-x-10 lg:gap-y-10 xl:gap-x-12">
-            <div className="flex w-full flex-col items-center text-center md:col-span-6 md:items-start md:pl-6 md:text-left lg:col-span-5 lg:pl-10 lg:pr-2 xl:pl-14 xl:pr-4 lg:flex lg:min-h-0 lg:flex-col lg:justify-center">
+            <div className="order-1 flex w-full flex-col items-center text-center md:order-none md:col-span-6 md:items-start md:pl-6 md:text-left lg:col-span-5 lg:pl-10 lg:pr-2 xl:pl-14 xl:pr-4 lg:flex lg:min-h-0 lg:flex-col lg:justify-center">
               <div className="mb-4 flex w-full justify-center pt-0 animate-slide-up md:mb-6 md:justify-start" style={{ animationDelay: '0.4s', opacity: 0 }}>
                 <div className="hero-badge inline-flex max-w-[min(100%,20rem)] items-center gap-3 rounded-2xl border border-red-500/25 bg-red-500/10 px-3.5 py-2.5 backdrop-blur-sm shadow-[0_0_28px_rgba(239,68,68,0.12)] sm:max-w-md sm:px-4 md:max-w-none">
                   <div className="group flex shrink-0 -space-x-2">
@@ -125,7 +125,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="flex w-full flex-col items-center md:col-span-6 md:items-end md:justify-center lg:col-span-7">
+            <div className="order-3 flex w-full flex-col items-center md:order-none md:col-span-6 md:items-end md:justify-center lg:col-span-7">
               <div className="w-full max-w-md animate-on-scroll sm:max-w-xl md:mx-0 md:ml-auto md:max-w-full">
                 <img
                   src={encodeURI('/Brian Marshall Photo(transparent).png')}
@@ -139,7 +139,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="flex w-full flex-col items-center gap-6 border-t border-white/10 pt-8 md:col-span-12 md:flex-row md:items-center md:justify-between md:gap-10 md:border-white/10 md:pl-6 md:pt-8 lg:pl-10 lg:pt-10 xl:pl-14">
+            <div className="order-2 flex w-full flex-col items-center gap-5 border-t border-white/10 pt-6 md:order-none md:col-span-12 md:flex-row md:items-center md:justify-between md:gap-10 md:border-white/10 md:pl-6 md:pt-8 lg:pl-10 lg:pt-10 xl:pl-14">
               <div className="flex w-full max-w-md flex-col gap-3 animate-slide-up sm:max-w-none sm:flex-row sm:flex-wrap sm:gap-5 md:max-w-none" style={{ animationDelay: '1.2s', opacity: 0 }}>
                 <Link
                   to={STRATEGY_CALL_PATH}
@@ -153,7 +153,7 @@ export default function Home() {
                   {HOME_HERO.secondaryCta}
                 </a>
               </div>
-              <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm text-neutral-400 animate-slide-up md:justify-end md:text-base" style={{ animationDelay: '1.4s', opacity: 0 }}>
+              <div className="flex w-full flex-col items-center gap-2 text-sm text-neutral-400 animate-slide-up sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-6 sm:gap-y-3 md:w-auto md:justify-end md:text-base" style={{ animationDelay: '1.4s', opacity: 0 }}>
                 {HOME_HERO.trustItems.map((item) => (
                   <div key={item} className="flex items-center gap-2">
                     <iconify-icon icon="solar:check-circle-linear" className="text-red-500"></iconify-icon>
@@ -183,7 +183,7 @@ export default function Home() {
       </section>
 
       {/* Knowledge to Cash path / process */}
-      <section id="process" className="section-ambient relative overflow-hidden border-t border-white/5 bg-neutral-900/30 py-16 section-standard md:py-24">
+      <section id="process" className="section-ambient section-standard relative overflow-hidden border-t border-white/5 bg-neutral-900/30 py-16 mobile-section-tight md:py-24">
         <div className="section-ambient__glow opacity-70" aria-hidden />
         <div className="section-ambient__grid opacity-40" aria-hidden />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
@@ -290,7 +290,7 @@ export default function Home() {
       <EconomicsSection />
 
       {/* Case Studies Section */}
-      <section id="work" className="section-ambient relative overflow-hidden border-t border-white/5 py-16 section-standard md:py-24 lg:py-32">
+      <section id="work" className="section-ambient section-standard relative overflow-hidden border-t border-white/5 py-16 mobile-section-tight md:py-24 lg:py-32">
         <div className="section-ambient__glow" aria-hidden />
         <div className="section-ambient__grid" aria-hidden />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
@@ -670,7 +670,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="section-ambient relative overflow-hidden border-t border-white/5 py-16 section-standard md:py-24">
+      <section id="about" className="section-ambient section-standard relative overflow-hidden border-t border-white/5 py-16 mobile-section-tight md:py-24">
         <div className="section-ambient__grid opacity-30" aria-hidden />
         <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 sm:gap-12 sm:px-6 md:px-12 lg:grid-cols-2 lg:gap-20">
           <div className="w-full animate-on-scroll">
@@ -778,7 +778,7 @@ export default function Home() {
           <div className="absolute bottom-20 right-1/4 h-80 w-80 rounded-full bg-red-600/5 blur-[100px] float-animation-delayed" />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
+        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6">
           <div className="inline-block p-1 rounded-full bg-white/5 border border-green-500/25 mb-10 animate-on-scroll glow-border">
             <div className="px-5 py-2 rounded-full bg-black/80 backdrop-blur flex items-center gap-3">
               <span className="relative flex h-2 w-2">

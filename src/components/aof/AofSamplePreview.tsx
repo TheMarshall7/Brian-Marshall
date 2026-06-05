@@ -1,5 +1,6 @@
 import { AOF_MASTER_BLOCKS } from '../../constants/aofMasterAudit'
 import { AOF_LANDING } from '../../constants/aofLanding'
+import AofDocumentCover from './AofDocumentCover'
 
 export default function AofSamplePreview() {
   const featured = AOF_MASTER_BLOCKS.find((b) => b.id === AOF_LANDING.sample.featuredBlockId) ?? AOF_MASTER_BLOCKS[2]
@@ -36,19 +37,22 @@ export default function AofSamplePreview() {
           </ul>
         </div>
 
-        <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-neutral-950/80 p-6 md:p-8">
-          <div className="pointer-events-none absolute inset-0 backdrop-blur-[2px]" aria-hidden />
+        <div className="relative flex flex-col items-center overflow-hidden rounded-2xl border border-white/10 bg-neutral-950/80 p-6 md:p-8">
+          <AofDocumentCover variant="flat" size="md" className="mb-6" />
           <p className="section-eyebrow mb-4 text-neutral-500">Your custom blocks</p>
-          <ul className="space-y-3">
-            {locked.map((block) => (
+          <ul className="relative z-10 w-full space-y-2">
+            {locked.slice(0, 5).map((block) => (
               <li
                 key={block.id}
-                className="flex items-center justify-between rounded-lg border border-white/5 bg-white/[0.02] px-4 py-3"
+                className="flex items-center justify-between rounded-lg border border-white/5 bg-white/[0.02] px-4 py-2.5"
               >
                 <span className="font-mono text-[10px] text-neutral-600">{block.monoLabel}</span>
                 <span className="text-sm text-neutral-500 blur-[3px] select-none">{block.title}</span>
               </li>
             ))}
+            <li className="rounded-lg border border-dashed border-white/10 px-4 py-2.5 text-center font-mono text-[10px] text-neutral-600">
+              + {locked.length - 5} more blocks in your audit
+            </li>
           </ul>
           <p className="relative z-10 mt-6 text-center text-sm text-neutral-500">
             Mapped to your business during the live audit session

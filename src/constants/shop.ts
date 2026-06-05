@@ -1,4 +1,4 @@
-import { AOF_BUILD_CREDIT_NOTE } from './site'
+import { AOF_BUILD_CREDIT_NOTE, AOF_DOCUMENT_COVER } from './site'
 
 export type ShopProduct = {
   id: string
@@ -8,8 +8,6 @@ export type ShopProduct = {
   /** Strikethrough "was" price (e.g. $9.97 before Free) */
   priceOriginalLabel?: string
   coverSrc?: string
-  /** Render document-style preview instead of cover image */
-  documentPreview?: boolean
   description: string
   bullets?: string[]
   footnote?: string
@@ -72,7 +70,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     title: 'AOF Master Audit',
     price: 1500,
     priceLabel: '$1,500',
-    documentPreview: true,
+    coverSrc: AOF_DOCUMENT_COVER,
     description:
       'A fully custom 13-block operational blueprint of your business: pipelines, workflows, automations, AI opportunities, integrations, priorities, and line-item build pricing. Developer-ready. You own it either way.',
     bullets: [
