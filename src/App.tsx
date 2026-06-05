@@ -1,5 +1,6 @@
 import { Navigate, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
+import Aof from './pages/Aof'
 import Calendar from './pages/Calendar'
 import About from './pages/About'
 import Vsl from './pages/Vsl'
@@ -14,6 +15,7 @@ function App() {
     <div className="bg-neutral-950 min-h-screen">
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/aof" element={<Aof />} />
         <Route path="/about" element={<About />} />
         <Route
           path="/vsl"

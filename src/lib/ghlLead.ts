@@ -1,4 +1,4 @@
-import { DEFAULT_GHL_OFFER_WEBHOOK_URL } from '../constants/ghl'
+import { DEFAULT_GHL_OFFER_WEBHOOK_URL, DEFAULT_GHL_SELF_AUDIT_WEBHOOK_URL } from '../constants/ghl'
 
 export type GhlLeadPayload = {
   firstName: string
@@ -16,6 +16,10 @@ export type GhlLeadPayload = {
 
 export function getGhlOfferWebhookUrl(): string {
   return import.meta.env.VITE_GHL_OFFER_WEBHOOK_URL?.trim() || DEFAULT_GHL_OFFER_WEBHOOK_URL
+}
+
+export function getGhlSelfAuditWebhookUrl(): string {
+  return import.meta.env.VITE_GHL_SELF_AUDIT_WEBHOOK_URL?.trim() || DEFAULT_GHL_SELF_AUDIT_WEBHOOK_URL
 }
 
 export function splitFullName(fullName: string): { firstName: string; lastName: string } {

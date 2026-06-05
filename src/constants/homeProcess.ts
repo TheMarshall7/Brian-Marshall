@@ -1,4 +1,4 @@
-import { BLUEPRINT_LANDING_PATH, STRATEGY_CALL_PATH, WORKBOOK_LANDING_PATH } from './site'
+import { AOF_BUILD_CREDIT_NOTE, AOF_LANDING_PATH, AOF_PURCHASE_HASH, STRATEGY_CALL_PATH } from './site'
 
 export type HomeProcessRung = {
   step: string
@@ -9,78 +9,88 @@ export type HomeProcessRung = {
 }
 
 export const HOME_PROCESS = {
-  eyebrow: 'The Knowledge to Cash Path',
-  headlineLead: 'Expertise is step one.',
-  headlineAccent: 'The system is what books the calls.',
+  eyebrow: 'The Process',
+  headlineLead: 'How it',
+  headlineAccent: 'works',
   subheadline:
-    'Most coaches and skill-based experts are not short on knowledge. They are short on a sequenced path from clear offer to booked high-ticket clients. This is the order I use, and what I build when you want it installed for you.',
+    'Start with a free qualifying call, map your business across 13 blocks in the Master Audit, and leave with a scoped build plan and full pricing before anything gets built.',
   rungs: [
     {
       step: '01',
-      title: 'Sharpen the offer first.',
+      title: 'Free 15-Minute Qualifying Call',
       description:
-        'Before ads, funnels, or AI, your message has to land. The free Offer Kickstart Workbook walks you through the framework so you finish with a sellable offer draft, not more notes.',
-      productLabel: 'Offer Kickstart Workbook · Free',
-      productPath: `${WORKBOOK_LANDING_PATH}#get-workbook`,
+        'No pitch. Just open-ended questions to understand your business. I listen, I diagnose, and I guide. You leave with more clarity than you came with regardless of what happens next. If there\u2019s a fit, I\u2019ll tell you exactly what needs to be built and why.',
     },
     {
       step: '02',
-      title: 'Map the full client journey.',
+      title: 'Book the AOF Master Audit \u00b7 $1,500',
       description:
-        'The Knowledge to Cash Blueprint sequences every layer from stranger to retained high-ticket client: offer, capture, nurture, booking, delivery, and retention in one 48-page system.',
-      productLabel: 'Knowledge to Cash Blueprint · $29.97',
-      productPath: BLUEPRINT_LANDING_PATH,
+        'Reserve your live audit session via secure payment. Serious buyers invest here. The $1,500 secures your session and produces a fully custom 13-block Master Audit of your business.',
+      productLabel: 'Reserve your audit session',
+      productPath: `${AOF_LANDING_PATH}${AOF_PURCHASE_HASH}`,
     },
     {
       step: '03',
-      title: 'Install capture and follow-up.',
+      title: 'Live Audit Session',
       description:
-        'This is where revenue usually leaks: no landing page, slow replies, no pipeline view. I build conversion sites, funnels, CRM, and AI follow-up so interest turns into booked calls without manual chasing.',
+        'We map all 13 blocks together in real time. You walk me through your business in depth. By the end you\u2019ve seen exactly what a properly architected version of your operations looks like.',
     },
     {
       step: '04',
-      title: 'Run the machine consistently.',
+      title: 'Deliverable + Scope Presentation',
       description:
-        'Traffic, outreach, and automation only work when the offer and system underneath are solid. On a strategy call we find your biggest gap and whether you want done-with-you guidance or a full done-for-you build.',
-      productLabel: 'Free strategy call',
-      productPath: STRATEGY_CALL_PATH,
+        'You receive the polished Master Audit, full build plan, and final quote. No surprises. If scope and timing align, we move into the build and MRR begins. ' + AOF_BUILD_CREDIT_NOTE,
     },
   ] satisfies HomeProcessRung[],
-  buildStackEyebrow: 'What gets built around your offer',
+  buildStackEyebrow: 'What gets built inside your business',
   buildStackItems: [
     {
-      icon: 'solar:window-frame-linear',
-      title: 'Conversion Sites & Funnels',
-      tagline: 'Position your expertise. Move people to the next step.',
+      icon: 'solar:layers-minimalistic-linear',
+      title: 'CRM & Pipeline Architecture',
+      tagline: 'Every stage mapped. Every handoff owned.',
       description:
-        'Landing pages, lead magnets, and checkout paths wired to your workbook or blueprint, built to convert coaches and experts who already know they need help.',
+        'Every stage of your customer journey mapped and built. From first touch to closed to retained, with clear triggers, ownership, and logic at every step.',
     },
     {
-      icon: 'solar:routing-2-linear',
-      title: 'Pipeline & Nurture',
-      tagline: 'Every lead tracked. Every follow-up sequenced.',
+      icon: 'solar:settings-linear',
+      title: 'Workflow & Automation',
+      tagline: 'Repeatable processes, running without you.',
       description:
-        'CRM pipelines, email and SMS sequences, and tagging so a cold opt-in from the workbook or a blueprint buyer lands in the right next step automatically.',
+        'Every repeatable process in your business automated. Lead handling, follow-up sequences, booking, payment, post-service communication, review generation, and reactivation.',
     },
     {
       icon: 'solar:cpu-bolt-linear',
-      title: 'AI Follow-Up & Booking',
-      tagline: 'Replies and reminders without living in your inbox.',
+      title: 'AI Implementation',
+      tagline: 'AI where it replaces the most manual labor.',
       description:
-        'AI-assisted enquiry handling, nurture, and booking flows so qualified prospects get a fast response and a clear path to your calendar.',
+        'Conversational AI for lead qualification and booking. Automated call summaries. Lead scoring. Customer service handling. AI placed at the exact points where it replaces the most manual labor.',
     },
     {
-      icon: 'solar:clipboard-list-linear',
-      title: 'Strategy & Implementation',
-      tagline: 'Find the leak. Fix the right rung first.',
+      icon: 'solar:window-frame-linear',
+      title: 'Websites & Funnels',
+      tagline: 'Built to convert, not to impress.',
       description:
-        'A free strategy call to diagnose where your path breaks, then done-with-you or done-for-you builds so the system matches your offer and capacity.',
+        'Conversion-focused sites and funnels built to move the right people to the right next step. No pretty mockups that don\u2019t convert. Built to perform.',
+    },
+    {
+      icon: 'solar:link-round-angle-linear',
+      title: 'Integrations & Data Flow',
+      tagline: 'One source of truth across your stack.',
+      description:
+        'Every tool in your stack connected so data moves without manual input. One source of truth. No more copying between systems.',
+    },
+    {
+      icon: 'solar:bolt-linear',
+      title: 'Speed to Lead Infrastructure',
+      tagline: 'Close the gap where revenue bleeds out.',
+      description:
+        'The gap between a new inquiry and a human response is where most businesses bleed revenue. We close that gap with automation that responds, qualifies, and routes instantly.',
     },
   ],
   cta: {
-    question: 'Not sure which step you are on?',
-    sub: 'Book a free call. We will map your offer, your gaps, and whether the workbook, blueprint, or a full build is the right next move.',
-    label: 'Book a Free Strategy Call',
+    question: 'Ready to map what\u2019s broken?',
+    sub: 'Book a free qualifying call. No pitch, just clarity on what needs to be built and why.',
+    label: 'Book Your Free Qualifying Call',
     path: STRATEGY_CALL_PATH,
   },
-} as const
+}

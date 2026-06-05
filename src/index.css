@@ -1501,10 +1501,7 @@
     }
 
     .hero-badge {
-      max-width: 100%;
-      flex-wrap: wrap;
-      justify-content: center;
-      text-align: center;
+      max-width: calc(100vw - 2rem);
     }
 
     .case-study-card .relative.flex-1 {

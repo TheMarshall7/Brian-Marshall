@@ -1,6 +1,7 @@
 import { useId, useRef, useState } from 'react'
 import {
   getGhlOfferWebhookUrl,
+  getGhlSelfAuditWebhookUrl,
   isValidEmail,
   splitFullName,
   submitGhlLead,
@@ -14,6 +15,7 @@ type Props = {
   onSuccess?: (lead: { name: string; email: string }) => void
   leadConfig: { source: string; tags: readonly string[]; event: string }
   extraMeta?: Record<string, string | undefined>
+  webhook?: 'offer' | 'self-audit'
 }
 
 export default function GhlNameEmailForm({
@@ -24,6 +26,7 @@ export default function GhlNameEmailForm({
   onSuccess,
   leadConfig,
   extraMeta,
+  webhook = 'offer',
 }: Props) {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -34,7 +37,7 @@ export default function GhlNameEmailForm({
   const nameId = `${uid}-name`
   const emailId = `${uid}-email`
 
-  const webhookUrl = getGhlOfferWebhookUrl()
+  const webhookUrl = webhook === 'self-audit' ? getGhlSelfAuditWebhookUrl() : getGhlOfferWebhookUrl()
   const configured = Boolean(webhookUrl.trim())
 
   const handleSubmit = async (e: React.FormEvent) => {

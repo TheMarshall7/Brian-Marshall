@@ -16,10 +16,10 @@ export default function Shop() {
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden bg-neutral-950 text-neutral-300 selection:bg-red-500/30 selection:text-white">
       <Helmet>
-        <title>Shop | Brian Marshall</title>
+        <title>Resources | Brian Marshall</title>
         <meta
           name="description"
-          content="Free Offer Kickstart Workbook and Knowledge to Cash Blueprint. Guides to package your expertise and book high-ticket calls."
+          content="AOF Master Audit for owner-operated businesses, plus Offer Kickstart Workbook and Knowledge to Cash Blueprint for coaches."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://brianmarshall.dev/shop" />
@@ -57,7 +57,7 @@ export default function Shop() {
             {SHOP_PRODUCTS.map((product, i) => (
               <li
                 key={product.id}
-                className="animate-slide-up"
+                className={`animate-slide-up ${product.featured ? 'lg:col-span-2' : ''}`}
                 style={{ animationDelay: `${0.45 + i * 0.1}s`, opacity: 0 }}
               >
                 <ShopProductCard product={product} />

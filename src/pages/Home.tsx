@@ -1,11 +1,17 @@
-import { useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
+import { HOME_CONTACT, HOME_HERO, HOME_META } from '../constants/homeContent'
 import { STRATEGY_CALL_PATH } from '../constants/site'
 import CaseStudyMediaBand from '../components/CaseStudyMediaBand'
-import BlueprintPromoSection from '../components/marketing/BlueprintPromoSection'
-import WorkbookPromoSection from '../components/marketing/WorkbookPromoSection'
+import AofRiskReversal from '../components/aof/AofRiskReversal'
+import WhatBreaksInteractive from '../components/aof/WhatBreaksInteractive'
+import AofOfferSection from '../components/home/AofOfferSection'
+import EconomicsSection from '../components/home/EconomicsSection'
+import ProblemSection from '../components/home/ProblemSection'
 import Navigation from '../components/Navigation'
+import StickyCallBar from '../components/shared/StickyCallBar'
+import { ANALYTICS_EVENTS } from '../constants/analytics'
+import { track } from '../lib/track'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
 const WORK_DEPLOY_TILES: { key: string; icon: string; label: string; tileClass: string; caseId: string }[] = [
@@ -26,14 +32,13 @@ const processCopy = HOME_PROCESS
 
 export default function Home() {
   useScrollAnimation() // Initialize scroll animations for all elements
-  const [offerFocus, setOfferFocus] = useState(0)
 
   return (
     <div className="bg-neutral-950 text-neutral-300 w-full overflow-x-hidden selection:bg-red-500/30 selection:text-white relative min-h-screen">
       <Helmet>
-        <title>Brian Marshall · Booked Calls &amp; Systems for Coaches</title>
-        <meta name="description" content="Funnels, websites, and AI follow up built specifically so qualified leads find you, trust you, and book without you lifting a finger." />
-        <meta name="keywords" content="coach funnels, coaching website, AI follow up, lead generation, booking systems, CRM, automation, web development, business systems" />
+        <title>{HOME_META.title}</title>
+        <meta name="description" content={HOME_META.description} />
+        <meta name="keywords" content={HOME_META.keywords} />
         <meta name="author" content="Brian Marshall" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://brianmarshall.dev/" />
@@ -41,8 +46,8 @@ export default function Home() {
         {/* Open Graph */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://brianmarshall.dev/" />
-        <meta property="og:title" content="Brian Marshall · Booked Calls &amp; Systems for Coaches" />
-        <meta property="og:description" content="Funnels, websites, and AI follow up built specifically so qualified leads find you, trust you, and book without you lifting a finger." />
+        <meta property="og:title" content={HOME_META.title} />
+        <meta property="og:description" content={HOME_META.description} />
         <meta property="og:image" content="https://storage.googleapis.com/msgsndr/F1J2yvd2AUT4owDs9EPl/media/6970477bd4fb90ebccb8a72c.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -51,8 +56,8 @@ export default function Home() {
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Brian Marshall · Booked Calls &amp; Systems for Coaches" />
-        <meta name="twitter:description" content="Funnels, websites, and AI follow up built specifically so qualified leads find you, trust you, and book without you lifting a finger." />
+        <meta name="twitter:title" content={HOME_META.title} />
+        <meta name="twitter:description" content={HOME_META.description} />
         <meta name="twitter:image" content="https://storage.googleapis.com/msgsndr/F1J2yvd2AUT4owDs9EPl/media/6970477bd4fb90ebccb8a72c.png" />
         
         {/* Structured Data */}
@@ -60,14 +65,14 @@ export default function Home() {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "ProfessionalService",
-            "name": "Brian Marshall · Booked Calls & Systems for Coaches",
-            "description": "Funnels, websites, and AI follow up built specifically so qualified leads find you, trust you, and book without you lifting a finger.",
+            "name": HOME_META.serviceName,
+            "description": HOME_META.description,
             "url": "https://brianmarshall.dev",
             "email": "brian@areoclient.com",
-            "priceRange": "$1K to $25K",
+            "priceRange": HOME_META.priceRange,
             "areaServed": "Worldwide",
-            "serviceType": ["Marketing Funnels", "Websites", "AI Follow Up", "CRM Systems", "Lead Generation", "Booking Systems"],
-            "knowsAbout": ["Coaching Business", "Funnels", "Web Development", "CRM", "Automation", "AI"],
+            "serviceType": HOME_META.serviceType,
+            "knowsAbout": HOME_META.knowsAbout,
             "sameAs": ["https://www.linkedin.com/in/brianmarshallca/"]
           })}
         </script>
@@ -86,34 +91,36 @@ export default function Home() {
           <div className="mx-auto grid w-full max-w-[min(100%,90rem)] grid-cols-1 items-start gap-x-10 gap-y-6 pb-4 sm:gap-y-8 md:grid-cols-12 md:items-stretch md:gap-y-8 md:gap-x-8 md:pb-8 lg:gap-x-10 lg:gap-y-10 xl:gap-x-12">
             <div className="flex w-full flex-col items-center text-center md:col-span-6 md:items-start md:pl-6 md:text-left lg:col-span-5 lg:pl-10 lg:pr-2 xl:pl-14 xl:pr-4 lg:flex lg:min-h-0 lg:flex-col lg:justify-center">
               <div className="mb-4 flex w-full justify-center pt-0 animate-slide-up md:mb-6 md:justify-start" style={{ animationDelay: '0.4s', opacity: 0 }}>
-                <div className="inline-flex max-w-full flex-wrap items-center justify-center gap-2 rounded-full border border-red-500/20 bg-red-500/10 px-3 py-2.5 hero-badge sm:gap-3 sm:px-4">
-                  <div className="flex -space-x-2 group">
-                    <div className="w-6 h-6 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center overflow-hidden">
-                      <img src="https://storage.googleapis.com/msgsndr/F1J2yvd2AUT4owDs9EPl/media/6970702dd4fb90e27fbf24b6.png" alt="NS" className="w-4 h-4 object-contain opacity-40 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0" />
+                <div className="hero-badge inline-flex max-w-[min(100%,20rem)] items-center gap-3 rounded-2xl border border-red-500/25 bg-red-500/10 px-3.5 py-2.5 backdrop-blur-sm shadow-[0_0_28px_rgba(239,68,68,0.12)] sm:max-w-md sm:px-4 md:max-w-none">
+                  <div className="group flex shrink-0 -space-x-2">
+                    <div className="flex h-6 w-6 items-center justify-center overflow-hidden rounded-full border border-neutral-700 bg-neutral-800">
+                      <img src="https://storage.googleapis.com/msgsndr/F1J2yvd2AUT4owDs9EPl/media/6970702dd4fb90e27fbf24b6.png" alt="" className="h-4 w-4 object-contain opacity-50 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0" />
                     </div>
-                    <div className="w-6 h-6 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center overflow-hidden">
-                      <img src="https://storage.googleapis.com/msgsndr/F1J2yvd2AUT4owDs9EPl/media/6970702dd4fb9026bbbf24b5.png" alt="BG" className="w-4 h-4 object-contain opacity-40 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0" />
+                    <div className="flex h-6 w-6 items-center justify-center overflow-hidden rounded-full border border-neutral-700 bg-neutral-800">
+                      <img src="https://storage.googleapis.com/msgsndr/F1J2yvd2AUT4owDs9EPl/media/6970702dd4fb9026bbbf24b5.png" alt="" className="h-4 w-4 object-contain opacity-50 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0" />
                     </div>
-                    <div className="w-6 h-6 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center overflow-hidden">
-                      <img src="https://storage.googleapis.com/msgsndr/F1J2yvd2AUT4owDs9EPl/media/6970702d15885e283f324bca.png" alt="AC" className="w-4 h-4 object-contain opacity-40 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0" />
+                    <div className="flex h-6 w-6 items-center justify-center overflow-hidden rounded-full border border-neutral-700 bg-neutral-800">
+                      <img src="https://storage.googleapis.com/msgsndr/F1J2yvd2AUT4owDs9EPl/media/6970702d15885e283f324bca.png" alt="" className="h-4 w-4 object-contain opacity-50 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0" />
                     </div>
                   </div>
-                  <span className="text-[11px] font-medium leading-snug text-neutral-300 sm:text-xs">Trusted by coaches and service businesses</span>
+                  <span className="text-left text-[11px] font-medium leading-snug text-neutral-300 sm:text-xs lg:whitespace-nowrap">
+                    {HOME_HERO.badge}
+                  </span>
                 </div>
               </div>
 
               <h1 className="mb-5 w-full font-bricolage font-medium leading-[1.05] tracking-[-0.02em] md:mb-6 lg:mb-7">
-                <span className="block text-4xl sm:text-5xl md:text-[2.65rem] lg:text-6xl xl:text-[3.35rem] text-neutral-200 animate-slide-up" style={{ animationDelay: '0.6s', opacity: 0 }}>
-                  I Turn Your Expertise Into
+                <span className="block text-4xl sm:text-5xl md:text-[2.65rem] lg:text-6xl xl:text-[3.35rem] text-white animate-slide-up" style={{ animationDelay: '0.6s', opacity: 0 }}>
+                  {HOME_HERO.headlineLine1}
                 </span>
-                <span className="block text-4xl sm:text-5xl md:text-[2.65rem] lg:text-6xl xl:text-[3.35rem] text-white hero-text-gradient animate-slide-up mt-2 md:mt-3" style={{ animationDelay: '0.8s', opacity: 0 }}>
-                  Booked Calls and Paying Clients
+                <span className="block text-4xl sm:text-5xl md:text-[2.65rem] lg:text-6xl xl:text-[3.35rem] hero-text-gradient animate-slide-up mt-2 md:mt-3" style={{ animationDelay: '0.8s', opacity: 0 }}>
+                  {HOME_HERO.headlineLine2}
                 </span>
               </h1>
 
               <div className="w-full max-w-none animate-slide-up md:pr-0 lg:pr-2" style={{ animationDelay: '1s', opacity: 0 }}>
                 <p className="mx-auto max-w-2xl text-base font-light leading-relaxed text-neutral-400 sm:text-lg md:mx-0 md:text-xl md:leading-relaxed">
-                  Funnels, websites, and AI follow up built specifically so qualified leads find you, trust you, and book without you lifting a finger.
+                  {HOME_HERO.subheadline}
                 </p>
               </div>
             </div>
@@ -136,32 +143,151 @@ export default function Home() {
               <div className="flex w-full max-w-md flex-col gap-3 animate-slide-up sm:max-w-none sm:flex-row sm:flex-wrap sm:gap-5 md:max-w-none" style={{ animationDelay: '1.2s', opacity: 0 }}>
                 <Link
                   to={STRATEGY_CALL_PATH}
+                  onClick={() => track(ANALYTICS_EVENTS.QUALIFYING_CALL_CLICK, { source: 'home_hero' })}
                   className="cta-primary flex w-full items-center justify-center gap-2 rounded-xl bg-white px-9 py-4 text-[0.9375rem] font-medium text-neutral-950 transition-all btn-shimmer hover:bg-red-400 hover:shadow-lg hover:shadow-red-500/35 group sm:w-auto md:px-10 md:py-[1.125rem]"
                 >
-                  Get Your Free Strategy Call
+                  {HOME_HERO.primaryCta}
                   <iconify-icon icon="solar:arrow-right-up-linear" className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></iconify-icon>
                 </Link>
-                <a href="#work" className="flex w-full items-center justify-center gap-2 rounded-xl glass-panel px-9 py-4 text-[0.9375rem] font-medium text-white transition-all glow-border hover:bg-white/10 sm:w-auto md:px-10 md:py-[1.125rem]">
-                  See How It Works
+                <a href={HOME_HERO.secondaryHref} className="flex w-full items-center justify-center gap-2 rounded-xl glass-panel px-9 py-4 text-[0.9375rem] font-medium text-white transition-all glow-border hover:bg-white/10 sm:w-auto md:px-10 md:py-[1.125rem]">
+                  {HOME_HERO.secondaryCta}
                 </a>
               </div>
-              <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm text-neutral-400 animate-slide-up md:justify-end md:text-base" style={{ animationDelay: '1.4s', opacity: 0 }}>
-                <div className="flex items-center gap-2">
-                  <iconify-icon icon="solar:check-circle-linear" className="text-red-500"></iconify-icon>
-                  <span>Free 30 minute discovery call</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <iconify-icon icon="solar:check-circle-linear" className="text-red-500"></iconify-icon>
-                  <span>See your custom roadmap</span>
-                </div>
+              <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm text-neutral-400 animate-slide-up md:justify-end md:text-base" style={{ animationDelay: '1.4s', opacity: 0 }}>
+                {HOME_HERO.trustItems.map((item) => (
+                  <div key={item} className="flex items-center gap-2">
+                    <iconify-icon icon="solar:check-circle-linear" className="text-red-500"></iconify-icon>
+                    <span>{item}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </header>
 
-      <BlueprintPromoSection offerFocus={offerFocus} setOfferFocus={setOfferFocus} />
-      <WorkbookPromoSection />
+      <ProblemSection />
+
+      <section className="relative border-t border-white/5 bg-neutral-950 px-4 py-16 md:px-12 md:py-20">
+        <div className="mx-auto max-w-7xl">
+          <WhatBreaksInteractive compact />
+        </div>
+      </section>
+
+      <AofOfferSection />
+
+      <section className="border-t border-white/5 bg-neutral-950 px-4 py-12 md:px-12">
+        <div className="mx-auto max-w-7xl">
+          <AofRiskReversal />
+        </div>
+      </section>
+
+      {/* Knowledge to Cash path / process */}
+      <section id="process" className="section-ambient relative overflow-hidden border-t border-white/5 bg-neutral-900/30 py-16 section-standard md:py-24">
+        <div className="section-ambient__glow opacity-70" aria-hidden />
+        <div className="section-ambient__grid opacity-40" aria-hidden />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
+          <div className="mb-10 grid grid-cols-1 items-start gap-8 animate-on-scroll md:mb-16 md:gap-12 lg:mb-20 lg:grid-cols-12 lg:gap-16">
+            <div className="w-full text-center md:text-left lg:col-span-7">
+              <span className="section-eyebrow mb-4 block text-neutral-500">{processCopy.eyebrow}</span>
+              <h2 className="mb-6 w-full text-3xl font-medium leading-[1.12] tracking-tight text-white sm:text-4xl md:text-6xl">
+                {processCopy.headlineLead}
+                {processCopy.headlineAccent ? (
+                  <>
+                    <br />
+                    <span className="hero-text-gradient">{processCopy.headlineAccent}</span>
+                  </>
+                ) : null}
+              </h2>
+              {processCopy.subheadline ? (
+                <p className="mx-auto max-w-2xl text-base leading-relaxed text-neutral-400 md:mx-0 md:text-lg">
+                  {processCopy.subheadline}
+                </p>
+              ) : null}
+            </div>
+            <div className="story-rail lg:col-span-5 lg:pt-2">
+              {processCopy.rungs.map((rung, i) => (
+                <div
+                  key={rung.step}
+                  className={`story-rail__node pl-1 ${i < processCopy.rungs.length - 1 ? 'mb-8' : ''}`}
+                >
+                  <span
+                    className={`font-bricolage text-4xl font-medium md:text-5xl ${
+                      i === 0
+                        ? 'text-red-500/90'
+                        : i === 1
+                          ? 'text-red-500/70'
+                          : i === 2
+                            ? 'text-red-500/50'
+                            : 'text-red-500/35'
+                    }`}
+                  >
+                    {rung.step}
+                  </span>
+                  <p className="mt-2 text-sm font-medium text-white">{rung.title}</p>
+                  <p className="mt-2 max-w-md text-sm leading-relaxed text-neutral-400">{rung.description}</p>
+                  {rung.productLabel && rung.productPath ? (
+                    <Link
+                      to={rung.productPath}
+                      onClick={() => track(ANALYTICS_EVENTS.AOF_PURCHASE_CLICK, { source: 'home_process' })}
+                      className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-red-400/90 transition-colors hover:text-red-300"
+                    >
+                      {rung.productLabel}
+                      <iconify-icon icon="solar:arrow-right-linear" width="14" />
+                    </Link>
+                  ) : null}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="process-spine" aria-hidden>
+            <div className="process-spine__line" />
+            <div className="process-spine__dots">
+              <span className="process-spine__dot" />
+              <span className="process-spine__dot" />
+              <span className="process-spine__dot" />
+              <span className="process-spine__dot" />
+            </div>
+          </div>
+
+          <div className="mt-16 text-center animate-on-scroll">
+            <p className="mb-2 text-lg text-neutral-300">{processCopy.cta.question}</p>
+            <p className="mb-8 text-base text-neutral-400">{processCopy.cta.sub}</p>
+            <Link
+              to={processCopy.cta.path}
+              className="cta-primary inline-flex w-full max-w-md items-center justify-center gap-2 rounded-lg bg-white px-6 py-4 text-sm font-medium text-neutral-950 transition-all btn-shimmer hover:bg-red-400 hover:shadow-lg hover:shadow-red-500/30 sm:w-auto sm:px-8"
+            >
+              {processCopy.cta.label}
+              <iconify-icon icon="solar:arrow-right-linear" width="18" />
+            </Link>
+          </div>
+
+          <span className="section-eyebrow mb-6 mt-20 block text-neutral-500 animate-on-scroll">
+            {processCopy.buildStackEyebrow}
+          </span>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {processCopy.buildStackItems.map((item, i) => (
+              <div
+                key={item.title}
+                className={`group rounded-xl border border-white/5 p-6 transition-all duration-300 animate-on-scroll card-lift hover:border-red-500/30 hover:bg-white/[0.02] ${
+                  i === 1 ? 'delay-100' : i === 2 ? 'delay-200' : i === 3 ? 'delay-300' : i === 4 ? 'delay-400' : i === 5 ? 'delay-500' : ''
+                }`}
+              >
+                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.08] to-transparent text-white shadow-inner ring-1 ring-white/5 transition-all group-hover:border-red-500/30 group-hover:text-red-400 group-hover:ring-red-500/20">
+                  <iconify-icon icon={item.icon} width="28" className="icon-hover"></iconify-icon>
+                </div>
+                <h3 className="mb-2 text-lg font-medium text-white">{item.title}</h3>
+                <p className="mb-3 text-sm font-medium text-neutral-300">{item.tagline}</p>
+                <p className="text-sm leading-relaxed text-neutral-400">{item.description}</p>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      <EconomicsSection />
 
       {/* Case Studies Section */}
       <section id="work" className="section-ambient relative overflow-hidden border-t border-white/5 py-16 section-standard md:py-24 lg:py-32">
@@ -420,26 +546,26 @@ export default function Home() {
                 <div className="relative z-10 flex flex-col h-full bg-neutral-900/20 rounded-lg" style={{ boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.2)' }}>
                   <CaseStudyMediaBand urlLabel="areoclient.com" slug="areoclient" />
                   <div className="flex items-center justify-between mb-6">
-                    <span className="case-badge inline-block px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-mono uppercase tracking-widest border border-emerald-500/20">Platform · SaaS</span>
+                    <span className="case-badge inline-block px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-mono uppercase tracking-widest border border-emerald-500/20">Platform · Systems · Automation</span>
                     <iconify-icon icon="solar:layers-minimalistic-linear" className="case-icon text-emerald-400 text-2xl"></iconify-icon>
                   </div>
-                  <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest mb-2">Business · Growth · Revenue</span>
-                  <h3 className="text-2xl md:text-3xl text-white font-medium mb-4">All-in-One Business System</h3>
-                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Problem:</strong> Teams were earning attention but losing it in the handoff, with too many tools, leaky follow up, and no single view from interest to a booked call or sale.</p>
-                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Solution:</strong> A unified business system designed to turn attention into booked revenue: pipelines, messaging, and scheduling in one place, plus a couple of lightweight SaaS apps that plug into the same operating rhythm.</p>
+                  <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest mb-2">Business · Operations · Revenue</span>
+                  <h3 className="text-2xl md:text-3xl text-white font-medium mb-4">AreoClient</h3>
+                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Problem:</strong> Owner-operated businesses were generating real revenue but running entirely on manual processes. Leads fell through the cracks, follow-up was inconsistent, and the owner was the bottleneck for every decision.</p>
+                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Solution:</strong> A unified business operating system: pipelines, automations, AI follow-up, and integrations built as one connected infrastructure so the business runs without the owner in every loop.</p>
                   <div className="mt-auto">
                     <div className="bg-white/[0.08] rounded-lg p-4 border border-white/10 mb-4" style={{ boxShadow: 'inset 0 1px 2px rgba(255, 255, 255, 0.1), inset 0 -2px 4px rgba(0, 0, 0, 0.3)' }}>
                       <span className="block text-xs text-emerald-400 font-mono mb-2">&gt; RESULTS_</span>
                       <div className="grid grid-cols-1 gap-2">
-                        <span className="text-sm text-white">One system instead of a patchwork of logins</span>
-                        <span className="text-sm text-white">Clear path from lead interest to revenue on the calendar</span>
-                        <span className="text-sm text-white">SaaS apps that extend the core workflow, not another silo</span>
+                        <span className="text-sm text-white">Full pipeline visibility from first inquiry to closed revenue</span>
+                        <span className="text-sm text-white">Automated follow-up so no lead goes untouched</span>
+                        <span className="text-sm text-white">Owner removed from repetitive operational decisions</span>
                       </div>
                     </div>
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Platform</span>
-                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">SaaS</span>
+                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Systems</span>
                       <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Automation</span>
+                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Operations</span>
                       <a href="https://areoclient.com/" target="_blank" rel="noopener noreferrer" className="case-action-btn ml-auto px-3 py-1 rounded bg-emerald-500/20 text-emerald-400 text-[10px] font-medium hover:bg-emerald-500/30 flex items-center gap-1">See Project <iconify-icon icon="solar:arrow-right-up-linear" width="12"></iconify-icon></a>
                     </div>
                   </div>
@@ -535,106 +661,9 @@ export default function Home() {
               If you want screenshots, I'll show you. <br />
               <span className="text-white">If you care about outcomes, this is the part that matters.</span>
             </p>
-            <a href="#contact" className="inline-flex items-center gap-2 px-8 py-4 bg-white text-neutral-950 rounded-lg text-sm font-medium hover:bg-red-400 transition-all btn-shimmer hover:shadow-lg hover:shadow-red-500/30 mt-8">
-              Ready to Build Your System? Book a Free Call
+            <Link to={STRATEGY_CALL_PATH} className="inline-flex items-center gap-2 px-8 py-4 bg-white text-neutral-950 rounded-lg text-sm font-medium hover:bg-red-400 transition-all btn-shimmer hover:shadow-lg hover:shadow-red-500/30 mt-8">
+              {HOME_HERO.primaryCta}
               <iconify-icon icon="solar:arrow-right-up-linear"></iconify-icon>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Knowledge to Cash path / process */}
-      <section id="process" className="section-ambient relative overflow-hidden border-t border-white/5 bg-neutral-900/30 py-16 section-standard md:py-24">
-        <div className="section-ambient__glow opacity-70" aria-hidden />
-        <div className="section-ambient__grid opacity-40" aria-hidden />
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
-          <div className="mb-10 grid grid-cols-1 items-start gap-8 animate-on-scroll md:mb-16 md:gap-12 lg:mb-20 lg:grid-cols-12 lg:gap-16">
-            <div className="w-full text-center md:text-left lg:col-span-7">
-              <span className="section-eyebrow mb-4 block text-neutral-500">{processCopy.eyebrow}</span>
-              <h2 className="mb-6 w-full text-3xl font-medium leading-[1.12] tracking-tight text-white sm:text-4xl md:text-6xl">
-                {processCopy.headlineLead}
-                <br />
-                <span className="hero-text-gradient">{processCopy.headlineAccent}</span>
-              </h2>
-              <p className="mx-auto max-w-2xl text-base leading-relaxed text-neutral-400 md:mx-0 md:text-lg">
-                {processCopy.subheadline}
-              </p>
-            </div>
-            <div className="story-rail lg:col-span-5 lg:pt-2">
-              {processCopy.rungs.map((rung, i) => (
-                <div
-                  key={rung.step}
-                  className={`story-rail__node pl-1 ${i < processCopy.rungs.length - 1 ? 'mb-8' : ''}`}
-                >
-                  <span
-                    className={`font-bricolage text-4xl font-medium md:text-5xl ${
-                      i === 0
-                        ? 'text-red-500/90'
-                        : i === 1
-                          ? 'text-red-500/70'
-                          : i === 2
-                            ? 'text-red-500/50'
-                            : 'text-red-500/35'
-                    }`}
-                  >
-                    {rung.step}
-                  </span>
-                  <p className="mt-2 text-sm font-medium text-white">{rung.title}</p>
-                  <p className="mt-2 max-w-md text-sm leading-relaxed text-neutral-400">{rung.description}</p>
-                  {rung.productLabel && rung.productPath ? (
-                    <Link
-                      to={rung.productPath}
-                      className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-red-400/90 transition-colors hover:text-red-300"
-                    >
-                      {rung.productLabel}
-                      <iconify-icon icon="solar:arrow-right-linear" width="14" />
-                    </Link>
-                  ) : null}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="process-spine" aria-hidden>
-            <div className="process-spine__line" />
-            <div className="process-spine__dots">
-              <span className="process-spine__dot" />
-              <span className="process-spine__dot" />
-              <span className="process-spine__dot" />
-              <span className="process-spine__dot" />
-            </div>
-          </div>
-
-          <span className="section-eyebrow mb-6 mt-4 block text-neutral-500 animate-on-scroll">
-            {processCopy.buildStackEyebrow}
-          </span>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {processCopy.buildStackItems.map((item, i) => (
-              <div
-                key={item.title}
-                className={`group rounded-xl border border-white/5 p-6 transition-all duration-300 animate-on-scroll card-lift hover:border-red-500/30 hover:bg-white/[0.02] ${
-                  i === 1 ? 'delay-100' : i === 2 ? 'delay-200' : i === 3 ? 'delay-300' : ''
-                }`}
-              >
-                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.08] to-transparent text-white shadow-inner ring-1 ring-white/5 transition-all group-hover:border-red-500/30 group-hover:text-red-400 group-hover:ring-red-500/20">
-                  <iconify-icon icon={item.icon} width="28" className="icon-hover"></iconify-icon>
-                </div>
-                <h3 className="mb-2 text-lg font-medium text-white">{item.title}</h3>
-                <p className="mb-3 text-sm font-medium text-neutral-300">{item.tagline}</p>
-                <p className="text-sm leading-relaxed text-neutral-400">{item.description}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-16 text-center animate-on-scroll">
-            <p className="mb-2 text-lg text-neutral-300">{processCopy.cta.question}</p>
-            <p className="mb-8 text-base text-neutral-400">{processCopy.cta.sub}</p>
-            <Link
-              to={processCopy.cta.path}
-              className="cta-primary inline-flex w-full max-w-md items-center justify-center gap-2 rounded-lg bg-white px-6 py-4 text-sm font-medium text-neutral-950 transition-all btn-shimmer hover:bg-red-400 hover:shadow-lg hover:shadow-red-500/30 sm:w-auto sm:px-8"
-            >
-              {processCopy.cta.label}
-              <iconify-icon icon="solar:arrow-right-linear" width="18" />
             </Link>
           </div>
         </div>
@@ -653,21 +682,24 @@ export default function Home() {
             </h3>
             <div className="max-w-xl space-y-8 sm:space-y-10">
               <div>
-                <h4 className="mb-3 text-base font-medium text-white md:text-lg">Clear ROI Before We Start</h4>
+                <h4 className="mb-3 text-base font-medium text-white md:text-lg">Revenue First</h4>
                 <p className="text-sm leading-relaxed text-neutral-400 md:text-base">
-                  I don&apos;t build things because they look good or sound smart. Every system has a measurable outcome
-                  before we touch anything. Booked calls. Revenue per lead. Conversion rate. If we can&apos;t track it,
-                  we don&apos;t build it.
+                  Every system has a measurable outcome before we touch anything. Speed to lead. Conversion rate.
+                  Revenue per lead. If we can&apos;t track it, we don&apos;t build it.
                 </p>
               </div>
               <div>
-                <h4 className="mb-3 text-base font-medium text-white md:text-lg">
-                  Partner Mindset. Not Vendor Mentality.
-                </h4>
+                <h4 className="mb-3 text-base font-medium text-white md:text-lg">Blueprint Before Build</h4>
                 <p className="text-sm leading-relaxed text-neutral-400 md:text-base">
-                  I don&apos;t clock out when the invoice is sent. I think like the person whose name is on your
-                  revenue. If the system isn&apos;t working, that&apos;s my problem to fix, not yours to figure out
-                  alone.
+                  Nothing gets built without being mapped first. The AOF document exists because building without a
+                  blueprint is how businesses end up with expensive tools that don&apos;t talk to each other.
+                </p>
+              </div>
+              <div>
+                <h4 className="mb-3 text-base font-medium text-white md:text-lg">Partner Mindset</h4>
+                <p className="text-sm leading-relaxed text-neutral-400 md:text-base">
+                  I think like the person whose name is on your revenue. If the system isn&apos;t working after we build
+                  it, that&apos;s my problem to fix, not yours to figure out alone.
                 </p>
               </div>
             </div>
@@ -690,14 +722,14 @@ export default function Home() {
                     <iconify-icon icon="solar:bricks-linear" className="text-neutral-500" width="12"></iconify-icon>
                   </div>
                   <h4 className="text-white font-medium mb-1">The Wall</h4>
-                  <p className="text-sm text-neutral-400 leading-relaxed">Every creative business hits it. Great ideas... no systems to support them.</p>
+                  <p className="text-sm text-neutral-400 leading-relaxed">Every business hits it. Real revenue, no systems to support the growth.</p>
                 </div>
                 <div className="relative pl-10">
                   <div className="timeline-dot timeline-dot-active absolute left-[-51px] top-[22px] w-6 h-6 rounded-full bg-neutral-900 border border-red-500/50 flex items-center justify-center z-10 translate-x-1/2">
                     <iconify-icon icon="solar:code-circle-linear" className="text-red-400" width="12"></iconify-icon>
                   </div>
                   <h4 className="text-white font-medium mb-1">The Architect</h4>
-                  <p className="text-sm text-neutral-400 leading-relaxed">10+ years building across web, audio, automation, and AI. My job is simple: make the system invisible so the results are obvious.</p>
+                  <p className="text-sm text-neutral-400 leading-relaxed">10+ years building across web, automation, AI, and operations. My job is simple: make the system invisible so the results are obvious.</p>
                 </div>
               </div>
               <div className="mt-8 pt-6 border-t border-white/5">
@@ -725,7 +757,7 @@ export default function Home() {
               href="#contact"
               className="cta-primary inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 text-sm font-medium text-neutral-950 transition-all hover:bg-red-400 btn-shimmer hover:shadow-lg hover:shadow-red-500/30"
             >
-              Start Here
+              {HOME_HERO.primaryCta}
               <iconify-icon icon="solar:arrow-right-up-linear" />
             </a>
           </div>
@@ -757,60 +789,38 @@ export default function Home() {
             </div>
           </div>
 
-          <h2 className="mb-6 font-bricolage text-4xl font-medium leading-[1.08] tracking-tight animate-on-scroll delay-100 sm:text-5xl md:text-8xl">
-            <span className="text-white">Ready to scale?</span><br />
-            <span className="gradient-text-animated">Let's fix what's slowing you down.</span>
+          <h2 className="mb-6 font-bricolage text-4xl font-medium leading-[1.08] tracking-tight animate-on-scroll delay-100 sm:text-5xl md:text-7xl">
+            <span className="text-white">{HOME_CONTACT.headline}</span>
           </h2>
 
-          <div className="mx-auto mb-10 max-w-2xl space-y-3 text-base font-light text-neutral-400 animate-on-scroll delay-200 sm:mb-12 sm:space-y-4 sm:text-xl md:mb-12">
-            <p>If your business feels heavier than it should, something's broken.</p>
-            <p>We'll find it and build the system that removes it.</p>
-          </div>
+          <p className="mx-auto mb-10 max-w-2xl text-base font-light text-neutral-400 animate-on-scroll delay-200 sm:mb-12 sm:text-xl md:mb-12">
+            {HOME_CONTACT.subheadline}
+          </p>
 
           <p className="section-eyebrow mb-6 text-neutral-500 animate-on-scroll delay-200">What you get</p>
 
           <div className="max-w-2xl mx-auto mb-12 animate-on-scroll delay-250">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
-              <div className="flex items-start gap-3 p-4 rounded-lg bg-white/5 border border-white/10 benefit-card">
-                <iconify-icon icon="solar:check-circle-linear" className="text-red-500 text-xl shrink-0 mt-0.5"></iconify-icon>
-                <div>
-                  <h4 className="text-white font-medium mb-1">30 minute strategy call</h4>
-                  <p className="text-sm text-neutral-400">We break down what's not working and why</p>
+              {HOME_CONTACT.benefits.map((benefit) => (
+                <div key={benefit} className="flex items-start gap-3 p-4 rounded-lg bg-white/5 border border-white/10 benefit-card">
+                  <iconify-icon icon="solar:check-circle-linear" className="text-red-500 text-xl shrink-0 mt-0.5"></iconify-icon>
+                  <div>
+                    <h4 className="text-white font-medium">{benefit}</h4>
+                  </div>
                 </div>
-              </div>
-              <div className="flex items-start gap-3 p-4 rounded-lg bg-white/5 border border-white/10 benefit-card">
-                <iconify-icon icon="solar:check-circle-linear" className="text-red-500 text-xl shrink-0 mt-0.5"></iconify-icon>
-                <div>
-                  <h4 className="text-white font-medium mb-1">Your custom system roadmap</h4>
-                  <p className="text-sm text-neutral-400">Clear plan to fix your biggest bottleneck</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3 p-4 rounded-lg bg-white/5 border border-white/10 benefit-card">
-                <iconify-icon icon="solar:check-circle-linear" className="text-red-500 text-xl shrink-0 mt-0.5"></iconify-icon>
-                <div>
-                  <h4 className="text-white font-medium mb-1">Instant booking</h4>
-                  <p className="text-sm text-neutral-400">Pick a time. No back-and-forth</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3 p-4 rounded-lg bg-white/5 border border-white/10 benefit-card">
-                <iconify-icon icon="solar:check-circle-linear" className="text-red-500 text-xl shrink-0 mt-0.5"></iconify-icon>
-                <div>
-                  <h4 className="text-white font-medium mb-1">No pressure</h4>
-                  <p className="text-sm text-neutral-400">If it's not a fit, you'll still leave with clarity</p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
           <div className="flex flex-col items-center gap-8 animate-on-scroll delay-400">
-            <Link to={STRATEGY_CALL_PATH} className="cta-primary group relative flex w-full max-w-sm items-center justify-center gap-3 rounded-full bg-white px-8 py-4 text-sm font-medium text-black transition-all duration-300 btn-shimmer hover:bg-red-400 hover:shadow-[0_0_30px_rgba(239,68,68,0.5)] sm:w-auto sm:max-w-none sm:px-10">
+            <Link to={HOME_CONTACT.ctaPath} className="cta-primary group relative flex w-full max-w-sm items-center justify-center gap-3 rounded-full bg-white px-8 py-4 text-sm font-medium text-black transition-all duration-300 btn-shimmer hover:bg-red-400 hover:shadow-[0_0_30px_rgba(239,68,68,0.5)] sm:w-auto sm:max-w-none sm:px-10">
               <iconify-icon icon="solar:calendar-linear" className="text-lg group-hover:scale-110 transition-transform"></iconify-icon>
-              Book your free strategy call
+              {HOME_CONTACT.cta}
               <iconify-icon icon="solar:arrow-right-up-linear" className="opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all"></iconify-icon>
             </Link>
 
-            <a href="mailto:brian@areoclient.com" className="group text-xl md:text-2xl text-neutral-400 font-medium transition-all duration-300 relative hover:text-white">
-              <span className="relative z-10">brian@areoclient.com</span>
+            <a href={`mailto:${HOME_CONTACT.email}`} className="group text-xl md:text-2xl text-neutral-400 font-medium transition-all duration-300 relative hover:text-white">
+              <span className="relative z-10">{HOME_CONTACT.email}</span>
               <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-red-500 to-red-300 group-hover:w-full transition-all duration-500"></span>
             </a>
           </div>
@@ -832,8 +842,10 @@ export default function Home() {
               {/* Footer Content Row */}
               <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-6">
                 <div className="flex flex-col items-center md:items-start gap-2">
-                  <span className="text-sm text-neutral-500 font-mono tracking-wider text-center md:text-left">© 2026 Brian Marshall</span>
-                  <span className="text-xs text-neutral-600 font-mono italic text-center md:text-left">Creative Systems Designer. And founder of AreoClient.</span>
+                  <span className="text-sm text-neutral-500 font-mono tracking-wider text-center md:text-left">Brian Marshall</span>
+                  <span className="text-xs text-neutral-600 font-mono text-center md:text-left">{HOME_CONTACT.footerTagline}</span>
+                  <span className="text-xs text-neutral-600 font-mono tracking-wider text-center md:text-left">© 2026 Brian Marshall</span>
+                  <span className="text-xs text-neutral-500 text-center md:text-left max-w-sm">{HOME_CONTACT.footerClosing}</span>
                 </div>
                 
                 <div className="flex items-center gap-8">
@@ -850,6 +862,7 @@ export default function Home() {
         </div>
       </footer>
 
+      <StickyCallBar />
     </div>
   )
 }

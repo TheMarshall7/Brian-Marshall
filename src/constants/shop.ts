@@ -1,3 +1,5 @@
+import { AOF_BUILD_CREDIT_NOTE } from './site'
+
 export type ShopProduct = {
   id: string
   title: string
@@ -5,18 +7,24 @@ export type ShopProduct = {
   priceLabel: string
   /** Strikethrough "was" price (e.g. $9.97 before Free) */
   priceOriginalLabel?: string
-  coverSrc: string
+  coverSrc?: string
+  /** Render document-style preview instead of cover image */
+  documentPreview?: boolean
   description: string
   bullets?: string[]
   footnote?: string
   ctaLabel?: string
+  purchaseCtaLabel?: string
   /** Direct PDF path - used on landing pages, not shop cards */
   filePath?: string
   /** Route for email opt-in (free lead magnet) */
   optInPath?: string
   /** Product sales / info landing page */
   landingPath?: string
+  /** Direct purchase / booking anchor */
+  purchasePath?: string
   badge?: string
+  featured?: boolean
 }
 
 export const SHOP_COVER = {
@@ -59,6 +67,30 @@ export const OFFER_KICKSTART_OPTIN = {
 } as const
 
 export const SHOP_PRODUCTS: ShopProduct[] = [
+  {
+    id: 'aof-master-audit',
+    title: 'AOF Master Audit',
+    price: 1500,
+    priceLabel: '$1,500',
+    documentPreview: true,
+    description:
+      'A fully custom 13-block operational blueprint of your business: pipelines, workflows, automations, AI opportunities, integrations, priorities, and line-item build pricing. Developer-ready. You own it either way.',
+    bullets: [
+      '13 diagnostic blocks: diagnose, design, and decide',
+      'Live audit session maps your business in real time',
+      'Priority build sequence with full cost transparency',
+      '6–8 hours of architecture · you keep the deliverable',
+      AOF_BUILD_CREDIT_NOTE,
+    ],
+    footnote:
+      'For owner-operated businesses with real revenue and broken operations. Not sure yet? Start with a free 15-minute qualifying call.',
+    landingPath: '/aof',
+    purchasePath: '/aof#purchase',
+    ctaLabel: 'Explore the Master Audit',
+    purchaseCtaLabel: 'Reserve your session',
+    badge: 'Master Audit',
+    featured: true,
+  },
   {
     id: 'offer-kickstart',
     title: OFFER_KICKSTART_WORKBOOK_TITLE,
@@ -103,9 +135,9 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
   },
 ]
 
-export const SHOP_HEADLINE = 'Shop'
+export const SHOP_HEADLINE = 'Resources'
 export const SHOP_SUBHEADLINE =
-  'Frameworks and guides to package your expertise and book more calls.'
+  'Systems for owner-operated businesses, plus guides for coaches packaging knowledge into sellable offers.'
 
 export function getShopProduct(id: ShopProduct['id']): ShopProduct {
   const product = SHOP_PRODUCTS.find((p) => p.id === id)

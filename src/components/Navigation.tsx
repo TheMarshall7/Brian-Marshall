@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { AOF_LANDING_PATH } from '../constants/site'
 
 export default function Navigation() {
   const location = useLocation()
@@ -7,6 +8,7 @@ export default function Navigation() {
   const isHome = location.pathname === '/'
   const isAbout = location.pathname === '/about'
   const isShop = location.pathname === '/shop'
+  const isAof = location.pathname === AOF_LANDING_PATH
   const [mobileOpen, setMobileOpen] = useState(false)
 
   const handleHashLink = (hash: string) => {
@@ -66,6 +68,12 @@ export default function Navigation() {
               Process
             </button>
             <Link
+              to={AOF_LANDING_PATH}
+              className={`nav-link py-1 transition-colors ${isAof ? 'text-white' : 'hover:text-white'}`}
+            >
+              AOF
+            </Link>
+            <Link
               to="/about"
               className={`nav-link py-1 transition-colors ${isAbout ? 'text-white' : 'hover:text-white'}`}
             >
@@ -75,7 +83,7 @@ export default function Navigation() {
               to="/shop"
               className={`nav-link py-1 transition-colors ${isShop ? 'text-white' : 'hover:text-white'}`}
             >
-              Shop
+              Resources
             </Link>
           </div>
 
@@ -115,11 +123,14 @@ export default function Navigation() {
             <button type="button" onClick={() => handleHashLink('#process')} className={navLinkClass}>
               Process
             </button>
+            <Link to={AOF_LANDING_PATH} className={navLinkClass} onClick={() => setMobileOpen(false)}>
+              AOF
+            </Link>
             <Link to="/about" className={navLinkClass} onClick={() => setMobileOpen(false)}>
               About
             </Link>
             <Link to="/shop" className={navLinkClass} onClick={() => setMobileOpen(false)}>
-              Shop
+              Resources
             </Link>
             <button type="button" onClick={() => handleHashLink('#contact')} className={`${navLinkClass} text-white`}>
               Contact

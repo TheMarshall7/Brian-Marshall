@@ -2,8 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import Navigation from '../components/Navigation'
-import BlueprintPromoSection from '../components/marketing/BlueprintPromoSection'
-import WorkbookPromoSection from '../components/marketing/WorkbookPromoSection'
+import { HOME_HERO } from '../constants/homeContent'
 import { STRATEGY_CALL_PATH } from '../constants/site'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
@@ -271,7 +270,6 @@ export default function About() {
   useScrollAnimation()
   const [activeSection, setActiveSection] = useState<(typeof ABOUT_SECTIONS)[number]['id']>('profile')
   const [activeCredentialTab, setActiveCredentialTab] = useState<CredentialTab>('experience')
-  const [offerFocus, setOfferFocus] = useState(0)
   const sectionIds = useMemo(() => ABOUT_SECTIONS.map((s) => s.id), [])
 
   useEffect(() => {
@@ -503,14 +501,25 @@ export default function About() {
           </div>
         </section>
 
-        <BlueprintPromoSection
-          offerFocus={offerFocus}
-          setOfferFocus={setOfferFocus}
-          focusPanelId="about-offer-focus-panel"
-          headingId="about-offer-framework-heading"
-          listLabelId="about-offer-framework-list-label"
-        />
-        <WorkbookPromoSection headingId="about-offer-workbook-heading" />
+        <section className="relative overflow-hidden border-t border-white/5 bg-neutral-950 py-12 md:py-16">
+          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
+            <div className="glass-panel flex flex-col items-start justify-between gap-6 rounded-2xl border border-white/10 p-6 md:flex-row md:items-center md:p-8">
+              <div>
+                <p className="section-eyebrow mb-2">Coaches & experts</p>
+                <p className="text-neutral-300">
+                  Packaging your knowledge into a sellable offer? Browse the Workbook and Blueprint on Resources.
+                </p>
+              </div>
+              <Link
+                to="/shop"
+                className="inline-flex items-center gap-2 rounded-full border border-white/10 px-6 py-3 text-sm font-medium text-white hover:border-red-500/30 hover:bg-white/5"
+              >
+                View Resources
+                <iconify-icon icon="solar:arrow-right-linear" />
+              </Link>
+            </div>
+          </div>
+        </section>
 
         <section
           id="systems"
@@ -664,14 +673,14 @@ export default function About() {
                 Let’s build the system.
               </h2>
               <p className="mt-5 mx-auto max-w-2xl text-base leading-relaxed text-neutral-400">
-                If you want something that looks good and converts, with automation behind it so it stays consistent, book a strategy call.
+                Owner-operated with real revenue but broken operations? Book a qualifying call. No pitch, just clarity.
               </p>
               <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <Link
                   to={STRATEGY_CALL_PATH}
                   className="cta-primary inline-flex items-center justify-center gap-2 rounded-full bg-white px-9 py-4 text-sm font-medium text-neutral-950 transition-all btn-shimmer hover:bg-red-400 hover:shadow-[0_0_40px_rgba(239,68,68,0.35)]"
                 >
-                  Book a strategy call
+                  {HOME_HERO.primaryCta}
                   <iconify-icon icon="solar:arrow-right-up-linear" />
                 </Link>
                 <a

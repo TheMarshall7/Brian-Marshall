@@ -1,4 +1,4 @@
-import { BLUEPRINT_LANDING_PATH, STRATEGY_CALL_PATH, WORKBOOK_LANDING_PATH } from './site'
+import { AOF_BUILD_CREDIT_NOTE, AOF_LANDING_PATH, BLUEPRINT_LANDING_PATH, STRATEGY_CALL_PATH } from './site'
 import { HOME_PROCESS } from './homeProcess'
 
 export type HomeFaqAnswerPart =
@@ -13,102 +13,136 @@ export type HomeFaqItem = {
 
 export const HOME_FAQ = {
   eyebrow: 'Common Questions',
-  headline: 'Still Have Questions?',
+  headline: 'Common Questions',
   intro:
-    'Straight answers on the Knowledge to Cash path, the free workbook, the Blueprint, done-for-you builds, and the strategy call.',
+    'Straight answers on the AOF Master Audit, qualifying call, full builds, and what happens if the timing isn\u2019t right yet.',
   items: [
     {
-      id: 'worth-it',
-      question: 'Is this worth the investment?',
+      id: 'what-is-aof',
+      question: 'What is the AOF Master Audit?',
       answer: [
         {
           type: 'text',
           value:
-            'If gaps in your offer, funnel, or follow-up are costing you real revenue or time, usually yes. I tie work to measurable outcomes first: booked calls, conversion, revenue per lead, and response speed. On your free strategy call we quantify what fixing the bottleneck is worth. If I cannot show you a clear ROI path, I do not take the build.',
+            'The Automated Operations Framework Master Audit is a fully custom 13-block blueprint of your business. It maps every pipeline, workflow, automation, AI opportunity, integration, priority, and the full pricing for your build. It\u2019s detailed enough that any competent developer could execute from it without asking you a single follow-up question. You own it regardless of whether we work together. ',
+        },
+        {
+          type: 'link',
+          value: 'See the full framework',
+          to: AOF_LANDING_PATH,
+        },
+        {
+          type: 'text',
+          value: '.',
         },
       ],
     },
     {
-      id: 'workbook-or-blueprint',
-      question: 'Should I start with the workbook or the Blueprint?',
+      id: 'why-1500',
+      question: 'Why do I pay $1,500 before the build starts?',
       answer: [
         {
           type: 'text',
           value:
-            'Start with the ',
+            'Because the Master Audit is a real deliverable with real value. It takes 6-8 hours to produce and gives you a complete picture of your business that most owners have never had. It also filters for serious buyers. Someone unwilling to invest $1,500 in understanding their own operations is not going to invest $15,000 to fix them.',
         },
+      ],
+    },
+    {
+      id: 'build-credit',
+      question: 'Does the $1,500 count toward the full build?',
+      answer: [
         {
-          type: 'link',
-          value: 'Offer Kickstart Workbook',
-          to: `${WORKBOOK_LANDING_PATH}#get-workbook`,
+          type: 'text',
+          value: AOF_BUILD_CREDIT_NOTE,
         },
+      ],
+    },
+    {
+      id: 'no-move-forward',
+      question: 'What if I don\u2019t move forward after the Master Audit?',
+      answer: [
         {
           type: 'text',
           value:
-            ' if your offer still feels fuzzy or does not convert. It is free, takes about 60 to 90 minutes if you do the exercises, and you finish with a sellable offer draft. Move to the ',
+            'You keep the Master Audit. It\u2019s yours. You can take it to any developer or agency and have it built. You\u2019ll also enter a 30-day follow-up sequence in case the timing changes.',
         },
-        {
-          type: 'link',
-          value: 'Knowledge to Cash Blueprint',
-          to: BLUEPRINT_LANDING_PATH,
-        },
+      ],
+    },
+    {
+      id: 'deliverable-format',
+      question: 'What format is the deliverable?',
+      answer: [
         {
           type: 'text',
           value:
-            ' when you are ready to map the full path from stranger to retained high-ticket client across 14 layers. Book a ',
+            'A structured digital document covering all 13 blocks: pipelines, workflows, automations, AI map, integrations, build priorities, and line-item pricing. You own it permanently.',
         },
-        {
-          type: 'link',
-          value: 'strategy call',
-          to: STRATEGY_CALL_PATH,
-        },
+      ],
+    },
+    {
+      id: 'deliverable-timeline',
+      question: 'How long until I receive the completed audit?',
+      answer: [
         {
           type: 'text',
-          value: ' when you want the system installed for you instead of DIY.',
+          value:
+            'The live audit session maps everything in real time. The polished Master Audit deliverable follows within a few business days after the session.',
+        },
+      ],
+    },
+    {
+      id: 'qualifying-call-cost',
+      question: 'What does the qualifying call cost?',
+      answer: [
+        {
+          type: 'text',
+          value: 'Nothing. It\u2019s 15 minutes. No pitch. You leave with clarity either way.',
         },
       ],
     },
     {
       id: 'who-for',
-      question: 'Who is this for?',
+      question: 'What types of businesses do you work with?',
       answer: [
         {
           type: 'text',
           value:
-            'Coaches, consultants, and skill-based experts who sell transformation, advice, or high-trust services and need strangers to trust them and book calls. If your pain is offer clarity, capture, follow-up, or an inconsistent calendar, we are probably a fit. A free strategy call is the fastest way to confirm.',
+            'Owner-operated businesses generating real revenue that have outgrown how they currently operate. Industry doesn\u2019t matter as much as growth stage. If everything still runs through you and growth feels like it\u2019s adding weight instead of momentum, this is built for you.',
         },
       ],
     },
     {
-      id: 'strategy-call',
-      question: 'What happens on the free strategy call?',
+      id: 'full-build-cost',
+      question: 'How much does a full build cost?',
       answer: [
         {
           type: 'text',
           value:
-            'About 30 minutes on where your path breaks: offer, capture, follow-up, or consistency. You leave with a clear read on whether the workbook, Blueprint, or a done-for-you build is the right next move. No hard pitch. If we work together, that becomes a concrete plan across sites, funnels, pipeline, and AI follow-up.',
+            'Builds range from $13,000 to $30,000+ depending on scope and complexity. The Master Audit maps the full cost before you commit to anything. ' +
+            AOF_BUILD_CREDIT_NOTE,
         },
       ],
     },
     {
       id: 'build-timeline',
-      question: 'How long does a done-for-you build take?',
+      question: 'How long does a build take?',
       answer: [
         {
           type: 'text',
           value:
-            'Most launches land in about 4 to 8 weeks depending on what we ship first: conversion-focused site, funnel pieces, AI follow-up, and integrations. Larger stacks can run 12 to 16 weeks. On your strategy call we map which step of your path is broken and sequence the work so you see momentum early.',
+            'Depends on scope. The Master Audit will give you a realistic timeline before any work begins.',
         },
       ],
     },
     {
-      id: 'blueprint',
-      question: 'What is the Knowledge to Cash Blueprint?',
+      id: 'knowledge-to-cash',
+      question: 'What about the Knowledge to Cash Blueprint?',
       answer: [
         {
           type: 'text',
           value:
-            'A 48-page, 14-layer system for coaches and experts that maps the full journey from stranger to retained high-ticket client: offer, capture, nurture, booking, delivery, and retention. It is a one-time $29.97 purchase with instant access. See the full breakdown on the ',
+            'That\u2019s a separate product for coaches and skill-based experts looking to package their knowledge into a sellable offer. If that\u2019s you, it\u2019s available on the ',
         },
         {
           type: 'link',
@@ -117,49 +151,17 @@ export const HOME_FAQ = {
         },
         {
           type: 'text',
-          value: '.',
-        },
-      ],
-    },
-    {
-      id: 'workbook',
-      question: 'What is the Offer Kickstart Workbook?',
-      answer: [
-        {
-          type: 'text',
           value:
-            'A free 23-page workbook that walks you through the offer framework section by section so you finish with a completed offer draft, not more notes. No credit card. Grab it on the ',
+            '. If you\u2019re a business owner with existing revenue and broken operations, the AOF System is the right conversation. ',
         },
         {
           type: 'link',
-          value: 'workbook page',
-          to: `${WORKBOOK_LANDING_PATH}#get-workbook`,
+          value: 'Book a qualifying call',
+          to: STRATEGY_CALL_PATH,
         },
         {
           type: 'text',
-          value: '.',
-        },
-      ],
-    },
-    {
-      id: 'tech',
-      question: 'Do I need to be tech-savvy?',
-      answer: [
-        {
-          type: 'text',
-          value:
-            'No. You should not have to live inside your CRM to make money. I design for operators: clear workflows, sensible automations, and documentation so your team can run it. The goal is for the system to fade into the background so client experience stays front and center.',
-        },
-      ],
-    },
-    {
-      id: 'after-launch',
-      question: 'What if I need changes after launch?',
-      answer: [
-        {
-          type: 'text',
-          value:
-            'Businesses change and systems should evolve. After launch we can move into maintenance or ongoing support scoped to what you need: updates, new sequences, optimizations, and new funnel pieces. We agree cadence and scope up front so expectations stay clear.',
+          value: ' to find out.',
         },
       ],
     },
