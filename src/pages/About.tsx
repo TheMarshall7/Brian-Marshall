@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import AofDocumentCover from '../components/aof/AofDocumentCover'
+import ReserveAuditLink from '../components/aof/ReserveAuditLink'
 import Navigation from '../components/Navigation'
+import PageSeo from '../components/shared/PageSeo'
 import {
   ABOUT_AREOCLIENT,
   ABOUT_BIO_LINES,
@@ -255,11 +256,13 @@ export default function About() {
 
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden bg-neutral-950 text-neutral-300 selection:bg-red-500/30 selection:text-white">
-      <Helmet>
-        <title>{ABOUT_META.title}</title>
-        <meta name="description" content={ABOUT_META.description} />
-        <link rel="canonical" href="https://brianmarshall.dev/about" />
-      </Helmet>
+      <PageSeo
+        title={ABOUT_META.title}
+        description={ABOUT_META.description}
+        path="/about"
+        keywords={ABOUT_META.keywords}
+        imageAlt="Brian Marshall — Business Systems Architect"
+      />
 
       <div className="bg-grain" />
       <Navigation />
@@ -464,13 +467,16 @@ export default function About() {
                   <p className="section-eyebrow mb-2">{ABOUT_PATHS.aof.eyebrow}</p>
                   <p className="text-sm leading-relaxed text-neutral-300 md:text-base">{ABOUT_PATHS.aof.text}</p>
                 </div>
-                <Link
-                  to={ABOUT_PATHS.aof.path}
-                  className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-neutral-950 transition-all hover:bg-red-400"
-                >
-                  {ABOUT_PATHS.aof.cta}
-                  <iconify-icon icon="solar:arrow-right-linear" />
-                </Link>
+                <div className="flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap">
+                  <Link
+                    to={ABOUT_PATHS.aof.path}
+                    className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 px-6 py-3 text-sm font-medium text-white transition-all hover:border-red-500/30 hover:bg-white/5"
+                  >
+                    {ABOUT_PATHS.aof.cta}
+                    <iconify-icon icon="solar:arrow-right-linear" />
+                  </Link>
+                  <ReserveAuditLink source="about_aof_card" variant="primary" className="px-6 py-3" />
+                </div>
               </div>
               <div className="glass-panel flex flex-col items-start justify-between gap-6 rounded-2xl border border-white/10 p-6 md:p-8">
                 <div>
@@ -650,6 +656,7 @@ export default function About() {
                   {HOME_HERO.primaryCta}
                   <iconify-icon icon="solar:arrow-right-up-linear" />
                 </Link>
+                <ReserveAuditLink source="about_cta" className="px-9 py-4" />
                 <Link
                   to={AOF_LANDING_PATH}
                   className="glow-border inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.02] px-9 py-4 text-sm font-medium text-white transition-all hover:bg-white/[0.06]"
@@ -657,12 +664,12 @@ export default function About() {
                   {ABOUT_PATHS.aof.cta}
                   <iconify-icon icon="solar:document-text-linear" width="18" />
                 </Link>
-                <a
-                  href="/#work"
+                <Link
+                  to="/#work"
                   className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/[0.02] px-9 py-4 text-sm font-medium text-neutral-400 transition-all hover:border-white/20 hover:text-white"
                 >
                   See case studies
-                </a>
+                </Link>
               </div>
             </div>
           </div>

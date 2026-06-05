@@ -16,6 +16,7 @@ import {
   scoreSelfAudit,
 } from '../../constants/selfAudit'
 import { track } from '../../lib/track'
+import ReserveAuditLink from './ReserveAuditLink'
 
 type Step = 'quiz' | 'result' | 'gate' | 'done'
 
@@ -313,7 +314,7 @@ export default function SelfAuditQuiz() {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-3 sm:flex-row">
+              <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <button
                   type="button"
                   onClick={() => setStep('gate')}
@@ -322,6 +323,7 @@ export default function SelfAuditQuiz() {
                   Email my results + Where to Start guide
                   <iconify-icon icon="solar:letter-linear" width="18" />
                 </button>
+                <ReserveAuditLink source="self_audit_results" className="flex-1 px-6 py-4" />
                 <button
                   type="button"
                   onClick={() => {

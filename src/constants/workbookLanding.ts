@@ -34,7 +34,9 @@ export type WorkbookLever = {
 export const WORKBOOK_LANDING = {
   title: 'The Offer Kickstart Workbook',
   metaDescription:
-    'Free Offer Kickstart Workbook: apply the offer framework section by section and walk away with a completed offer draft. Instant download, no credit card.',
+    'Free Offer Kickstart Workbook for coaches and experts: apply the offer framework section by section and finish with a sellable offer draft. 23 pages. Instant PDF download.',
+  metaKeywords:
+    'Offer Kickstart Workbook, free offer workbook, value equation, coach offer, Hormozi framework, lead magnet',
 
   hero: {
     badge: 'Free · Offer Kickstart Workbook · 23 Pages',

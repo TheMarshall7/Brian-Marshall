@@ -1,9 +1,11 @@
 import { BLUEPRINT_LANDING_PATH } from './site'
 
 export const CALENDAR_PAGE = {
-  title: 'Book Your Free Qualifying Call',
+  title: 'Free 15-Minute Qualifying Call',
   metaDescription:
-    'Free 15-minute qualifying call for owner-operated businesses with real revenue. Find where leads die, pipelines stall, and operations break under pressure, and whether the AOF Master Audit is the right next step.',
+    'Book a free 15-minute qualifying call for owner-operated businesses with real revenue. No pitch. Map where leads stall, pipelines break, and whether the $1,500 AOF Master Audit is your right next step.',
+  metaKeywords:
+    'free qualifying call, business systems consultation, AOF Master Audit, owner-operated business, operations diagnosis',
 
   eyebrow: 'Free qualifying call',
   headline: 'Book Your Free Qualifying Call',

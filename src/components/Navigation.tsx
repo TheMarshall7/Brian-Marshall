@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { AOF_LANDING_PATH } from '../constants/site'
+import { AOF_LANDING_PATH, STRATEGY_CALL_PATH } from '../constants/site'
+import { scrollToHashWhenReady } from '../lib/scrollToHash'
 
 export default function Navigation() {
   const location = useLocation()
@@ -19,13 +20,8 @@ export default function Navigation() {
         element.scrollIntoView({ behavior: 'smooth' })
       }
     } else {
-      navigate('/')
-      setTimeout(() => {
-        const element = document.querySelector(hash)
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' })
-        }
-      }, 100)
+      navigate({ pathname: '/', hash: hash.replace('#', '') })
+      setTimeout(() => scrollToHashWhenReady(hash), 100)
     }
   }
 
@@ -98,13 +94,14 @@ export default function Navigation() {
             >
               <iconify-icon icon={mobileOpen ? 'solar:close-circle-linear' : 'solar:hamburger-menu-linear'} width="22" />
             </button>
-            <button
-              onClick={() => handleHashLink('#contact')}
+            <Link
+              to={STRATEGY_CALL_PATH}
+              onClick={() => setMobileOpen(false)}
               className="mr-1 shrink-0 rounded-full bg-white px-3.5 py-2.5 text-xs font-medium text-black transition-all btn-shimmer hover:bg-red-400 hover:shadow-lg hover:shadow-red-500/20 sm:px-5 md:mr-0 md:px-6"
             >
-              <span className="hidden sm:inline">Contact</span>
-              <span className="sm:hidden">Call</span>
-            </button>
+              <span className="hidden sm:inline">Book free call</span>
+              <span className="sm:hidden">Free call</span>
+            </Link>
           </div>
         </nav>
       </div>
@@ -133,9 +130,9 @@ export default function Navigation() {
             <Link to="/shop" className={navLinkClass} onClick={() => setMobileOpen(false)}>
               Resources
             </Link>
-            <button type="button" onClick={() => handleHashLink('#contact')} className={`${navLinkClass} text-white`}>
-              Contact
-            </button>
+            <Link to={STRATEGY_CALL_PATH} className={`${navLinkClass} text-white`} onClick={() => setMobileOpen(false)}>
+              Book free call
+            </Link>
           </div>
         </div>
       </div>

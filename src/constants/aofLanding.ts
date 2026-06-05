@@ -1,15 +1,16 @@
 import {
   AOF_BUILD_CREDIT_DAYS,
   AOF_BUILD_CREDIT_NOTE,
-  AOF_LANDING_PATH,
-  AOF_PURCHASE_HASH,
+  AOF_PURCHASE_PATH,
   STRATEGY_CALL_PATH,
 } from './site'
 
 export const AOF_LANDING = {
-  title: 'AOF Master Audit',
+  title: 'AOF Master Audit · $1,500',
   metaDescription:
-    'The Automated Operations Framework Master Audit maps your entire business in 13 blocks: pipelines, workflows, AI, integrations, and full build pricing. $1,500. Developer-ready.',
+    'Book the AOF Master Audit: a fully custom 13-block operational blueprint of your business. Pipelines, workflows, AI, integrations, priorities, and line-item build pricing. $1,500. Developer-ready. You keep the document.',
+  metaKeywords:
+    'AOF Master Audit, operations audit, business systems blueprint, CRM pipeline design, workflow automation, $1500 business audit, owner-operated business',
 
   hero: {
     badge: 'The Fix',
@@ -21,7 +22,7 @@ export const AOF_LANDING = {
     qualifyCta: 'Book Your Free Qualifying Call',
     qualifyPath: STRATEGY_CALL_PATH,
     purchaseCta: 'Reserve Your Audit Session',
-    purchasePath: `${AOF_LANDING_PATH}${AOF_PURCHASE_HASH}`,
+    purchasePath: AOF_PURCHASE_PATH,
     trust: [
       { label: '13 diagnostic blocks', icon: 'solar:layers-minimalistic-linear' },
       { label: '6–8 hours of architecture', icon: 'solar:clock-circle-linear' },
@@ -72,6 +73,7 @@ export const AOF_LANDING = {
     subheadline: '$1,500 reserves your live audit session. Secure payment via GHL.',
     buildCreditNote: AOF_BUILD_CREDIT_NOTE,
     micro: '$1,500 · live audit session · you own the deliverable',
+    salesFinalNote: 'All sales final.',
     fallbackCta: 'Contact brian@areoclient.com',
     fallbackEmail: 'brian@areoclient.com',
   },

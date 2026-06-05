@@ -1,3 +1,4 @@
+import ReserveAuditLink from '../aof/ReserveAuditLink'
 import { HOME_ECONOMICS } from '../../constants/homeContent'
 
 export default function EconomicsSection() {
@@ -44,6 +45,10 @@ export default function EconomicsSection() {
               <p className="text-base leading-relaxed text-neutral-400">{card.text}</p>
             </div>
           ))}
+        </div>
+
+        <div className="mt-12 flex justify-center animate-on-scroll md:justify-start">
+          <ReserveAuditLink source="home_economics" variant="primary" />
         </div>
       </div>
     </section>

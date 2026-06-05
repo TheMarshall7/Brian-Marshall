@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import AofDocumentCover from '../aof/AofDocumentCover'
+import ReserveAuditLink from '../aof/ReserveAuditLink'
 import { AOF_PHASE_GROUPS } from '../../constants/aofMasterAudit'
 import { HOME_AOF_OFFER } from '../../constants/homeContent'
 import { ANALYTICS_EVENTS } from '../../constants/analytics'
@@ -87,6 +88,7 @@ export default function AofOfferSection() {
                   className="relative z-10 text-lg transition-transform duration-300 group-hover/download:translate-x-0.5 group-hover/download:scale-110"
                 />
               </Link>
+              <ReserveAuditLink source="home_aof" className="px-9 py-4" />
               <Link
                 to={HOME_AOF_OFFER.explorePath}
                 onClick={() => track(ANALYTICS_EVENTS.AOF_EXPLORE_CLICK, { source: 'home_aof' })}

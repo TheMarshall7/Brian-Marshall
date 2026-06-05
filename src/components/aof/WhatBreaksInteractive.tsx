@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { WHAT_BREAKS_SCENARIOS } from '../../constants/aofMasterAudit'
+import ReserveAuditLink from './ReserveAuditLink'
 
 type Props = {
   compact?: boolean
@@ -52,6 +53,10 @@ export default function WhatBreaksInteractive({ compact = false, className = '' 
           <span className="section-eyebrow mb-3 block text-base text-emerald-400/90">With AOF built</span>
           <p className="text-sm leading-relaxed text-neutral-300">{active.aofHandles}</p>
         </div>
+      </div>
+
+      <div className="mt-8 flex justify-center md:justify-start">
+        <ReserveAuditLink source={compact ? 'home_what_breaks' : 'aof_what_breaks'} />
       </div>
     </section>
   )

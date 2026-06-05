@@ -1,3 +1,4 @@
+import ReserveAuditLink from '../aof/ReserveAuditLink'
 import { HOME_PROBLEM } from '../../constants/homeContent'
 
 export default function ProblemSection() {
@@ -48,6 +49,10 @@ export default function ProblemSection() {
               <p className="relative text-base leading-relaxed text-neutral-300">{card.text}</p>
             </div>
           ))}
+        </div>
+
+        <div className="mt-12 flex justify-center animate-on-scroll md:justify-start">
+          <ReserveAuditLink source="home_problem" />
         </div>
       </div>
     </section>

@@ -1,7 +1,8 @@
 export const BLUEPRINT_CHECKOUT_PAGE = {
   title: 'Checkout',
   metaDescription:
-    'Secure checkout for the Knowledge to Cash Blueprint. One-time payment, instant PDF access.',
+    'Secure checkout for the Knowledge to Cash Blueprint ($29.97). One-time payment, instant PDF access for coaches building a Knowledge to Cash system.',
+  metaKeywords: 'Knowledge to Cash checkout, coach blueprint purchase, Brian Marshall',
   eyebrow: 'Secure checkout',
   headline: 'Complete your purchase',
   subheadline:

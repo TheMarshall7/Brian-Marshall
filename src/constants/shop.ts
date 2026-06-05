@@ -1,4 +1,4 @@
-import { AOF_BUILD_CREDIT_NOTE, AOF_DOCUMENT_COVER } from './site'
+import { AOF_BUILD_CREDIT_NOTE, AOF_DOCUMENT_COVER, AOF_PURCHASE_PATH } from './site'
 
 export type ShopProduct = {
   id: string
@@ -83,7 +83,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     footnote:
       'For owner-operated businesses with real revenue and broken operations. Not sure yet? Start with a free 15-minute qualifying call.',
     landingPath: '/aof',
-    purchasePath: '/aof#purchase',
+    purchasePath: AOF_PURCHASE_PATH,
     ctaLabel: 'Explore the Master Audit',
     purchaseCtaLabel: 'Reserve your session',
     badge: 'Master Audit',
@@ -136,6 +136,14 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
 export const SHOP_HEADLINE = 'Resources'
 export const SHOP_SUBHEADLINE =
   'Systems for owner-operated businesses, plus guides for coaches packaging knowledge into sellable offers.'
+
+export const SHOP_META = {
+  title: 'Resources',
+  description:
+    'Reserve the AOF Master Audit ($1,500) for owner-operated businesses, or get the free Offer Kickstart Workbook and Knowledge to Cash Blueprint for coaches.',
+  keywords:
+    'AOF Master Audit, business resources, Offer Kickstart Workbook, Knowledge to Cash Blueprint, operations audit, coach marketing',
+} as const
 
 export function getShopProduct(id: ShopProduct['id']): ShopProduct {
   const product = SHOP_PRODUCTS.find((p) => p.id === id)

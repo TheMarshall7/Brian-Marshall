@@ -9,5 +9,13 @@ export const DEFAULT_GHL_OFFER_WEBHOOK_URL =
  */
 export const DEFAULT_GHL_SELF_AUDIT_WEBHOOK_URL = DEFAULT_GHL_OFFER_WEBHOOK_URL
 
+/** Paid AOF Master Audit booking ($1,500) — not the free 15-min qualifying call on /calendar. */
+export const AOF_PURCHASE_BOOKING_WIDGET_ID = 'TgyppDdBCvkCzQMwZ2F2'
+
+export const DEFAULT_AOF_PURCHASE_WIDGET_SRC = `https://api.leadconnectorhq.com/widget/booking/${AOF_PURCHASE_BOOKING_WIDGET_ID}`
+
 /** GHL booking widget for AOF Master Audit purchase ($1,500). Override with VITE_AOF_PURCHASE_WIDGET_SRC. */
-export const AOF_PURCHASE_WIDGET_SRC = import.meta.env.VITE_AOF_PURCHASE_WIDGET_SRC?.trim() || ''
+export const AOF_PURCHASE_WIDGET_SRC =
+  import.meta.env.VITE_AOF_PURCHASE_WIDGET_SRC?.trim() || DEFAULT_AOF_PURCHASE_WIDGET_SRC
+
+export const GHL_FORM_EMBED_SCRIPT_SRC = 'https://link.msgsndr.com/js/form_embed.js'

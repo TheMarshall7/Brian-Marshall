@@ -808,6 +808,29 @@
       min-height: 1000px;
     }
   }
+
+  /* AOF paid booking on /aof#purchase — dark frame, no white card */
+  .aof-booking-embed {
+    background: transparent;
+    overflow: hidden;
+    width: 100%;
+    min-width: 0;
+    border: none;
+  }
+
+  .aof-booking-embed iframe {
+    min-height: 900px;
+    width: 100%;
+    display: block;
+    border: none;
+    background: transparent;
+  }
+
+  @media (min-width: 1024px) {
+    .aof-booking-embed iframe {
+      min-height: 1000px;
+    }
+  }
   
   /* Section-Level Depth Classes */
   section {
@@ -1720,21 +1743,51 @@
   animation-delay: -2s;
 }
 
+.shop-product-cover-img {
+  transition: transform 0.45s ease, filter 0.45s ease;
+}
+
+.shop-product--standard:hover .shop-product-cover-img {
+  transform: translateY(-6px) scale(1.02);
+  filter: drop-shadow(0 32px 56px rgba(0, 0, 0, 0.7));
+}
+
+.shop-product--featured:hover .shop-product-cover-img {
+  transform: translateY(-4px) scale(1.015);
+}
+
 .shop-product-card {
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s ease;
 }
 
-.shop-product:hover .shop-product-card {
-  border-color: rgba(255, 255, 255, 0.16);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+.shop-product--standard:hover .shop-product-card {
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 20px 56px rgba(0, 0, 0, 0.45),
+    0 0 40px rgba(239, 68, 68, 0.06);
+  transform: translateY(-2px);
 }
 
-.shop-product-cover img {
-  transition: transform 0.4s ease;
+.shop-product-featured-panel {
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
-.shop-product:hover .shop-product-cover img {
-  transform: scale(1.02) translateY(-4px);
+.shop-section-label {
+  max-width: 100%;
+}
+
+.shop-product-bullets li {
+  transition: color 0.2s ease;
+}
+
+.shop-product--standard:hover .shop-product-bullets li span:last-child,
+.shop-product--featured:hover .shop-product-bullets li span:last-child {
+  color: rgb(212 212 212);
 }
 
 .blueprint-page .blueprint-section + .blueprint-section,

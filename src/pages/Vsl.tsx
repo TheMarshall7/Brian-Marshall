@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import VslCloser from '../components/vsl/VslCloser'
@@ -31,10 +30,6 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
 export default function Vsl() {
   useScrollAnimation()
-
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
 
   const scrollToOffers = () => {
     document.getElementById('offers')?.scrollIntoView({ behavior: 'smooth' })

@@ -1,16 +1,18 @@
-import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import { HOME_CONTACT, HOME_HERO, HOME_META } from '../constants/homeContent'
 import { STRATEGY_CALL_PATH } from '../constants/site'
 import CaseStudyMediaBand from '../components/CaseStudyMediaBand'
 import AofDocumentCover from '../components/aof/AofDocumentCover'
 import AofRiskReversal from '../components/aof/AofRiskReversal'
+import ReserveAuditLink from '../components/aof/ReserveAuditLink'
 import WhatBreaksInteractive from '../components/aof/WhatBreaksInteractive'
 import AofOfferSection from '../components/home/AofOfferSection'
 import EconomicsSection from '../components/home/EconomicsSection'
 import ProblemSection from '../components/home/ProblemSection'
 import Navigation from '../components/Navigation'
+import PageSeo from '../components/shared/PageSeo'
 import StickyCallBar from '../components/shared/StickyCallBar'
+import { SITE_URL } from '../constants/siteSeo'
 import { ANALYTICS_EVENTS } from '../constants/analytics'
 import { track } from '../lib/track'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
@@ -36,48 +38,25 @@ export default function Home() {
 
   return (
     <div className="mobile-safe-bottom bg-neutral-950 text-neutral-300 relative min-h-screen w-full overflow-x-hidden selection:bg-red-500/30 selection:text-white">
-      <Helmet>
-        <title>{HOME_META.title}</title>
-        <meta name="description" content={HOME_META.description} />
-        <meta name="keywords" content={HOME_META.keywords} />
-        <meta name="author" content="Brian Marshall" />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://brianmarshall.dev/" />
-        
-        {/* Open Graph */}
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://brianmarshall.dev/" />
-        <meta property="og:title" content={HOME_META.title} />
-        <meta property="og:description" content={HOME_META.description} />
-        <meta property="og:image" content="https://storage.googleapis.com/msgsndr/F1J2yvd2AUT4owDs9EPl/media/6970477bd4fb90ebccb8a72c.png" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:site_name" content="Brian Marshall" />
-        <meta property="og:locale" content="en_US" />
-        
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={HOME_META.title} />
-        <meta name="twitter:description" content={HOME_META.description} />
-        <meta name="twitter:image" content="https://storage.googleapis.com/msgsndr/F1J2yvd2AUT4owDs9EPl/media/6970477bd4fb90ebccb8a72c.png" />
-        
-        {/* Structured Data */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "ProfessionalService",
-            "name": HOME_META.serviceName,
-            "description": HOME_META.description,
-            "url": "https://brianmarshall.dev",
-            "email": "brian@areoclient.com",
-            "priceRange": HOME_META.priceRange,
-            "areaServed": "Worldwide",
-            "serviceType": HOME_META.serviceType,
-            "knowsAbout": HOME_META.knowsAbout,
-            "sameAs": ["https://www.linkedin.com/in/brianmarshallca/"]
-          })}
-        </script>
-      </Helmet>
+      <PageSeo
+        title={HOME_META.title}
+        description={HOME_META.description}
+        path="/"
+        keywords={HOME_META.keywords}
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'ProfessionalService',
+          name: HOME_META.serviceName,
+          description: HOME_META.description,
+          url: SITE_URL,
+          email: 'brian@areoclient.com',
+          priceRange: HOME_META.priceRange,
+          areaServed: 'Worldwide',
+          serviceType: HOME_META.serviceType,
+          knowsAbout: HOME_META.knowsAbout,
+          sameAs: ['https://www.linkedin.com/in/brianmarshallca/'],
+        }}
+      />
 
       <div className="bg-grain"></div>
       <Navigation />
@@ -150,6 +129,10 @@ export default function Home() {
                   {HOME_HERO.primaryCta}
                   <iconify-icon icon="solar:arrow-right-up-linear" className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></iconify-icon>
                 </Link>
+                <ReserveAuditLink
+                  source="home_hero"
+                  className="w-full rounded-xl px-9 py-4 text-[0.9375rem] sm:w-auto md:px-10 md:py-[1.125rem]"
+                />
                 <a href={HOME_HERO.secondaryHref} className="flex w-full items-center justify-center gap-2 rounded-xl glass-panel px-9 py-4 text-[0.9375rem] font-medium text-white transition-all glow-border hover:bg-white/10 sm:w-auto md:px-10 md:py-[1.125rem]">
                   {HOME_HERO.secondaryCta}
                 </a>
@@ -261,13 +244,16 @@ export default function Home() {
           <div className="mt-16 text-center animate-on-scroll">
             <p className="mb-2 text-lg text-neutral-300">{processCopy.cta.question}</p>
             <p className="mb-8 text-base text-neutral-400">{processCopy.cta.sub}</p>
-            <Link
-              to={processCopy.cta.path}
-              className="cta-primary inline-flex w-full max-w-md items-center justify-center gap-2 rounded-lg bg-white px-6 py-4 text-sm font-medium text-neutral-950 transition-all btn-shimmer hover:bg-red-400 hover:shadow-lg hover:shadow-red-500/30 sm:w-auto sm:px-8"
-            >
-              {processCopy.cta.label}
-              <iconify-icon icon="solar:arrow-right-linear" width="18" />
-            </Link>
+            <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
+              <Link
+                to={processCopy.cta.path}
+                className="cta-primary inline-flex w-full max-w-md items-center justify-center gap-2 rounded-lg bg-white px-6 py-4 text-sm font-medium text-neutral-950 transition-all btn-shimmer hover:bg-red-400 hover:shadow-lg hover:shadow-red-500/30 sm:w-auto sm:px-8"
+              >
+                {processCopy.cta.label}
+                <iconify-icon icon="solar:arrow-right-linear" width="18" />
+              </Link>
+              <ReserveAuditLink source="home_process_cta" className="w-full max-w-md rounded-lg sm:w-auto" />
+            </div>
           </div>
 
           <span className="section-eyebrow mb-6 mt-20 block text-neutral-500 animate-on-scroll">
@@ -668,7 +654,11 @@ export default function Home() {
               If you want screenshots, I'll show you. <br />
               <span className="text-white">If you care about outcomes, this is the part that matters.</span>
             </p>
-            <Link to={STRATEGY_CALL_PATH} className="inline-flex items-center gap-2 px-8 py-4 bg-white text-neutral-950 rounded-lg text-sm font-medium hover:bg-red-400 transition-all btn-shimmer hover:shadow-lg hover:shadow-red-500/30 mt-8">
+            <Link
+              to={STRATEGY_CALL_PATH}
+              onClick={() => track(ANALYTICS_EVENTS.QUALIFYING_CALL_CLICK, { source: 'home_work' })}
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-neutral-950 rounded-lg text-sm font-medium hover:bg-red-400 transition-all btn-shimmer hover:shadow-lg hover:shadow-red-500/30 mt-8"
+            >
               {HOME_HERO.primaryCta}
               <iconify-icon icon="solar:arrow-right-up-linear"></iconify-icon>
             </Link>
@@ -760,13 +750,14 @@ export default function Home() {
               Learn more about me
               <iconify-icon icon="solar:arrow-right-linear" />
             </Link>
-            <a
-              href="#contact"
+            <Link
+              to={STRATEGY_CALL_PATH}
+              onClick={() => track(ANALYTICS_EVENTS.QUALIFYING_CALL_CLICK, { source: 'home_about' })}
               className="cta-primary inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 text-sm font-medium text-neutral-950 transition-all hover:bg-red-400 btn-shimmer hover:shadow-lg hover:shadow-red-500/30"
             >
               {HOME_HERO.primaryCta}
               <iconify-icon icon="solar:arrow-right-up-linear" />
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -820,11 +811,14 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col items-center gap-8 animate-on-scroll delay-400">
-            <Link to={HOME_CONTACT.ctaPath} className="cta-primary group relative flex w-full max-w-sm items-center justify-center gap-3 rounded-full bg-white px-8 py-4 text-sm font-medium text-black transition-all duration-300 btn-shimmer hover:bg-red-400 hover:shadow-[0_0_30px_rgba(239,68,68,0.5)] sm:w-auto sm:max-w-none sm:px-10">
-              <iconify-icon icon="solar:calendar-linear" className="text-lg group-hover:scale-110 transition-transform"></iconify-icon>
-              {HOME_CONTACT.cta}
-              <iconify-icon icon="solar:arrow-right-up-linear" className="opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all"></iconify-icon>
-            </Link>
+            <div className="flex w-full max-w-md flex-col items-center gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center">
+              <Link to={HOME_CONTACT.ctaPath} className="cta-primary group relative flex w-full items-center justify-center gap-3 rounded-full bg-white px-8 py-4 text-sm font-medium text-black transition-all duration-300 btn-shimmer hover:bg-red-400 hover:shadow-[0_0_30px_rgba(239,68,68,0.5)] sm:w-auto sm:px-10">
+                <iconify-icon icon="solar:calendar-linear" className="text-lg group-hover:scale-110 transition-transform"></iconify-icon>
+                {HOME_CONTACT.cta}
+                <iconify-icon icon="solar:arrow-right-up-linear" className="opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all"></iconify-icon>
+              </Link>
+              <ReserveAuditLink source="home_contact" className="w-full sm:w-auto" />
+            </div>
 
             <a href={`mailto:${HOME_CONTACT.email}`} className="group text-xl md:text-2xl text-neutral-400 font-medium transition-all duration-300 relative hover:text-white">
               <span className="relative z-10">{HOME_CONTACT.email}</span>

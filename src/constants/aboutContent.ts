@@ -1,9 +1,11 @@
 import { AOF_LANDING_PATH } from './site'
 
 export const ABOUT_META = {
-  title: 'About · Brian Marshall',
+  title: 'About',
   description:
-    'Business Systems Architect: AOF Master Audit, operations mapping, CRM, automation, AI, and infrastructure for owner-operated businesses with real revenue.',
+    'Brian Marshall is a Business Systems Architect. He maps owner-operated businesses across 13 AOF blocks, then builds CRM, automation, AI, and integration infrastructure that scales without the owner in every loop.',
+  keywords:
+    'Brian Marshall, business systems architect, AOF Master Audit, operations mapping, CRM automation, AreoClient',
 } as const
 
 export const ABOUT_ROLE_TITLE = 'Brian Marshall'

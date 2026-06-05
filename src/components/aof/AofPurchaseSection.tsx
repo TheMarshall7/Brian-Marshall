@@ -1,4 +1,9 @@
-import { AOF_PURCHASE_WIDGET_SRC } from '../../constants/ghl'
+import { useEffect } from 'react'
+import {
+  AOF_PURCHASE_BOOKING_WIDGET_ID,
+  AOF_PURCHASE_WIDGET_SRC,
+  GHL_FORM_EMBED_SCRIPT_SRC,
+} from '../../constants/ghl'
 import { AOF_LANDING } from '../../constants/aofLanding'
 import AofDocumentCover from './AofDocumentCover'
 import AofRiskReversal from './AofRiskReversal'
@@ -6,6 +11,15 @@ import AofRiskReversal from './AofRiskReversal'
 export default function AofPurchaseSection() {
   const copy = AOF_LANDING.purchase
   const widgetReady = Boolean(AOF_PURCHASE_WIDGET_SRC)
+
+  useEffect(() => {
+    if (!widgetReady) return
+    if (document.querySelector(`script[src="${GHL_FORM_EMBED_SCRIPT_SRC}"]`)) return
+    const script = document.createElement('script')
+    script.src = GHL_FORM_EMBED_SCRIPT_SRC
+    script.async = true
+    document.body.appendChild(script)
+  }, [widgetReady])
 
   return (
     <section id="purchase" className="scroll-mt-28 border-t border-white/5 py-16 md:py-24">
@@ -23,13 +37,17 @@ export default function AofPurchaseSection() {
       </div>
 
       {widgetReady ? (
-        <div className="calendar-container mb-10 w-full">
+        <div className="mb-10 w-full">
+          <p className="mb-3 text-center text-[11px] text-neutral-600 md:text-left">{copy.salesFinalNote}</p>
+          <div className="aof-booking-embed w-full overflow-hidden">
           <iframe
             src={AOF_PURCHASE_WIDGET_SRC}
-            style={{ width: '100%', border: 'none', minHeight: '800px', display: 'block' }}
-            scrolling="yes"
-            title="Book AOF Master Audit session"
+            style={{ width: '100%', border: 'none', minHeight: '800px', display: 'block', overflow: 'hidden' }}
+            scrolling="no"
+            id={`${AOF_PURCHASE_BOOKING_WIDGET_ID}_aof_purchase`}
+            title="Book and pay for AOF Master Audit session"
           />
+          </div>
         </div>
       ) : (
         <div className="glass-panel mb-10 rounded-2xl border border-white/10 p-8 text-center">

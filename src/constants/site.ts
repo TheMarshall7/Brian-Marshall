@@ -4,6 +4,8 @@ export const STRATEGY_CALL_PATH = '/calendar'
 /** AOF Master Audit landing and purchase */
 export const AOF_LANDING_PATH = '/aof'
 export const AOF_PURCHASE_HASH = '#purchase'
+export const AOF_PURCHASE_PATH = `${AOF_LANDING_PATH}${AOF_PURCHASE_HASH}`
+export const AOF_RESERVE_AUDIT_CTA = 'Reserve Your Audit Session'
 export const AOF_DOCUMENT_COVER = '/AOF-Document-Cover.png'
 /** Laying-down variant for sub-sections (deliverables, sample, purchase, etc.) */
 export const AOF_DOCUMENT_COVER_FLAT = '/AOF-Document-Cover-Flat.png'

@@ -1,4 +1,5 @@
 import { Navigate, Routes, Route } from 'react-router-dom'
+import ScrollManager from './components/shared/ScrollManager'
 import Home from './pages/Home'
 import Aof from './pages/Aof'
 import Calendar from './pages/Calendar'
@@ -13,6 +14,7 @@ import { STRATEGY_CALL_PATH, VSL_ENABLED } from './constants/site'
 function App() {
   return (
     <div className="bg-neutral-950 min-h-screen">
+      <ScrollManager />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/aof" element={<Aof />} />

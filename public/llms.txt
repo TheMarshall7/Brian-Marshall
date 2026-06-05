@@ -1,0 +1,32 @@
+# Brian Marshall
+
+> Business Systems Architect for owner-operated businesses with real revenue and broken backends. Free 15-minute qualifying call, then the $1,500 AOF Master Audit maps operations in 13 blocks before anything gets built. Implementation covers CRM, automation, AI, integrations, and funnels.
+
+Brian Marshall (brian@areoclient.com) is founder of AreoClient. Primary audience: owner-operated businesses generating real revenue that have outgrown manual operations. Secondary resources target coaches packaging expertise into offers.
+
+## Primary funnel
+
+- [Home](https://brianmarshall.dev/): Positioning, problem, AOF teaser, process, economics, case studies, FAQ, contact
+- [AOF Master Audit](https://brianmarshall.dev/aof): Full 13-block framework, stress-test scenarios, sample audit preview, self-audit quiz, paid booking at purchase section ($1,500)
+- [Reserve AOF session](https://brianmarshall.dev/aof#purchase): GHL paid booking calendar for the Master Audit
+- [Free qualifying call](https://brianmarshall.dev/calendar): 15-minute call, no pitch, optional pre-call qualifier
+
+## About and proof
+
+- [About](https://brianmarshall.dev/about): Business Systems Architect background, credentials, systems experience
+- [Resources](https://brianmarshall.dev/shop): AOF Master Audit card plus coach products
+
+## Coach resources (secondary)
+
+- [Offer Kickstart Workbook](https://brianmarshall.dev/workbook): Free 23-page offer workbook (email opt-in)
+- [Knowledge to Cash Blueprint](https://brianmarshall.dev/blueprint): $29.97 PDF guide for coaches (14 layers, 90-day path)
+
+## Key documents
+
+- [AOF Where to Start PDF](https://brianmarshall.dev/AOF-Where-To-Start.pdf): Lead magnet companion after self-audit
+- [AOF document cover](https://brianmarshall.dev/AOF-Document-Cover.png): Primary product visual
+
+## Optional
+
+- [Full site context for AI](https://brianmarshall.dev/llms-full.txt): Funnel, 13 blocks, pricing, implementation scope
+- [LinkedIn](https://www.linkedin.com/in/brianmarshallca/)

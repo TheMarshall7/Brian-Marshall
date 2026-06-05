@@ -1,6 +1,7 @@
 import { AOF_MASTER_BLOCKS } from '../../constants/aofMasterAudit'
 import { AOF_LANDING } from '../../constants/aofLanding'
 import AofDocumentCover from './AofDocumentCover'
+import ReserveAuditLink from './ReserveAuditLink'
 
 export default function AofSamplePreview() {
   const featured = AOF_MASTER_BLOCKS.find((b) => b.id === AOF_LANDING.sample.featuredBlockId) ?? AOF_MASTER_BLOCKS[2]
@@ -58,6 +59,10 @@ export default function AofSamplePreview() {
             Mapped to your business during the live audit session
           </p>
         </div>
+      </div>
+
+      <div className="mt-10 flex justify-center md:justify-start">
+        <ReserveAuditLink source="aof_sample_preview" variant="primary" />
       </div>
     </section>
   )

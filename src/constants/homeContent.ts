@@ -1,13 +1,13 @@
 import { AOF_BUILD_CREDIT_NOTE, AOF_LANDING_PATH, STRATEGY_CALL_PATH } from './site'
 
 export const HOME_META = {
-  title: 'Brian Marshall · Business Systems Architect',
+  title: 'Business Systems Architect · AOF Master Audit',
   description:
-    'I find exactly where your business is losing money, map the full operational blueprint, and build the infrastructure that fixes it.',
+    'For owner-operated businesses with real revenue and broken backends. Free 15-minute qualifying call, then the $1,500 AOF Master Audit maps your operations in 13 blocks before anything gets built.',
   keywords:
-    'business systems, operations framework, automation, CRM, AI implementation, pipeline architecture, business infrastructure',
-  serviceName: 'Brian Marshall · Business Systems Architect',
-  priceRange: '$1.5K to $30K+',
+    'AOF Master Audit, business systems architect, operations audit, owner-operated business, CRM pipeline, workflow automation, AI implementation, qualifying call, business infrastructure',
+  serviceName: 'Brian Marshall — Business Systems Architect',
+  priceRange: '$1,500 audit · builds from $5K+',
   serviceType: [
     'Business Systems Architecture',
     'CRM & Pipeline Design',

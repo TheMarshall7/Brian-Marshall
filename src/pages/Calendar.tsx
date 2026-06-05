@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
-import { Helmet } from 'react-helmet-async'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import PreCallQualifier from '../components/calendar/PreCallQualifier'
 import Navigation from '../components/Navigation'
+import PageSeo from '../components/shared/PageSeo'
 import { CALENDAR_PAGE } from '../constants/calendar'
 import { HOME_CONTACT } from '../constants/homeContent'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
@@ -13,24 +13,15 @@ export default function Calendar() {
   useScrollAnimation()
   const [showCalendar, setShowCalendar] = useState(false)
 
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
-
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden bg-neutral-950 text-neutral-300 selection:bg-red-500/30 selection:text-white">
-      <Helmet>
-        <title>{copy.title} | Brian Marshall</title>
-        <meta name="description" content={copy.metaDescription} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://brianmarshall.dev/calendar" />
-        <meta property="og:title" content={`${copy.title} | Brian Marshall`} />
-        <meta property="og:description" content={copy.metaDescription} />
-        <meta property="og:image" content="https://storage.googleapis.com/msgsndr/F1J2yvd2AUT4owDs9EPl/media/6970477bd4fb90ebccb8a72c.png" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`${copy.title} | Brian Marshall`} />
-        <meta name="twitter:description" content={copy.metaDescription} />
-      </Helmet>
+      <PageSeo
+        title={copy.title}
+        description={copy.metaDescription}
+        path="/calendar"
+        keywords={copy.metaKeywords}
+        imageAlt="Book a free qualifying call with Brian Marshall"
+      />
 
       <div className="bg-grain" aria-hidden />
       <Navigation />

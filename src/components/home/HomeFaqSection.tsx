@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import ReserveAuditLink from '../aof/ReserveAuditLink'
 import { HOME_FAQ, type HomeFaqAnswerPart } from '../../constants/homeFaq'
 
 function FaqAnswer({ parts }: { parts: readonly HomeFaqAnswerPart[] }) {
@@ -89,13 +90,16 @@ export default function HomeFaqSection({ className = '' }: Props) {
         <div className="mt-16 animate-on-scroll text-center">
           <p className="mb-6 text-xl text-white">{copy.cta.question}</p>
           <p className="mx-auto mb-8 max-w-lg text-base text-neutral-400">{copy.cta.sub}</p>
-          <Link
-            to={copy.cta.path}
-            className="cta-primary inline-flex w-full max-w-md items-center justify-center gap-2 rounded-lg bg-white px-6 py-4 text-sm font-medium text-neutral-950 transition-all btn-shimmer hover:bg-red-400 hover:shadow-lg hover:shadow-red-500/30 sm:w-auto sm:px-10"
-          >
-            {copy.cta.label}
-            <iconify-icon icon="solar:arrow-right-up-linear" />
-          </Link>
+          <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
+            <Link
+              to={copy.cta.path}
+              className="cta-primary inline-flex w-full max-w-md items-center justify-center gap-2 rounded-lg bg-white px-6 py-4 text-sm font-medium text-neutral-950 transition-all btn-shimmer hover:bg-red-400 hover:shadow-lg hover:shadow-red-500/30 sm:w-auto sm:px-10"
+            >
+              {copy.cta.label}
+              <iconify-icon icon="solar:arrow-right-up-linear" />
+            </Link>
+            <ReserveAuditLink source="home_faq" className="w-full max-w-md rounded-lg sm:w-auto" />
+          </div>
         </div>
       </div>
     </section>

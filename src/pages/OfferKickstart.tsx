@@ -1,7 +1,6 @@
-import { useEffect } from 'react'
-import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import Navigation from '../components/Navigation'
+import PageSeo from '../components/shared/PageSeo'
 import BlueprintSection from '../components/blueprint/BlueprintSection'
 import WorkbookFaq from '../components/workbook/WorkbookFaq'
 import WorkbookInsideGrid from '../components/workbook/WorkbookInsideGrid'
@@ -21,17 +20,15 @@ const copy = WORKBOOK_LANDING
 export default function OfferKickstart() {
   useScrollAnimation()
 
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
-
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden bg-neutral-950 text-neutral-300 selection:bg-red-500/30 selection:text-white">
-      <Helmet>
-        <title>{copy.title} | Brian Marshall</title>
-        <meta name="description" content={copy.metaDescription} />
-        <link rel="canonical" href="https://brianmarshall.dev/workbook" />
-      </Helmet>
+      <PageSeo
+        title={copy.title}
+        description={copy.metaDescription}
+        path="/workbook"
+        keywords={copy.metaKeywords}
+        imageAlt="Offer Kickstart Workbook cover"
+      />
 
       <div className="bg-grain" aria-hidden />
       <Navigation />

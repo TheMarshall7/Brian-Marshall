@@ -72,7 +72,9 @@ export function blueprintLayerDisplayNumber(id: string): string {
 
 export const BLUEPRINT_LANDING = {
   metaDescription:
-    'The Knowledge to Cash Blueprint maps every step from stranger to retained high-ticket client in 90 days. 14 layers. 48 pages. Instant PDF download.',
+    'Knowledge to Cash Blueprint for coaches: map every step from stranger to retained high-ticket client in 90 days. 14 layers, 48 pages, $29.97 instant PDF.',
+  metaKeywords:
+    'Knowledge to Cash Blueprint, coach funnel, high-ticket coaching, lead nurture, CRM pipeline, coach marketing system',
 
   hero: {
     badge: '48 Pages · 14 Layers · v9',

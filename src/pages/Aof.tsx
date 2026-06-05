@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import AofBlockGrid from '../components/aof/AofBlockGrid'
 import AofDocumentCover from '../components/aof/AofDocumentCover'
@@ -7,13 +6,15 @@ import AofFaq from '../components/aof/AofFaq'
 import AofPhaseTimeline from '../components/aof/AofPhaseTimeline'
 import AofPurchaseSection from '../components/aof/AofPurchaseSection'
 import AofSamplePreview from '../components/aof/AofSamplePreview'
+import ReserveAuditLink from '../components/aof/ReserveAuditLink'
 import SelfAuditQuiz from '../components/aof/SelfAuditQuiz'
 import WhatBreaksInteractive from '../components/aof/WhatBreaksInteractive'
 import Navigation from '../components/Navigation'
+import PageSeo from '../components/shared/PageSeo'
 import StickyCallBar from '../components/shared/StickyCallBar'
 import { AOF_LANDING } from '../constants/aofLanding'
-import { AOF_DOCUMENT_COVER } from '../constants/site'
 import { ANALYTICS_EVENTS } from '../constants/analytics'
+import { SITE_URL } from '../constants/siteSeo'
 import { track } from '../lib/track'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
@@ -23,7 +24,6 @@ export default function Aof() {
   useScrollAnimation()
 
   useEffect(() => {
-    window.scrollTo(0, 0)
     track(ANALYTICS_EVENTS.AOF_PAGE_VIEW)
   }, [])
 
@@ -32,6 +32,7 @@ export default function Aof() {
     '@type': 'Service',
     name: 'AOF Master Audit',
     description: copy.metaDescription,
+    url: `${SITE_URL}/aof`,
     provider: { '@type': 'Person', name: 'Brian Marshall' },
     areaServed: 'Worldwide',
     offers: {
@@ -44,21 +45,14 @@ export default function Aof() {
 
   return (
     <div className="mobile-safe-bottom relative min-h-screen w-full overflow-x-hidden bg-neutral-950 text-neutral-300 selection:bg-red-500/30 selection:text-white">
-      <Helmet>
-        <title>{copy.title} | Brian Marshall</title>
-        <meta name="description" content={copy.metaDescription} />
-        <link rel="canonical" href="https://brianmarshall.dev/aof" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://brianmarshall.dev/aof" />
-        <meta property="og:title" content={`${copy.title} | Brian Marshall`} />
-        <meta property="og:description" content={copy.metaDescription} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`${copy.title} | Brian Marshall`} />
-        <meta name="twitter:description" content={copy.metaDescription} />
-        <meta property="og:image" content={`https://brianmarshall.dev${AOF_DOCUMENT_COVER}`} />
-        <meta name="twitter:image" content={`https://brianmarshall.dev${AOF_DOCUMENT_COVER}`} />
-        <script type="application/ld+json">{JSON.stringify(schema)}</script>
-      </Helmet>
+      <PageSeo
+        title={copy.title}
+        description={copy.metaDescription}
+        path="/aof"
+        keywords={copy.metaKeywords}
+        imageAlt="AOF Master Audit document cover"
+        jsonLd={schema}
+      />
 
       <div className="bg-grain" aria-hidden />
       <Navigation />
@@ -100,13 +94,7 @@ export default function Aof() {
                   {copy.hero.qualifyCta}
                   <iconify-icon icon="solar:arrow-right-linear" />
                 </Link>
-                <a
-                  href={copy.hero.purchasePath}
-                  onClick={() => track(ANALYTICS_EVENTS.AOF_PURCHASE_CLICK, { source: 'aof_hero' })}
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 px-8 py-4 text-sm font-medium text-white hover:border-red-500/30 hover:bg-white/5"
-                >
-                  {copy.hero.purchaseCta}
-                </a>
+                <ReserveAuditLink source="aof_hero" className="px-8 py-4" />
               </div>
               <ul className="mt-8 flex flex-wrap gap-3">
                 {copy.hero.trust.map((item) => (
@@ -182,6 +170,9 @@ export default function Aof() {
                 </div>
               ))}
             </div>
+            <div className="mt-10 flex justify-center md:justify-start">
+              <ReserveAuditLink source="aof_deliverables" variant="primary" />
+            </div>
           </section>
 
           {/* Process */}
@@ -213,12 +204,15 @@ export default function Aof() {
           <section className="border-t border-white/5 py-16 text-center">
             <h2 className="mb-4 text-2xl font-medium text-white">{copy.finalCta.headline}</h2>
             <p className="mb-8 text-neutral-400">{copy.finalCta.subheadline}</p>
-            <Link
-              to={copy.finalCta.path}
-              className="cta-primary inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-medium text-neutral-950 btn-shimmer hover:bg-red-400"
-            >
-              {copy.finalCta.label}
-            </Link>
+            <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
+              <Link
+                to={copy.finalCta.path}
+                className="cta-primary inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-medium text-neutral-950 btn-shimmer hover:bg-red-400"
+              >
+                {copy.finalCta.label}
+              </Link>
+              <ReserveAuditLink source="aof_final_cta" />
+            </div>
           </section>
         </div>
       </main>

@@ -1,0 +1,51 @@
+# Brian Marshall — Business Systems Architect
+
+> I find exactly where your business is losing money, map the full operational blueprint, and build the infrastructure that fixes it. For owner-operated businesses with real revenue.
+
+## Who this is for
+
+Owner-operated businesses generating real revenue that have outgrown how they currently operate. Not for early-stage idea validation or coach-only offer packaging (see coach resources below).
+
+## Funnel
+
+1. **Free 15-minute qualifying call** — https://brianmarshall.dev/calendar — No pitch. Diagnose where the business breaks. Clarity either way.
+2. **AOF Master Audit — $1,500** — https://brianmarshall.dev/aof#purchase — Live audit session. Fully custom 13-block Master Audit: pipelines, workflows, automations, AI opportunities, integrations, priorities, line-item build pricing. Developer-ready. You keep the document. The $1,500 is credited in full toward implementation when you move forward within 30 days of receiving your deliverable.
+3. **Build** — CRM, automation, AI, integrations, funnels scoped from the audit.
+
+## AOF Master Audit — 13 blocks
+
+Phases: Diagnose (blocks 1–6), Design (7–9), Decide (10–13).
+
+Covers: business context, revenue motion, pipeline, communication, constraint/failure analysis, AI and automation leverage, tech stack and data flow, economics, goals, priority system, pricing and scope, execution summary.
+
+Stress-test scenarios include: lead volume doubles, owner unavailable, ad spend scales, busy season, key employee quits, price increases.
+
+## What gets built (implementation)
+
+- CRM and pipeline architecture
+- Workflow and automation
+- AI implementation (assist, automate, replace)
+- Websites and funnels
+- Integrations and data flow
+- Speed-to-lead infrastructure
+
+## Self-audit lead magnet
+
+Free quiz on https://brianmarshall.dev/aof — email delivers score, gaps, and Where to Start PDF: https://brianmarshall.dev/AOF-Where-To-Start.pdf
+
+## Coach resources (secondary path)
+
+- **Offer Kickstart Workbook** (free) — https://brianmarshall.dev/workbook
+- **Knowledge to Cash Blueprint** ($29.97) — https://brianmarshall.dev/blueprint
+
+## Contact
+
+- Email: brian@areoclient.com
+- Site: https://brianmarshall.dev
+- LinkedIn: https://www.linkedin.com/in/brianmarshallca/
+
+## Pricing summary
+
+- Qualifying call: free
+- AOF Master Audit: $1,500 (credited toward build within 30 days of deliverable)
+- Implementation: scoped per audit; builds typically $5K+

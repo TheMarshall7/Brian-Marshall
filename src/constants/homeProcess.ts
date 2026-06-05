@@ -1,4 +1,4 @@
-import { AOF_BUILD_CREDIT_NOTE, AOF_LANDING_PATH, AOF_PURCHASE_HASH, STRATEGY_CALL_PATH } from './site'
+import { AOF_BUILD_CREDIT_NOTE, AOF_PURCHASE_PATH, STRATEGY_CALL_PATH } from './site'
 
 export type HomeProcessRung = {
   step: string
@@ -27,7 +27,7 @@ export const HOME_PROCESS = {
       description:
         'Reserve your live audit session via secure payment. Serious buyers invest here. The $1,500 secures your session and produces a fully custom 13-block Master Audit of your business.',
       productLabel: 'Reserve your audit session',
-      productPath: `${AOF_LANDING_PATH}${AOF_PURCHASE_HASH}`,
+      productPath: AOF_PURCHASE_PATH,
     },
     {
       step: '03',

@@ -1,7 +1,6 @@
-import { useEffect } from 'react'
-import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import Navigation from '../components/Navigation'
+import PageSeo from '../components/shared/PageSeo'
 import { BLUEPRINT_CHECKOUT_PAGE } from '../constants/blueprintCheckout'
 import { BLUEPRINT_LANDING } from '../constants/blueprintLanding'
 import { BLUEPRINT_LANDING_PATH, BLUEPRINT_CHECKOUT_PATH } from '../constants/site'
@@ -14,21 +13,18 @@ const product = getShopProduct('knowledge-to-cash')
 export default function BlueprintCheckout() {
   useScrollAnimation()
 
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
-
   const checkoutReady = Boolean(K2C_CHECKOUT_URL?.trim())
 
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden bg-neutral-950 text-neutral-300 selection:bg-red-500/30 selection:text-white">
-      <Helmet>
-        <title>
-          {copy.title} | {BLUEPRINT_LANDING.title}
-        </title>
-        <meta name="description" content={copy.metaDescription} />
-        <link rel="canonical" href={`https://brianmarshall.dev${BLUEPRINT_CHECKOUT_PATH}`} />
-      </Helmet>
+      <PageSeo
+        title={`${copy.title} · ${BLUEPRINT_LANDING.title}`}
+        description={copy.metaDescription}
+        path={BLUEPRINT_CHECKOUT_PATH}
+        keywords={copy.metaKeywords}
+        robots="noindex, follow"
+        imageAlt="Knowledge to Cash Blueprint checkout"
+      />
 
       <div className="bg-grain" aria-hidden />
       <Navigation />
