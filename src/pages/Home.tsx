@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { HOME_CONTACT, HOME_HERO, HOME_META } from '../constants/homeContent'
-import { STRATEGY_CALL_PATH } from '../constants/site'
+import { SITE_SOCIAL, STRATEGY_CALL_PATH } from '../constants/site'
 import CaseStudyMediaBand from '../components/CaseStudyMediaBand'
 import AofDocumentCover from '../components/aof/AofDocumentCover'
 import AofRiskReversal from '../components/aof/AofRiskReversal'
@@ -15,18 +15,10 @@ import StickyCallBar from '../components/shared/StickyCallBar'
 import { SITE_URL } from '../constants/siteSeo'
 import { ANALYTICS_EVENTS } from '../constants/analytics'
 import { track } from '../lib/track'
+import { HOME_DEPLOYMENT_LOG, WORK_DEPLOY_TILES } from '../constants/homeDeploymentLog'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
-const WORK_DEPLOY_TILES: { key: string; icon: string; label: string; tileClass: string; caseId: string }[] = [
-  { key: 'et', icon: 'solar:music-note-linear', label: 'Ear Training Platform', tileClass: 'border-red-500/35 bg-red-500/10 text-red-400', caseId: 'case-ear-training' },
-  { key: 'vi', icon: 'solar:shield-check-linear', label: 'Virelia Insurance', tileClass: 'border-blue-500/35 bg-blue-500/10 text-blue-400', caseId: 'case-virelia' },
-  { key: 'co', icon: 'solar:stars-minimalistic-linear', label: 'Spiritual & Human Design Coach', tileClass: 'border-purple-500/35 bg-purple-500/10 text-purple-400', caseId: 'case-spiritual-coach' },
-  { key: 'gs', icon: 'solar:gamepad-linear', label: 'Game Studio Website', tileClass: 'border-indigo-500/35 bg-indigo-500/10 text-indigo-400', caseId: 'case-game-studio' },
-  { key: 'mq', icon: 'solar:music-notes-linear', label: 'MOQEMÀE', tileClass: 'border-rose-500/35 bg-rose-500/10 text-rose-400', caseId: 'case-moqemae' },
-  { key: 'ar', icon: 'solar:widget-5-linear', label: 'AreoClient', tileClass: 'border-emerald-500/35 bg-emerald-500/10 text-emerald-400', caseId: 'case-areoclient' },
-  { key: 'so', icon: 'solar:chat-round-dots-linear', label: 'Social Outreach app', tileClass: 'border-cyan-500/35 bg-cyan-500/10 text-cyan-400', caseId: 'case-social-outreach' },
-  { key: 'is', icon: 'solar:music-note-slider-linear', label: 'ISIATA', tileClass: 'border-amber-500/35 bg-amber-500/10 text-amber-400', caseId: 'case-isiata' },
-]
+const deployCopy = HOME_DEPLOYMENT_LOG
 
 import HomeFaqSection from '../components/home/HomeFaqSection'
 import { HOME_PROCESS } from '../constants/homeProcess'
@@ -54,7 +46,7 @@ export default function Home() {
           areaServed: 'Worldwide',
           serviceType: HOME_META.serviceType,
           knowsAbout: HOME_META.knowsAbout,
-          sameAs: ['https://www.linkedin.com/in/brianmarshallca/'],
+          sameAs: [SITE_SOCIAL.linkedin, SITE_SOCIAL.youtube, SITE_SOCIAL.instagram],
         }}
       />
 
@@ -289,15 +281,27 @@ export default function Home() {
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
           <div className="mb-10 grid grid-cols-1 items-start gap-8 animate-on-scroll md:mb-20 md:gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="w-full text-center md:text-left lg:col-span-7">
-              <span className="section-eyebrow mb-4 block text-red-500">Deployment Log</span>
-              <h2 className="mb-4 text-3xl font-medium tracking-tight text-white sm:text-4xl md:text-6xl">Things I&apos;ve Built</h2>
-              <p className="mx-auto max-w-xl text-neutral-400 md:mx-0">
-                Real systems. Real outcomes. I don't ship pretty mockups and disappear. I build things people use every day.
-              </p>
+              <span className="section-eyebrow mb-4 block text-red-500">{deployCopy.eyebrow}</span>
+              <h2 className="mb-4 text-3xl font-medium tracking-tight text-white sm:text-4xl md:text-6xl">
+                {deployCopy.headline}{' '}
+                <span className="hero-text-gradient">{deployCopy.headlineAccent}</span>
+              </h2>
+              <p className="mx-auto max-w-xl text-neutral-400 md:mx-0">{deployCopy.subheadline}</p>
             </div>
             <div className="lg:col-span-5">
               <div className="rounded-2xl border border-white/10 bg-neutral-900/35 p-4 shadow-[0_20px_60px_rgba(0,0,0,0.35)] backdrop-blur-md md:p-5">
-                <span className="section-eyebrow mb-3 block text-neutral-500">Live deployments</span>
+                <span className="section-eyebrow mb-3 block text-neutral-500">{deployCopy.panelLabel}</span>
+                <div className="mb-4 flex flex-wrap gap-2">
+                  {deployCopy.capabilities.map((cap) => (
+                    <span
+                      key={cap}
+                      className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-neutral-400"
+                    >
+                      {cap}
+                    </span>
+                  ))}
+                </div>
+                <span className="section-eyebrow mb-3 block text-neutral-600">Jump to deployment</span>
                 <div className="flex flex-wrap gap-2">
                   {WORK_DEPLOY_TILES.map((t) => (
                     <a
@@ -316,6 +320,48 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            {/* Case Study — AreoClient (flagship) */}
+            <div
+              id="case-areoclient"
+              className="group glass-panel md:col-span-2 scroll-mt-24 rounded-2xl overflow-hidden border border-white/10 transition-all duration-500 animate-on-scroll flex flex-col delay-500 card-lift case-study-card hover:border-emerald-500/40 md:scroll-mt-28"
+              style={{ '--case-study-glow': '16, 185, 129' } as React.CSSProperties}
+            >
+              <div className="relative flex-1 flex flex-col p-5 sm:p-6 md:p-10 min-h-0 md:min-h-[420px]">
+                <div className="absolute inset-0 bg-neutral-950 z-0"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-neutral-900/80 via-neutral-900/60 to-neutral-950 z-[1]"></div>
+                <div className="absolute inset-0 bg-neutral-900/40 z-[2]" style={{ boxShadow: 'inset 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 -4px 12px rgba(0, 0, 0, 0.5)' }}></div>
+                <div className="absolute inset-0 opacity-[0.15] z-[3]" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
+                <div className="relative z-10 flex flex-col h-full bg-neutral-900/20 rounded-lg" style={{ boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.2)' }}>
+                  <CaseStudyMediaBand urlLabel="areoclient.com" slug="areoclient" />
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="case-badge inline-block px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-mono uppercase tracking-widest border border-emerald-500/20">Platform · Systems · Automation</span>
+                    <iconify-icon icon="solar:layers-minimalistic-linear" className="case-icon text-emerald-400 text-2xl"></iconify-icon>
+                  </div>
+                  <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest mb-2">Business · Operations · Revenue</span>
+                  <h3 className="text-2xl md:text-3xl text-white font-medium mb-4">AreoClient <span className="ml-2 align-middle text-[10px] font-mono uppercase tracking-widest text-emerald-400/90">Flagship system</span></h3>
+                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Problem:</strong> Owner-operated businesses were generating real revenue but running entirely on manual processes. Leads fell through the cracks, follow-up was inconsistent, and the owner was the bottleneck for every decision.</p>
+                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Solution:</strong> A unified business operating system: pipelines, automations, AI follow-up, and integrations built as one connected infrastructure so the business runs without the owner in every loop.</p>
+                  <div className="mt-auto">
+                    <div className="bg-white/[0.08] rounded-lg p-4 border border-white/10 mb-4" style={{ boxShadow: 'inset 0 1px 2px rgba(255, 255, 255, 0.1), inset 0 -2px 4px rgba(0, 0, 0, 0.3)' }}>
+                      <span className="block text-xs text-emerald-400 font-mono mb-2">&gt; RESULTS_</span>
+                      <div className="grid grid-cols-1 gap-2">
+                        <span className="text-sm text-white">Full pipeline visibility from first inquiry to closed revenue</span>
+                        <span className="text-sm text-white">Automated follow-up so no lead goes untouched</span>
+                        <span className="text-sm text-white">Owner removed from repetitive operational decisions</span>
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Systems</span>
+                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Automation</span>
+                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Operations</span>
+                      <a href="https://areoclient.com/" target="_blank" rel="noopener noreferrer" className="case-action-btn ml-auto px-3 py-1 rounded bg-emerald-500/20 text-emerald-400 text-[10px] font-medium hover:bg-emerald-500/30 flex items-center gap-1">See Project <iconify-icon icon="solar:arrow-right-up-linear" width="12"></iconify-icon></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* Case Study 1: Ear Training Platform */}
             <div
               id="case-ear-training"
@@ -415,13 +461,13 @@ export default function Home() {
                 <div className="relative z-10 flex flex-col h-full bg-neutral-900/20 rounded-lg" style={{ boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.2)' }}>
                   <CaseStudyMediaBand urlLabel="www.mariaamiouni.com" slug="maria-amiouni" />
                   <div className="flex items-center justify-between mb-6">
-                    <span className="case-badge inline-block px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 text-[10px] font-mono uppercase tracking-widest border border-purple-500/20">Site · Funnel · Automation</span>
+                    <span className="case-badge inline-block px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 text-[10px] font-mono uppercase tracking-widest border border-purple-500/20">Funnel · CRM · Automation</span>
                     <iconify-icon icon="solar:stars-minimalistic-linear" className="case-icon text-purple-400 text-2xl"></iconify-icon>
                   </div>
                   <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest mb-2">Spirituality · Human Design · Coaching</span>
-                  <h3 className="text-2xl md:text-3xl text-white font-medium mb-4">Spiritual & Human Design Coach</h3>
-                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Problem:</strong> Her signature 21 day offer and coaching services lived in a messy mix of channels, which made it hard to sell the full journey, and course delivery was disconnected from the front end story.</p>
-                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Solution:</strong> A focused site built to sell the core 21 day program and coaching, with backend automations and a smooth handoff into Teachable so course content and lessons live on the platform students already use.</p>
+                  <h3 className="text-2xl md:text-3xl text-white font-medium mb-4">Coach Funnel & Delivery System</h3>
+                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Problem:</strong> Offer, follow-up, and course delivery lived in disconnected tools. Leads had no clear path from first touch to enrolled student, and the owner was manually stitching channels together.</p>
+                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Solution:</strong> A conversion-focused front end, automated follow-up, and Teachable integration so enrollment, nurture, and delivery run as one connected system.</p>
                   <div className="mt-auto">
                     <div className="bg-white/[0.08] rounded-lg p-4 border border-white/10 mb-4" style={{ boxShadow: 'inset 0 1px 2px rgba(255, 255, 255, 0.1), inset 0 -2px 4px rgba(0, 0, 0, 0.3)' }}>
                       <span className="block text-xs text-purple-400 font-mono mb-2">&gt; RESULTS_</span>
@@ -525,47 +571,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Case Study 6: All-in-one business system */}
-            <div
-              id="case-areoclient"
-              className="group glass-panel scroll-mt-24 rounded-2xl overflow-hidden border border-white/10 transition-all duration-500 animate-on-scroll flex flex-col delay-500 card-lift case-study-card hover:border-emerald-500/40 md:scroll-mt-28"
-              style={{ '--case-study-glow': '16, 185, 129' } as React.CSSProperties}
-            >
-              <div className="relative flex-1 flex flex-col p-5 sm:p-6 md:p-10 min-h-0 md:min-h-[420px]">
-                <div className="absolute inset-0 bg-neutral-950 z-0"></div>
-                <div className="absolute inset-0 bg-gradient-to-b from-neutral-900/80 via-neutral-900/60 to-neutral-950 z-[1]"></div>
-                <div className="absolute inset-0 bg-neutral-900/40 z-[2]" style={{ boxShadow: 'inset 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 -4px 12px rgba(0, 0, 0, 0.5)' }}></div>
-                <div className="absolute inset-0 opacity-[0.15] z-[3]" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
-                <div className="relative z-10 flex flex-col h-full bg-neutral-900/20 rounded-lg" style={{ boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.2)' }}>
-                  <CaseStudyMediaBand urlLabel="areoclient.com" slug="areoclient" />
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="case-badge inline-block px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-mono uppercase tracking-widest border border-emerald-500/20">Platform · Systems · Automation</span>
-                    <iconify-icon icon="solar:layers-minimalistic-linear" className="case-icon text-emerald-400 text-2xl"></iconify-icon>
-                  </div>
-                  <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest mb-2">Business · Operations · Revenue</span>
-                  <h3 className="text-2xl md:text-3xl text-white font-medium mb-4">AreoClient</h3>
-                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Problem:</strong> Owner-operated businesses were generating real revenue but running entirely on manual processes. Leads fell through the cracks, follow-up was inconsistent, and the owner was the bottleneck for every decision.</p>
-                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Solution:</strong> A unified business operating system: pipelines, automations, AI follow-up, and integrations built as one connected infrastructure so the business runs without the owner in every loop.</p>
-                  <div className="mt-auto">
-                    <div className="bg-white/[0.08] rounded-lg p-4 border border-white/10 mb-4" style={{ boxShadow: 'inset 0 1px 2px rgba(255, 255, 255, 0.1), inset 0 -2px 4px rgba(0, 0, 0, 0.3)' }}>
-                      <span className="block text-xs text-emerald-400 font-mono mb-2">&gt; RESULTS_</span>
-                      <div className="grid grid-cols-1 gap-2">
-                        <span className="text-sm text-white">Full pipeline visibility from first inquiry to closed revenue</span>
-                        <span className="text-sm text-white">Automated follow-up so no lead goes untouched</span>
-                        <span className="text-sm text-white">Owner removed from repetitive operational decisions</span>
-                      </div>
-                    </div>
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Systems</span>
-                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Automation</span>
-                      <span className="case-tag px-3 py-1 rounded border border-white/10 text-[10px] text-neutral-400">Operations</span>
-                      <a href="https://areoclient.com/" target="_blank" rel="noopener noreferrer" className="case-action-btn ml-auto px-3 py-1 rounded bg-emerald-500/20 text-emerald-400 text-[10px] font-medium hover:bg-emerald-500/30 flex items-center gap-1">See Project <iconify-icon icon="solar:arrow-right-up-linear" width="12"></iconify-icon></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
             {/* Case Study 7: Social outreach AI app */}
             <div
               id="case-social-outreach"
@@ -584,9 +589,9 @@ export default function Home() {
                     <iconify-icon icon="solar:chat-round-dots-linear" className="case-icon text-cyan-400 text-2xl"></iconify-icon>
                   </div>
                   <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest mb-2">SaaS · LinkedIn · Multi platform</span>
-                  <h3 className="text-2xl md:text-3xl text-white font-medium mb-4">Social Outreach Intelligence</h3>
-                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Problem:</strong> Outreach was slow and cookie cutter. Reps burned time rewriting the same angles, and generic templates killed reply rates on LinkedIn and other social channels.</p>
-                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Solution:</strong> An AI powered app that turns any social profile or post into high converting outreach in seconds: upload a screenshot or paste text, pick your tone and platform (LinkedIn, Instagram, X, TikTok, and more), and get messages that read like they came from a human who did the homework.</p>
+                  <h3 className="text-2xl md:text-3xl text-white font-medium mb-4">AI Speed-to-Lead Outreach</h3>
+                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Problem:</strong> Manual outreach burned hours per prospect. Generic templates killed reply rates, and there was no system to turn social context into qualified conversations fast.</p>
+                  <p className="text-sm text-neutral-400 mb-6 flex-grow"><strong className="text-white">The Solution:</strong> An AI workflow that ingests profile or post context and outputs platform-ready outreach in seconds — the same speed-to-lead logic applied to social pipeline generation.</p>
                   <div className="mt-auto">
                     <div className="bg-white/[0.08] rounded-lg p-4 border border-white/10 mb-4" style={{ boxShadow: 'inset 0 1px 2px rgba(255, 255, 255, 0.1), inset 0 -2px 4px rgba(0, 0, 0, 0.3)' }}>
                       <span className="block text-xs text-cyan-400 font-mono mb-2">&gt; RESULTS_</span>
@@ -610,7 +615,7 @@ export default function Home() {
             {/* Case Study 8: ISIATA, culture, sound & tools */}
             <div
               id="case-isiata"
-              className="group glass-panel scroll-mt-24 rounded-2xl overflow-hidden border border-white/10 transition-all duration-500 animate-on-scroll flex flex-col delay-700 card-lift case-study-card hover:border-amber-500/40 md:scroll-mt-28"
+              className="group glass-panel scroll-mt-24 rounded-2xl overflow-hidden border border-white/10 transition-all duration-500 animate-on-scroll flex flex-col delay-700 card-lift case-study-card hover:border-amber-500/40 md:col-span-2 md:scroll-mt-28"
               style={{ '--case-study-glow': '245, 158, 11' } as React.CSSProperties}
             >
               <div className="relative flex-1 flex flex-col p-5 sm:p-6 md:p-10 min-h-0 md:min-h-[420px]">
@@ -650,16 +655,16 @@ export default function Home() {
           </div>
 
           <div className="mt-16 text-center animate-on-scroll">
-            <p className="text-neutral-400 text-sm">
-              If you want screenshots, I'll show you. <br />
-              <span className="text-white">If you care about outcomes, this is the part that matters.</span>
+            <p className="text-sm text-neutral-400">
+              {deployCopy.closingLead} <br />
+              <span className="text-white">{deployCopy.closingAccent}</span>
             </p>
             <Link
               to={STRATEGY_CALL_PATH}
               onClick={() => track(ANALYTICS_EVENTS.QUALIFYING_CALL_CLICK, { source: 'home_work' })}
               className="inline-flex items-center gap-2 px-8 py-4 bg-white text-neutral-950 rounded-lg text-sm font-medium hover:bg-red-400 transition-all btn-shimmer hover:shadow-lg hover:shadow-red-500/30 mt-8"
             >
-              {HOME_HERO.primaryCta}
+              {deployCopy.cta}
               <iconify-icon icon="solar:arrow-right-up-linear"></iconify-icon>
             </Link>
           </div>
@@ -849,13 +854,34 @@ export default function Home() {
                   <span className="text-xs text-neutral-500 text-center md:text-left max-w-sm">{HOME_CONTACT.footerClosing}</span>
                 </div>
                 
-                <div className="flex items-center gap-8">
-                  <div className="h-px w-12 bg-gradient-to-r from-transparent to-white/10 hidden md:block"></div>
-                  <a href="https://www.linkedin.com/in/brianmarshallca/" className="group relative flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-300 footer-social-link">
-                    <iconify-icon icon="mdi:linkedin" className="text-base text-neutral-400 group-hover:text-white transition-colors"></iconify-icon>
-                    <span className="text-xs text-neutral-400 font-mono uppercase tracking-wider group-hover:text-white transition-colors">LinkedIn</span>
-                  </a>
-                  <div className="h-px w-12 bg-gradient-to-l from-transparent to-white/10 hidden md:block"></div>
+                <div className="flex items-center gap-4 md:gap-6">
+                  <div className="hidden h-px w-12 bg-gradient-to-r from-transparent to-white/10 md:block" />
+                  <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+                    {(
+                      [
+                        { href: SITE_SOCIAL.linkedin, icon: 'mdi:linkedin', label: 'LinkedIn' },
+                        { href: SITE_SOCIAL.youtube, icon: 'mdi:youtube', label: 'YouTube' },
+                        { href: SITE_SOCIAL.instagram, icon: 'mdi:instagram', label: 'Instagram' },
+                      ] as const
+                    ).map((social) => (
+                      <a
+                        key={social.label}
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group relative flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-2 transition-all duration-300 footer-social-link hover:border-white/20"
+                      >
+                        <iconify-icon
+                          icon={social.icon}
+                          className="text-base text-neutral-400 transition-colors group-hover:text-white"
+                        />
+                        <span className="font-mono text-xs uppercase tracking-wider text-neutral-400 transition-colors group-hover:text-white">
+                          {social.label}
+                        </span>
+                      </a>
+                    ))}
+                  </div>
+                  <div className="hidden h-px w-12 bg-gradient-to-l from-transparent to-white/10 md:block" />
                 </div>
               </div>
             </div>

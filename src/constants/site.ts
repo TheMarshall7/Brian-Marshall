@@ -22,3 +22,9 @@ export const WORKBOOK_LANDING_PATH = '/workbook'
 
 /** When false, /vsl redirects to the calendar and no UI should link to the VSL page. */
 export const VSL_ENABLED = false
+
+export const SITE_SOCIAL = {
+  linkedin: 'https://www.linkedin.com/in/brianmarshallca/',
+  youtube: 'https://www.youtube.com/@thebrianmarshall',
+  instagram: 'https://www.instagram.com/thebrianmarshall',
+} as const
