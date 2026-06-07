@@ -1,23 +1,32 @@
+import {
+  AOF_BUILD_CREDIT_NOTE,
+  AOF_MASTER_AUDIT_PRICE_LABEL,
+  AOF_PURCHASE_PATH,
+  STRATEGY_CALL_PATH,
+} from './site'
+
 /**
- * VSL landing page config.
+ * VSL landing page — AOF / Business Systems Architect positioning.
  *
  * Env (optional):
  *   VITE_VSL_VIDEO_EMBED_URL       - YouTube/Vimeo embed URL (loads on click)
- *   VITE_VSL_VIDEO_POSTER_URL      - Thumbnail image (Brian + headline overlay)
- *   VITE_VSL_APPLY_DWY_URL         - Done With You application URL
- *   VITE_VSL_APPLY_DFY_URL         - Done For You application URL
+ *   VITE_VSL_VIDEO_POSTER_URL      - Thumbnail / poster image
  *   VITE_VSL_TESTIMONIAL_EMBED_URL - Optional testimonial video embed
  */
+
+export const VSL_META = {
+  title: 'Free Training · Business Systems',
+  description:
+    'Free training for owner-operated businesses with real revenue. See where leads stall, pipelines break, and how the AOF Master Audit maps your operations before anything gets built.',
+  keywords:
+    'business systems training, AOF Master Audit, operations audit, owner-operated business, CRM automation, free qualifying call',
+} as const
 
 export const VSL_VIDEO_EMBED_URL =
   import.meta.env.VITE_VSL_VIDEO_EMBED_URL?.trim() || ''
 
 export const VSL_VIDEO_POSTER_URL =
   import.meta.env.VITE_VSL_VIDEO_POSTER_URL?.trim() || ''
-
-export const VSL_APPLY_DWY_URL = import.meta.env.VITE_VSL_APPLY_DWY_URL?.trim() || ''
-
-export const VSL_APPLY_DFY_URL = import.meta.env.VITE_VSL_APPLY_DFY_URL?.trim() || ''
 
 export const VSL_TESTIMONIAL_EMBED_URL =
   import.meta.env.VITE_VSL_TESTIMONIAL_EMBED_URL?.trim() || ''
@@ -26,25 +35,25 @@ export const VSL_PHOTO_SRC = '/Brian Marshall Photo(transparent).png'
 
 export const VSL_HOST_NAME = 'Brian Marshall'
 
-export const VSL_HOST_TAGLINE = 'I build the Knowledge to Cash system for people'
+export const VSL_HOST_TAGLINE = 'Business Systems Architect · Founder of AreoClient'
 
-export const VSL_ABOUT_HEADLINE = 'Who is building this with you?'
+export const VSL_ABOUT_HEADLINE = 'Who maps and builds this with you?'
 
 export const VSL_ABOUT_BIO =
-  'I help people turn what they already know into a clear offer, lead magnet, and follow-up system so qualified prospects book calls without chasing. Done With You if you want to build alongside me; Done For You if you want the full system built in 90 days.'
+  `I find where owner-operated businesses lose revenue, map the full operational blueprint in 13 AOF blocks, and build the CRM, automation, AI, and integration infrastructure that fixes it. Start with a free qualifying call or reserve the ${AOF_MASTER_AUDIT_PRICE_LABEL} AOF Master Audit when you are ready for the full blueprint.`
 
 export const VSL_HEADLINE =
-  'Book 3-5 High-Ticket Clients Every Month Without Chasing Leads or Running Ads'
+  'Your Revenue Grew. Your Systems Didn\u2019t. Here\u2019s How to Fix the Backend.'
 
 export const VSL_SUBHEADLINE =
-  'If you have expertise but your calendar is still empty, this free training shows you the exact system people use to turn knowledge into booked calls in 90 days or less.'
+  'Free training for owner-operated businesses generating real revenue. See where opportunity enters, where it stalls, and what a properly architected operations stack looks like before you invest in another tool.'
 
-export const VSL_FOLD_CTA_LABEL = 'See your options below'
+export const VSL_FOLD_CTA_LABEL = 'See your next steps'
 
 export const VSL_HERO_FUD =
-  'Free 14-min training · No email required to watch · No credit card'
+  'Free training · No email required to watch · 15-minute qualifying call available after'
 
-export const VSL_TRUST_LINE = 'Trusted by 40+ people building booked calendars'
+export const VSL_TRUST_LINE = 'Trusted by owner-operated businesses generating real revenue'
 
 export type VslTrustAvatar = { src: string; alt: string }
 
@@ -66,26 +75,30 @@ export const VSL_TRUST_AVATARS: VslTrustAvatar[] = [
 export type VslStat = { value: string; label: string }
 
 export const VSL_STATS: VslStat[] = [
-  { value: '40+', label: 'People served' },
-  { value: '3-5', label: 'Booked calls per month (typical goal)' },
-  { value: '60-day', label: 'DFY guarantee on booked calls' },
+  { value: '13', label: 'AOF diagnostic blocks' },
+  { value: AOF_MASTER_AUDIT_PRICE_LABEL, label: 'Master Audit · credited toward build' },
+  { value: '15 min', label: 'Free qualifying call' },
 ]
 
 export const VSL_PAIN_HEADLINE = 'If any of this sounds familiar…'
 
 export const VSL_PAINS: string[] = [
-  'You post content but qualified prospects still do not book calls.',
-  'Your calendar is inconsistent: great weeks, then nothing.',
-  'You are tired of chasing DMs and hoping someone replies.',
+  'Leads come in but follow-up is slow, manual, or inconsistent.',
+  'The owner is still the bottleneck for routine operational decisions.',
+  'Tools do not talk to each other and revenue leaks between the cracks.',
 ]
 
 export const VSL_PAIN_BRIDGE =
-  'The Knowledge to Cash system fixes the gap between what you know and who books, with a clear offer, lead magnet, and follow-up built for people.'
+  'That is not a hustle problem. It is an infrastructure problem. The AOF Master Audit maps your business in 13 blocks so you know what to build, in what order, and what it costs before a single platform gets touched.'
 
-export const VSL_OFFERS_HEADLINE = 'Ready to build this? Here are your two options.'
+export const VSL_OFFERS_HEADLINE = 'Ready to move? Here are your two paths.'
+
+export const VSL_OFFERS_INTRO =
+  'Start with a free qualifying call for clarity. Reserve the AOF Master Audit when you want the full 13-block blueprint and build scope.'
 
 export type VslOfferTier = {
-  id: 'dwy' | 'dfy'
+  id: 'qualify' | 'audit'
+  eyebrow?: string
   badge?: string
   name: string
   whoItIsFor: string
@@ -97,56 +110,62 @@ export type VslOfferTier = {
   applyUrl: string
   applyFud: string
   featured?: boolean
+  external?: boolean
 }
 
 export const VSL_OFFERS: VslOfferTier[] = [
   {
-    id: 'dwy',
-    name: 'The Knowledge to Cash Blueprint Coaching',
+    id: 'qualify',
+    eyebrow: 'Step 1',
+    name: 'Free 15-Minute Qualifying Call',
     whoItIsFor:
-      'You want to build the system yourself, with Brian guiding every step.',
+      'Owner-operated businesses with real revenue that want clarity before committing to an audit or build.',
     whatTheyGet: [
-      'Weekly coaching calls so you never get stuck',
-      'Your offer, positioning, and pricing dialed in',
-      'Lead magnet + follow-up sequence built alongside you',
-      'A repeatable content plan that drives booked calls',
-      'Accountability until the system is live',
+      'No pitch — open-ended diagnosis of where the business breaks',
+      'Lead entry, pipeline stalls, and owner bottlenecks surfaced fast',
+      'Clear direction on whether the AOF Master Audit is the right next step',
+      'You leave with more clarity regardless of outcome',
     ],
-    timeline: '90 days',
-    priceLabel: 'Investment on application',
-    ctaLabel: 'Apply for Coaching',
-    applyUrl: VSL_APPLY_DWY_URL,
-    applyFud: 'Quick application · We confirm fit on a call · No pressure',
+    timeline: '15 minutes',
+    priceLabel: 'Free',
+    ctaLabel: 'Book Your Qualifying Call',
+    applyUrl: STRATEGY_CALL_PATH,
+    applyFud: 'No credit card · No obligation · Video call',
+    external: false,
   },
   {
-    id: 'dfy',
-    badge: 'Most Popular',
+    id: 'audit',
+    eyebrow: 'Step 2',
+    badge: 'The Fix',
     featured: true,
-    name: 'The Knowledge to Cash Build',
+    name: 'AOF Master Audit',
     whoItIsFor:
-      'You want the entire system built for you so you can focus on your work, not tech.',
+      'Serious buyers ready for a fully custom 13-block operational blueprint — pipelines, workflows, AI, integrations, priorities, and line-item build pricing.',
     whatTheyGet: [
-      'Full offer build positioned for high-ticket clients',
-      'Lead magnet + landing flow that captures the right people',
-      'Email sequence that nurtures leads into booked calls',
-      'Content strategy + call booking system wired up',
-      'Webinar structure ready to fill your calendar',
+      'Live audit session mapping your business in real time',
+      'Developer-ready deliverable you keep either way',
+      'Priority build sequence with full cost transparency',
+      '6–8 hours of architecture across 13 diagnostic blocks',
+      AOF_BUILD_CREDIT_NOTE,
     ],
-    timeline: '90 days',
-    guarantee:
-      'If you do not have 3 booked calls within 60 days of launch, we keep building for free.',
-    priceLabel: 'Investment starts on application',
-    ctaLabel: 'Apply for Done For You',
-    applyUrl: VSL_APPLY_DFY_URL,
-    applyFud: 'Quick application · We confirm fit on a call · No pressure',
+    timeline: 'Live session + polished deliverable',
+    priceLabel: AOF_MASTER_AUDIT_PRICE_LABEL,
+    ctaLabel: 'Reserve Your Audit Session',
+    applyUrl: AOF_PURCHASE_PATH,
+    applyFud: 'Secure booking · All sales final · You own the document',
+    external: false,
   },
 ]
 
 export const VSL_FREEBIE = {
-  lead:
-    'Not ready to apply? Start with the free Offer Kickstart Workbook and nail your offer before you invest in the full system.',
-  cta: 'Get the free workbook',
+  lead: 'Not ready to book? Run the free self-audit first — score your systems and get the Where to Start PDF.',
+  cta: 'Take the self-audit',
+  path: '/aof',
 }
+
+export const VSL_PROOF_HEADLINE = 'Systems that hold under pressure'
+
+export const VSL_PROOF_CTA = 'Book your free qualifying call'
 
 export type VslCompareCell = boolean | 'partial' | string
 
@@ -154,24 +173,24 @@ export type VslCompareRow = {
   label: string
   diy: VslCompareCell
   agency: VslCompareCell
-  k2c: VslCompareCell
+  aof: VslCompareCell
 }
 
 export const VSL_COMPARE_HEADLINE = 'How this compares to your other options'
 
 export const VSL_COMPARE_COLUMNS = {
-  diy: 'Doing it yourself',
+  diy: 'Patchwork DIY',
   agency: 'Generic agency',
-  k2c: 'Knowledge to Cash',
+  aof: 'AOF Master Audit',
 } as const
 
 export const VSL_COMPARE_ROWS: VslCompareRow[] = [
-  { label: 'Time to launch', diy: '6-12+ months', agency: '3-6 months', k2c: '90 days' },
-  { label: 'Built for people', diy: false, agency: false, k2c: true },
-  { label: 'Offer + positioning included', diy: false, agency: 'partial', k2c: true },
-  { label: 'Lead magnet + email follow-up', diy: false, agency: 'partial', k2c: true },
-  { label: 'Ongoing coaching / accountability', diy: false, agency: false, k2c: true },
-  { label: 'Booked-call guarantee', diy: false, agency: false, k2c: true },
+  { label: 'Full operations map before build', diy: false, agency: 'partial', aof: true },
+  { label: 'Pipeline + automation sequenced', diy: false, agency: 'partial', aof: true },
+  { label: 'Line-item build pricing upfront', diy: false, agency: false, aof: true },
+  { label: 'Owner removed from repeat loops', diy: 'partial', agency: 'partial', aof: true },
+  { label: 'Built for owner-operated revenue', diy: false, agency: false, aof: true },
+  { label: 'You keep the blueprint either way', diy: false, agency: false, aof: true },
 ]
 
 export type VslTestimonial = {
@@ -185,82 +204,81 @@ export type VslTestimonial = {
 
 export const VSL_TESTIMONIALS: VslTestimonial[] = [
   {
-    name: 'Sarah M.',
-    role: 'Business owner',
+    name: 'Operations lead',
+    role: 'Owner-operated services business',
     quote:
-      'I finally stopped guessing what to post. Within two weeks of launch I had calls on the calendar without cold outreach.',
-    result: '3 booked calls in week one',
-    source: 'Google review',
+      'We finally saw where leads were dying between inquiry and booked job. The audit made the build scope obvious instead of another guessing game.',
+    result: 'Pipeline mapped end-to-end',
+    source: 'Client engagement',
   },
   {
-    name: 'James T.',
-    role: 'Leadership consultant',
+    name: 'Founder',
+    role: 'Multi-location operator',
     quote:
-      'Brian built the whole system while I focused on clients. The follow-up alone replaced hours of manual DMs every week.',
-    result: 'Calendar filled without paid ads',
-    source: 'Client interview',
+      'I was in every follow-up loop. After the systems build, routine decisions moved without me and speed-to-lead finally matched our ad spend.',
+    result: 'Owner out of repeat ops',
+    source: 'AreoClient deployment',
   },
   {
-    name: 'Priya K.',
-    role: 'Health & wellness professional',
+    name: 'Agency principal',
+    role: 'B2B professional services',
     quote:
-      'I had content but no pipeline. Now I have a clear offer, a freebie, and automation. Prospects book while I sleep.',
-    result: 'Warm leads on autopilot',
-    source: 'LinkedIn',
+      'We had a CRM and automations, but nothing was sequenced. The 13-block document became the spec our dev team actually used.',
+    result: 'Blueprint → build without rework',
+    source: 'Master Audit deliverable',
   },
 ]
 
 export const VSL_CLOSER = {
   label: 'Ready when you are',
-  headline: 'Get the system that turns your expertise into booked high-ticket calls',
+  headline: 'Stop losing revenue to broken systems',
   bullets: [
-    'A clear offer prospects understand in seconds',
-    'Lead magnet + follow-up that converts, not just collects emails',
-    'Content and booking flow built for people, not generic templates',
-    'Done With You or Done For You. You pick how hands-on you want to be',
-    '90-day timeline with accountability (and a guarantee on DFY)',
+    'Free qualifying call for clarity — no pitch',
+    'AOF Master Audit maps 13 blocks before anything gets built',
+    'CRM, automation, AI, and integrations scoped with real pricing',
+    'You keep the document even if you do not move forward',
+    AOF_BUILD_CREDIT_NOTE,
   ],
-  cta: 'See your options and apply',
-  fud: 'Free to apply · Short application · We confirm fit on a call',
+  cta: 'See your next steps',
+  fud: `Free call · ${AOF_MASTER_AUDIT_PRICE_LABEL} audit reserves your live session · No surprises on scope`,
 }
 
 export type VslFaqItem = { question: string; answer: string }
 
 export const VSL_FAQ: VslFaqItem[] = [
   {
-    question: 'What is the difference between Done With You and Done For You?',
+    question: 'Who is this for?',
     answer:
-      'Done With You is coaching: you build alongside Brian with weekly calls and accountability. Done For You is the full build: offer, freebie, sequences, content strategy, call system, and webinar structure, done for you in 90 days. If you are busy and want results without doing the technical work, Done For You is the obvious fit.',
+      'Owner-operated businesses generating real revenue that have outgrown how they currently operate. If everything still runs through you and growth adds weight instead of momentum, this is built for you.',
   },
   {
-    question: 'How long does it take to see results?',
+    question: 'What is the AOF Master Audit?',
     answer:
-      'The program is built around a 90-day timeline. On Done For You, if you do not have 3 booked calls within 60 days of launch, we keep building for free until you do.',
+      'A fully custom 13-block operational blueprint: pipelines, workflows, automations, AI opportunities, integrations, priorities, and line-item build pricing. Developer-ready. You own it regardless of whether we work together.',
   },
   {
-    question: 'What if I do not have a big audience yet?',
+    question: 'Why start with a free qualifying call?',
     answer:
-      'You do not need a huge following. The system is designed to convert the right people into booked calls with a clear offer, lead magnet, and follow-up, not vanity metrics.',
+      'Fifteen minutes, no pitch. We map where the business breaks and whether the Master Audit is the right next step. You leave with clarity either way.',
   },
   {
-    question: 'Is this worth the investment?',
-    answer:
-      'If one high-ticket client covers your investment, the math is simple. The system is built to get you booked calls, not more content for content’s sake. We confirm fit on a call before you commit.',
+    question: `Does the ${AOF_MASTER_AUDIT_PRICE_LABEL} count toward the build?`,
+    answer: `Yes. ${AOF_BUILD_CREDIT_NOTE}`,
   },
   {
-    question: 'How is this different from hiring a generic marketing agency?',
+    question: 'What if I do not move forward after the audit?',
     answer:
-      'Agencies often sell funnels or ads without expertise-specific positioning. This is a full Knowledge to Cash system: offer, lead magnet, sequences, and booking flow, built for how people actually sell high-ticket.',
+      'You keep the Master Audit. Take it to any developer or agency. You will also have a clear picture of what to fix first on your own.',
   },
   {
-    question: 'What if I am not technical?',
+    question: 'How is this different from hiring a generic agency?',
     answer:
-      'That is exactly why Done For You exists. We build and wire the system for you. On Done With You, Brian walks you through each step. No coding required.',
+      'Agencies often sell tactics or tools without mapping how revenue actually moves through your business. The AOF process diagnoses first, sequences the build, and prices it before anything is implemented.',
   },
   {
-    question: 'How do I apply?',
+    question: 'What about the coach products on the site?',
     answer:
-      'Choose Done With You or Done For You above and click Apply. You will go to a short application: no long forms, no pressure. We will confirm fit on a call.',
+      'The Offer Kickstart Workbook and Knowledge to Cash Blueprint are separate resources for coaches packaging expertise. This training is for businesses with existing revenue and broken operations.',
   },
 ]
 

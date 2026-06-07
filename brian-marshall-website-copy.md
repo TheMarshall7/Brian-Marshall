@@ -63,14 +63,14 @@ How it works
 **Step 1 — Free 15-Minute Qualifying Call**
 No pitch. Just open-ended questions to understand your business. I listen, I diagnose, and I guide. You leave with more clarity than you came with regardless of what happens next. If there's a fit, I'll tell you exactly what needs to be built and why.
 
-**Step 2 — Book the AOF Master Audit · $1,500**
-Reserve your live audit session via secure payment. Serious buyers invest here. The $1,500 secures your session and produces a fully custom 13-block Master Audit.
+**Step 2 — Book the AOF Master Audit · $1,497**
+Reserve your live audit session via secure payment. Serious buyers invest here. The $1,497 secures your session and produces a fully custom 13-block Master Audit.
 
 **Step 3 — Live Audit Session**
 We map all 13 blocks together in real time. You walk me through your business in depth. By the end you've seen exactly what a properly architected version of your operations looks like.
 
 **Step 4 — Deliverable + Scope Presentation**
-You receive the polished Master Audit, full build plan, and final quote. No surprises. If scope and timing align, we move into the build and MRR begins. The $1,500 Master Audit is credited in full toward your implementation when you move forward within 30 days of receiving your deliverable.
+You receive the polished Master Audit, full build plan, and final quote. No surprises. If scope and timing align, we move into the build and MRR begins. The $1,497 Master Audit is credited in full toward your implementation when you move forward within 30 days of receiving your deliverable.
 
 **CTA:** Book Your Free Qualifying Call
 
@@ -107,7 +107,7 @@ The gap between a new inquiry and a human response is where most businesses blee
 What this actually costs versus what it returns
 
 **Body:**
-A full build ranges from $13,000 to $30,000+ depending on complexity. The AOF Master Audit alone at $1,500 gives you a blueprint worth multiples of that — a complete picture of what to build, in what order, and what it costs. Most consultants charge $5,000 just to tell you what to build. The $1,500 Master Audit is credited in full toward your implementation when you move forward within 30 days of receiving your deliverable.
+A full build ranges from $13,000 to $30,000+ depending on complexity. The AOF Master Audit alone at $1,497 gives you a blueprint worth multiples of that — a complete picture of what to build, in what order, and what it costs. Most consultants charge $5,000 just to tell you what to build. The $1,497 Master Audit is credited in full toward your implementation when you move forward within 30 days of receiving your deliverable.
 
 The question is never whether systems pay for themselves. Businesses running on manual processes are already paying — in owner time, lost leads, and revenue that never gets captured.
 
@@ -164,11 +164,11 @@ The Architect — 10+ years building across web, automation, AI, and operations.
 **Q: What is the AOF Master Audit?**
 A: The Automated Operations Framework Master Audit is a fully custom 13-block blueprint of your business. It maps every pipeline, workflow, automation, AI opportunity, integration, and the full pricing for your build. It's detailed enough that any competent developer could execute from it without asking you a single follow-up question. You own it regardless of whether we work together.
 
-**Q: Why do I pay $1,500 before the build starts?**
-A: Because the document is a real deliverable with real value. It takes 6-8 hours to produce and gives you a complete picture of your business that most owners have never had. It also filters for serious buyers — someone unwilling to invest $1,500 in understanding their own operations is not going to invest $15,000 to fix them.
+**Q: Why do I pay $1,497 before the build starts?**
+A: Because the document is a real deliverable with real value. It takes 6-8 hours to produce and gives you a complete picture of your business that most owners have never had. It also filters for serious buyers — someone unwilling to invest $1,497 in understanding their own operations is not going to invest $15,000 to fix them.
 
-**Q: Does the $1,500 count toward the full build?**
-A: The $1,500 Master Audit is credited in full toward your implementation when you move forward within 30 days of receiving your deliverable.
+**Q: Does the $1,497 count toward the full build?**
+A: The $1,497 Master Audit is credited in full toward your implementation when you move forward within 30 days of receiving your deliverable.
 
 **Q: What if I don't move forward after the Master Audit?**
 A: You keep the Master Audit. It's yours. You can take it to any developer or agency and have it built. You'll also enter a 30-day follow-up sequence in case the timing changes.
@@ -180,7 +180,7 @@ A: Nothing. It's 15 minutes. No pitch. You leave with clarity either way.
 A: Owner-operated businesses generating real revenue that have outgrown how they currently operate. Industry doesn't matter as much as growth stage. If everything still runs through you and growth feels like it's adding weight instead of momentum, this is built for you.
 
 **Q: How much does a full build cost?**
-A: Builds range from $13,000 to $30,000+ depending on scope and complexity. The Master Audit maps the full cost before you commit to anything. The $1,500 Master Audit is credited in full toward your implementation when you move forward within 30 days of receiving your deliverable.
+A: Builds range from $13,000 to $30,000+ depending on scope and complexity. The Master Audit maps the full cost before you commit to anything. The $1,497 Master Audit is credited in full toward your implementation when you move forward within 30 days of receiving your deliverable.
 
 **Q: How long does a build take?**
 A: Depends on scope. The Master Audit will give you a realistic timeline before any work begins.

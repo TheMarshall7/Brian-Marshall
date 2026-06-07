@@ -13,7 +13,10 @@ export const AOF_DOCUMENT_COVER_FLAT = '/AOF-Document-Cover-Flat.png'
 /** Days after deliverable presentation to credit Master Audit toward implementation */
 export const AOF_BUILD_CREDIT_DAYS = 30
 
-export const AOF_BUILD_CREDIT_NOTE = `The $1,500 Master Audit is credited in full toward your implementation when you move forward within ${AOF_BUILD_CREDIT_DAYS} days of receiving your deliverable.`
+export const AOF_MASTER_AUDIT_PRICE = 1497
+export const AOF_MASTER_AUDIT_PRICE_LABEL = '$1,497'
+
+export const AOF_BUILD_CREDIT_NOTE = `The ${AOF_MASTER_AUDIT_PRICE_LABEL} Master Audit is credited in full toward your implementation when you move forward within ${AOF_BUILD_CREDIT_DAYS} days of receiving your deliverable.`
 
 /** Product sales / info landing pages */
 export const BLUEPRINT_LANDING_PATH = '/blueprint'

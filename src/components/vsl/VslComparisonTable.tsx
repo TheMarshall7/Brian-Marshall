@@ -57,7 +57,7 @@ export default function VslComparisonTable() {
                 {VSL_COMPARE_COLUMNS.agency}
               </th>
               <th className="p-4 text-center font-medium text-red-400">
-                {VSL_COMPARE_COLUMNS.k2c}
+                {VSL_COMPARE_COLUMNS.aof}
               </th>
             </tr>
           </thead>
@@ -75,7 +75,7 @@ export default function VslComparisonTable() {
                   <CompareCell value={row.agency} />
                 </td>
                 <td className="p-4 text-center">
-                  <CompareCell value={row.k2c} highlight />
+                  <CompareCell value={row.aof} highlight />
                 </td>
               </tr>
             ))}
@@ -91,12 +91,12 @@ export default function VslComparisonTable() {
             <div className="grid grid-cols-3 gap-2 text-center text-[10px] uppercase tracking-wide text-neutral-500">
               <span>{VSL_COMPARE_COLUMNS.diy}</span>
               <span>{VSL_COMPARE_COLUMNS.agency}</span>
-              <span className="text-red-400/90">{VSL_COMPARE_COLUMNS.k2c}</span>
+              <span className="text-red-400/90">{VSL_COMPARE_COLUMNS.aof}</span>
             </div>
             <div className="mt-2 grid grid-cols-3 gap-2 text-center">
               <CompareCell value={row.diy} />
               <CompareCell value={row.agency} />
-              <CompareCell value={row.k2c} highlight />
+              <CompareCell value={row.aof} highlight />
             </div>
           </div>
         ))}

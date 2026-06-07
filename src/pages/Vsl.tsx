@@ -1,5 +1,5 @@
-import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
+import PageSeo from '../components/shared/PageSeo'
 import VslCloser from '../components/vsl/VslCloser'
 import VslComparisonTable from '../components/vsl/VslComparisonTable'
 import VslFaq from '../components/vsl/VslFaq'
@@ -9,7 +9,7 @@ import VslSocialProofRow from '../components/vsl/VslSocialProofRow'
 import VslStatsBar from '../components/vsl/VslStatsBar'
 import VslTestimonialCard from '../components/vsl/VslTestimonialCard'
 import VslVideoPlayer from '../components/vsl/VslVideoPlayer'
-import { WORKBOOK_LANDING_PATH } from '../constants/site'
+import { STRATEGY_CALL_PATH } from '../constants/site'
 import {
   VSL_ABOUT_BIO,
   VSL_ABOUT_HEADLINE,
@@ -19,9 +19,13 @@ import {
   VSL_HERO_FUD,
   VSL_HOST_NAME,
   VSL_HOST_TAGLINE,
+  VSL_META,
   VSL_OFFERS,
   VSL_OFFERS_HEADLINE,
+  VSL_OFFERS_INTRO,
   VSL_PHOTO_SRC,
+  VSL_PROOF_CTA,
+  VSL_PROOF_HEADLINE,
   VSL_SUBHEADLINE,
   VSL_TESTIMONIAL_EMBED_URL,
   VSL_TESTIMONIALS,
@@ -37,25 +41,13 @@ export default function Vsl() {
 
   return (
     <div className="vsl-page relative isolate min-h-screen w-full overflow-x-hidden bg-neutral-950 text-neutral-300 selection:bg-red-500/30 selection:text-white">
-      <Helmet>
-        <title>Free Training | Knowledge to Cash | Brian Marshall</title>
-        <meta
-          name="description"
-          content="Book 3-5 high-ticket clients every month without chasing leads. Free training on the Knowledge to Cash system for people."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://brianmarshall.dev/vsl" />
-        <meta property="og:title" content="Free Training | Knowledge to Cash | Brian Marshall" />
-        <meta
-          property="og:description"
-          content="Book 3-5 high-ticket clients every month without chasing leads. Free training for people."
-        />
-        <meta
-          property="og:image"
-          content="https://storage.googleapis.com/msgsndr/F1J2yvd2AUT4owDs9EPl/media/6970477bd4fb90ebccb8a72c.png"
-        />
-        <link rel="canonical" href="https://brianmarshall.dev/vsl" />
-      </Helmet>
+      <PageSeo
+        title={VSL_META.title}
+        description={VSL_META.description}
+        path="/vsl"
+        keywords={VSL_META.keywords}
+        imageAlt="Brian Marshall — Business Systems Architect free training"
+      />
 
       <div className="vsl-grain pointer-events-none" aria-hidden />
 
@@ -67,7 +59,7 @@ export default function Vsl() {
         {/* Hero */}
         <section className="relative z-10 mx-auto flex min-h-[100svh] max-w-3xl flex-col justify-center px-4 pb-10 pt-12 sm:px-6 sm:pt-14 md:pb-14">
           <div className="text-center">
-            <p className="section-eyebrow mb-3 text-red-400/90">Free training for people</p>
+            <p className="section-eyebrow mb-3 text-red-400/90">Free training · Business Systems</p>
             <h1 className="font-bricolage text-[1.65rem] font-medium leading-[1.12] tracking-tight text-white sm:text-3xl md:text-[2.05rem] lg:text-[2.25rem]">
               {VSL_HEADLINE}
             </h1>
@@ -106,12 +98,12 @@ export default function Vsl() {
             className="mx-auto max-w-6xl scroll-mt-8 border-t border-white/10 px-4 py-14 sm:px-6 md:py-24"
           >
             <div className="mb-10 text-center md:mb-12">
-              <p className="section-eyebrow mb-3 text-neutral-500">Your options</p>
+              <p className="section-eyebrow mb-3 text-neutral-500">Your next steps</p>
               <h2 className="font-bricolage text-2xl font-medium tracking-tight text-white sm:text-3xl">
                 {VSL_OFFERS_HEADLINE}
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-neutral-400 sm:text-base">
-                Pick the path that fits how hands-on you want to be. Both run on the same 90-day system.
+                {VSL_OFFERS_INTRO}
               </p>
             </div>
 
@@ -129,7 +121,7 @@ export default function Vsl() {
             <p className="mx-auto mt-12 max-w-xl text-center text-sm leading-relaxed text-neutral-500 md:mt-14">
               {VSL_FREEBIE.lead}{' '}
               <Link
-                to={`${WORKBOOK_LANDING_PATH}#get-workbook`}
+                to={VSL_FREEBIE.path}
                 className="font-medium text-red-400 underline-offset-2 transition-colors hover:text-red-300 hover:underline"
               >
                 {VSL_FREEBIE.cta}
@@ -157,7 +149,7 @@ export default function Vsl() {
             <div className="mb-10 text-center">
               <p className="section-eyebrow mb-3 text-neutral-500">Proof</p>
               <h2 className="font-bricolage text-2xl font-medium text-white sm:text-3xl">
-                People getting booked calls
+                {VSL_PROOF_HEADLINE}
               </h2>
             </div>
 
@@ -182,14 +174,13 @@ export default function Vsl() {
             ) : null}
 
             <div className="mt-10 flex justify-center">
-              <button
-                type="button"
-                onClick={scrollToOffers}
+              <Link
+                to={STRATEGY_CALL_PATH}
                 className="cta-primary inline-flex items-center justify-center gap-2 rounded-xl bg-white px-8 py-3.5 text-sm font-medium text-neutral-950 transition-all btn-shimmer hover:bg-red-400 hover:shadow-lg hover:shadow-red-500/35"
               >
-                Apply for your spot
-                <iconify-icon icon="solar:arrow-right-up-linear" width="18" />
-              </button>
+                {VSL_PROOF_CTA}
+                <iconify-icon icon="solar:arrow-right-linear" width="18" />
+              </Link>
             </div>
           </section>
 
@@ -234,7 +225,6 @@ export default function Vsl() {
           <VslCloser onCtaClick={scrollToOffers} />
         </div>
       </main>
-
     </div>
   )
 }

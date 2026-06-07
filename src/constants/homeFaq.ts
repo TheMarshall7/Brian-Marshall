@@ -1,4 +1,10 @@
-import { AOF_BUILD_CREDIT_NOTE, AOF_LANDING_PATH, BLUEPRINT_LANDING_PATH, STRATEGY_CALL_PATH } from './site'
+import {
+  AOF_BUILD_CREDIT_NOTE,
+  AOF_LANDING_PATH,
+  AOF_MASTER_AUDIT_PRICE_LABEL,
+  BLUEPRINT_LANDING_PATH,
+  STRATEGY_CALL_PATH,
+} from './site'
 import { HOME_PROCESS } from './homeProcess'
 
 export type HomeFaqAnswerPart =
@@ -38,19 +44,19 @@ export const HOME_FAQ = {
       ],
     },
     {
-      id: 'why-1500',
-      question: 'Why do I pay $1,500 before the build starts?',
+      id: 'why-1497',
+      question: `Why do I pay ${AOF_MASTER_AUDIT_PRICE_LABEL} before the build starts?`,
       answer: [
         {
           type: 'text',
           value:
-            'Because the Master Audit is a real deliverable with real value. It takes 6-8 hours to produce and gives you a complete picture of your business that most owners have never had. It also filters for serious buyers. Someone unwilling to invest $1,500 in understanding their own operations is not going to invest $15,000 to fix them.',
+            `Because the Master Audit is a real deliverable with real value. It takes 6-8 hours to produce and gives you a complete picture of your business that most owners have never had. It also filters for serious buyers. Someone unwilling to invest ${AOF_MASTER_AUDIT_PRICE_LABEL} in understanding their own operations is not going to invest $15,000 to fix them.`,
         },
       ],
     },
     {
       id: 'build-credit',
-      question: 'Does the $1,500 count toward the full build?',
+      question: `Does the ${AOF_MASTER_AUDIT_PRICE_LABEL} count toward the full build?`,
       answer: [
         {
           type: 'text',

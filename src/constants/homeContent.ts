@@ -1,13 +1,18 @@
-import { AOF_BUILD_CREDIT_NOTE, AOF_LANDING_PATH, STRATEGY_CALL_PATH } from './site'
+import {
+  AOF_BUILD_CREDIT_NOTE,
+  AOF_LANDING_PATH,
+  AOF_MASTER_AUDIT_PRICE_LABEL,
+  STRATEGY_CALL_PATH,
+} from './site'
 
 export const HOME_META = {
   title: 'Business Systems Architect · AOF Master Audit',
   description:
-    'For owner-operated businesses with real revenue and broken backends. Free 15-minute qualifying call, then the $1,500 AOF Master Audit maps your operations in 13 blocks before anything gets built.',
+    `For owner-operated businesses with real revenue and broken backends. Free 15-minute qualifying call, then the ${AOF_MASTER_AUDIT_PRICE_LABEL} AOF Master Audit maps your operations in 13 blocks before anything gets built.`,
   keywords:
     'AOF Master Audit, business systems architect, operations audit, owner-operated business, CRM pipeline, workflow automation, AI implementation, qualifying call, business infrastructure',
   serviceName: 'Brian Marshall — Business Systems Architect',
-  priceRange: '$1,500 audit · builds from $5K+',
+  priceRange: `${AOF_MASTER_AUDIT_PRICE_LABEL} audit · builds from $5K+`,
   serviceType: [
     'Business Systems Architecture',
     'CRM & Pipeline Design',
@@ -61,7 +66,7 @@ export const HOME_AOF_OFFER = {
     'This is not a proposal. Not a template. It\u2019s your business, on paper, with everything mapped, sequenced, and priced before we touch a single tool.',
   cta: 'Book Your Free Qualifying Call',
   ctaPath: STRATEGY_CALL_PATH,
-  priceNote: '$1,500 \u00b7 Master Audit \u00b7 6\u20138 hours of architecture',
+  priceNote: `${AOF_MASTER_AUDIT_PRICE_LABEL} \u00b7 Master Audit \u00b7 6\u20138 hours of architecture`,
   buildCreditNote: AOF_BUILD_CREDIT_NOTE,
   exploreCta: 'Explore the Master Audit',
   explorePath: AOF_LANDING_PATH,
@@ -74,7 +79,7 @@ export const HOME_ECONOMICS = {
   cards: [
     {
       label: 'The investment',
-      text: 'The AOF Master Audit at $1,500 maps your full operational blueprint before anything gets built: what to fix, in what order, and what each piece costs. Most consultants charge $5,000 just to tell you what to build. ' + AOF_BUILD_CREDIT_NOTE,
+      text: `The AOF Master Audit at ${AOF_MASTER_AUDIT_PRICE_LABEL} maps your full operational blueprint before anything gets built: what to fix, in what order, and what each piece costs. Most consultants charge $5,000 just to tell you what to build. ${AOF_BUILD_CREDIT_NOTE}`,
     },
     {
       label: 'The hidden cost',

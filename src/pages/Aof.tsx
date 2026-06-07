@@ -14,6 +14,7 @@ import PageSeo from '../components/shared/PageSeo'
 import StickyCallBar from '../components/shared/StickyCallBar'
 import { AOF_LANDING } from '../constants/aofLanding'
 import { ANALYTICS_EVENTS } from '../constants/analytics'
+import { AOF_MASTER_AUDIT_PRICE } from '../constants/site'
 import { SITE_URL } from '../constants/siteSeo'
 import { track } from '../lib/track'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
@@ -37,7 +38,7 @@ export default function Aof() {
     areaServed: 'Worldwide',
     offers: {
       '@type': 'Offer',
-      price: '1500',
+      price: String(AOF_MASTER_AUDIT_PRICE),
       priceCurrency: 'USD',
       availability: 'https://schema.org/InStock',
     },

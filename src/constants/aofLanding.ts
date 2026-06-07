@@ -1,16 +1,17 @@
 import {
   AOF_BUILD_CREDIT_DAYS,
   AOF_BUILD_CREDIT_NOTE,
+  AOF_MASTER_AUDIT_PRICE_LABEL,
   AOF_PURCHASE_PATH,
   STRATEGY_CALL_PATH,
 } from './site'
 
 export const AOF_LANDING = {
-  title: 'AOF Master Audit · $1,500',
+  title: `AOF Master Audit · ${AOF_MASTER_AUDIT_PRICE_LABEL}`,
   metaDescription:
-    'Book the AOF Master Audit: a fully custom 13-block operational blueprint of your business. Pipelines, workflows, AI, integrations, priorities, and line-item build pricing. $1,500. Developer-ready. You keep the document.',
+    `Book the AOF Master Audit: a fully custom 13-block operational blueprint of your business. Pipelines, workflows, AI, integrations, priorities, and line-item build pricing. ${AOF_MASTER_AUDIT_PRICE_LABEL}. Developer-ready. You keep the document.`,
   metaKeywords:
-    'AOF Master Audit, operations audit, business systems blueprint, CRM pipeline design, workflow automation, $1500 business audit, owner-operated business',
+    'AOF Master Audit, operations audit, business systems blueprint, CRM pipeline design, workflow automation, $1497 business audit, owner-operated business',
 
   hero: {
     badge: 'The Fix',
@@ -18,7 +19,7 @@ export const AOF_LANDING = {
     headlineAccent: '13 blocks.',
     subheadline:
       'The AOF Master Audit is a fully custom operational blueprint, so thorough any competent developer could build from it without a single follow-up question.',
-    priceAnchor: `$1,500 · credited toward build within ${AOF_BUILD_CREDIT_DAYS} days · you own the document`,
+    priceAnchor: `${AOF_MASTER_AUDIT_PRICE_LABEL} · credited toward build within ${AOF_BUILD_CREDIT_DAYS} days · you own the document`,
     qualifyCta: 'Book Your Free Qualifying Call',
     qualifyPath: STRATEGY_CALL_PATH,
     purchaseCta: 'Reserve Your Audit Session',
@@ -61,7 +62,7 @@ export const AOF_LANDING = {
     headlineAccent: 'diagnosis to build.',
     steps: [
       { step: '01', title: 'Free 15-Minute Qualifying Call', description: 'Fit filter and light diagnosis. No pitch.' },
-      { step: '02', title: 'Book the AOF Master Audit · $1,500', description: 'Reserve your live audit session via secure payment.' },
+      { step: '02', title: `Book the AOF Master Audit · ${AOF_MASTER_AUDIT_PRICE_LABEL}`, description: 'Reserve your live audit session via secure payment.' },
       { step: '03', title: 'Live Audit Session', description: 'We map all 13 blocks together in real time.' },
       { step: '04', title: 'Deliverable + Scope Presentation', description: 'Polished audit, build plan, and final quote.' },
     ],
@@ -70,9 +71,9 @@ export const AOF_LANDING = {
   purchase: {
     eyebrow: 'Reserve your session',
     headline: 'Book the AOF Master Audit',
-    subheadline: '$1,500 reserves your live audit session. Secure payment via GHL.',
+    subheadline: `${AOF_MASTER_AUDIT_PRICE_LABEL} reserves your live audit session. Secure payment via GHL.`,
     buildCreditNote: AOF_BUILD_CREDIT_NOTE,
-    micro: '$1,500 · live audit session · you own the deliverable',
+    micro: `${AOF_MASTER_AUDIT_PRICE_LABEL} · live audit session · you own the deliverable`,
     salesFinalNote: 'All sales final.',
     fallbackCta: 'Contact brian@areoclient.com',
     fallbackEmail: 'brian@areoclient.com',
@@ -125,7 +126,7 @@ export const AOF_LANDING = {
       },
       {
         id: 'build-credit',
-        question: 'Does the $1,500 count toward the full build?',
+        question: `Does the ${AOF_MASTER_AUDIT_PRICE_LABEL} count toward the full build?`,
         answer: AOF_BUILD_CREDIT_NOTE,
       },
       {
@@ -138,7 +139,7 @@ export const AOF_LANDING = {
         id: 'vs-consultant',
         question: 'How is this different from hiring a consultant?',
         answer:
-          'Most consultants charge $5,000+ to tell you what to build. The AOF Master Audit at $1,500 gives you the full blueprint, mapped, sequenced, and priced, before you commit to a $15K+ build.',
+          `Most consultants charge $5,000+ to tell you what to build. The AOF Master Audit at ${AOF_MASTER_AUDIT_PRICE_LABEL} gives you the full blueprint, mapped, sequenced, and priced, before you commit to a $15K+ build.`,
       },
     ],
   },

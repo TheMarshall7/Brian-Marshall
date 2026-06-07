@@ -1,7 +1,32 @@
+import { Link } from 'react-router-dom'
 import type { VslOfferTier } from '../../constants/vsl'
 
 type Props = {
   offer: VslOfferTier
+}
+
+function CtaButton({ offer, featured }: { offer: VslOfferTier; featured: boolean }) {
+  const className = `inline-flex w-full items-center justify-center gap-2 rounded-xl px-6 py-4 text-sm font-medium transition-all btn-shimmer ${
+    featured
+      ? 'bg-white text-neutral-950 hover:bg-red-400 hover:shadow-lg hover:shadow-red-500/35 md:py-5 md:text-base'
+      : 'border border-white/15 text-white hover:border-white/25 hover:bg-white/10'
+  }`
+
+  if (offer.external) {
+    return (
+      <a href={offer.applyUrl} target="_blank" rel="noopener noreferrer" className={className}>
+        {offer.ctaLabel}
+        <iconify-icon icon="solar:arrow-right-up-linear" width="18" />
+      </a>
+    )
+  }
+
+  return (
+    <Link to={offer.applyUrl} className={className}>
+      {offer.ctaLabel}
+      <iconify-icon icon="solar:arrow-right-linear" width="18" />
+    </Link>
+  )
 }
 
 export default function VslOfferCard({ offer }: Props) {
@@ -20,11 +45,11 @@ export default function VslOfferCard({ offer }: Props) {
         <span className="mb-4 inline-flex w-fit rounded-full border border-red-500/25 bg-red-500/10 px-3 py-1 text-[10px] font-mono uppercase tracking-widest text-red-400">
           {offer.badge}
         </span>
-      ) : (
+      ) : offer.eyebrow ? (
         <span className="mb-4 block text-[10px] font-mono uppercase tracking-widest text-neutral-500">
-          Done With You
+          {offer.eyebrow}
         </span>
-      )}
+      ) : null}
 
       <h3 className="mb-3 font-bricolage text-xl font-medium leading-snug text-white md:text-2xl">
         {offer.name}
@@ -69,26 +94,10 @@ export default function VslOfferCard({ offer }: Props) {
 
       {hasUrl ? (
         <div>
-          <a
-            href={offer.applyUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`inline-flex w-full items-center justify-center gap-2 rounded-xl px-6 py-4 text-sm font-medium transition-all btn-shimmer ${
-              featured
-                ? 'bg-white text-neutral-950 hover:bg-red-400 hover:shadow-lg hover:shadow-red-500/35 md:py-5 md:text-base'
-                : 'border border-white/15 text-white hover:border-white/25 hover:bg-white/10'
-            }`}
-          >
-            {offer.ctaLabel}
-            <iconify-icon icon="solar:arrow-right-up-linear" width="18" />
-          </a>
+          <CtaButton offer={offer} featured={Boolean(featured)} />
           <p className="mt-3 text-center text-xs text-neutral-500">{offer.applyFud}</p>
         </div>
-      ) : (
-        <p className="text-center text-xs text-neutral-500">
-          Set <code className="text-neutral-400">VITE_VSL_APPLY_{offer.id === 'dfy' ? 'DFY' : 'DWY'}_URL</code>
-        </p>
-      )}
+      ) : null}
     </article>
   )
 }

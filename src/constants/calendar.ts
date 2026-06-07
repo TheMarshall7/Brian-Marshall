@@ -1,9 +1,9 @@
-import { BLUEPRINT_LANDING_PATH } from './site'
+import { AOF_MASTER_AUDIT_PRICE_LABEL, BLUEPRINT_LANDING_PATH } from './site'
 
 export const CALENDAR_PAGE = {
   title: 'Free 15-Minute Qualifying Call',
   metaDescription:
-    'Book a free 15-minute qualifying call for owner-operated businesses with real revenue. No pitch. Map where leads stall, pipelines break, and whether the $1,500 AOF Master Audit is your right next step.',
+    `Book a free 15-minute qualifying call for owner-operated businesses with real revenue. No pitch. Map where leads stall, pipelines break, and whether the ${AOF_MASTER_AUDIT_PRICE_LABEL} AOF Master Audit is your right next step.`,
   metaKeywords:
     'free qualifying call, business systems consultation, AOF Master Audit, owner-operated business, operations diagnosis',
 

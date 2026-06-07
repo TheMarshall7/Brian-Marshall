@@ -1,4 +1,10 @@
-import { AOF_BUILD_CREDIT_NOTE, AOF_DOCUMENT_COVER, AOF_PURCHASE_PATH } from './site'
+import {
+  AOF_BUILD_CREDIT_NOTE,
+  AOF_DOCUMENT_COVER,
+  AOF_MASTER_AUDIT_PRICE,
+  AOF_MASTER_AUDIT_PRICE_LABEL,
+  AOF_PURCHASE_PATH,
+} from './site'
 
 export type ShopProduct = {
   id: string
@@ -68,8 +74,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
   {
     id: 'aof-master-audit',
     title: 'AOF Master Audit',
-    price: 1500,
-    priceLabel: '$1,500',
+    price: AOF_MASTER_AUDIT_PRICE,
+    priceLabel: AOF_MASTER_AUDIT_PRICE_LABEL,
     coverSrc: AOF_DOCUMENT_COVER,
     description:
       'A fully custom 13-block operational blueprint of your business: pipelines, workflows, automations, AI opportunities, integrations, priorities, and line-item build pricing. Developer-ready. You own it either way.',
@@ -140,7 +146,7 @@ export const SHOP_SUBHEADLINE =
 export const SHOP_META = {
   title: 'Resources',
   description:
-    'Reserve the AOF Master Audit ($1,500) for owner-operated businesses, or get the free Offer Kickstart Workbook and Knowledge to Cash Blueprint for coaches.',
+    `Reserve the AOF Master Audit (${AOF_MASTER_AUDIT_PRICE_LABEL}) for owner-operated businesses, or get the free Offer Kickstart Workbook and Knowledge to Cash Blueprint for coaches.`,
   keywords:
     'AOF Master Audit, business resources, Offer Kickstart Workbook, Knowledge to Cash Blueprint, operations audit, coach marketing',
 } as const

@@ -1,4 +1,9 @@
-import { AOF_BUILD_CREDIT_NOTE, AOF_PURCHASE_PATH, STRATEGY_CALL_PATH } from './site'
+import {
+  AOF_BUILD_CREDIT_NOTE,
+  AOF_MASTER_AUDIT_PRICE_LABEL,
+  AOF_PURCHASE_PATH,
+  STRATEGY_CALL_PATH,
+} from './site'
 
 export type HomeProcessRung = {
   step: string
@@ -23,9 +28,9 @@ export const HOME_PROCESS = {
     },
     {
       step: '02',
-      title: 'Book the AOF Master Audit \u00b7 $1,500',
+      title: `Book the AOF Master Audit \u00b7 ${AOF_MASTER_AUDIT_PRICE_LABEL}`,
       description:
-        'Reserve your live audit session via secure payment. Serious buyers invest here. The $1,500 secures your session and produces a fully custom 13-block Master Audit of your business.',
+        `Reserve your live audit session via secure payment. Serious buyers invest here. The ${AOF_MASTER_AUDIT_PRICE_LABEL} secures your session and produces a fully custom 13-block Master Audit of your business.`,
       productLabel: 'Reserve your audit session',
       productPath: AOF_PURCHASE_PATH,
     },
