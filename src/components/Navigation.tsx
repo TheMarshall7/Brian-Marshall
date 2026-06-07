@@ -95,12 +95,22 @@ export default function Navigation() {
               <iconify-icon icon={mobileOpen ? 'solar:close-circle-linear' : 'solar:hamburger-menu-linear'} width="22" />
             </button>
             <Link
+              to={AOF_LANDING_PATH}
+              onClick={() => setMobileOpen(false)}
+              className={`nav-cta mr-1 inline-flex h-9 shrink-0 items-center justify-center rounded-full px-3.5 text-xs font-medium leading-none transition-all btn-shimmer sm:hidden md:mr-0 ${
+                isAof
+                  ? 'bg-red-400 text-white hover:bg-red-300'
+                  : 'bg-white text-black hover:bg-red-400 hover:shadow-lg hover:shadow-red-500/20'
+              }`}
+            >
+              AOF
+            </Link>
+            <Link
               to={STRATEGY_CALL_PATH}
               onClick={() => setMobileOpen(false)}
-              className="nav-cta mr-1 inline-flex h-9 shrink-0 items-center justify-center rounded-full bg-white px-3 text-[11px] font-medium leading-none text-black transition-all btn-shimmer hover:bg-red-400 hover:shadow-lg hover:shadow-red-500/20 sm:h-auto sm:px-5 sm:py-2.5 sm:text-xs md:mr-0 md:px-6"
+              className="nav-cta mr-1 hidden shrink-0 items-center justify-center rounded-full bg-white px-5 py-2.5 text-xs font-medium leading-none text-black transition-all btn-shimmer hover:bg-red-400 hover:shadow-lg hover:shadow-red-500/20 sm:inline-flex md:mr-0 md:px-6"
             >
-              <span className="hidden sm:inline">Book free call</span>
-              <span className="sm:hidden">Free call</span>
+              Book free call
             </Link>
           </div>
         </nav>
@@ -129,9 +139,6 @@ export default function Navigation() {
             </Link>
             <Link to="/shop" className={navLinkClass} onClick={() => setMobileOpen(false)}>
               Resources
-            </Link>
-            <Link to={STRATEGY_CALL_PATH} className={`${navLinkClass} text-white`} onClick={() => setMobileOpen(false)}>
-              Book free call
             </Link>
           </div>
         </div>
