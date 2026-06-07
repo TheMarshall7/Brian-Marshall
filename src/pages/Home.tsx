@@ -97,7 +97,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="order-3 flex w-full flex-col items-center md:order-none md:col-span-6 md:items-end md:justify-center lg:col-span-7">
+            <div className="order-2 flex w-full flex-col items-center md:order-none md:col-span-6 md:items-end md:justify-center lg:col-span-7">
               <div className="w-full max-w-md animate-on-scroll sm:max-w-xl md:mx-0 md:ml-auto md:max-w-full">
                 <img
                   src={encodeURI('/Brian Marshall Photo(transparent).png')}
@@ -111,7 +111,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="order-2 flex w-full flex-col items-center gap-5 border-t border-white/10 pt-6 md:order-none md:col-span-12 md:flex-row md:items-center md:justify-between md:gap-10 md:border-white/10 md:pl-6 md:pt-8 lg:pl-10 lg:pt-10 xl:pl-14">
+            <div className="order-3 flex w-full flex-col items-center gap-5 border-t border-white/10 pt-6 md:order-none md:col-span-12 md:flex-row md:items-center md:justify-between md:gap-10 md:border-white/10 md:pl-6 md:pt-8 lg:pl-10 lg:pt-10 xl:pl-14">
               <div className="flex w-full max-w-md flex-col gap-3 animate-slide-up sm:max-w-none sm:flex-row sm:flex-wrap sm:gap-5 md:max-w-none" style={{ animationDelay: '1.2s', opacity: 0 }}>
                 <Link
                   to={STRATEGY_CALL_PATH}
