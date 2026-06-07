@@ -97,7 +97,7 @@ export default function Navigation() {
             <Link
               to={STRATEGY_CALL_PATH}
               onClick={() => setMobileOpen(false)}
-              className="mr-1 shrink-0 rounded-full bg-white px-3.5 py-2.5 text-xs font-medium text-black transition-all btn-shimmer hover:bg-red-400 hover:shadow-lg hover:shadow-red-500/20 sm:px-5 md:mr-0 md:px-6"
+              className="nav-cta mr-1 inline-flex h-9 shrink-0 items-center justify-center rounded-full bg-white px-3 text-[11px] font-medium leading-none text-black transition-all btn-shimmer hover:bg-red-400 hover:shadow-lg hover:shadow-red-500/20 sm:h-auto sm:px-5 sm:py-2.5 sm:text-xs md:mr-0 md:px-6"
             >
               <span className="hidden sm:inline">Book free call</span>
               <span className="sm:hidden">Free call</span>

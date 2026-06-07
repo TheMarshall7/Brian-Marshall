@@ -1509,10 +1509,14 @@
       padding-bottom: 3rem !important;
     }
 
-    a[href*="#contact"],
-    a[href*="/calendar"],
+    a[href*="#contact"]:not(.nav-cta),
+    a[href*="/calendar"]:not(.nav-cta),
     .cta-primary {
       min-height: 48px;
+    }
+
+    .nav-cta {
+      min-height: 0;
     }
 
     h1,
